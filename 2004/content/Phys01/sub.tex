@@ -1,0 +1,331 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\chapter{力学: ロケット}
+\section{}
+系全体の運動量は保存し、静止系から見た運動量は
+\begin{align}
+    \qty(m_0+M(t))v(t) +\int_{0}^{t} dt\,\qty(v(t)-V)\mu=\text{const.}
+\end{align}
+となる。
+第一項はロケット自身の運動量、
+第二項は噴射した燃料の運動量である。
+これを両辺時間微分する。\(\dot{M}=-\mu\)であることも使うと
+\begin{align}
+    \qty(m_0+M(t))\dv{v(t)}{t} +\dot{M}(t)v(t) + (v(t)-V)\mu &= 0\\
+    \qty(m_0+M(t))\dv{v(t)}{t} = V\mu
+\end{align}
+
+\section{ツィオルコフスキーの公式}
+\(M(t)=M_0-\mu t\)より
+\begin{align}
+    \dv{v}{t} = \frac{V\mu}{m_0+M_0-\mu t}
+\end{align}
+初期条件を満たすように右辺の積分定数を決めて積分すると
+\begin{align}
+    v(t) &= v(0) +V\ln(\frac{m_0+M_0}{m_0+M_0-\mu t})\\
+    &= V\ln(\frac{m_0+M_0}{m_0+M_0-\mu t})
+\end{align}
+最終速度では\(M_0=\mu t\) となるので
+\begin{align}
+    v = V\ln(1+\frac{M_0}{m_0})
+\end{align}
+
+\section{}
+前問の結果より、
+1段目を切り離した時の速度は
+\begin{align}
+    v_1 = V\ln(1+\frac{M_1}{m_1+m_2+M_2})
+\end{align}
+さらにこれを初速度として2段目の燃料を噴射しきると、
+\begin{align}
+    v_2 &= v_1 + V\ln(1+\frac{M_2}{m_2})\\
+    &= V\ln\qty[\qty(1+\frac{M_1}{m_1+m_2+M_2})\qty(1+\frac{M_2}{m_2})]
+\end{align}
+となる。
+
+また、多段式ではなく、1段式のロケットにしたときの最終速度は
+\begin{align}
+    v_{12} = V\ln(1+\frac{M_1+M_2}{m_1+m_2})
+\end{align}
+
+これら速度を比較するには対数の中を調べればよい。
+左辺を\(V_2\), 右辺を\(V_{12}\)の対数の中身とすると
+\begin{align}
+    \frac{(m_1+m_2+M_1+M_2)(m_2+M_2)}{(m_1+m_2+M_2)m_2}&\lessgtr\frac{m_1+m_2+M_1+M_2}{m_1+m_2}\\
+    \frac{1+M_2/m_1}{1+M_2/(m_1+m_2)}& \lessgtr 1
+\end{align}
+左辺は分子の方が大きいので両側不等号の下側が正しい方だとわかる。
+これより示せた。
+
+\section{}
+はじめ\(v_0\)で動いていたロケットが分離すると、運動量保存則より分離した後のロケットの速さ\(v\)は
+\begin{align}
+    (m_0+M_0)v_0 &= m_0 v + M_0(v-V)\\
+    v &= v_0 +V\frac{M_0}{m_0 + M_0} \\
+    &= v_0 + \frac{1}{1+m_0/M_0} = v_0 + \sum_{n=0}^{\infty}\qty(-\frac{m_0}{M_0})^n
+\end{align}
+このうち加速する項は\(V\)よりも小さくなるのに対し、
+連続的に噴射するロケットでは\(ln(1+x)\geq x \geq 1\) より\(V\)よりも速くなる。
+なので連続的に噴射する方が速くなる。
+
+\section{}
+はじめの問題より、加速度は
+\begin{align}
+    \dv{v(t)}{t} = \frac{V\mu(t)}{m_0+M_0-\mu(t)t}
+\end{align}
+これが\(\alpha\)になるので\(\mu(t)\)について解いて
+\begin{align}
+    \mu(t) = \frac{(m_0+M_0)\alpha}{V+\alpha t}
+\end{align}
+
+\chapter{電磁気学: 磁気双極子}
+\section{}
+円筒座標上で考える。位置\((r,\varphi,0)\)の電流素片が\((0,0,z)\)に作る磁場は
+\begin{align}
+    dB &= \frac{\mu_0I}{4\pi}\frac{ad\varphi}{(a^2+z^2)^{3/2}} e_{\varphi}\times(ze_z-ae_r)\\
+       &= d\varphi\frac{\mu_0Ia^2}{4\pi}\frac{ze_r+ae_z}{(a^2+z^2)^{3/2}} \\
+\end{align}
+これを円周で積分すると\(e_r\)の項は消えて
+\begin{align}
+    B(z) = \frac{\mu_0Ia^2}{2(a^2+z^2)^{3/2}}
+\end{align}
+
+\section{}
+単磁荷が作る磁場を足すとz軸乗では
+\begin{align}
+    B(z) =\frac{\mu_0q_m}{4\pi}\qty(\frac{1}{(z-d/2)^2}-\frac{1}{(z+d/2)^2})e_z
+\end{align}
+
+\section{}
+円電流の作る磁場の分母の\(a\)は無視できるので
+\begin{align}
+    B_1(z) = \frac{\mu_0 Ia^2}{2z^3}e_z
+\end{align}
+磁気双極子の作る磁場は\(1/(1+x)^2\simeq 1-2x\)となることを使って
+\begin{align}
+    B_m(z) = \frac{\mu_0q_md}{2\pi z^3}e_z
+\end{align}
+これより、同じ方向・\(z\)依存性があることから一致することが確認できた。
+また比例係数を比べることで
+\begin{align}
+    q_md = \pi a^2I
+\end{align}
+という対応関係があるのがわかる。
+
+
+\chapter{}
+\section{}
+\subsection{}
+\begin{align}
+    H\varphi = (H_x+ H_y)XY = (E_x+E_y)XY = (E_x+E_y)\varphi
+\end{align}
+より
+\begin{align}
+    E=E_x+E_y
+\end{align}
+
+\subsection{}
+\subsubsection{(a)}
+交換子の線形性や\([x,x]=[\partial_x,\partial_x]=0, [\partial_x, x]=1\)等を使うと
+\begin{align}
+    \qty[\sqrt{\frac{m\omega}{2\hbar}}x+\sqrt{\frac{\hbar}{2m\omega}}\pdv{x},\,
+    \sqrt{\frac{m\omega}{2\hbar}}x-\sqrt{\frac{\hbar}{2m\omega}}\pdv{x}]
+    &=\frac{1}{2}\qty(\qty[x, -\pdv{x}] + \qty[\pdv{x}, x])\\
+    &= 1
+\end{align}
+\subsubsection{(b)}
+\begin{align}
+    \hbar\omega D_x^\dagger D_x
+    &= \hbar\omega\qty(
+        \sqrt{\frac{m\omega}{2\hbar}}x-\sqrt{\frac{\hbar}{2m\omega}}\pdv{x}
+    )\qty(
+        \sqrt{\frac{m\omega}{2\hbar}}x+\sqrt{\frac{\hbar}{2m\omega}}\pdv{x}
+    )\\
+    &= -\frac{\hbar^2}{2m}\pdv[2]{x} + \frac{1}{2}m\omega^2 x
+    + \frac{\hbar\omega}{2}[x,\,\pdv{x}]
+    \hbar\omega\qty(\omega D_x^\dagger D_x+\frac{1}{2}) = -\frac{\hbar^2}{2m}\pdv[2]{x} + \frac{1}{2}m\omega^2 x = H_x
+\end{align}
+\subsubsection{(c)}
+\begin{align}
+    H_xX_0(x) &= \hbar\omega\qty(D_x^\dagger D_x + \frac{1}{2})X_0(x)\\
+    &= \frac{\hbar\omega}{2}X_0(x)
+\end{align}
+より\(X_0\)は\(E_x=\hbar\omega/2\)の固有状態。
+
+また\(D_xX_0(x)=0\)は微分方程式と読めるので
+\begin{align}
+    \qty(
+        \sqrt{\frac{m\omega}{2\hbar}}x-\sqrt{\frac{\hbar}{2m\omega}}\pdv{x}
+    )X_0(x) = 0
+\end{align}
+これの解は
+\begin{align}
+    X_0 \propto \exp(-\frac{m\omega}{2\hbar}x^2)
+\end{align}
+規格化条件より
+\begin{align}
+    1 = \int_{-\infty}^{\infty}dx\abs{X_0(x)}^2 = \abs{C}^2 \sqrt{\frac{2\pi\hbar}{m\omega}}
+\end{align}
+よって
+\begin{align}
+    X_0(x) = \qty(\frac{m\omega}{2\pi\hbar})^{1/4}\exp(-\frac{m\omega}{2\hbar}x^2)
+\end{align}
+\subsection{}
+\(E_{(n_x,n_y)}=\hbar\omega(n_x+n_y+1/2)\)より同じエネルギーで違う状態の数は\(n_x+n_y\)個のものを分割する組み合わせの数になる。
+それは\(n_x+n_y+1\)である。
+
+\section{}
+外場を加えたときのポテンシャルは
+\begin{align}
+    V &= \frac{1}{2}m\omega^2 x^2 + eEx + \frac{1}{2}m\omega^2 y^2\\
+    &= \frac{1}{2}m\omega^2 \qty(x+\frac{eE}{m\omega^2})^2 + \frac{1}{2}m\omega^2 y^2 - \frac{e^2E^2}{2m\omega^2}
+\end{align}
+というようになる。
+これはx座標の規準となる点がずれて、
+系全体のエネルギーが下がったハミルトニアンと読みかえることができる。
+なので求めるエネルギーは
+\begin{align}
+    E = \hbar\omega\qty(n_x+n_y+\frac{1}{2})- \frac{e^2E^2}{2m\omega^2}
+\end{align}
+というようになる。
+
+\section{}
+\subsection{}
+多粒子系において2つの同種粒子を選んだとき、
+それらのラベルの付け替えによって波動関数の符号が入れ替わるようなフェルミオンの持つ性質で、
+フェルミオン同士は同じ量子数をとる状態に入ることができない性質。
+
+\subsection{}
+調和振動子ポテンシャルの各準位にフェルミオンである電子がスピンの自由度により2つまで詰まっていく。
+そのため基底状態は\((n_x,n_y)=(0,0)\)の状態に2つ入ったうえで、
+\((n_x,n_y)=(0,1),(1,0)\)の状態にそれぞれ1つづつ入る、もしくは\((n_x,n_y)=(0,1)\)か\((n_x,n_y)=(1,0)\)に2つ入るというような状態になる。
+\((n_x,n_y)=(0,1),(1,0)\)の状態にそれぞれ1つづつ入るときのスピンの向きを考慮して
+縮重度は4である。
+\subsection{}
+\subsubsection{(a)}
+同じスピン量子数を持った電子同士はパウリの排他原理により近づくことができないのでクーロン相互作用によるエネルギーが抑えられる。
+これによって縮退がほどけ、電子のスピンの向きが揃った配置が基底状態になることが多いという経験則。
+\subsubsection{(b)}
+フント則により
+\((n_x,n_y)=(0,1)\)か\((n_x,n_y)=(1,0)\)に2つ入る状態は
+\((n_x,n_y)=(0,1),(1,0)\)の状態にそれぞれ1つづつ入るときに比べエネルギーが多くなるので
+基底状態の縮重度は前者の分を抜いた2
+
+\chapter{統計力学: 1次元ゴム}
+\section{}
+\begin{align}
+    L=(3N_\alpha+N\beta),\qquad E = E_\alpha N_\alpha+ E_\beta N_\beta
+\end{align}
+\section{}
+張力のあるときの分配関数は、張力の分のポテンシャルも考慮して
+\begin{align}
+    Z
+    &= \sum_{N_\alpha=0}^{N} \,_NC_{N_\alpha} \qty(e^{-\beta(E_\alpha+3l\tau)})^{N_\alpha}\qty(e^{-\beta(E_\beta+l\tau)})^{N-N_\alpha}\\
+    &= \qty(e^{-\beta(E_\alpha+3l\tau)}+e^{-\beta(E_\beta+l\tau)})^N
+\end{align}
+これより自由エネルギーは
+\begin{align}
+    F = -Nk_B T \ln(e^{-\beta(E_\alpha+3l\tau)}+e^{-\beta(E_\beta+l\tau)})
+\end{align}
+
+\section{}
+熱力学関係式\(\ev{L}=\partial F/\partial \tau\)より
+\begin{align}
+    \ev{L} &= \frac{3e^{-\beta(E_\alpha+3l\tau)}+e^{-\beta(E_\beta+l\tau)}}{e^{-\beta(E_\alpha+3l\tau)}+e^{-\beta(E_\beta+l\tau)}}Nl\\
+    &=Nl+\frac{2Nl}{1+e^{\beta(E_\alpha-E_\beta)}e^{2l\tau\beta}}
+\end{align}
+また\(\tau=0\)のときには
+\begin{align}
+    L_0 &=Nl+\frac{2Nl}{1+e^{\beta(E_\alpha-E_\beta)}}
+\end{align}
+である。
+\(\ev{L}\)を\(2l\tau\beta\)が小さいとして\(e^x \simeq 1+x\)を使って展開すると
+\begin{align}
+    \ev{L} &=Nl+\frac{2Nl}{1+e^{\beta(E_\alpha-E_\beta)}e^{2l\tau\beta}}\\
+    &=Nl+\frac{2Nl}{1+e^{\beta(E_\alpha-E_\beta)}(1+2l\tau\beta)}\\
+    &=Nl+\dfrac{2Nl}{\qty(1+e^{\beta(E_\alpha-E_\beta)})\qty(1+\dfrac{2l\tau\beta}{1+e^{\beta(E_\alpha-E_\beta)}})}\\
+    &=Nl+\dfrac{2Nl}{1+e^{\beta(E_\alpha-E_\beta)}}\qty(1-\dfrac{2l\tau\beta}{1+e^{\beta(E_\alpha-E_\beta)}})\\
+    &= L_0 - C\tau
+\end{align}
+というようになるので
+\begin{align}
+    \tau = -\frac{1}{C}(\ev{L}-L_0) =: \kappa(\ev{L}-L_0)
+\end{align}
+というようにフックの法則が導かれた。
+
+\chapter{物性}
+\section{}
+\ce{Na+}イオンと\ce{Cl-}イオンに電子さ束縛されるため、伝導できる電子が無いため絶縁体となる。
+\section{}
+理想気体では1つの気体分子につき\(k_BT\)程度のエネルギーを蓄えるため
+自由電子1つにつき\(k_BT\)程度のエネルギーを蓄えると考えられるから。
+\section{}
+絶縁体とは違い、バンドギャップが無いため表面で光を吸収・放出をするから
+\section{}
+\(\Delta = V\)のギャップが放物線のバンドのフェルミ波数で生じる。
+これは摂動が
+\begin{align}
+    \frac{V}{2}e^{2ik_Fx} + \frac{V}{2}e^{-2ik_Fx}
+\end{align}
+であるためフェルミ面にある電子が左右フェルミ面を行き来するようになり、
+これの固有値問題を考えるとわかる。
+Bragg 反射でもよい。
+
+\section{}
+吸収係数が入射する\(\hbar\omega\)の光に対して
+\begin{align}
+    \alpha \propto \sqrt(\hbar\omega -\Delta)
+\end{align}
+というようになる。
+
+\chapter{数値計算: 3重対角化}
+知らないのでパス
+
+\chapter{情報理論}
+\section{}
+データ列中の各データは等確率に出るので、
+特定のm個の数値が並ぶ確率は\(1/8^m\)
+よってこのデータ列の情報エントロピーは
+\begin{align}
+    H =\sum \frac{1}{8^m}\lg\qty(\frac{1}{8^m}) = 3m
+\end{align}
+
+\section{}
+表1の確率分布を情報エントロピーの式に入れて書き下すと
+\begin{align}
+    H = \frac{1}{2}\lg2
+    +\frac{1}{2^2}\lg2^2
+    +\frac{1}{2^3}\lg2^3
+    +\frac{1}{2^4}\lg2^4
+    +\frac{1}{2^5}\lg2^5
+    +\frac{1}{2^6}\lg2^6
+    +\frac{1}{2^7}\lg2^7
+    =\frac{274}{128}\simeq 1.9
+\end{align}
+\section{}
+表2による符号化は\(b_i\)の情報量と同じ桁のバイナリになっているので
+[2]で求めた値はまさにバイナリ表記したときの文字数の期待値になっている。
+よって \(b_i\)1つにつき約1.9桁になる。
+
+\section{}
+[1]で行った符号化を[2]の情報源に使った場合1つのデータにつき3桁必要になるが、
+表2による符号化では1.9桁程度であるのでデータを効率よく表現できている。
+これは情報源の特徴を反映した符号化であるからである。
+\section{}
+\begin{align}
+    2133666553\\
+    2, -1, 2, 0, 3, 0, 0, -1, 0, -2\\
+    010, 101, 1100, 0, 11100, 0, 0, 101, 0, 1101
+\end{align}
+\section{}
+\begin{align}
+    001, 11100, 11100, 0, 1101, 0, 101, 0, 0, 101\\
+    1, +3, +3, 0, -3, 0, -1, 0, 0, -1\\
+    1477443332
+\end{align}
+
+\end{document}
