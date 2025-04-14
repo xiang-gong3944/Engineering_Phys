@@ -65,11 +65,10 @@
 はじめ\(v_0\)で動いていたロケットが分離すると、運動量保存則より分離した後のロケットの速さ\(v\)は
 \begin{align}
     (m_0+M_0)v_0 &= m_0 v + M_0(v-V)\\
-    v &= v_0 +V\frac{M_0}{m_0 + M_0} \\
-    &= v_0 + \frac{1}{1+m_0/M_0} = v_0 + \sum_{n=0}^{\infty}\qty(-\frac{m_0}{M_0})^n
+    v &= v_0 +V\frac{M_0}{m_0 + M_0}
 \end{align}
 このうち加速する項は\(V\)よりも小さくなるのに対し、
-連続的に噴射するロケットでは\(ln(1+x)\geq x \geq 1\) より\(V\)よりも速くなる。
+連続的に噴射するロケットでは\(M_0/m_0 \gg 1\)であれば加速する項は\(V\)より大きくなる。
 なので連続的に噴射する方が速くなる。
 
 \section{}
@@ -117,7 +116,7 @@
 という対応関係があるのがわかる。
 
 
-\chapter{}
+\chapter{量子力学: 調和振動子}
 \section{}
 \subsection{}
 \begin{align}
@@ -146,8 +145,9 @@
         \sqrt{\frac{m\omega}{2\hbar}}x+\sqrt{\frac{\hbar}{2m\omega}}\pdv{x}
     )\\
     &= -\frac{\hbar^2}{2m}\pdv[2]{x} + \frac{1}{2}m\omega^2 x
-    + \frac{\hbar\omega}{2}[x,\,\pdv{x}]
-    \hbar\omega\qty(\omega D_x^\dagger D_x+\frac{1}{2}) = -\frac{\hbar^2}{2m}\pdv[2]{x} + \frac{1}{2}m\omega^2 x = H_x
+    + \frac{\hbar\omega}{2}\qty[x,\,\pdv{x}]\\
+    \hbar\omega\qty(\omega D_x^\dagger D_x+\frac{1}{2})
+    &= -\frac{\hbar^2}{2m}\pdv[2]{x} + \frac{1}{2}m\omega^2 x = H_x
 \end{align}
 \subsubsection{(c)}
 \begin{align}
@@ -159,7 +159,7 @@
 また\(D_xX_0(x)=0\)は微分方程式と読めるので
 \begin{align}
     \qty(
-        \sqrt{\frac{m\omega}{2\hbar}}x-\sqrt{\frac{\hbar}{2m\omega}}\pdv{x}
+        \sqrt{\frac{m\omega}{2\hbar}}x+\sqrt{\frac{\hbar}{2m\omega}}\pdv{x}
     )X_0(x) = 0
 \end{align}
 これの解は
@@ -168,11 +168,11 @@
 \end{align}
 規格化条件より
 \begin{align}
-    1 = \int_{-\infty}^{\infty}dx\abs{X_0(x)}^2 = \abs{C}^2 \sqrt{\frac{2\pi\hbar}{m\omega}}
+    1 = \int_{-\infty}^{\infty}dx\abs{X_0(x)}^2 = \abs{C}^2 \sqrt{\frac{\pi\hbar}{m\omega}}
 \end{align}
 よって
 \begin{align}
-    X_0(x) = \qty(\frac{m\omega}{2\pi\hbar})^{1/4}\exp(-\frac{m\omega}{2\hbar}x^2)
+    X_0(x) = \qty(\frac{m\omega}{\pi\hbar})^{1/4}\exp(-\frac{m\omega}{2\hbar}x^2)
 \end{align}
 \subsection{}
 \(E_{(n_x,n_y)}=\hbar\omega(n_x+n_y+1/2)\)より同じエネルギーで違う状態の数は\(n_x+n_y\)個のものを分割する組み合わせの数になる。
@@ -204,7 +204,7 @@
 そのため基底状態は\((n_x,n_y)=(0,0)\)の状態に2つ入ったうえで、
 \((n_x,n_y)=(0,1),(1,0)\)の状態にそれぞれ1つづつ入る、もしくは\((n_x,n_y)=(0,1)\)か\((n_x,n_y)=(1,0)\)に2つ入るというような状態になる。
 \((n_x,n_y)=(0,1),(1,0)\)の状態にそれぞれ1つづつ入るときのスピンの向きを考慮して
-縮重度は4である。
+縮重度は6である。
 \subsection{}
 \subsubsection{(a)}
 同じスピン量子数を持った電子同士はパウリの排他原理により近づくことができないのでクーロン相互作用によるエネルギーが抑えられる。
@@ -213,7 +213,7 @@
 フント則により
 \((n_x,n_y)=(0,1)\)か\((n_x,n_y)=(1,0)\)に2つ入る状態は
 \((n_x,n_y)=(0,1),(1,0)\)の状態にそれぞれ1つづつ入るときに比べエネルギーが多くなるので
-基底状態の縮重度は前者の分を抜いた2
+基底状態の縮重度は前者の分を抜いた4
 
 \chapter{統計力学: 1次元ゴム}
 \section{}
@@ -229,14 +229,19 @@
 \end{align}
 これより自由エネルギーは
 \begin{align}
-    F = -Nk_B T \ln(e^{-\beta(E_\alpha+3l\tau)}+e^{-\beta(E_\beta+l\tau)})
+    F &= -Nk_B T \ln(e^{-\beta(E_\alpha-3l\tau)}+e^{-\beta(E_\beta-l\tau)})\\
+    f &= F/N = -k_B T \ln(e^{-\beta(E_\alpha+3l\tau)}+e^{-\beta(E_\beta+l\tau)})\\
 \end{align}
 
 \section{}
-熱力学関係式\(\ev{L}=\partial F/\partial \tau\)より
+熱力学第一法則
 \begin{align}
-    \ev{L} &= \frac{3e^{-\beta(E_\alpha+3l\tau)}+e^{-\beta(E_\beta+l\tau)}}{e^{-\beta(E_\alpha+3l\tau)}+e^{-\beta(E_\beta+l\tau)}}Nl\\
-    &=Nl+\frac{2Nl}{1+e^{\beta(E_\alpha-E_\beta)}e^{2l\tau\beta}}
+    dF = -\tau l+SdT+\mu dN
+\end{align}
+より、\(\ev{L}=-\partial F/\partial \tau\)となるので
+\begin{align}
+    \ev{L} &= \frac{3e^{-\beta(E_\alpha-3l\tau)}+e^{-\beta(E_\beta-l\tau)}}{e^{-\beta(E_\alpha-3l\tau)}+e^{-\beta(E_\beta-l\tau)}}Nl\\
+    &=Nl+\frac{2Nl}{1+e^{\beta(E_\alpha-E_\beta)}e^{-2l\tau\beta}}
 \end{align}
 また\(\tau=0\)のときには
 \begin{align}
@@ -245,18 +250,51 @@
 である。
 \(\ev{L}\)を\(2l\tau\beta\)が小さいとして\(e^x \simeq 1+x\)を使って展開すると
 \begin{align}
-    \ev{L} &=Nl+\frac{2Nl}{1+e^{\beta(E_\alpha-E_\beta)}e^{2l\tau\beta}}\\
-    &=Nl+\frac{2Nl}{1+e^{\beta(E_\alpha-E_\beta)}(1+2l\tau\beta)}\\
-    &=Nl+\dfrac{2Nl}{\qty(1+e^{\beta(E_\alpha-E_\beta)})\qty(1+\dfrac{2l\tau\beta}{1+e^{\beta(E_\alpha-E_\beta)}})}\\
-    &=Nl+\dfrac{2Nl}{1+e^{\beta(E_\alpha-E_\beta)}}\qty(1-\dfrac{2l\tau\beta}{1+e^{\beta(E_\alpha-E_\beta)}})\\
-    &= L_0 - C\tau
+    \ev{L} &=Nl+\frac{2Nl}{1+e^{\beta(E_\alpha-E_\beta)}e^{-2l\tau\beta}}\\
+    &=Nl+\frac{2Nl}{1+e^{\beta(E_\alpha-E_\beta)}(1-2l\tau\beta)}\\
+    &=Nl+\dfrac{2Nl}{\qty(1+e^{\beta(E_\alpha-E_\beta)})\qty(1-\dfrac{2l\tau\beta}{1+e^{\beta(E_\alpha-E_\beta)}})}\\
+    &=Nl+\dfrac{2Nl}{1+e^{\beta(E_\alpha-E_\beta)}}\qty(1+\dfrac{2l\tau\beta}{1+e^{\beta(E_\alpha-E_\beta)}})\\
+    &= L_0 + C\tau
 \end{align}
 というようになるので
 \begin{align}
-    \tau = -\frac{1}{C}(\ev{L}-L_0) =: \kappa(\ev{L}-L_0)
+    \tau = \frac{1}{C}(\ev{L}-L_0) =: \kappa(\ev{L}-L_0)
 \end{align}
 というようにフックの法則が導かれた。
 
+\section{}
+\subsection{}
+\(E_\alpha\)と\(E_\beta\)の同じが同じであるため、
+\(\alpha\)と\(\beta\)のとる確率は等しく\(1/2\)である。これより
+\begin{align}
+P_{N+1}(L) = P_{N}(L-l) + P_{N}(L-3l)
+\end{align}
+となる。
+\subsection{}
+前問で得られた式をフーリエ変換した\(P_N(k)\)で表すと
+\begin{align}
+    \frac{l}{2\pi}\int_{-\pi}^{\pi} dk\, e^{-ikL}P_{N+1}(k)
+    = \frac{l}{2\pi}\int_{-\pi}^{\pi} dk\, e^{-ik(L-3l)}P_{N}(k)
+    \frac{l}{2\pi}\int_{-\pi}^{\pi} dk\, e^{-ik(L-l)}P_{N}(k)
+\end{align}
+これらが恒等的に等しくなるのは積分の中身が等しいときであるので
+\begin{align}
+    P_{N+1}(k) = \qty(e^{3ikl}+e^{ikl})P_N(k).
+\end{align}
+\(P_N(k)\)に関する漸化式を解くと
+\begin{align}
+    P_N(k) = \qty(e^{3ikl}+e^{ikl})^{N} = 2^N \qty(\cos(kl))^N e^{2iklN}
+\end{align}
+となる。
+\subsection{}
+前問で得られた\(P_N(k)\)をフーリエ変換する。
+与えられた近似式\([\cos(kl)]^N\simeq\exp[-k^2l^2N/2]\)と、
+\(P_N(k)\)が十分早く減衰することから積分区間を\((-\infty,\infty)\)にすることができることを使って
+\begin{align}
+    P_N(L) &\simeq \frac{l}{2\pi}\int_{-\infty}^{\infty}dk \exp(-\frac{l^2N}{2}k^2+i(2Nl-L)k)\\
+    &= \frac{l}{2\pi}\exp(-\frac{(L-2Nl)^2}{2Nl^2})\int_{-\infty}^{\infty}dk \exp(-\frac{l^2N}{2}\qty(k-\frac{i(L-2Nl)}{Nl^2}))\\
+    &= \frac{1}{\sqrt{2\pi N}}\exp(-\frac{(L-2Nl)^2}{2Nl^2})
+\end{align}
 \chapter{物性}
 \section{}
 \ce{Na+}イオンと\ce{Cl-}イオンに電子さ束縛されるため、伝導できる電子が無いため絶縁体となる。
@@ -278,7 +316,7 @@ Bragg 反射でもよい。
 \section{}
 吸収係数が入射する\(\hbar\omega\)の光に対して
 \begin{align}
-    \alpha \propto \sqrt(\hbar\omega -\Delta)
+    \alpha \propto \sqrt{\hbar\omega -\Delta}
 \end{align}
 というようになる。
 
