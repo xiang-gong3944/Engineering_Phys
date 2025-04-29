@@ -1,0 +1,383 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\chapter{量子力学:デルタ関数ポテンシャル}
+\section{}
+\(x\neq 0\)においてのシュレーディンガー方程式は
+\begin{align}
+    -\frac{\hbar^2}{2m}\dv[2]{\psi}{x} = E\psi
+\end{align}
+これより\(E>0\)のときの解は
+\(A,\,B\)をある定数として
+\begin{align}
+    \psi(x) &= Ae^{ikx}+Be^{-ikx} & k = \sqrt{2mE}/\hbar
+\end{align}
+と書ける。
+また、\(E<0\)のときは\(C,\,D\)をある定数として
+\begin{align}
+    \psi(x) &= Ce^{\kappa x} + De^{-\kappa x}& \kappa = \sqrt{-2mE}/\hbar
+\end{align}
+と書ける。いま、束縛状態を考えるので解としては\(E<0\)のものを取ってくることになる。
+これについて考えていく。\(x\to\infty,\,x\to-\infty\)での存在確率が無いことから、
+\begin{align}
+    \psi(x) =\begin{cases}
+        Ce^{\kappa x} & x<0\\
+        De^{-\kappa x} & x>0
+    \end{cases}
+\end{align}
+と書ける。また、\(x=0\)で波動関数は連続であるので\(C=D\)
+\(x=0\)近傍でのシュレーディンガー方程式を微小区間\((-\epsilon,\epsilon)\)で積分することで
+\begin{align}
+    \int_{-\epsilon}^{\epsilon}\qty(-\frac{\hbar^2}{2m}\dv[2]{\psi}{x} +V_0\delta(x)\psi)dx &= E \int_{-\epsilon}^{\epsilon} \psi dx\\
+    -\frac{\hbar^2}{2m}\qty(\dv{\psi(+0)}{x}-\dv{\psi(-0)}{x}) +V_0\psi(0) &= 0\\
+    -2\kappa C &= \frac{2mV_0 C}{\hbar^2}\\
+    E &= -\frac{m V_0^2}{2\hbar^2}
+\end{align}
+となる\footnote{\(V_0\)の次元はEnergy・L なので\(ME^2L^2/E^2T^2=E\)で次元はあってる。}。
+これより束縛状態の数は1つであることがわかるので、問題文は誤っている。
+
+\section{}
+無限遠から原点に入射するときの波動関数は設問1の\(E>0\)のときのものである。
+入射波の振幅を\(1\)と規準にとって、反射波の振幅を\(r\), 等価波の振幅を\(t\)とすると
+波動関数は(1.2)式より
+\begin{align}
+    \psi(x) = \begin{cases}
+        e^{ikx} + r e^{-ikx} & x<0\\
+        t e^{ikx} & x>0
+    \end{cases}
+\end{align}
+このもとで\(x=0\)で波動関数が連続であること、(1.6)式の境界条件より
+\begin{align}
+    &\begin{cases}
+        t-r = 1\\
+        t+r = 1 +\frac{2mV_0}{i\hbar^2 k}(1+r)
+    \end{cases}\\
+    &\rightarrow r = \frac{mV_0}{i\hbar^2 k-mV_0}
+\end{align}
+反射率\(R\)は\(R=\abs{r}^2\)より
+\begin{align}
+    R = \frac{m^2 V_0^2}{\hbar^4k^2 + m^2 V_0^4}
+\end{align}
+となる。\(k\)自身は設問1でやったのと同様にして\(V_0\)の大きさによって決まる。
+以上より反射率は\(V_0\)の符号によらず、大きさ\(\abs{V_0}\)だけで決まる。
+
+\section{}
+束縛状態の波動関数は設問1より
+\begin{align}
+    \psi(x) = Ce^{-\kappa\abs{x}}
+\end{align}
+と書ける。
+このときの運動量の二乗平均は
+\begin{align}
+    \ev{p^2}
+        &= \int_{-\infty}^{\infty} \psi^*(x)\qty(-i\hbar\dv{x})^2\psi(x)dx\\
+        &= -\hbar^2\kappa^2\int_{-\infty}^{\infty} \psi^*(x)\psi(x)dx\\
+        &= 2mE = -\frac{m^2V_0^2}{\hbar^2}
+\end{align}
+より束縛状態の運動量の二乗平均は\(\abs{V_0}\)に比例せず2乗に比例するため問題文は誤っている。
+(2乗平均が負の値になってるのはおかしい)
+
+\section*{感想}
+デルタ関数が入ったときの微分方程式を解くのが苦手というのがわかった。
+
+\chapter{電磁気学: ファラデー効果}
+\section{}
+ファラデーの式の回転を取って
+\begin{align}
+    \curl(\curl E) &= -\pdv{t} \curl B\\
+    \grad(\div E) - \laplacian{E} &= -\varepsilon\mu \pdv[2]{t}E\\
+    \qty(\varepsilon\mu\pdv[2]{t}-\laplacian)E &= 0
+\end{align}
+これは波動方程式であり\(z\)方向に進む波数\(k\), 角振動数\(\omega\)の平面波であるので
+\begin{align}
+    \begin{pmatrix}
+        E_x\\ E_y
+    \end{pmatrix}
+    = e^{i(kz-\omega t)}\begin{pmatrix}
+        E_{0x} \\
+        E_{0y}
+    \end{pmatrix},\qquad
+    \omega = \frac{k}{\sqrt{\varepsilon\mu}}
+\end{align}
+というように書ける。
+ここで\(x\)方向\(y\)方向の振動モードは独立であり、位相差ことを考慮するため\(E_{0x}\)と\(E_{0y}\)は複素数である。
+また、アンペールの式の回転をとって同様に整理すると
+\begin{align}
+    \qty(\varepsilon\mu\pdv[2]{t}-\laplacian)H &= 0
+\end{align}
+が得られる。
+なのでこれも同様に
+\begin{align}
+    \begin{pmatrix}
+        H_x\\ H_y
+    \end{pmatrix}
+    &= e^{i(kz-\omega t)}\begin{pmatrix}
+        H_{0x} \\
+        H_{0y}
+    \end{pmatrix},\qquad
+    \omega = \frac{k}{\sqrt{\varepsilon\mu}}
+\end{align}
+のように得られる。
+
+また、平面波が\(z\)方向に減衰するためには\(k\)に虚部が現れる必要がある。
+\(k=\sqrt{\varepsilon\mu}\omega\)より物質の誘電率や透磁率に虚部が現れれば減衰することがわかる。
+
+\section{}
+この系の運動方程式は
+\begin{align}
+    m\dv{t}\begin{pmatrix}
+        v_x\\ v_y\\ v_z
+    \end{pmatrix}
+    =-ee^{i(kz-\omega t)}\begin{pmatrix}
+        E_{0x}\\E_{0y}\\0
+    \end{pmatrix}
+    -eB_c\begin{pmatrix}
+        v_y\\ -v_x\\0
+    \end{pmatrix}
+\end{align}
+という連立一階微分方程式になる。
+まず\(z\)成分については\(v_z=\text{const.}\)が解になる。
+また、\(x\)成分\(y\)成分に関しては\(i\)とは別の虚数単位\(j\)を用いて
+\(m(\dot{v}_x+j\dot{v}_y)\)という量を作ってまとめると
+\begin{align}
+    \dv{t}(v_x+jv_y) = j\omega_c (v_x+jv_y) -e(E_{0x}+jE_{0y})e^{i(kz-\omega t)}
+\end{align}
+となる。ここで\(\omega_c=eB_c/m\)はサイクロトロン振動数。
+これは\(\tilde{v}:=v_x+jv_y\)についての1次の非斉次線形微分方程式である。
+いまは特解について調べたいので斉次解は無視する。
+また\(\tilde{E} = E_{0x}+jE_{0y}\)というように電場をまとめておく。
+特解は
+\begin{align}
+    \tilde{v} = \tilde{A}e^{i(kz-\omega t)}
+\end{align}
+と仮定してもとの微分方程式に代入すると
+\begin{align}
+    -j\omega \tilde{A} &= j\omega_c \tilde{A} -\frac{e\tilde{E}}{m}\\
+    \tilde{A} &= \frac{e\tilde{E}}{jm(\omega+\omega_c)} \\
+    &= \frac{e}{m(\omega+\omega_c)}(E_{0y}-jE_{0x})
+\end{align}
+よって解は
+\begin{align}
+    v_x =  \frac{eE_{0y}}{m(\omega+\omega_c)}e^{i(kz-\omega t)},\qquad
+    v_y = - \frac{eE_{0x}}{m(\omega+\omega_c)}e^{i(kz-\omega t)}
+\end{align}
+これを積分して
+\begin{align}
+    x = -i\frac{e\omega}{m(\omega+\omega_c)}E_{y},\qquad
+    y = i\frac{e\omega}{m(\omega+\omega_c)}E_{x}
+\end{align}
+これより分極は
+\begin{align}
+    P_x = i\frac{e^2n\omega}{m(\omega+\omega_c)}E_{y},\qquad
+    P_y = -i\frac{e^2n\omega}{m(\omega+\omega_c)}E_{x}
+\end{align}
+よって電束密度は
+\begin{align}
+    D_x = \varepsilon_0 E_x + i\frac{e^2n\omega}{m(\omega+\omega_c)}E_y,\qquad
+    D_x = \ -i\frac{e^2n\omega}{m(\omega+\omega_c)}E_x + \varepsilon_0 E_y
+\end{align}
+となるので誘電率テンソルの値は
+\begin{align}
+    \varepsilon_1 = \varepsilon_0,\qquad \varepsilon_2 = \frac{e^2n\omega}{m(\omega+\omega_c)}
+\end{align}
+となる\footnote{対角成分が変わってないのは運動方程式に散乱項がないからなので大丈夫なはず。}。
+
+\section{}
+\subsection{}
+(1.3)式の時間成分と\(z\)成分をフーリエ変換して
+\begin{align}
+    \qty(\varepsilon\mu\omega^2 -k^2)E = 0
+\end{align}
+これの\(x\,y\)成分を取り出して行列で表すと
+\begin{align}
+    \begin{pmatrix}
+        \varepsilon_1\mu\omega^2-k^2 & i\varepsilon_2\mu\omega^2\\
+        -i\varepsilon_2\mu\omega^2 & \varepsilon_1\mu\omega^2-k^2
+    \end{pmatrix}\begin{pmatrix}
+        E_x\\E_y
+    \end{pmatrix}=0
+\end{align}
+この左辺が非自明な解を持つ条件より
+\begin{align}
+    \qty(\varepsilon_1\mu\omega^2-k^2)^2+\varepsilon_2^2\mu^2\omega^4 &= 0\\
+    k^2&=(\varepsilon_1\pm i \varepsilon_2)\mu\omega^2
+\end{align}
+\subsection{}
+これよりこれらの固有値に対する固有ベクトルは
+\begin{align}
+    E = E_0\begin{pmatrix}
+        1\\ \pm i
+    \end{pmatrix}
+\end{align}
+つまり\(x\)方向の偏光と\(y\)方向の偏光の振幅が同じで位相が\(\pi/2\)ずれている光なので
+電場の成分を書き下すと
+\begin{align}
+    \begin{pmatrix}
+        E_x\\E_y
+    \end{pmatrix}
+    =\Re \qty[E_0e^{i(kz-\omega t)}\begin{pmatrix}
+        1 \\ \pm i
+    \end{pmatrix}]
+    =E_0\begin{pmatrix}
+        \cos(kz-\omega t)\\
+        \pm\sin(kz-\omega t)
+    \end{pmatrix}
+\end{align}
+より電場ベクトルが円周上を回る円偏光であることがわかる。
+
+\section*{感想}
+ホール効果と同じように磁場による時間反転対称性の破れによって、
+誘電率テンソル(\(\simeq\)伝導率テンソル)の非対角成分が出るファラデー効果の話。
+誘導が少なすぎて設問1は何を書けばよいかわからない。
+残りはこつこつ計算を進めていけばよさそう。
+
+\chapter{統計力学: 量子スピン系}
+\section{}
+\(\hbar=1\)の単位系で行う
+\begin{align}
+    \mathcal{H}\phi_0
+        &= \qty(Js_1^zs_2^z+J\frac{s_1^+s_2^-+s_1^-s_2^+}{2}+2\mu_BH_z(s_1^z+s_2^z))\frac{\ket{1/2,-1/2}-\ket{-1/2,1/2}}{\sqrt{2}}
+        =-\frac{3J}{4}\phi_0\\
+    \mathcal{H}\phi_1
+        &= \qty(Js_1^zs_2^z+J\frac{s_1^+s_2^-+s_1^-s_2^+}{2}+2\mu_BH_z(s_1^z+s_2^z))\ket{-1/2,-1/2}
+        =\qty(\frac{J}{4}-2\mu_B H_z)\phi_1\\
+    \mathcal{H}\phi_2
+        &= \qty(Js_1^zs_2^z+J\frac{s_1^+s_2^-+s_1^-s_2^+}{2}+2\mu_BH_z(s_1^z+s_2^z))\frac{\ket{1/2,-1/2}+\ket{-1/2,1/2}}{\sqrt{2}}
+        =\frac{J}{4}\phi_2\\
+    \mathcal{H}\phi_3
+        &= \qty(Js_1^zs_2^z+J\frac{s_1^+s_2^-+s_1^-s_2^+}{2}+2\mu_BH_z(s_1^z+s_2^z))\ket{1/2,1/2}
+        =\qty(\frac{J}{4}+2\mu_B H_z)\phi_3\\
+\end{align}
+
+\section{}
+2量体の分配関数\(z\)は
+\begin{align}
+    z = \sum_{\sigma_1,\,\sigma_2 = \pm 1/2}\exp(-2\beta\mu_B H_z(\sigma_1+\sigma_2))
+    = 2 + 2\cosh(2\beta\mu_BH_z) = (2\cosh(\beta\mu_B H_z))^2
+\end{align}
+これが系全体では\(N\)個あるので、系全体の分配関数は
+\begin{align}
+    Z = z^N = \qty(2\cosh(\beta\mu_BH_z))^2N
+\end{align}
+これより自由エネルギーは
+\begin{align}
+    F = -k_BT \ln Z = -2Nk_B T \ln(\cosh(\beta\mu_BH_z))
+\end{align}
+磁化は\(dF = -SdT-MdH\)より
+\begin{align}
+    M = -\pdv{F}{H_z} = 2N\mu_B\tanh(\beta\mu_BH_z)
+\end{align}
+
+\section{}
+高温極限では\(J\)は無視できるので設問 [2] の答えをそのまま使うことができる。
+高温極限つまり \(\beta\to0\) で磁化は
+\begin{align}
+    M =2N\mu_B (\beta\mu_BH_z)
+\end{align}
+となるので帯磁率\(\chi\)は
+\begin{align}
+    \chi = \left.\pdv{M}{H_z}\right|_{H_z=0} = \frac{2N\mu_B^2}{k_BT} \propto \frac{1}{T}
+\end{align}
+よりキュリー則に従うことがわかる。
+
+\section{}
+このとき、ハミルトニアンの反強磁性相互作用の強さ\(J\)と磁場の向きに揃えようとする強さ\(H_z\)の競合が生じる。
+磁場がないときには反強磁性状態であるので正味の磁化は\(0\)である。
+磁場を強くしていってもこの状態はしばらく保たれるが、反強磁性的な状態のエネルギー
+\begin{align}
+    E_{AF} = -\frac{J}{4}
+\end{align}
+にくらべ、磁場の向きにスピンが揃ったときのエネルギー
+\begin{align}
+    E_{M} = \frac{J}{4}-2\mu_BH_z
+\end{align}
+の方が低くなる磁場つまり
+\begin{align}
+    H_z >\frac{J}{4\mu_B}
+\end{align}
+を超えると磁化は\(M = 2N\mu_B\)となり、不連続に変化する。
+
+\section*{感想}
+簡単だった。
+
+
+\chapter{物性: トーマスフェルミの遮蔽}
+\section{}
+\subsection{}
+自由電子のシュレーディンガー方程式は
+\begin{align}
+    -\frac{\hbar^2}{2m}\laplacian \psi = E\psi
+\end{align}
+これを周期境界条件ののもとで解くと
+\begin{align}
+    \psi = e^{i(k_x x+k_y y+k_z z)},\qquad
+    E_{n_x,n_y,n_z} = \frac{\hbar^2}{2m}(k_x^2+k_y^2+k_z^2),\qquad
+    k_x = \frac{2\pi n_x}{L},\,k_y = \frac{2\pi n_y}{L},\,k_z = \frac{2\pi n_z}{L}
+\end{align}
+となる。ここで\(n_x,\,n_y,\,n_z\)は整数。
+このとき、\(E=\hbar^2k^2/2m\)以下の状態数\(\Omega(E)\)を求める。
+それは
+\begin{align}
+    \Omega(E) = 2\qty(\frac{L}{2\pi})^3\int_{k<\sqrt{2mE}/\hbar}d^3k
+    = \frac{V}{3\pi^2}\qty(\frac{2mE}{\hbar^2})^{3/2}
+\end{align}
+である。
+これより単位体積あたり状態密度は
+\begin{align}
+    D(E) = \dv{\Omega}{E} = \frac{3}{2\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\sqrt{E}
+\end{align}
+
+\subsection{}
+状態密度を\(E_F^0\)まで足し上げると電子密度になるので
+\begin{align}
+    n_0 &= \int_{0}^{E_F^0} D(E) = \frac{1}{3\pi^2}\qty(\frac{2mE_F^0}{\hbar^2})^{3/2}\\
+    E_F^0 &=\frac{\hbar^2}{2m}(3\pi^2n_0)^{2/3}
+\end{align}
+
+\section{}
+\subsection{}
+前問より\(E_F(r)\propto n(r)^{2/3}\)であり、
+点電荷\(q\)により電子は中心にひきつけられ密度が増えるため
+\(E_F(r)\)も増加する。
+\subsection{}
+フェルミ準位の変化というのが電子の受けるポテンシャルエネルギーの変化である。
+なのでフェルミ準位と電子密度の関係式は
+\begin{align}
+    n_0+\delta n(r) &= W(E_F^0+e\phi(r)) = W(E_F^0) +\dv{W(E_F^0)}{E}e\phi(r)\\
+    \delta n(r) &= D_Fe\phi(r)
+\end{align}
+
+\subsection{}
+点電荷を加える前は電気的に中性であったので、
+\(-e\delta n(r)\)は偏った周辺電子のによる電荷密度になる。
+これよりポアソン方程式を考えると
+\begin{align}
+    \laplacian \phi &= -\frac{1}{\epsilon_0}\qty(\delta(x) - e\delta n(r))\\
+    \qty(\laplacian - \frac{D_F e^2}{\epsilon_0})\phi &= -\frac{q}{\epsilon_0}\delta(x)
+\end{align}
+よって\(\alpha^2=D_Fe^2/\epsilon_0\)
+
+\subsection{}
+前問で得られた方程式の両辺を位置rから波数\(k\)へとフーリエ変換すると
+
+よって
+\begin{align}
+    \phi = \frac{q}{4\pi\epsilon_0}\frac{e^{-\alpha r}}{r}
+\end{align}
+
+\subsection{}
+\begin{align}
+    \int d^3r \delta \rho(r) = -4\pi eA \int_0^\infty dr\, re^{-\alpha r} =\frac{-4\pi eA}{\alpha^2}=-\frac{q}{eD_F}
+\end{align}
+これは何を表しているかというと、
+何らかの摂動で正電荷\(q\)が金属中に現れたとき、
+その電荷をちょうど遮蔽するように距離\(1/\alpha\)の範囲中の電子が集まっている状態。
+
+\section*{感想}
+古典論でだいぶシンプルにトーマスフェルミ遮蔽を計算できるとは面白かった。
+だけど初見でこれをやるとしたら [2-2] 以降はなかなか厳しい。
+
+\end{document}
