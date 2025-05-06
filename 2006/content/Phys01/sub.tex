@@ -41,7 +41,7 @@
 
 \section{}
 無限遠から原点に入射するときの波動関数は設問1の\(E>0\)のときのものである。
-入射波の振幅を\(1\)と規準にとって、反射波の振幅を\(r\), 等価波の振幅を\(t\)とすると
+入射波の振幅を\(1\)と基準にとって、反射波の振幅を\(r\), 透過波の振幅を\(t\)とすると
 波動関数は(1.2)式より
 \begin{align}
     \psi(x) = \begin{cases}
@@ -49,7 +49,7 @@
         t e^{ikx} & x>0
     \end{cases}
 \end{align}
-このもとで\(x=0\)で波動関数が連続であること、(1.6)式の境界条件より
+このもと、\(x=0\)で波動関数が連続であること、(1.6)式の境界条件より
 \begin{align}
     &\begin{cases}
         t-r = 1\\
@@ -61,8 +61,10 @@
 \begin{align}
     R = \frac{m^2 V_0^2}{\hbar^4k^2 + m^2 V_0^4}
 \end{align}
-となる。\(k\)自身は設問1でやったのと同様にして\(V_0\)の大きさによって決まる。
-以上より反射率は\(V_0\)の符号によらず、大きさ\(\abs{V_0}\)だけで決まる。
+となる。
+波数は他に決める条件は無いので、
+反射率は\(V_0\)の符号によらず、大きさ\(\abs{V_0}\)によって決まるものの、
+入射した粒子のもつエネルギーにも依存する。
 
 \section{}
 束縛状態の波動関数は設問1より
@@ -122,7 +124,7 @@
 \end{align}
 のように得られる。
 
-また、平面波が\(z\)方向に減衰するためには\(k\)に虚部が現れる必要がある。
+また、平面波が\(z\)方向に減衰するためには\(k\)は虚部を持つ必要がある。
 \(k=\sqrt{\varepsilon\mu}\omega\)より物質の誘電率や透磁率に虚部が現れれば減衰することがわかる。
 
 \section{}
@@ -202,8 +204,8 @@
 \end{align}
 この左辺が非自明な解を持つ条件より
 \begin{align}
-    \qty(\varepsilon_1\mu\omega^2-k^2)^2+\varepsilon_2^2\mu^2\omega^4 &= 0\\
-    k^2&=(\varepsilon_1\pm i \varepsilon_2)\mu\omega^2
+    \qty(\varepsilon_1\mu\omega^2-k^2)^2-\varepsilon_2^2\mu^2\omega^4 &= 0\\
+    k^2&=(\varepsilon_1\pm \varepsilon_2)\mu\omega^2
 \end{align}
 \subsection{}
 これよりこれらの固有値に対する固有ベクトルは
@@ -236,7 +238,6 @@
 
 \chapter{統計力学: 量子スピン系}
 \section{}
-\(\hbar=1\)の単位系で行う
 \begin{align}
     \mathcal{H}\phi_0
         &= \qty(Js_1^zs_2^z+J\frac{s_1^+s_2^-+s_1^-s_2^+}{2}+2\mu_BH_z(s_1^z+s_2^z))\frac{\ket{1/2,-1/2}-\ket{-1/2,1/2}}{\sqrt{2}}
@@ -254,54 +255,47 @@
 
 \section{}
 2量体の分配関数\(z\)は
-\begin{align}
-    z = \sum_{\sigma_1,\,\sigma_2 = \pm 1/2}\exp(-2\beta\mu_B H_z(\sigma_1+\sigma_2))
-    = 2 + 2\cosh(2\beta\mu_BH_z) = (2\cosh(\beta\mu_B H_z))^2
-\end{align}
-これが系全体では\(N\)個あるので、系全体の分配関数は
-\begin{align}
-    Z = z^N = \qty(2\cosh(\beta\mu_BH_z))^2N
-\end{align}
+\begin{equation}\begin{aligned}[b]
+    z &= \sum_{\sigma_1,\,\sigma_2 = \pm 1/2}\exp[-\beta\qty(J\sigma_1\sigma_2 +2\mu_B H_z(\sigma_1+\sigma_2))]\\
+    &= e^{3\beta J/4}+e^{-\beta J/4}\qty(1+e^{2\beta \mu_B H_z}+e^{-2\beta \mu_B H_z})\\
+    &= 2e^{\beta J/4}\cosh(\beta J/2)+2e^{-\beta J/4}\cosh(2\beta\mu_BH_z)
+\end{aligned}\end{equation}
+これが\(N\)個あるので全体の分配関数は
+\begin{equation}\begin{aligned}[b]
+    Z &= z^N = \Bigl[2e^{\beta J/4}\cosh(\beta J/2)+2e^{-\beta J/4}\cosh(2\beta\mu_BH_z)\Bigr]^N
+\end{aligned}\end{equation}
 これより自由エネルギーは
-\begin{align}
-    F = -k_BT \ln Z = -2Nk_B T \ln(\cosh(\beta\mu_BH_z))
-\end{align}
-磁化は\(dF = -SdT-MdH\)より
-\begin{align}
-    M = -\pdv{F}{H_z} = 2N\mu_B\tanh(\beta\mu_BH_z)
-\end{align}
+\begin{equation}\begin{aligned}[b]
+    F = - Nk_B T \ln\Bigl[2e^{\beta J/4}\cosh(\beta J/2)+2e^{-\beta J/4}\cosh(2\beta\mu_BH_z)\Bigr]
+\end{aligned}\end{equation}
+磁化は\(M_z = -\partial F/\partial H_z\)より
+\begin{equation}\begin{aligned}[b]
+    M_z = 2N\mu_B\frac{e^{-\beta J/4}\sinh(2\beta\mu_BH_z)}{e^{\beta J/4}\cosh(\beta J/2)+e^{-\beta J/4}\cosh(2\beta\mu_BH_z)}
+\end{aligned}\end{equation}
+\section{}
+十分高温のとき\(\beta J \to 0\) となるので磁化の式は
+\begin{equation}\begin{aligned}[b]
+    M_z \simeq 2N\mu_B\frac{\sinh(2\beta\mu_BH_z)}{1+\cosh(2\beta\mu_BH_z)}
+    = 2N\mu_B \tanh(\beta\mu_B H_z).
+\end{aligned}\end{equation}
+これより磁化率は
+\begin{equation}\begin{aligned}[b]
+    \chi = 2N\mu_B^2\beta \propto \frac{1}{T}
+\end{aligned}\end{equation}
+となる。これはキュリー則である。
 
 \section{}
-高温極限では\(J\)は無視できるので設問 [2] の答えをそのまま使うことができる。
-高温極限つまり \(\beta\to0\) で磁化は
-\begin{align}
-    M =2N\mu_B (\beta\mu_BH_z)
-\end{align}
-となるので帯磁率\(\chi\)は
-\begin{align}
-    \chi = \left.\pdv{M}{H_z}\right|_{H_z=0} = \frac{2N\mu_B^2}{k_BT} \propto \frac{1}{T}
-\end{align}
-よりキュリー則に従うことがわかる。
-
-\section{}
-このとき、ハミルトニアンの反強磁性相互作用の強さ\(J\)と磁場の向きに揃えようとする強さ\(H_z\)の競合が生じる。
-磁場がないときには反強磁性状態であるので正味の磁化は\(0\)である。
-磁場を強くしていってもこの状態はしばらく保たれるが、反強磁性的な状態のエネルギー
-\begin{align}
-    E_{AF} = -\frac{J}{4}
-\end{align}
-にくらべ、磁場の向きにスピンが揃ったときのエネルギー
-\begin{align}
-    E_{M} = \frac{J}{4}-2\mu_BH_z
-\end{align}
-の方が低くなる磁場つまり
-\begin{align}
-    H_z >\frac{J}{4\mu_B}
-\end{align}
-を超えると磁化は\(M = 2N\mu_B\)となり、不連続に変化する。
+十分低温においては\(\beta \to \infty\)を考えればよいので磁化の式は
+\begin{equation}\begin{aligned}[b]
+    M_z &\simeq 2N\mu_B e^{-\beta J/2}\frac{\sinh(2\beta\mu_BH_z)}{\cosh(\beta J/2)}\\
+    &\simeq 2N\mu_B e^{-\beta (J+2\mu_B H_z)}
+\end{aligned}\end{equation}
+よって磁場は指数関数的に減衰する。
 
 \section*{感想}
-簡単だった。
+問題文を読み間違えて、
+2量体間の相互作用は無視できるというのを\(J\)を無視するというものと勘違いしてしまった。
+それなら[1]の誘導は何だったのかとなるので、読み間違えには気を付けよう。
 
 
 \chapter{物性: トーマスフェルミの遮蔽}
@@ -346,7 +340,7 @@
 フェルミ準位の変化というのが電子の受けるポテンシャルエネルギーの変化である。
 なのでフェルミ準位と電子密度の関係式は
 \begin{align}
-    n_0+\delta n(r) &= W(E_F^0+e\phi(r)) = W(E_F^0) +\dv{W(E_F^0)}{E}e\phi(r)\\
+    n_0+\delta n(r) &= W(E_F^0+e\phi(r)) = \Omega(E_F^0) +\dv{\Omega(E_F^0)}{E}e\phi(r)\\
     \delta n(r) &= D_Fe\phi(r)
 \end{align}
 
@@ -355,18 +349,26 @@
 \(-e\delta n(r)\)は偏った周辺電子のによる電荷密度になる。
 これよりポアソン方程式を考えると
 \begin{align}
-    \laplacian \phi &= -\frac{1}{\epsilon_0}\qty(\delta(x) - e\delta n(r))\\
+    \laplacian \phi &= -\frac{1}{\epsilon_0}\qty(q\delta(x) - e\delta n(r))\\
     \qty(\laplacian - \frac{D_F e^2}{\epsilon_0})\phi &= -\frac{q}{\epsilon_0}\delta(x)
 \end{align}
 よって\(\alpha^2=D_Fe^2/\epsilon_0\)
 
 \subsection{}
 前問で得られた方程式の両辺を位置rから波数\(k\)へとフーリエ変換すると
-
-よって
-\begin{align}
-    \phi = \frac{q}{4\pi\epsilon_0}\frac{e^{-\alpha r}}{r}
-\end{align}
+\begin{equation}\begin{aligned}[b]
+    (k^2+\alpha^2)\tilde{\phi}(k) &= \frac{q}{\epsilon_0}\\
+    \tilde{\phi}(k) &= \frac{q}{\epsilon_0}\frac{1}{k^2+\alpha^2}
+\end{aligned}\end{equation}
+これを元の位置表示に直してやって
+\begin{equation}\begin{aligned}[b]
+    \phi(r) &= \frac{q}{(2\pi)^3\epsilon_0}\int d^3 \vb*{k}
+        \frac{e^{i \vb*{k}\cdot \vb*{r}}}{k^2+\alpha^2}\\
+        &= \frac{q}{(2\pi)^3\epsilon_0}\int_0^\infty dk \int_0^\pi kd\theta \int_0^{2\pi} k\sin\theta d\varphi
+        \frac{e^{i kr\cos\theta}}{k^2+\alpha^2}\\
+        &= \frac{q}{2\pi^2\epsilon r}\int_{0}^{\infty} dk\frac{k\sin(kr)}{k^2+\alpha^2}\\
+        &= \frac{q}{4\pi\epsilon_0}\frac{e^{-\alpha r}}{r}
+\end{aligned}\end{equation}
 
 \subsection{}
 \begin{align}
