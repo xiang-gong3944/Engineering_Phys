@@ -1,0 +1,66 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\chapter{量子力学: 2準位系・相互作用表示・回転波近似}
+\section{}
+\begin{equation}\begin{aligned}[b]
+    H_{aa} &= \bra{a}H\ket{b} = \hbar \omega_a\\
+    H_{ab} &= \bra{a}H\ket{b} = -\mu\cos\nu t\\
+    H_{ba} &= \bra{b}H\ket{b} = -\mu\cos\nu t\\
+    H_{bb} &= \bra{b}H\ket{b} = \hbar \omega_b
+\end{aligned}\end{equation}
+\section{}
+\(\sigma_x = \ket{a}\bra{b}+\ket{b}\bra{a}\)とおく。
+シュレディンガー方程式より
+\begin{equation}\begin{aligned}[b]
+    i\hbar\pdv{t}\ket{\psi(t)} &= \qty(H_0-\sigma_x\mu\cos\nu t)\ket{\psi(t)}\\
+    i\hbar\pdv{t}\qty(e^{-iH_0t/\hbar}\ket{\phi(t)}) &= \qty(H_0-\sigma_x\mu\cos\nu t)e^{-iH_0t/\hbar}\ket{\phi(t)}\\
+    e^{-iH_0t/\hbar}i\hbar\pdv{t}\ket{\phi(t)} &= -\sigma_x\mu\cos\nu t e^{-iH_0t/\hbar}\ket{\phi(t)}\\
+    i\hbar\pdv{t}\ket{\phi(t)} &= -\mu\cos\nu t e^{iH_0t/\hbar}\sigma_x e^{-iH_0t/\hbar}\ket{\phi(t)}
+\end{aligned}\end{equation}
+ここで、
+\begin{equation}\begin{aligned}[b]
+    e^{-iH_0t/\hbar}
+    = e^{-i\omega_a t}\ket{a}\bra{a}+e^{-i\omega_b t}\ket{b}\bra{b}
+    = e^{-i\omega_a t}\qty(\ket{a}\bra{a}+e^{-i\omega t}\ket{b}\bra{b})
+\end{aligned}\end{equation}
+と表せることを使うと
+\begin{equation}\begin{aligned}[b]
+    -\mu\cos\nu t e^{iH_0t/\hbar}\sigma_x e^{-iH_0t/\hbar}
+    &= -\mu\cos\nu t \qty(\ket{a}\bra{a}+e^{i\omega t}\ket{b}\bra{b})(\ket{a}\bra{b}+\ket{b}\bra{a})
+        \qty(\ket{a}\bra{a}+e^{-i\omega t}\ket{b}\bra{b})\\
+    &= -\frac{\mu}{2}(e^{i\nu t}+e^{-i\nu t})\qty(e^{-i\omega t}\ket{a}\bra{b}+e^{-i\omega t}\ket{b}\bra{a})\\
+    &= V(t)
+\end{aligned}\end{equation}
+とわかるので、
+\begin{equation}\begin{aligned}[b]
+    i\hbar\pdv{t}\ket{\phi(t)} = V(t)\ket{\phi(t)}
+\end{aligned}\end{equation}
+
+\section{}
+\(V(t)=-\mu\sigma_x\)なので
+\begin{equation}\begin{aligned}[b]
+    -\frac{i}{\hbar}\int_{0}^{t}dt' V(t') &= -\frac{i\mu t}{\hbar}\sigma_x
+\end{aligned}\end{equation}
+となる。
+よって
+\begin{equation}\begin{aligned}[b]
+    \ket{\phi(t)}
+    &= \exp(-\frac{i\mu t}{\hbar}\sigma_x) \ket{\phi(0)}\\
+    &= \qty(\cos\frac{\mu t}{\hbar}\sigma_x^2 - i\sin\frac{\mu t}{\hbar}\sigma_x)\ket{\phi(0)}\\
+    &= \cos\frac{\mu t}{\hbar}\ket{a} - i\sin\frac{\mu t}{\hbar}\ket{b}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \ket{\psi(t)} = e^{-iH_0t/\hbar}\ket{\phi(t)}=e^{-i\omega_a t}\cos\frac{\mu t}{\hbar}\ket{a} - ie^{-i\omega_b t}\sin\frac{\mu t}{\hbar}\ket{b}
+\end{aligned}\end{equation}
+
+\section*{感想}
+J.J. Sakuraiでブラケット表記を始めて勉強したときにはなかなか行列に見えなくて頭を抱えたもんだなぁと懐かしくなった。
+
+
+\end{document}

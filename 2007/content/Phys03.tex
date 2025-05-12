@@ -1,0 +1,94 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\chapter{電磁気学: 走査型トンネル顕微鏡(STM)}
+\section{}
+\subsection{}
+静電ポテンシャルはポアソン方程式
+\begin{equation}\begin{aligned}[b]
+    \grad{\phi} = -\frac{\rho}{\varepsilon_0}
+\end{aligned}\end{equation}
+に従う。
+\(z\neq0\)では電荷がないのでその方程式は
+\begin{equation}\begin{aligned}[b]
+    \laplacian{\phi(x,y,z)} = 0
+\end{aligned}\end{equation}
+
+\(z=0\)にあるデルタ関数の電荷分布を扱うのに、
+\(z=0\)での境界条件を考える必要がある。
+\(z=0\)で静電ポテンシャルが不連続であったとすると、
+静電ポテンシャルの微分から得られる電場\(E=-\grad \phi\)の値が発散することから、
+静電ポテンシャルの値は連続である。
+
+さらに、\(z=0\)近傍でのポアソン方程式を微小区間\(-\epsilon\le z\le \epsilon\)で積分すると得られる関係より、
+\begin{equation}\begin{aligned}[b]
+    \int_{-\epsilon}^{\epsilon}dz \laplacian{\phi(x,y,z)}
+        &= -\frac{1}{\varepsilon_0}\int_{-\epsilon}^{\epsilon}dz\, A\cos(\frac{2\pi}{a}x)\cos(\frac{2\pi}{a}y)\delta(z)\\
+    \pdv{\phi(x,y,z=+0)}{z}-\pdv{\phi(x,y,z=-0)}{z}
+        &= -\frac{A}{\varepsilon_0}\cos(\frac{2\pi}{a}x)\cos(\frac{2\pi}{a}y).
+\end{aligned}\end{equation}
+
+これら2つが静電ポテンシャルが満たすべき境界条件である。
+
+\subsection{}
+\(z=0\)面にたいして対称であり、\(z=0\)で連続であるので、
+静電ポテンシャルは
+\begin{equation}\begin{aligned}[b]
+    \phi(x,y,z) = B\cos(\frac{2\pi}{a}x)\cos(\frac{2\pi}{a}y)e^{-C\abs{z}}
+\end{aligned}\end{equation}
+とおける。
+
+\(z\neq0\)でのポアソン方程式より
+\begin{equation}\begin{aligned}[b]
+    \qty[-2\qty(\frac{2\pi}{a})^2+C^2]B\cos(\frac{2\pi}{a}x)\cos(\frac{2\pi}{a}y) &= 0\\
+    \qty[-2\qty(\frac{2\pi}{a})^2+C^2] &= 0\\
+    C &= \frac{2\sqrt{2}\pi}{a}
+\end{aligned}\end{equation}
+(1.2)式より
+\begin{equation}\begin{aligned}[b]
+    -2BC\cos(\frac{2\pi}{a}x)\cos(\frac{2\pi}{a}y)
+    &=-\frac{A}{\varepsilon_0}\cos(\frac{2\pi}{a}x)\cos(\frac{2\pi}{a}y)\\
+    2BC &= \frac{A}{\varepsilon_0}\\
+    B &= \frac{aA}{4\sqrt{2}\pi\varepsilon_0}
+\end{aligned}\end{equation}
+
+以上より静電ポテンシャルは
+\begin{equation}\begin{aligned}[b]
+    \phi(x,y,z) = \frac{aA}{4\sqrt{2}\pi\varepsilon_0}\cos(\frac{2\pi}{a}x)\cos(\frac{2\pi}{a}y)\exp(-\frac{2\sqrt{2}\pi}{a}\abs{z})
+\end{aligned}\end{equation}
+これより\(z>0\)にある単位電荷\(q_0\)の感じる静電気力の\(z\)成分は
+\begin{equation}\begin{aligned}[b]
+    F_z = -q_0\grad{\phi(x,y,z)} = \frac{q_0A}{2\varepsilon_0}\cos(\frac{2\pi}{a}x)\cos(\frac{2\pi}{a}y)\exp(-\frac{2\sqrt{2}\pi}{a}z)
+\end{aligned}\end{equation}
+
+\section{}
+\subsection{}
+設問[1.2]で求めた力の式より、求める減衰距離\(l\)は
+\begin{equation}\begin{aligned}[b]
+    l = \frac{a}{2\sqrt{2}\pi} = 0.6\,\si{\AA}
+\end{aligned}\end{equation}
+
+\subsection{}
+\(a\)だけ離れたときの力は
+\begin{equation}\begin{aligned}[b]
+    F_z = \frac{A}{2\varepsilon_0}\exp(-2\sqrt{2}\pi)\cos(\frac{2\pi}{a}x)\cos(\frac{2\pi}{a}y)
+\end{aligned}\end{equation}
+であるので力の変動幅\(\Delta F_z\)は
+\begin{equation}\begin{aligned}[b]
+    \Delta F_z
+    &= \frac{A}{\varepsilon_0}\exp(-2\sqrt{2}\pi)
+    = \frac{16 q_0^2}{\varepsilon_0 a^2}\exp(-2\sqrt{2}\pi)\\
+    &= \frac{q_0^2}{4\pi\varepsilon_0 a^2}\times 64\pi\exp(-2\sqrt{2}\pi)
+    \simeq 7.3\times 10^{-10}\,\si{N} \times 64\pi\times 10^{-4}
+    \simeq 1\times 10^{-11}\,\si{N}
+\end{aligned}\end{equation}
+
+\section*{感想}
+設問1は電磁気でやるのはそんなに見ないけど、
+デルタ関数ポテンシャルのシュレーディンガー方程式でよくやるやつではある。
+あとは有効数字が1桁での数値計算なので気楽にやればよい。
+
+\end{document}

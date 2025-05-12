@@ -1,0 +1,97 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\chapter{統計力学: 電気双極子モーメント・ゆらぎ}
+\section{}
+1つの双極子モーメントのエネルギー\(\epsilon_i\)は
+\begin{equation}\begin{aligned}[b]
+    \epsilon_i = -\vec{\mu}_i \cdot \vec{E} = -\mu E \cos\theta_i
+\end{aligned}\end{equation}
+なので全体ではこれの和をとって
+\begin{equation}\begin{aligned}[b]
+    \mathcal{E} = \sum_i \epsilon_i = -\mu E\sum_{i} \cos\theta_i
+\end{aligned}\end{equation}
+
+\section{}
+1つの双極子モーメントの分配関数を考える。
+エネルギーのボルツマン因子を双極子モーメントの向きの全立体角で和を取って
+\footnote{これよく考えてみると何をやっているのかわかんなくなってきた。回転の運動エネルギーどこ行った?}
+\begin{equation}\begin{aligned}[b]
+    z &= \int_0^\pi d\theta \int_{0}^{2\pi} \sin\theta d\varphi \exp(\beta\mu E\cos\theta)
+    = 2\pi \qty[-\frac{\exp(\beta\mu E\cos\theta)}{\beta\mu E}]_0^\pi
+    = 4\pi\frac{\sinh(\beta\mu E)}{\beta \mu E}.
+\end{aligned}\end{equation}
+この系には双極子モーメントが\(N\)個あるので、
+全体の分配関数は
+\begin{equation}\begin{aligned}[b]
+    Z = z^N = \qty(4\pi\frac{\sinh(\beta\mu E)}{\beta \mu E})^N
+\end{aligned}\end{equation}
+
+\section{}
+系の内部エネルギーは
+\begin{equation}\begin{aligned}[b]
+    U = \ev{\mathcal{E}} = -\pdv{\beta}\ln Z = -N\mu E \qty(\coth(\beta\mu E)-\frac{1}{\beta\mu E})
+\end{aligned}\end{equation}
+電気分極と内部エネルギーの関係は
+\begin{equation}\begin{aligned}[b]
+    U = -PE
+\end{aligned}\end{equation}
+であるので分極の大きさは
+\begin{equation}\begin{aligned}[b]
+    P = \frac{U}{E} = N\mu\qty(\coth(\beta\mu E)-\frac{1}{\beta\mu E})
+\end{aligned}\end{equation}
+である。
+
+\section{}
+\(x\ll 1\)のとき
+\begin{equation}\begin{aligned}[b]
+    \coth x = \frac{\cosh x}{\sinh x} \simeq \frac{1+x^2/2!}{x + x^3/3!}
+    \simeq\frac{1}{x}\qty(1+\frac{x^2}{2})\qty(1-\frac{x^2}{6})
+    \simeq \frac{1}{x}+\frac{x}{3}
+\end{aligned}\end{equation}
+と近似できるので、
+電場が弱いときの分極は
+\begin{equation}\begin{aligned}[b]
+    P = N\mu\qty(\coth(\beta\mu E)-\frac{1}{\beta\mu E})
+    \simeq N\mu\qty(\frac{1}{\beta\mu E}+\frac{\beta \mu E}{3}-\frac{1}{\beta\mu E})
+    = \frac{N\beta\mu^2E}{3}
+\end{aligned}\end{equation}
+と書ける。
+よって電気感受率は
+\begin{equation}\begin{aligned}[b]
+    \chi = \frac{1}{\varepsilon_0}\qty(\pdv{P}{E})_T = \frac{N\beta\mu^2}{3\varepsilon_0}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \ev{(\mathcal{E}-\ev{\mathcal{E}})^2}
+    = \ev{\mathcal{E}^2}-\ev{\mathcal{E}}^2
+    = \frac{1}{Z}\pdv[2]{Z}{\beta}-\qty(-\frac{1}{Z}\pdv{Z}{\beta})^2
+    = -\pdv{\beta}\qty(-\frac{1}{Z}\pdv{Z}{\beta})
+    = -\pdv{U}{\beta}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \ev{(\vec{\mu}_{\text{total}}-\ev{\vec{\mu}_{\text{total}}})^2}
+    &=\frac{1}{E^2}\ev{(\vec{\mu}_{\text{total}}E-\ev{\vec{\mu}_{\text{total}}E})^2}
+    =\frac{1}{E^2}\ev{(\mathcal{E}-\ev{\mathcal{E}})^2}\\
+    &=-\frac{1}{E^2}\pdv{U}{\beta}
+    \simeq \frac{1}{E^2}\pdv{\beta} \frac{N\beta\mu^2E^2}{3}
+    = \frac{N\mu^2}{3} = \frac{\varepsilon_0}{\beta}\frac{N\beta\mu^2}{3\varepsilon_0}
+    = \frac{\varepsilon_0 \chi}{\beta}
+\end{aligned}\end{equation}
+
+\section*{感想}
+最後までまぁやれるけど、
+設問2の分配関数で回転運動の分を考えないという話まわりがよくわからなくなった。
+設問にある
+『粒子の位置は固定されているが、\underline{回転は自由で}、電気双極子間の相互作用は無視できるとする。』
+の回転は自由でというのが回転運動のエネルギーを無視するというやつに対応しているのだろうか?
+
+
+
+\end{document}
