@@ -1,0 +1,98 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\chapter{量子力学: 変分法・共有結合}
+\section{}
+この系のシュレーディンガー方程式を書き直すと
+\begin{equation}\begin{aligned}[b]
+    \qty(-\frac{\hbar^2}{2m}\dv[2]{x}-V_0\delta(x))\phi_0(x)=E_0\phi(x).
+\end{aligned}\end{equation}
+これの両辺を微小区間\((-\epsilon,\epsilon)\)で積分して、
+問題文で与えられた波動関数の表式を代入していくと、
+\begin{equation}\begin{aligned}[b]
+    -\frac{\hbar^2}{2m}\qty(\dv{\phi_0(+0)}{x}-\dv{\phi_0(-0)}{x})-V_0\phi(0)&=0\\
+    \frac{\hbar^2C_0^{3/2}}{2m}-V_0C_0^{1/2}&=0\\
+    C_0 &= \frac{2mV_0}{\hbar^2}
+\end{aligned}\end{equation}
+
+\(x\neq0\)ではシュレーディンガー方程式の中のデルタ関数は考えずに済み、
+単なる線形微分方程式
+\begin{equation}\begin{aligned}[b]
+    -\frac{\hbar^2}{2m}\dv[2]{x}\phi_0(x)=E_0\phi_(x)
+\end{aligned}\end{equation}
+となる。
+これに波動関数の表式を代入して
+\begin{equation}\begin{aligned}[b]
+    -\frac{\hbar^2}{2m}\dv[2]{x}\sqrt{C_0}\exp(-C_0\abs{x})&=E_0\sqrt{C_0}\exp(-C_0\abs{x})\\
+    \qty(E+\frac{\hbar^2C_0^2}{2m})\sqrt{C_0}\exp(-C_0\abs{x}) &=0\\
+    E &= -\frac{\hbar^2C_0^2}{2m}=-\frac{2mV_0^2}{\hbar^2}
+\end{aligned}\end{equation}
+
+\section{}
+平衡状態を考えているので波動関数は実数とする。
+規格化条件より
+\begin{equation}\begin{aligned}[b]
+    1 &= \int_{-\infty}^\infty dx\Psi(x)^2\\
+    &=N^2\int_{-\infty}^{\infty}dx\qty{\phi_0^2(x-l)+\alpha^2\phi_0^2(x+l)+2\alpha\phi_0(x+l)\phi_0(x-l)}\\
+    &=N^2(1+\alpha^2+2\alpha S)\\
+    N &= \frac{1}{\sqrt{1+\alpha^2+2\alpha S}}
+\end{aligned}\end{equation}
+
+\section{}
+エネルギーは
+\begin{equation}\begin{aligned}[b]
+    E &= \int_{-\infty}^{\infty}dx \Psi(x)H\Psi(x)\\
+    &= N^2\int_{-\infty}^{\infty}dx\qty{\phi_0(x-l)H\phi_0(x-l)+\alpha^2\phi_0(x+l)H\phi_0(x+l)+2\alpha\phi_0(x+l)H\phi_0(x-l)}\\
+    &= \frac{(1+\alpha^2)J+2\alpha K}{1+\alpha^2+2S\alpha}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \pdv{E}{\alpha}
+    =\frac{2(\alpha J+K)(1+\alpha^2+2S\alpha)-2(\alpha + S)((1+\alpha^2+2\alpha K))}{(1+\alpha^2+2S\alpha)^2}
+    = -\frac{2(SJ-K)(1-\alpha^2)}{(1+\alpha^2+2S\alpha)^2} \le 0
+\end{aligned}\end{equation}
+より\(E(\alpha)\)の極値は
+\begin{equation}\begin{aligned}[b]
+    \alpha = \pm 1
+\end{aligned}\end{equation}
+
+\section{}
+\(E(\alpha)\)の最小値は\(\alpha_1=1\)で、
+このときのエネルギー期待値は
+\begin{equation}\begin{aligned}[b]
+    E_1 = \frac{J+K}{1+S}
+\end{aligned}\end{equation}
+波動関数は
+\begin{equation}\begin{aligned}[b]
+    \Psi(x)_1=\frac{1}{\sqrt{2+2S}}\qty(\phi_0(x-l)+\phi_0(x+l))
+\end{aligned}\end{equation}
+
+\section{}
+重なり積分は
+\begin{equation}\begin{aligned}[b]
+    S &= \int_{-\infty}^\infty dx\,C_0\exp[-C_0\qty{\abs{x-l}+\abs{x+l}}]\\
+    &= 2\int_0^l dx\,C_0 \exp(-2C_0l) + 2 \int_l^{\infty}dx\,C_0\exp(-2C_0x)\\
+    &= 2(1+C_0l)e^{-2C_0l}
+\end{aligned}\end{equation}
+クーロン積分は
+\begin{equation}\begin{aligned}[b]
+    J &=
+\end{aligned}\end{equation}
+交換積分は
+\begin{equation}\begin{aligned}[b]
+    K &=
+\end{aligned}\end{equation}
+
+\section*{感想}
+波動関数が実関数というのは仮定してよかったのだろうか?
+設問4の計算をミスりまくって時間がかかった。
+設問6は覚えてたらやってもよいのだろうけど、覚えてなかったら捨てたくなる。
+
+第一原理計算である指数関数基底は原子核にデルタ関数ポテンシャルがあると仮定したときの波動関数のことだったのかと気付いた。
+
+
+\end{document}
