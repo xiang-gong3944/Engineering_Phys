@@ -1,0 +1,88 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\chapter{光学: 複屈折・マリュス則}
+\section{}
+結晶板を通った後の偏光の\(z\)成分の位相変化は\(\Delta\phi_z=n_ed/\lambda\),
+結晶板を通った後の偏光の\(x\)成分の位相変化は\(\Delta\phi_x=n_od/\lambda\)
+である。はじめは偏光面が\(z\)軸から\(\ang{45}\)であるので、
+偏光の\(z\)成分と\(x\)成分は同じ位相である。
+よって偏光板を通ったあとの\(z\)成分の偏光の位相
+\(x\)成分のを規準として
+\begin{equation}\begin{aligned}[b]
+    \Delta\phi(d)=\Delta\phi_z -\Delta\phi_x = \frac{(n_e-n_o)d}{\lambda}<0
+\end{aligned}\end{equation}
+となる。これが求める位相差で、
+この結晶板を通るとc軸方向の偏光の位相が遅れるとわかる。
+
+\section{}
+偏光面が\(\ang{90}\)回転するのは、\(n\)を整数として\(\Delta\phi(d)= -(2n+1)\pi\)となるときである。
+なので
+\begin{equation}\begin{aligned}[b]
+    \frac{(n_e-n_o)d}{\lambda} &= (2n+1)\pi\\
+    d &=\frac{(2n+1)\pi}{n_o-n_e}\lambda
+\end{aligned}\end{equation}
+
+\section{}
+入射光\(\vec{E}_{i}\)はジョーンズベクトルを用いて
+\begin{equation}\begin{aligned}[b]
+    \vec{E}_{i} = \frac{\vec{e}_x+\vec{e}_z}{\sqrt{2}}
+\end{aligned}\end{equation}
+と表せる。
+結晶版を通ると\(z\)成分の位相が\(\Delta\phi(d)\)だけ変わるので、
+その光\(\vec{E}_o(d)\)は
+\begin{equation}\begin{aligned}[b]
+    \vec{E}_{o}(d) = \frac{\vec{e}_x+e^{i\Delta\phi(d)}\vec{e}_z}{\sqrt{2}}
+\end{aligned}\end{equation}
+となる。
+偏光子を通ると\(\vec{E}_o(d)\)は\((\vec{e}_x+\vec{e}_z)/\sqrt{2}\)方向に射影されるので、
+偏光子を通った後の光\(\vec{E}(d)\)は
+\begin{equation}\begin{aligned}[b]
+    \vec{E}(d) = \frac{\vec{e}_x+\vec{e}_z}{\sqrt{2}}\frac{1+e^{i\Delta\phi(d)}}{2}
+\end{aligned}\end{equation}
+よって測定される強度は
+\begin{equation}\begin{aligned}[b]
+    I(d) = \vec{E}(d)\cdot\vec{E}^*(d) = \frac{1+\cos\Delta\phi(d)}{2}
+    =\cos^2\frac{\Delta\phi(d)}{2} = \cos^2 \frac{(n_e-n_o)d}{2\lambda}
+\end{aligned}\end{equation}
+
+\section{}
+楔型素子を通るとc軸方向である\(x\)方向の位相が\(\Delta\phi(d_2)\)だけ遅くなる。
+なので偏光子に入る直前の光\(\vec{E}_o(d_2)\)は
+\begin{equation}\begin{aligned}[b]
+    \vec{E}_{o}(d) = \frac{e^{i\Delta\phi(d_2)}\vec{e}_x+e^{i\Delta\phi(d_1)}\vec{e}_z}{\sqrt{2}}
+\end{aligned}\end{equation}
+と表せる。
+同様に偏光子を通した後の光\(\vec{E}(d_2)\)は
+\begin{equation}\begin{aligned}[b]
+    \vec{E}(d_2) = \frac{\vec{e}_x+\vec{e}_z}{\sqrt{2}}\frac{e^{i\Delta\phi(d_2)}+e^{i\Delta\phi(d_1)}}{2}
+\end{aligned}\end{equation}
+となって強度は
+\begin{equation}\begin{aligned}[b]
+    I(d_2) = \frac{1+\cos(\Delta\phi(d_2)-\Delta\phi(d_1))}{2}
+     = \cos^2 \frac{(n_e-n_o)}{2\lambda}(d_2-d_1)
+\end{aligned}\end{equation}
+となる。
+これより\(d_2\)を変化させていくと、
+強度は周期\(2\pi\lambda/(n_o-n_d)\)の三角関数になっていることがわかる。
+つまりこの周期を求めれば屈折率の差を求めることができる。
+その周期を測定した強度のデータから精度よく求めるには、
+\(I(d_2)\)がピークとなる2つの\(d_2\)の幅を選ぶのではなく
+\(I(d_2)=0\)となる\(d_2\)を2つ選ぶとよりよくなる。
+なぜなら、
+ピークの値は様々な要因による光の減衰によって\(I(d_2)=1\)にならず様々な値となるため、
+ピークとなる\(d_2\)は求めることができないのに対し、
+\(I(d_2=0)\)となる\(d_2\)は明確にわかるためである。
+
+\section*{感想}
+実験やったことあったり、
+波動光学をやったことあるならめっちゃ簡単。
+最後の設問は生データを解析したことないと、
+どうやったら精密に測定できるかわからないと思う。
+ジョーンズベクトルは知ってたら記述が楽になる程度のものなので、
+別に使わず電場の振動成分を書いてもいいと思う。
+
+\end{document}

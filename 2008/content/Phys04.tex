@@ -1,0 +1,127 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\chapter{電磁気学・物性: 光学用干渉フィルター}
+\section{}
+電荷分布がないときのマクスウェル方程式を考える。
+ファラデーの式より
+\begin{equation}\begin{aligned}[b]
+    \curl E(x,t) &= -\pdv{B(x,t)}{t}\\
+    \curl (\curl E(x,t)) &= -\pdv{t}\curl B(x,t)\\
+    \laplacian E(x,t) &= \frac{\varepsilon}{c^2} \pdv[2]{E(x,t)}{t}\\
+    \pdv[2]{E(x,t)}{t} &= \frac{c^2}{n^2}\pdv[2]{E(x,t)}{x}
+\end{aligned}\end{equation}
+問で与えられたように角周波数\(\omega\)の定常解\(E(x,t)=E(x)e^{-i\omega t}\)をこれに入れ少し整理すると、
+\begin{equation}\begin{aligned}[b]
+    \dv[2]{E(x)}{x}+\frac{\varepsilon \omega^2}{c^2}E(x)=0
+\end{aligned}\end{equation}
+となる。
+これが求める微分方程式である。
+真空中では\(\varepsilon=1\)で、この微分方程式を解くと、
+\begin{equation}\begin{aligned}[b]
+    E(x) = Ae^{i\omega x/c} + Be^{-i\omega x/c} \equiv Ae^{ikx}+Be^{-ikx}
+\end{aligned}\end{equation}
+となる。
+よって波数と角周波数の関係は
+\begin{equation}\begin{aligned}[b]
+    k = \frac{\omega}{c}.
+\end{aligned}\end{equation}
+
+\section{}
+ブロッホの定理
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    G_m = \frac{2\pi m}{a}
+\end{aligned}\end{equation}
+
+\section{}
+波数\(k\)の光電場\(E_k(x)=e^{ikx}u_k(x)\)を設問[1]で求めた微分方程式に入れて整理していくと、
+\begin{equation}\begin{aligned}[b]
+    0&=\dv[2]{x}e^{ikx}u_k(x)+\frac{\varepsilon \omega^2}{c^2}e^{ikx}u_k(x)\\
+    &=\sum_{m=-\infty}^{\infty}\qty[(k^2+2kG_m+G_m^2)b_m-\frac{\varepsilon\omega^2}{c^2}b_m]e^{ikx}e^{iG_mx}\\
+    &=\sum_{m=-\infty}^{\infty}\qty[
+        \qty((k+G_m)^2-\frac{\varepsilon_0\omega^2}{c^2})b_m
+        -\frac{\varepsilon_1\omega^2}{c^2}(b_{m-1}+b_{m+1})]e^{ikx}e^{iG_mx}
+\end{aligned}\end{equation}
+となる。
+これより
+\begin{equation}\begin{aligned}[b]
+    \qty(k^2+2kG_m+G_m^2-\frac{\varepsilon_0\omega^2}{c^2})b_m
+        -\frac{\varepsilon_1\omega^2}{c^2}(b_{m-1}+b_{m+1}) =0\\
+        b_m = -\omega^2\frac{\varepsilon_1}{\varepsilon_0}\frac{b_{m-1}+b_{m+1}}{\qty{\omega^2-c^2(k+G_m)^2/\varepsilon_0}}
+\end{aligned}\end{equation}
+
+\section{}
+\(m=0\)の場合、与えられた条件を使って整理していくと
+\begin{equation}\begin{aligned}[b]
+    b_0 = -\omega^2\frac{\varepsilon_1}{\varepsilon_0}\frac{b_{-1}+b_{1}}{\qty{\omega^2-c^2k^2/\varepsilon_0}}
+    \simeq -\omega^2\frac{\varepsilon_1}{\varepsilon_0}\frac{b_{-1}+b_{1}}{\qty{\omega^2-\omega^2}}
+\end{aligned}\end{equation}
+となり分母が0に近づくことがわかる。
+\(m=-1\)の場合、\(k+G_{-1}=\pi/a-2\pi/a = -k\)より
+\begin{equation}\begin{aligned}[b]
+    b_{-1} = -\omega^2\frac{\varepsilon_1}{\varepsilon_0}\frac{b_{-2}+b_{0}}{\qty{\omega^2-c^2k^2/\varepsilon_0}}
+\end{aligned}\end{equation}
+となり同様に分母が0に近づく。
+これら\(m=0,-1\)のときは\(\varepsilon_0\gg\varepsilon_1\)の条件と合わせると、
+\(0/0\)の不定形になることから、\(b_0,b_{-1}\)は考慮しなければならない。
+\(m\neq 0,-1\)の場合には\((k+G_m)^2 = k^2\)とならないため分母は0にならない。
+なので\(\varepsilon_0\gg\varepsilon_1\)の条件より\(b_m\ll 1\)、
+となるので、これらの\(b_m\)は無視できる。
+(直観的には光電場の直流成分と格子間隔に対応した吸収成分だけが生き残るというやつなのだろうか?)
+
+\section{}
+(1)式の漸化式の内\(b_0,b_{-1}\)に関わるものを取り出すと
+\begin{equation}\begin{aligned}[b]
+    &\begin{cases}
+        b_0 &= -\omega^2\frac{\varepsilon_1}{\varepsilon_0}\frac{b_{-1}}{\qty{\omega^2-c^2k^2/\varepsilon_0}}\\
+        b_{-1} &= -\omega^2\frac{\varepsilon_1}{\varepsilon_0}\frac{b_{0}}{\qty{\omega^2-c^2\qty(k-2\pi/a)^2/\varepsilon_0}}
+    \end{cases}\\
+    &\begin{cases}
+        b_0 &= -\frac{\varepsilon_1}{\varepsilon_0}\frac{b_{-1}}{\qty{1-c^2k^2/\varepsilon_0\omega^2}}\\
+        b_1 &= -\frac{\varepsilon_1}{\varepsilon_0}\frac{b_{0}}{\qty{1-c^2\qty(k-2\pi/a)^2/\varepsilon_0\omega^2}}
+    \end{cases}\\
+    &\begin{cases}
+        \qty{1-c^2k^2/\varepsilon_0\omega^2}b_0 + \frac{\varepsilon_1}{\varepsilon_0}b_{-1}&=0\\
+        \frac{\varepsilon_1}{\varepsilon_0}b_{0}+ \qty{1-c^2\qty(k-2\pi/a)^2/\varepsilon_0\omega^2}b_{-1} &= 0
+    \end{cases}\\
+\end{aligned}\end{equation}
+連立方程式が非自明な解を持つ条件を考えると
+\begin{equation}\begin{aligned}[b]
+    \begin{vmatrix}
+        \qty{1-c^2k^2/\varepsilon_0\omega^2}& \frac{\varepsilon_1}{\varepsilon_0}\\
+        \frac{\varepsilon_1}{\varepsilon_0} & \qty{1-c^2\qty(k-2\pi/a)^2/\varepsilon_0\omega^2}
+    \end{vmatrix}=0
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    \delta = \frac{\varepsilon_1}{\varepsilon}
+\end{aligned}\end{equation}
+
+\section{}
+\(k\sim \pi/a\)の近くの波数\(k= \pi/a+\Delta k\)で(6.1)の行列式を展開すると
+\begin{equation}\begin{aligned}[b]
+    0&=\qty[1-\frac{\pi^2c^2}{\varepsilon_0a^2\omega^2}\qty(1+\frac{a \Delta k}{\pi c})^2]
+    \qty[1-\frac{\pi^2c^2}{\varepsilon_0a^2\omega^2}\qty(1-\frac{a \Delta k}{\pi c})^2]
+    -\frac{\varepsilon_1^2}{\varepsilon_0^2}\\
+    &= \varepsilon_0^2 -\varepsilon_1^2
+\end{aligned}\end{equation}
+% https://www.desmos.com/calculator/eir0txchke
+
+\section{}
+離散的な並進対称性によるブリュアンゾーン境界の縮退により、
+境界の分散関係が変わり特定の周波数\(\sim\)エネルギーが取れなくなるというのがこの現象の本質である。
+物質波である電子ではこれはエネルギーバンドの形成に関わっている。
+
+
+\section*{感想}
+電磁気の問題ではあるけど、
+使ってる道具はほとんど物性で習うような問題。
+位置のフーリエ変換で云々とあるけど、
+これを時間にするとフロケの話に見えなくはない。
+
+\end{document}
