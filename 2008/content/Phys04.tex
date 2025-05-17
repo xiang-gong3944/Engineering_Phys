@@ -99,29 +99,54 @@
 \end{aligned}\end{equation}
 よって
 \begin{equation}\begin{aligned}[b]
-    \delta = \frac{\varepsilon_1}{\varepsilon}
+    \delta = \frac{\varepsilon_1}{\varepsilon_0}
 \end{aligned}\end{equation}
 
 \section{}
-\(k\sim \pi/a\)の近くの波数\(k= \pi/a+\Delta k\)で(6.1)の行列式を展開すると
+\(k\sim \pi/a\)の近くの波数\(k= \pi/a+\Delta k\)で(6.1)の行列式を\(\Delta k\)の2次項までとりながら展開すると
 \begin{equation}\begin{aligned}[b]
-    0&=\qty[1-\frac{\pi^2c^2}{\varepsilon_0a^2\omega^2}\qty(1+\frac{a \Delta k}{\pi c})^2]
-    \qty[1-\frac{\pi^2c^2}{\varepsilon_0a^2\omega^2}\qty(1-\frac{a \Delta k}{\pi c})^2]
+    0&=\qty[1-\frac{c^2}{\varepsilon_0\omega}\qty(\Delta k+\frac{\pi}{a})^2]
+    \qty[1-\frac{c^2}{\varepsilon_0\omega}\qty(\Delta k-\frac{\pi}{a})^2]
     -\frac{\varepsilon_1^2}{\varepsilon_0^2}\\
-    &= \varepsilon_0^2 -\varepsilon_1^2
+    &=\qty[1-\frac{(\pi c/a)^2}{\varepsilon_0\omega^2}\qty(1+\frac{\Delta k}{\pi/a})^2]
+    \qty[1-\frac{(\pi c/a)^2}{\varepsilon_0\omega^2}\qty(1-\frac{\Delta k}{\pi/a})^2]
+    -\frac{\varepsilon_1^2}{\varepsilon_0^2}\\
+    &\simeq \qty[1-\frac{(\pi c/a)^2}{\varepsilon_0\omega^2}\qty(1+\frac{2\Delta k}{\pi/a})]
+    \qty[1-\frac{(\pi c/a)^2}{\varepsilon_0\omega^2}\qty(1-\frac{2\Delta k}{\pi/a})]
+    -\frac{\varepsilon_1^2}{\varepsilon_0^2}\\
+    &\simeq 1-\frac{2(\pi c/a)^2}{\varepsilon_0 \omega^2}
+    +\frac{(\pi c/a)^4}{\varepsilon_0^2\omega^4}\qty{1-\qty(\frac{2\Delta k}{\pi/a})^2}
+    -\frac{\varepsilon_1^2}{\varepsilon_0^2}\\
+    &=(\varepsilon_0^2-\varepsilon_1^2)\qty(\frac{\omega}{\pi c/a})^4-2\varepsilon_0\qty(\frac{\omega}{\pi c/a})^2
+    +1-\qty(\frac{2\Delta k}{\pi/a})^2\\
+    \qty(\frac{2\Delta k}{\pi/a})&= \qty[1-\varepsilon_0\qty(\frac{\omega}{\pi c/a})^2]^2 - \varepsilon_1^2\qty(\frac{\omega}{\pi c/a})^4
 \end{aligned}\end{equation}
+このような\(\Delta k\)が存在しない\(\omega\)の範囲ではフィルター中に光は存在することができない。
+つまりフィルター表面で光は透過せず反射だけする。
+なのでその範囲を求めると
+\begin{equation*}
+    \qty[1-\varepsilon_0\qty(\dfrac{\omega}{\pi c/a})^2]^2- \varepsilon_1^2\qty(\dfrac{\omega}{\pi c/a})^4<0
+\end{equation*}
+\begin{equation}
+    \begin{array}{rcl}
+    -\varepsilon_1\qty(\dfrac{\omega}{\pi c/a})^2<&1-\varepsilon_0\qty(\dfrac{\omega}{\pi c/a})^2& < \varepsilon_1\qty(\dfrac{\omega}{\pi c/a})^2\\
+    (\varepsilon_0-\varepsilon_1)\qty(\dfrac{\omega}{\pi c/a})^2<&1& < (\varepsilon_0+\varepsilon_1)\qty(\dfrac{\omega}{\pi c/a})^2\\
+    \dfrac{\pi c}{a}\sqrt{\varepsilon_0+\varepsilon_1}<& \omega &< \dfrac{\pi c}{a}\sqrt{\varepsilon_0-\varepsilon_1}
+\end{array}\end{equation}
 % https://www.desmos.com/calculator/eir0txchke
 
 \section{}
 離散的な並進対称性によるブリュアンゾーン境界の縮退により、
 境界の分散関係が変わり特定の周波数\(\sim\)エネルギーが取れなくなるというのがこの現象の本質である。
-物質波である電子ではこれはエネルギーバンドの形成に関わっている。
+物質波である電子ではこれはエネルギーのバンドギャップの形成に関わっている。
 
 
 \section*{感想}
 電磁気の問題ではあるけど、
 使ってる道具はほとんど物性で習うような問題。
-位置のフーリエ変換で云々とあるけど、
-これを時間にするとフロケの話に見えなくはない。
+設問[7]ってバンドギャップのときの計算だとこんなに面倒でなかった記憶があるけど、
+なんでこんなに面倒になってるの?
+% 位置のフーリエ変換で云々とあるけど、
+% これを時間にするとフロケの話に見えなくはない。
 
 \end{document}
