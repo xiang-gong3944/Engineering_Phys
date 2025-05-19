@@ -1,4 +1,4 @@
-\documentclass[../../master.tex]{subfiles}
+\documentclass[../ap_2008.tex]{subfiles}
 
 \graphicspath{{./image/}}
 
@@ -14,8 +14,8 @@
 問題文で与えられた波動関数の表式を代入していくと、
 \begin{equation}\begin{aligned}[b]
     -\frac{\hbar^2}{2m}\qty(\dv{\phi_0(+0)}{x}-\dv{\phi_0(-0)}{x})-V_0\phi(0)&=0\\
-    \frac{\hbar^2C_0^{3/2}}{2m}-V_0C_0^{1/2}&=0\\
-    C_0 &= \frac{2mV_0}{\hbar^2}
+    \frac{\hbar^2C_0^{3/2}}{m}-V_0C_0^{1/2}&=0\\
+    C_0 &= \frac{mV_0}{\hbar^2}
 \end{aligned}\end{equation}
 
 \(x\neq0\)ではシュレーディンガー方程式の中のデルタ関数は考えずに済み、
@@ -28,7 +28,7 @@
 \begin{equation}\begin{aligned}[b]
     -\frac{\hbar^2}{2m}\dv[2]{x}\sqrt{C_0}\exp(-C_0\abs{x})&=E_0\sqrt{C_0}\exp(-C_0\abs{x})\\
     \qty(E+\frac{\hbar^2C_0^2}{2m})\sqrt{C_0}\exp(-C_0\abs{x}) &=0\\
-    E &= -\frac{\hbar^2C_0^2}{2m}=-\frac{2mV_0^2}{\hbar^2}
+    E &= -\frac{\hbar^2C_0^2}{2m}=-\frac{mV_0^2}{2\hbar^2}
 \end{aligned}\end{equation}
 
 \section{}
@@ -76,15 +76,21 @@
 \begin{equation}\begin{aligned}[b]
     S &= \int_{-\infty}^\infty dx\,C_0\exp[-C_0\qty{\abs{x-l}+\abs{x+l}}]\\
     &= 2\int_0^l dx\,C_0 \exp(-2C_0l) + 2 \int_l^{\infty}dx\,C_0\exp(-2C_0x)\\
-    &= 2(1+C_0l)e^{-2C_0l}
+    &= (1+2C_0l)e^{-2C_0l}
 \end{aligned}\end{equation}
 クーロン積分は
 \begin{equation}\begin{aligned}[b]
-    J &=
+    J &=\int_{-\infty}^\infty dx\, \phi_0(x-l)\qty[-\frac{\hbar^2}{2m}\laplacian-V_0\delta(x-l)]\phi_0(x-l)
+    +\int_{-\infty}^\infty dx\, \phi_0(x-l)\qty[-V_0\delta(x+l)]\phi_0(x-l)\\
+    &= E_0-V_0\phi_0(-2l)\phi_0(0)
+    = E_0-V_0C_0e^{-2C_0l}
 \end{aligned}\end{equation}
 交換積分は
 \begin{equation}\begin{aligned}[b]
-    K &=
+    K &=\int_{-\infty}^\infty dx\, \phi_0(x-l)\qty[-\frac{\hbar^2}{2m}\laplacian-V_0\delta(x+l)]\phi_0(x+l)
+    +\int_{-\infty}^\infty dx\, \phi_0(x-l)\qty[-V_0\delta(x-l)]\phi_0(x+l)\\
+    &= E_0S-V_0\phi_0(0)\phi_0(2l)
+    = (E_0+2E_0C_0l-V_0C_0)e^{-2C_0l}
 \end{aligned}\end{equation}
 
 \section*{感想}

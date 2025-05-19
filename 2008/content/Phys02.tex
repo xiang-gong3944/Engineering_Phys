@@ -1,4 +1,4 @@
-\documentclass[../../master.tex]{subfiles}
+\documentclass[../ap_2008.tex]{subfiles}
 
 \graphicspath{{./image/}}
 
@@ -6,11 +6,12 @@
 
 \chapter{統計力学: 合金}
 \section{}
-1格子につき、元素間の結合は6本ある。
+1格子点の元素間の結合は6本ある。
+これを1格子点あたりに直すと半分になる。
 基底状態ではそれらすべてがX, Y間の結合であるので、
 基底状態のエネルギー\(E_0\)は
 \begin{equation}\begin{aligned}[b]
-    E_0 = 6q
+    E_0 = 3q
 \end{aligned}\end{equation}
 
 \section{}
@@ -35,7 +36,7 @@
 和をとって整理していく。
 \begin{equation}\begin{aligned}[b]
     H &= \sum_{\ev{i,j}}\Bigl[J\qty(\ev{S_i}+\delta S_i)(\ev{S_i}+\delta S_i)+K\Bigr]
-    = \sum_{\ev{i,j}}\Bigl[-n^2J+nJ\delta S_i-nJ\delta S_k +J\delta S_i \delta S_j+K\Bigr]\\
+    = \sum_{\ev{i,j}}\Bigl[-n^2J+nJ\delta S_i-nJ\delta S_j +J\delta S_i \delta S_j+K\Bigr]\\
     &\simeq 6nJ\qty(\sum_i \delta S_i - \sum_j \delta S_j)-3Nn^2J+3NK
     = 6nJ\qty(\sum_i S_i - \sum_j S_j)+3N\qty(n^2J+K)
 \end{aligned}\end{equation}
@@ -59,22 +60,22 @@
     &= \frac{1}{Z}\sum_{\{S_i\}}\sum_{\{S_j\}}\qty{-6\beta n\qty(\sum_i S_i - \sum_j S_j)-3\beta Nn^2} \exp[-6\beta nJ\qty(\sum_i S_i - \sum_j S_j)-3\beta N\qty(n^2J+K)]\\
     &= \ev{-6\beta n\qty(\sum_i S_i - \sum_j S_j)-3\beta Nn^2}
     = -6\beta n\qty(\sum_i \ev{S_i} - \sum_j \ev{S_j})-3\beta Nn^2\\
-    &= -3\beta nN\qty(n_A-n_B+n)
+    &= 3\beta nN\qty(n_A-n_B-n)
 \end{aligned}\end{equation}
 これと\(n_A+n_B = 0\)を使うと\(N_A\)は
 \begin{equation}\begin{aligned}[b]
-    n_A &= -\frac{1}{6\beta nN}\pdv{J}\ln Z -\frac{n}{2}\\
-    &= -\frac{1}{6\beta nN}\pdv{J}\ln[2\exp[-3\frac{n^2J+K}{k_BT}]\cosh(\frac{6nJ}{k_BT})]^N - \frac{n}{2}\\
-    &= -\frac{1}{6\beta n}\Bigl[-3\beta n^2+6n\tanh(6\beta n J)\Bigr] - \frac{n}{2}\\
-    &= -\tanh(6\beta nJ) = - \tanh(\frac{6nJ}{k_BT})
+    n_A &= \frac{1}{6\beta nN}\pdv{J}\ln Z +\frac{n}{2}\\
+    &= \frac{1}{6\beta nN}\pdv{J}\ln[2\exp[-3\frac{n^2J+K}{k_BT}]\cosh(\frac{6nJ}{k_BT})]^N + \frac{n}{2}\\
+    &= \frac{1}{6\beta n}\Bigl[-3\beta n^2+6n\tanh(6\beta n J)\Bigr] + \frac{n}{2}\\
+    &= \tanh(6\beta nJ) = \tanh(\frac{6nJ}{k_BT})
 \end{aligned}\end{equation}
 そして\(n_B\)は
 \begin{equation}\begin{aligned}[b]
-    n_B = -n_A = \tanh(\frac{6nJ}{k_BT})
+    n_B = -n_A = -\tanh(\frac{6nJ}{k_BT})
 \end{aligned}\end{equation}
 
 \section{}
-\(n_A = -n_B = -n\)より
+\(n_A = -n_B = n\)より
 \begin{equation}\begin{aligned}[b]
     n = \tanh(6\beta nJ)
 \end{aligned}\end{equation}

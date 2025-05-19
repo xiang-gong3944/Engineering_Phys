@@ -1,4 +1,4 @@
-\documentclass[../../master.tex]{subfiles}
+\documentclass[../ap_2008.tex]{subfiles}
 
 \graphicspath{{./image/}}
 
@@ -131,9 +131,17 @@
     \begin{array}{rcl}
     -\varepsilon_1\qty(\dfrac{\omega}{\pi c/a})^2<&1-\varepsilon_0\qty(\dfrac{\omega}{\pi c/a})^2& < \varepsilon_1\qty(\dfrac{\omega}{\pi c/a})^2\\
     (\varepsilon_0-\varepsilon_1)\qty(\dfrac{\omega}{\pi c/a})^2<&1& < (\varepsilon_0+\varepsilon_1)\qty(\dfrac{\omega}{\pi c/a})^2\\
-    \dfrac{\pi c}{a}\sqrt{\varepsilon_0+\varepsilon_1}<& \omega &< \dfrac{\pi c}{a}\sqrt{\varepsilon_0-\varepsilon_1}
+    \dfrac{\pi c}{a\sqrt{\varepsilon_0+\varepsilon_1}}<& \omega &< \dfrac{\pi c}{a\sqrt{\varepsilon_0-\varepsilon_1}}
 \end{array}\end{equation}
 % https://www.desmos.com/calculator/eir0txchke
+のように示せる。
+
+おまけだが、この近似を進めると
+\begin{equation}\begin{aligned}[b]
+    \dfrac{\pi c}{a\sqrt{\varepsilon_0}}\qty(1-\frac{\varepsilon_1}{2\varepsilon_0})< \omega < \dfrac{\pi c}{a\sqrt{\varepsilon_0}}\qty(1+\frac{\varepsilon_1}{2\varepsilon_0})
+\end{aligned}\end{equation}
+となり、バンドギャップが\(\delta=\varepsilon_1/\varepsilon_0\)というように、
+遷移要素の比対角成分の大きさになり、電子系で見たような格好になる。
 
 \section{}
 離散的な並進対称性によるブリュアンゾーン境界の縮退により、
