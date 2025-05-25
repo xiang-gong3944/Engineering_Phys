@@ -1,0 +1,85 @@
+\documentclass[../ap_2009.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\chapter{量子力学:次元解析}
+\section{}
+\begin{equation}\begin{aligned}[b]
+    [\mu] &= [\si{Jm^{-2}s^2}]\\
+    [\hbar] &= [\si{Js}]\\
+    [K] &= [\si{Jm^{-6}}]
+\end{aligned}\end{equation}
+
+\section{}
+\([\mu^a\hbar^bK^c]\)の\(a,b,c\)を適切に決めることで空間的広がり\(\xi\)と基底状態のエネルギー\(E_0\)のスケールを求める。
+まず空間的広がり\(\xi\)について、
+\begin{equation}\begin{aligned}[b]
+    [\xi] &= [\mu^a\hbar^bK^c]\\
+    [\si{m}] &= [\si{J^{a+b+c}m^{-2a+6b}s^{2a+b}}]\\
+    \rightarrow&
+    \begin{cases}
+        a+b+c&=0\\
+        -2a-6c&=1\\
+        2a+b&=0
+    \end{cases}
+    \rightarrow
+    \begin{cases}
+        a&=-1/8\\
+        b&=1/4\\
+        c&=-1/8
+    \end{cases}
+\end{aligned}\end{equation}
+なので
+\begin{equation}\begin{aligned}[b]
+    \xi \propto \mu^{-1/8}\hbar^{1/4}K^{-1/8}
+\end{aligned}\end{equation}
+同様に\(E_0\)についてもやっていく。
+\begin{equation}\begin{aligned}[b]
+    [E_0] &= [\mu^a\hbar^bK^c]\\
+    [\si{J}] &= [\si{J^{a+b+c}m^{-2a+6b}s^{2a+b}}]\\
+    \rightarrow&
+    \begin{cases}
+        a+b+c&=1\\
+        -2a-6c&=0\\
+        2a+b&=0
+    \end{cases}
+    \rightarrow
+    \begin{cases}
+        a&=-3/4\\
+        b&=3/2\\
+        c&=1/4
+    \end{cases}
+\end{aligned}\end{equation}
+なので
+\begin{equation}\begin{aligned}[b]
+    E_0 \propto \mu^{-3/4}\hbar^{3/2}K^{1/4}
+\end{aligned}\end{equation}
+
+\section{}
+不確定性原理\(\Delta x\Delta p \geq \hbar/2\)より運動量の広がりのオーダーは
+\(p=\hbar/2\xi\)程度と見積もることができる。
+これをハミルトニアンの中の運動量に代入して、エネルギーが最小となる位置を求める。
+エネルギーの式を\(\xi\)で微分すると
+\begin{equation}\begin{aligned}[b]
+    E &= \frac{\hbar^2}{8\mu\xi^2}+\frac{K\xi^6}{2}\\
+    \pdv{E}{\xi} &= \frac{\hbar^2}{4\mu}\qty(\frac{12\mu K}{\hbar^2}\xi^8-1)
+\end{aligned}\end{equation}
+これよりエネルギーが最小となる位置は
+\begin{equation}\begin{aligned}[b]
+    \xi = 12^{-1/8}\mu^{-1/8}\hbar^{1/4}K^{-1/8}
+\end{aligned}\end{equation}
+これをもとのエネルギーの式に入れると
+\begin{equation}\begin{aligned}[b]
+    E_0 &= \qty(\frac{12^{1/4}}{8}+\frac{12^{-3/4}}{2})\mu^{-3/4}\hbar^{3/2}K^{1/4}
+    =\frac{12^{1/4}}{4}\mu^{-3/4}\hbar^{3/2}K^{1/4}
+\end{aligned}\end{equation}
+
+\section*{感想}
+系のスケールを表すパラメータが\(\mu,\hbar,K\)の3種類であるからこれを使って長さとエネルギーのオーダーを見積もらせる問題。
+設問3はハミルトニアンだけだと\(\hbar\)がないので、これを導入するために不確定性関係を使っているが、
+結局やってることは次元解析に対応するものなのであんまり面白くない問題。
+
+
+\end{document}

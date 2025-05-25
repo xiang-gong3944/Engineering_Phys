@@ -1,0 +1,101 @@
+\documentclass[../ap_2009.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\chapter{統計力学: 2サイトq状態強磁性Potts模型}
+\section{}
+\begin{equation}\begin{aligned}[b]
+    Z = \sum_{s_1,s_2}e^{J\delta_{s_1,s_2}/k_BT}
+    =\sum_{s_1}\qty[e^{J/k_BT}+(q-1)]
+    =q\qty(e^{J/k_BT}+q-1)
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    F = -k_BT\ln Z = -k_BT\ln\qty[q\qty(e^{J/k_BT}+q-1)]
+\end{aligned}\end{equation}
+
+\section{}
+内部エネルギー\(U\)は
+\begin{equation}\begin{aligned}[b]
+    U &= F- T\pdv{F}{T}\\
+    &=-k_BT\ln\qty[q\qty(e^{J/k_BT}+q-1)]+T\pdv{T} k_BT\ln\qty[q\qty(e^{J/k_BT}+q-1)]\\
+    &=-k_BT\ln\qty[q\qty(e^{J/k_BT}+q-1)]+k_BT\ln\qty[q\qty(e^{J/k_BT}+q-1)]
+        -\frac{Je^{J/k_BT}}{e^{J/k_BT}+q-1}\\
+    &= -\frac{J}{1+(q-1)e^{-J/k_BT}}
+\end{aligned}\end{equation}
+\(q=2\)のときには
+\begin{equation}\begin{aligned}[b]
+    U = -\frac{J}{1+e^{-J/k_BT}}
+\end{aligned}\end{equation}
+である。
+\(T\to0\)のとき\(U\to-J\), \(T\to\infty\)のとき\(U\to-J/2\)となるフェルミ分布のような関数形。
+
+\section{}
+比熱\(C\)は
+\begin{equation}\begin{aligned}[b]
+    C=\dv{U}{T} = k_B(q-1) \qty(\frac{J}{k_BT})^2\frac{e^{-J/k_BT}}{\qty(1+(q-1)e^{-J/k_BT})^2}
+\end{aligned}\end{equation}
+\(q=2\)のとき、
+\begin{equation}\begin{aligned}[b]
+    C = k_B\qty(\frac{J/k_BT}{2\cosh J/k_BT})^2=k_B\qty(\frac{J}{2k_BT})^2\qty(1-\tanh^2\frac{J}{k_BT})
+\end{aligned}\end{equation}
+\(T\to0\)のとき
+\begin{equation}\begin{aligned}[b]
+    C &= k_B\qty(\frac{J}{2k_BT})^2\qty{1-\qty(\frac{1-e^{-2J/k_BT}}{1+e^{-2J/k_BT}})^2}
+    \simeq k_B\qty(\frac{J}{2k_BT})^2\qty{1-\qty(1-e^{-2J/k_BT})^4}\\
+    &\simeq k_B\qty(\frac{J}{2k_BT})^2\qty{1-\qty(1-4e^{-2J/k_BT})}
+    = k_B \qty(\frac{J}{k_BT})^2e^{-2J/k_BT}
+\end{aligned}\end{equation}
+\(U\to\infty\)のとき
+\begin{equation}\begin{aligned}[b]
+    C \simeq k_B\qty(\frac{J}{k_BT})^2
+\end{aligned}\end{equation}
+のように振舞う。
+
+\section{}
+分配関数は
+\begin{equation}\begin{aligned}[b]
+    Z &= \sum_{s_1,s_2}\exp[\frac{J\delta_{s_1,s_2}+h(\delta_{s_1,1}+\delta_{s_2,1})}{k_BT}]\\
+    &= \sum_{s_1,s_2\neq 1}\exp[\frac{J\delta_{s_1,s_2}+h(\delta_{s_1,1}+\delta_{s_2,1})}{k_BT}]
+    +\sum_{s_1\neq 1}\exp[\frac{J\delta_{s_1,1}+h(\delta_{s_1,1}+1)}{k_BT}]\\
+    &\qquad +\sum_{s_2\neq 1}\exp[\frac{J\delta_{1,s_2}+h(1+\delta_{s_2,1})}{k_BT}]
+    +\exp[\frac{J+2h}{k_BT}]\\
+    &=(q-1)\qty{e^{J/k_BT}+(q-2)}+2e^{h/k_BT}+e^{(J+2h)/k_BT}
+\end{aligned}\end{equation}
+
+そして秩序変数の期待値は
+\begin{equation}\begin{aligned}[b]
+    \ev{m}
+    &= \frac{1}{Z}\sum_{s_1,s_2}\qty(\delta_{s_1,1}+\delta_{s_2,1}-\frac{2}{q})
+        \exp[\frac{J\delta_{s_1,s_2}+h(\delta_{s_1,1}+\delta_{s_2,1})}{k_BT}]\\
+    &= \frac{1}{Z}\sum_{s_1,s_2}\qty(k_BT\pdv{h}-\frac{2}{q})
+        \exp[\frac{J\delta_{s_1,s_2}+h(\delta_{s_1,1}+\delta_{s_2,1})}{k_BT}]\\
+    &= \frac{1}{Z}\qty(k_BT\pdv{h}-\frac{2}{q})Z\\
+    &= k_BT\pdv{h}\ln Z - \frac{2}{q}\\
+    &= \frac{2e^{h/k_BT}+2e^{(J+2h)/k_BT}}{(q-1)\qty{e^{J/k_BT}+(q-2)}+2e^{h/k_BT}+e^{(J+2h)/k_BT}}-\frac{2}{q}
+\end{aligned}\end{equation}
+これより帯磁率は
+\begin{equation}\begin{aligned}[b]
+    \chi
+    &=\frac{1}{k_BT}\left.\frac{2e^{h/k_BT}+4e^{(J+2h)/k_BT}}{(q-1)\qty{e^{J/k_BT}+(q-2)}+2e^{h/k_BT}+e^{(J+2h)/k_BT}}\right|_{h=0}\\
+    &\qquad-\left.\frac{1}{k_BT}\qty[\frac{2e^{h/k_BT}+2e^{(J+2h)/k_BT}}{(q-1)\qty{e^{J/k_BT}+(q-2)}+2e^{h/k_BT}+e^{(J+2h)/k_BT}}]^2\right|_{h=0}\\
+    &= \frac{1}{k_BT}\frac{2+4e^{J/k_BT}}{qe^{J/k_BT}+q(q-1)}-\frac{1}{k_BT}\qty[\frac{2+2e^{J/k_BT}}{qe^{J/k_BT}+q(q-1)}]^2
+\end{aligned}\end{equation}
+となる。
+
+\section*{感想}
+設問4まではそのままやるだけではあるが、
+設問5でやることが多くなって計算ミスが生じやすくなりそう。
+
+q通りの状態をもつってなんだよと思ったけど、
+調べてみると軌道内でのスピン配置とかをイメージするとよさそうなのがわかった。
+結晶場を考えると軌道の準位が分裂しているので磁場をかけたときに特定の軌道になりやすいと考えることができる。
+軌道とスピンが関わってるので多極子秩序の模型としても使えるらしい。
+
+また、q種類の元素が関わる合金のモデルとも読める気はする。
+
+
+\end{document}

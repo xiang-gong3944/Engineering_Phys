@@ -1,0 +1,96 @@
+\documentclass[../ap_2009.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\chapter{電磁気学: 電磁流体力学}
+\section{}
+(1)式に(2)-(5)式を代入して2次の微小項を無視していくと
+\begin{equation}\begin{aligned}[b]
+    m(n_0+\delta n)\pdv{\delta\vb*{u}}{t}
+        +m(n_0+\delta n)\qty(\delta\vb*{u}\cdot\nabla)\delta\vb*{u}
+        &= -q(n_0+\delta n)\qty(\delta\vb*{E}+\delta\vb*{u}\times\delta\vb*{B})\\
+    mn_0\pdv{\delta\vb*{u}}{t}
+        &= -qn_0\delta\vb*{E}\\
+    m\pdv{\delta\vb*{u}}{t}
+        &= -q\delta\vb*{E}
+\end{aligned}\end{equation}
+
+\section{}
+(11)式をフーリエ変換すると
+\begin{equation}\begin{aligned}[b]
+    i\vb*{k}\times\delta\hat{\vb*{E}} &= i\omega\delta\hat{\vb*{B}}\\
+    \delta\hat{\vb*{B}} &= \frac{1}{\omega}\vb*{k}\times\delta\hat{\vb*{E}}
+\end{aligned}\end{equation}
+これをフーリエ変換した(12)式に代入すると
+\begin{equation}\begin{aligned}[b]
+    i\vb*{k}\times\delta\vb*{B} &= -\mu_0qn_0\delta\vb*{u}-i\frac{\omega}{c^2}\delta\hat{\vb*{E}}\\
+    \vb*{k}\times\qty(\frac{1}{\omega}\vb*{k}\times\delta\hat{\vb*{E}})
+        &= -i\mu_0qn_0\delta\vb*{u}+\frac{\omega}{c^2}\delta\hat{\vb*{E}}\\
+    \vb*{k}\times\qty(\vb*{k}\times\delta\hat{\vb*{E}})
+        &= -i\mu_0qn_0\omega\delta\vb*{u}+\frac{\omega^2}{c^2}\delta\hat{\vb*{E}}\\
+\end{aligned}\end{equation}
+
+\section{}
+(6)をフーリエ変換すると
+\begin{equation}\begin{aligned}[b]
+    -im\omega\delta\hat{\vb*{u}}&=-q\delta\hat{\vb*{E}}\\
+    \delta\hat{\vb*{u}} &= -i\frac{q}{m\omega}\delta\hat{\vb*{E}}
+\end{aligned}\end{equation}
+(13)式を整理していく。左辺はベクトル解析の公式より
+\begin{equation}\begin{aligned}[b]
+    \vb*{k}\times\qty(\vb*{k}\times\delta\hat{\vb*{E}})
+        &= (\vb*{k}\cdot\delta\hat{\vb*{E}})\vb*{k}-k^2\delta\hat{\vb*{E}}
+        = -k^2\delta\hat{\vb*{E}}
+\end{aligned}\end{equation}
+なので(13)式は
+\begin{equation}\begin{aligned}[b]
+    k^2\delta\hat{\vb*{E}} &= -\mu_0\epsilon_0\frac{q^2n_0}{\epsilon_0 m}\delta\hat{\vb*{E}}+\frac{\omega^2}{c^2}\delta\hat{\vb*{E}}\\
+    0 &= \qty(\omega^2-k^2c^2-\frac{q^2n_0}{\epsilon_0m})\delta\hat{\vb*{E}}
+\end{aligned}\end{equation}
+電場の振動成分がある、つまり\(\delta\hat{\vb*{E}}\neq0\)なので
+\begin{equation}\begin{aligned}[b]
+    0 &=\omega^2-k^2c^2-\frac{q^2n_0}{\epsilon_0m} \\
+    \omega^2 &=k^2c^2+\frac{q^2n_0}{\epsilon_0m}
+\end{aligned}\end{equation}
+
+\section{}
+分散関係が成り立ち、電場の振動成分があるので(11)式のフーリエ変換の式を見ると
+\begin{equation}\begin{aligned}[b]
+    \delta\hat{\vb*{B}} &= \frac{1}{\omega}\vb*{k}\times\delta\hat{\vb*{E}} \neq 0
+\end{aligned}\end{equation}
+
+\section{}
+(14)式をプラズマ振動数を用いて表すと
+\begin{equation}\begin{aligned}[b]
+    \omega =\sqrt{k^2c^2+\omega_p^2}
+\end{aligned}\end{equation}
+なので位相速度は
+\begin{equation}\begin{aligned}[b]
+    v_p = \frac{\omega}{k} = \sqrt{c^2+\frac{\omega_p^2}{k^2}} > c
+\end{aligned}\end{equation}
+群速度は
+\begin{equation}\begin{aligned}[b]
+    v_g = \pdv{\omega}{k} = \frac{c^2k}{\sqrt{k^2c^2+\omega_p^2}} = \frac{c}{\sqrt{1+(\omega_p/ck)^2}}<c
+\end{aligned}\end{equation}
+より
+\begin{equation}\begin{aligned}[b]
+    v_g < c < v_p
+\end{aligned}\end{equation}
+
+\section{}
+屈折率\(N\)を\(\omega\)の関数で表すと
+\begin{equation}\begin{aligned}[b]
+    N = \frac{c}{v_p} = \frac{ck}{\omega}=\sqrt{1-\frac{\omega_p^2}{\omega^2}}
+\end{aligned}\end{equation}
+これより振動数\(\omega<\omega_p\)の光は金属中の電子ガス中には存在できないため、
+金属に入射した光は全て反射する。これが金属光沢の由来である。
+
+\section*{感想}
+誘導に乗っていくだけではあるが、
+プラズマ振動数の名前の由来がそのまんま金属中のプラズマの振動数と知れたのは面白かった。
+
+
+
+\end{document}
