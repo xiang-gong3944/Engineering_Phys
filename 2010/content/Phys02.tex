@@ -1,0 +1,77 @@
+\documentclass[../ap_2010.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\chapter{統計力学: 固体比熱}
+\section{}
+フェルミ分布を描く(略)。
+\section{}
+電子数\(N\)は状態密度と分布関数を用いて表して、ゾンマーフェルト展開を通して式を整理していく。
+\begin{equation}\begin{aligned}[b]
+    N &= \int_{-\infty}^{\infty}f(\varepsilon)D(\varepsilon)d\varepsilon\\
+    &= \int_{-\infty}^{\mu}D(\varepsilon)d\varepsilon + \frac{\pi^2}{6}(k_BT)^2\dv{D(\mu)}{\varepsilon}+\mathcal{O}(T^4)\\
+    &= \int_{0}^{\varepsilon_F}D(\varepsilon)d\varepsilon
+    +\int_{\varepsilon_F}^{\mu}D(\varepsilon)d\varepsilon
+    + \frac{\pi^2}{6}(k_BT)^2\dv{D(\varepsilon_F)}{\varepsilon}+\mathcal{O}(T^4)\\
+    &= N  +(\mu-\varepsilon_F)D_0+ \frac{\pi^2}{6}(k_BT)^2\dv{D(\varepsilon_F)}{\varepsilon}+\mathcal{O}(T^4)
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    \mu = \varepsilon_F- \frac{\pi^2}{6D_0}\dv{D(\varepsilon_F)}{\varepsilon}\,(k_BT)^2
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    E(T) &= \int_{-\infty}^{\infty}f(\varepsilon)\varepsilon D(\varepsilon)d\varepsilon\\
+    &\simeq \int_{0}^{\varepsilon_F}\varepsilon D(\varepsilon)d\varepsilon
+    +\int_{\varepsilon_F}^{\mu}\varepsilon D(\varepsilon)d\varepsilon
+    +\left.\frac{\pi^2}{6}(k_BT)^2\dv{\varepsilon}\qty(\varepsilon D(\varepsilon))\right|_{\varepsilon=\varepsilon_F}\\
+    &\simeq E(0)+\varepsilon_FD_0(\mu-\varepsilon_F)+\frac{\pi^2\varepsilon_F}{6}(k_BT)^2\dv{D(\varepsilon_F)}{\varepsilon}+\frac{\pi^2}{6}(k_BT)^2D_0\\
+    &= E_0 + \frac{\pi^2}{5}D_0(k_BT)^2\\
+    C(T) &= \dv{E}{T}=\frac{\pi^2}{3}D_0k_B^2T
+\end{aligned}\end{equation}
+
+\section{}
+ボーズ分布を描く(略)。
+
+\section{}
+見慣れないnotationだが、イバッハ・リュートでの求め方はこんな感じ。
+\begin{equation}\begin{aligned}[b]
+    \rho(\omega) = \frac{V}{(2\pi)^3}\int_\omega \frac{dk}{\abs{\grad_k \omega(k)}}
+    = \frac{V}{(2\pi)^3}\frac{4\pi k(\omega)^2}{v} = \frac{V}{2\pi^2 v^3}\omega^2
+\end{aligned}\end{equation}
+
+\section{}
+フォノンの振動数の上限を\(\omega_D\)とおく。
+このときフォノンの内部エネルギーは低温であることを使いながら変形すると
+\begin{equation}\begin{aligned}[b]
+    E &= \int_0^{\omega_D}\frac{3\rho(\omega)\hbar\omega}{e^{\beta\hbar\omega}-1}d\omega\\
+    &= \frac{3V(k_BT)^4}{2\pi^2\hbar^3v^3}\int_{0}^{\infty}\frac{(\beta\hbar\omega)^3}{e^{\beta\hbar\omega}-1}d(\beta\hbar\omega)\\
+    &= \frac{\pi^2Vk_B^4}{10\hbar^3v^3}T^4\\
+    C &= \dv{E}{T}=\frac{2\pi^2Vk_B^4}{5\hbar^3v^3}T^3
+\end{aligned}\end{equation}
+
+\section{}
+電子比熱とフォノン比熱をそれぞれ\(\alpha T,\gamma T^3\)のように表すと
+\begin{equation}\begin{aligned}[b]
+    C_V &= \alpha T+\gamma T^3\\
+    \frac{C_V}{T} &= \alpha +\gamma T^3
+\end{aligned}\end{equation}
+となる。
+これより\(C_V/T\)を\(T^2\)にたいしてプロットすると直線状に並ぶことがわかる。
+\(T\to 0\)の外挿で電子比熱の\(\alpha\)が、傾きからフォノン比熱の\(\gamma\)が求まる。
+また、\(C_T/T\)が\(T\to 0\)で\(0\)になるのは比熱に電子比熱が関わっていないことを表す。
+比熱はフェルミ面付近の電子が担っているので、
+このような結晶は半導体や絶縁体である。
+
+\section*{感想}
+固体の比熱の話の総おさらい。
+初見のときにゾンマーフェルト展開を\(\varepsilon_F\)でいったん発想が思いつかないけど、
+物性をいろいろやってると結構自然な発想だというのに気付けた。
+
+低温での半導体の比熱の測定とかやったことないけど、
+本当にそうなるんですか?
+
+\end{document}

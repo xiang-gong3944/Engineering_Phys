@@ -1,0 +1,112 @@
+\documentclass[../ap_2010.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\chapter{量子力学:ハイゼンベルグ描像・シュレーディンガー描像}
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \mathcal{H} = -\vb*{\mu}\cdot \vb*{B}_0 = -\gamma\hbar B_0 S_z
+\end{aligned}\end{equation}
+
+\section{}
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \dv{S_x}{t}=\frac{1}{i\hbar}\qty[S_x,\mathcal{H}]=-i\gamma B_0\qty[S_x,S_z] = -\gamma B_0S_y
+\end{aligned}\end{equation}
+\subsection{}
+前問と同様にして\(S_y\)のハイゼンベルグ方程式を書き下すと
+\begin{equation}\begin{aligned}[b]
+    \dv{S_y}{t}=\frac{1}{i\hbar}\qty[S_y,\mathcal{H}]=-i\gamma B_0\qty[S_y,S_z] = \gamma B_0S_x
+\end{aligned}\end{equation}
+これと前問の結果を合わせると微分方程式を以下のように解くことができる。
+\begin{equation}\begin{aligned}[b]
+    &\begin{cases}
+        \dv{t}\qty(S_x+iS_y)&=i\gamma B_0\qty(S_x+iS_y)\\
+        \dv{t}\qty(S_x-iS_y)&=-i\gamma B_0\qty(S_x-iS_y)
+    \end{cases}\\
+    \rightarrow&\begin{cases}
+        S_x(t)+iS_y(t) &= e^{i\gamma B_0t}\qty(S_x(0)+iS_y(0))\\
+        S_x(t)-iS_y(t) &= e^{-i\gamma B_0t}\qty(S_x(0)-iS_y(0))
+    \end{cases}
+\end{aligned}\end{equation}
+これよりスピンの期待値は
+\begin{equation}\begin{aligned}[b]
+    S_x(t)&=\cos(\gamma B_0t)S_x(0)+\sin(\gamma B_0t)S_y(0)\\
+    \ev{S_x(t)}&=\sin(\gamma B_0t)\ev{S_y(0)}
+\end{aligned}\end{equation}
+
+\subsection{}
+前問よりスピンの\(y\)成分の期待値は\(x\)成分と同様にして
+\begin{equation}\begin{aligned}[b]
+    \ev{S_y(t)}=\cos(\gamma B_0t)\ev{S_y(0)}
+\end{aligned}\end{equation}
+とわかる。
+スピンの\(z\)成分については、
+\begin{equation}\begin{aligned}[b]
+    \dv{S_z} = \frac{1}{i\hbar}\qty[S_z,\mathcal{H}]=-i\gamma B_0\qty[S_z,S_z]=0
+\end{aligned}\end{equation}
+より
+\begin{equation}\begin{aligned}[b]
+    \ev{S_z(t)}=\ev{S_z(0)}
+\end{aligned}\end{equation}
+となり初期状態と変わらない。
+そして
+\begin{equation}\begin{aligned}[b]
+    \dv{t}\qty(S_x^2+S_y^2) = \frac{1}{i\hbar}\qty[S_x^2+S_y^2,\mathcal{H}]
+    =-i\gamma B_0\qty[\vb*{S}^2-S_z^2,S_z]=0
+\end{aligned}\end{equation}
+より
+\begin{equation}\begin{aligned}[b]
+    \ev{S_x^2+S_y^2}=\ev{\vb*{S}^2-S_z^2}=\frac{3}{4}-\ev{S_z^2(0)}
+\end{aligned}\end{equation}
+となる。
+これらの結果より、
+スピンは\(z\)成分の大きさをたもちながら\(x\)と\(y\)成分が円運動を描くように変化することがわかり、
+言い換えると歳差運動をしていると言える。
+
+\section{}
+\subsection{}
+スピン状態は
+\begin{equation}\begin{aligned}[b]
+    i\hbar\dv{t}\ket{t}&=\mathcal{H}\ket{t}\\
+    \ket{t} &= \exp(-\frac{i\mathcal{H}t}{\hbar})\ket{0}\\
+    &= \exp(i\gamma B_0 S_zt)\ket{0}
+\end{aligned}\end{equation}
+となるので、スピンの\(x\)成分の期待値は
+\begin{equation}\begin{aligned}[b]
+    \ev{S_x} &= \bra{t}S_x\ket{t}
+    = \bra{0}\exp(-i\gamma B_0 S_zt)S_x\exp(i\gamma B_0 S_zt)\ket{0}
+    =\bra{0}\qty(S_x\cos(\gamma B_0t)+S_y\sin(\gamma B_0t))\ket{0}\\
+    &= \sin(\gamma B_0t)\ev{S_y(0)}
+\end{aligned}\end{equation}
+となり、設問[2.2]と同じ結果が得られる。
+
+\subsection{}
+\subsubsection*{(i)}
+\begin{equation}\begin{aligned}[b]
+    \dv{f}{\theta}
+    &=-i\exp(-i\theta S_z)S_zS_x\exp(i\theta S_z)+i\exp(-i\theta S_z)S_xS_z\exp(i\theta S_z)
+    =\exp(-i\theta S_z)S_y\exp(i\theta S_z)\\
+    \dv[2]{f}{\theta}
+    &=-i\exp(-i\theta S_z)S_zS_y\exp(i\theta S_z)+i\exp(-i\theta S_z)S_yS_z\exp(i\theta S_z)
+    =-\exp(-i\theta S_z)S_x\exp(i\theta S_z)
+\end{aligned}\end{equation}
+\subsubsection*{(ii)}
+前問より\(f\)は次の微分方程式を満たす。
+\begin{equation}\begin{aligned}[b]
+    \dv[2]{f}{\theta}=-f
+\end{aligned}\end{equation}
+初期条件が\(f(0)=S_x,f'(0)=S_y\)の調和振動子の運動方程式なのでこれの解は
+\begin{equation}\begin{aligned}[b]
+    f(\theta)=S_x\cos\theta+S_y\sin\theta
+\end{aligned}\end{equation}
+となる。
+
+\section*{感想}
+量子力学で使われる2つの描像が同じ結果を示すよという問題。
+なんか物足りないので相互作用描像とか、BCH公式による計算とか、指数関数行列の具体的な計算とか練習してもいいと思う。
+
+
+\end{document}

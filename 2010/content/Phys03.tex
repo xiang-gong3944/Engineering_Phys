@@ -1,0 +1,71 @@
+\documentclass[../ap_2010.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\chapter{電磁気学: 共振器}
+\section{}
+光学長は\(nL\)であるので位相変化は
+\begin{equation}\begin{aligned}[b]
+    \theta = \frac{\omega}{c}nL = \frac{\omega nL}{c}
+\end{aligned}\end{equation}
+\section{}
+\begin{equation}\begin{aligned}[b]
+    2\pi m &= \frac{\omega_m nL}{c}\\
+    \omega_m &= \frac{2\pi c}{nL} m
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    E(t) &= \frac{E_0}{2}\qty[\cos(\frac{2\pi ct}{nL}(m-1))+2\cos(\frac{2\pi ct}{nL}m)+\cos(\frac{2\pi ct}{nL}(m+1))]\\
+    &= E_0\qty(1+\cos\frac{2\pi ct}{nL})\cos\frac{2\pi ct}{nL}m\\
+    &= 2E_0\cos^2\frac{\pi ct}{nL} \cos\frac{2\pi ct}{nL}m
+\end{aligned}\end{equation}
+いま\(n=1\)の時を考えているので、包絡線は
+\begin{equation}\begin{aligned}[b]
+    A(t) = 2E_0\cos^2\frac{\pi ct}{L}
+\end{aligned}\end{equation}
+で極大となる時間間隔は\(L/c\)である。
+
+\section{}
+屈折率は角振動数と波数を用いて
+\begin{equation}\begin{aligned}[b]
+    n = \frac{ck}{\omega} = \frac{c}{\omega}\qty(k_0+\frac{\omega}{v_g}) = \frac{ck_0}{\omega}+\frac{c}{v_g}
+\end{aligned}\end{equation}
+と表せる。
+
+\section{}
+波数が変わったので、これをもとに[1]と[2]で行ったのと同様のことをすると
+\begin{equation}\begin{aligned}[b]
+    2\pi m &= kL = k_0L+\frac{\omega L}{v_g}\\
+    \omega &= -v_gk_0+\frac{2\pi v_g}{L}m
+\end{aligned}\end{equation}
+
+\section{}
+設問[3]と同様にやって
+\begin{equation}\begin{aligned}[b]
+    E(t) &= \frac{E_0}{2}\qty(\cos\qty[\qty(-v_gk_0t+\frac{2\pi v_gt}{L})-\frac{2\pi v_gt}{L}]
+    +\cos\qty[-v_gk_0t+\frac{2\pi v_gt}{L}]
+    +\cos\qty[\qty(-v_gk_0t+\frac{2\pi v_gt}{L})+\frac{2\pi v_gt}{L}])\\
+    &= E_0\qty(1+\cos\frac{2\pi v_g}{L}t)\cos\qty[-v_gk_0t+\frac{2\pi v_gt}{L}]\\
+    &= 2E_0\cos^2\frac{\pi v_gt}{L}\cos\qty[-v_gk_0t+\frac{2\pi v_gt}{L}]
+\end{aligned}\end{equation}
+これより包絡線の隣り合う極大間の時間間隔は\(L/v_g\)
+
+\section{}
+\(i\)番目の極大時刻は\(t=iL/v_g\)であるので、\(\Delta\phi\)は
+\begin{equation}\begin{aligned}[b]
+    \Delta\phi &= \abs{\qty(-v_gk_0+\frac{2\pi v_g}{L}m)\frac{L}{v_g}} = k_0L = \abs{\frac{\omega_0}{\omega_{rep}}}
+\end{aligned}\end{equation}
+分散がないときには\(k=\omega/c\)より、分散があるときの式を\(k_0=0,v_g=c\)にすることで得られる。
+\(\Delta\phi\)は\(k_0\)によって生じているのがわかるので、
+これより光に分散関係がある、つまり群速度と位相測度が違うことによって\(\Delta\phi\)が生じているのがわかる。
+
+\section*{感想}
+設問3で隣接する共振モード3本を外部に取り出すとあるが、
+実際どうやって\(1:2:1\)の振幅になるように取り出しているのだろうか?
+
+
+
+\end{document}
