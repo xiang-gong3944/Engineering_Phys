@@ -29,7 +29,7 @@
     +\int_{\varepsilon_F}^{\mu}\varepsilon D(\varepsilon)d\varepsilon
     +\left.\frac{\pi^2}{6}(k_BT)^2\dv{\varepsilon}\qty(\varepsilon D(\varepsilon))\right|_{\varepsilon=\varepsilon_F}\\
     &\simeq E(0)+\varepsilon_FD_0(\mu-\varepsilon_F)+\frac{\pi^2\varepsilon_F}{6}(k_BT)^2\dv{D(\varepsilon_F)}{\varepsilon}+\frac{\pi^2}{6}(k_BT)^2D_0\\
-    &= E_0 + \frac{\pi^2}{5}D_0(k_BT)^2\\
+    &= E_0 + \frac{\pi^2}{6}D_0(k_BT)^2\\
     C(T) &= \dv{E}{T}=\frac{\pi^2}{3}D_0k_B^2T
 \end{aligned}\end{equation}
 
@@ -42,7 +42,7 @@
     \rho(\omega) = \frac{V}{(2\pi)^3}\int_\omega \frac{dk}{\abs{\grad_k \omega(k)}}
     = \frac{V}{(2\pi)^3}\frac{4\pi k(\omega)^2}{v} = \frac{V}{2\pi^2 v^3}\omega^2
 \end{aligned}\end{equation}
-
+これで求めたのは状態密度であって状態数ではないかも。
 \section{}
 フォノンの振動数の上限を\(\omega_D\)とおく。
 このときフォノンの内部エネルギーは低温であることを使いながら変形すると
@@ -57,7 +57,7 @@
 電子比熱とフォノン比熱をそれぞれ\(\alpha T,\gamma T^3\)のように表すと
 \begin{equation}\begin{aligned}[b]
     C_V &= \alpha T+\gamma T^3\\
-    \frac{C_V}{T} &= \alpha +\gamma T^3
+    \frac{C_V}{T} &= \alpha +\gamma T
 \end{aligned}\end{equation}
 となる。
 これより\(C_V/T\)を\(T^2\)にたいしてプロットすると直線状に並ぶことがわかる。
@@ -72,6 +72,6 @@
 物性をいろいろやってると結構自然な発想だというのに気付けた。
 
 低温での半導体の比熱の測定とかやったことないけど、
-本当にそうなるんですか?
+本当にそうなるのか?
 
 \end{document}
