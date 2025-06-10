@@ -1,0 +1,117 @@
+\documentclass[../ap_2011.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\setcounter{chapter}{3}
+\chapter{固体物理: 結晶場分裂・禁制遷移}
+\section{}
+\subsection*{(a)}
+\begin{equation}\begin{aligned}[b]
+    Y_{00} = \sqrt{\frac{5}{4}}(3\cos^2-1)
+    =\sqrt{\frac{5}{4}}\frac{3r^2\cos^2-r^2}{r^2}\propto 3z^2-r^2
+\end{aligned}\end{equation}
+より(ii)
+
+\subsection*{(b)}
+\begin{equation}\begin{aligned}[b]
+    Y_{22}+Y_{2-2} = \frac{\sqrt{15}}{4\sqrt{2\pi}}\sin\theta(e^{2i\varphi}+e^{-2i\varphi})
+    =\frac{\sqrt{15}}{2\sqrt{2\pi}}\frac{r^2\sin\theta^2\cos^2\varphi-r^2\sin\theta^2\sin^2\varphi}{r^2}\propto x^2-y^2
+\end{aligned}\end{equation}
+より(v)
+
+\subsection*{(c)}
+\begin{equation}\begin{aligned}[b]
+    Y_{21}+Y_{2-1}=-\frac{\sqrt{15}}{2\sqrt{2\pi}}\cos\theta\sin\theta\qty(e^{i\varphi}-e^{-i\varphi})
+    =-i\sqrt{\frac{15}{2\pi}}\frac{r\cos\theta \,r\sin\theta\sin\varphi}{r^2} \propto yz
+\end{aligned}\end{equation}
+より(iii)
+
+\subsection*{(d)}
+\begin{equation}\begin{aligned}[b]
+    Y_{21}-Y_{2-1}=-\frac{\sqrt{15}}{2\sqrt{2\pi}}\cos\theta\sin\theta\qty(e^{i\varphi}+e^{-i\varphi})
+    =-\sqrt{\frac{15}{2\pi}}\frac{r\cos\theta \,r\sin\theta\cos\varphi}{r^2} \propto zx
+\end{aligned}\end{equation}
+より(iv)
+
+\subsection*{(b)}
+\begin{equation}\begin{aligned}[b]
+    Y_{22}-Y_{2-2} = \frac{\sqrt{15}}{4\sqrt{2\pi}}\sin\theta(e^{2i\varphi}-e^{-2i\varphi})
+    =i\frac{\sqrt{15}}{2\sqrt{2\pi}}\frac{r\sin\theta\cos\varphi\times r\sin\theta\cos\varphi}{r^2}\propto xy
+\end{aligned}\end{equation}
+より(i)
+\clearpage
+
+\section{}
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        scale=1.5,
+        every node/.style={font=\small},
+        thick
+    ]
+        % --- 初期状態 (Oh) ---
+        % 分裂前のd軌道
+        \node[left] at (0, 2.5) {\(L=2\)};
+        \draw (0, 2.6) -- (0.8, 2.6);
+        \draw (0, 2.55) -- (0.8, 2.55);
+        \draw (0, 2.5) -- (0.8, 2.5);
+        \draw (0, 2.45) -- (0.8, 2.45);
+        \draw (0, 2.4) -- (0.8, 2.4);
+
+        % Oh に分裂した軌道
+        \node[below] at (2, 0) {$O_h$ (立方晶)};
+        % t2g
+        \draw (1.5, 1.55) -- (2.5, 1.55);
+        \draw (1.5, 1.5) -- (2.5, 1.5);
+        \draw (1.5, 1.45) -- (2.5, 1.45);
+        \node[above] at (2.0, 1.5) {$t_{2g} (d\epsilon)$};
+        \node[below] at (2.0, 1.5) {($d_{xy}, d_{yz}, d_{zx}$)};
+        % eg
+        \draw (1.5, 3.525) -- (2.5, 3.525);
+        \draw (1.5, 3.575) -- (2.5, 3.575);
+        \node[below] at (2.0, 3.5) {$e_g (d\gamma)$};
+        \node[above] at (2.0, 3.5) {($d_{3z^2-r^2}, d_{x^2-y^2}$)};
+
+        % 破線
+        \draw[dashed, thin] (0.8, 2.5) -- (1.5, 1.5);
+        \draw[dashed, thin] (0.8, 2.5) -- (1.5, 3.5);
+
+        % --- 最終状態 (D4h) ---
+        \node[below] at (4.5, 00) {$D_{4h}$ (正方晶)};
+        % b2g (from t2g)
+        \draw (4, 0.5) -- (5, 0.5) node[right] {$(d_{xy}=Y_{22}-Y_{2-2})$};
+        \node[above] at (4.5, 0.5) {\(b_{2g}\)};
+        % eg (from t2g)
+        \draw (4, 1.975) -- (5, 1.975);
+        \draw (4, 2.025) -- (5, 2.025);
+        \node[right] at (5, 2.0) {$(d_{yz},d_{zx}=Y_{21}\pm Y_{2-1})$};
+        \node[above] at (4.5, 2.0) {\(e_g\)};
+        % b1g (from eg)
+        \draw (4, 3.0) -- (5, 3.0) node[right] {$(d_{x^2-y^2}=Y_{22}+Y_{2-2})$};
+        \node[above] at (4.5, 3.0) {\(b_{1g}\)};
+        % a1g (from eg)
+        \draw (4, 4.0) -- (5, 4.0) node[right] {$(d_{3z^2-r^2}=Y_{20})$};
+        \node[above] at (4.5, 4.0) {\(a_{1g}\)};
+
+        % OhからD4hへの分裂を示す破線
+        % t2g -> b2g, eg
+        \draw[dashed, thin] (2.5, 1.5) -- (4, 0.5);
+        \draw[dashed, thin] (2.5, 1.5) -- (4, 2.0);
+        % eg -> b1g, a1g
+        \draw[dashed, thin] (2.5, 3.5) -- (4, 3.0);
+        \draw[dashed, thin] (2.5, 3.5) -- (4, 4.0);
+
+    \end{tikzpicture}
+    \caption*{図: 結晶場分裂による軌道準位の変化}
+\end{figure}
+
+
+
+\section*{感想}
+私の専門なのでニコニコしながら解いてた。
+そのまま卒論に使いたいので、必要以上に記述している。
+
+
+
+\end{document}

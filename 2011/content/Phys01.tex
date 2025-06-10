@@ -1,0 +1,131 @@
+\documentclass[../ap_2011.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\chapter{量子力学:変分法}
+計算ミスを防ぐため、\(\hbar=m=e=/4\pi\epsilon_0 = 1\)の単位系で計算を行い、
+最後に単位を復活させる。
+このとき、距離の単位はボーア半径
+\begin{equation}\begin{aligned}[b]
+    a_B = \frac{4\pi\epsilon_0 \hbar^2}{e^2m}
+\end{aligned}\end{equation}
+で、エネルギーの単位は水素原子の基底状態のエネルギーの2倍である
+\begin{equation}\begin{aligned}[b]
+    E_0 = \frac{e^4m}{(4\pi\epsilon_0)^2\hbar^2}
+\end{aligned}\end{equation}
+である。
+\section{}
+波動関数の規格化条件より\(N\)は\(\alpha\)を使って
+\begin{equation}\begin{aligned}[b]
+    1 &= \int_{0}^{\infty}dr\,4\pi r^2\psi^*(r)\psi(r)
+    = 4\pi\abs{N}^2\int_0^\infty dr\,r^2e^{-2\alpha r}
+    = 4\pi\abs{N}^2\times\frac{2!}{(2\alpha)^3}\\
+    N &= \sqrt{\frac{\alpha^3}{\pi}}
+\end{aligned}\end{equation}
+と書ける。
+
+これよりエネルギーは
+\begin{equation}\begin{aligned}[b]
+    H\psi(r) &=\qty[
+    -\frac{1}{2}\qty(\dv[2]{r}+\frac{2}{r}\dv{r})-\frac{1}{r}]Ne^{-\alpha r}
+    =\qty[-\frac{\alpha^2}{2}+\frac{\alpha-1}{r}]Ne^{-\alpha r}\\
+    E &= \int_{0}^{\infty}dr\,4\pi r^2 \psi^*(r)H\psi(r)
+    = 4\alpha^3\int_{0}^{\infty}dr\,\qty[-\frac{\alpha^2}{2}r^2+(\alpha-1)r]e^{-2\alpha r}\\
+    &= -4\alpha^3\frac{\alpha^2}{2}\frac{2}{(2\alpha)^3}+4\alpha^3(\alpha-1)\frac{1}{(2\alpha)^2}
+    = \frac{\alpha^2}{2}-\alpha\\
+    &=\frac{(\alpha-1)^2}{2}-\frac{1}{2} \geq -\frac{1}{2}
+\end{aligned}\end{equation}
+とわかる。
+なので基底状態のエネルギーは
+\begin{equation}\begin{aligned}[b]
+    E = -\frac{E_0}{2}= -\frac{e^4m}{2(4\pi\epsilon_0)^2\hbar^2}
+\end{aligned}\end{equation}
+とわかる。
+
+また、\(\alpha\)は距離の逆数の次元の量なので\(\alpha=1/a_B\)である。
+これより波動関数は
+\begin{equation}\begin{aligned}[b]
+    \psi(r)=\frac{1}{\sqrt{\pi a_B^3}}e^{-r/a_B}
+    =\sqrt{\frac{e^6m^3}{\pi(4\pi\epsilon_0)^3\hbar^3}}\exp[-\frac{e^2m}{4\pi\epsilon_0\hbar^2}r]
+\end{aligned}\end{equation}
+
+\section{}
+波動関数の規格化条件より\(N\)は\(\alpha\)を使って
+\begin{equation}\begin{aligned}[b]
+    1 &= \int_0^\infty dr\,2\pi r\psi^*(r)\psi(r)
+    =2\pi\abs{N}^2\int_{0}^{\infty}dr\,re^{-2\alpha r}=\frac{2\pi\abs{N}^2}{4\alpha^2}\\
+    N&=\sqrt{\frac{2\alpha^2}{\pi}}
+\end{aligned}\end{equation}
+
+これよりエネルギーは
+\begin{equation}\begin{aligned}[b]
+    H\psi(r) &=\qty[
+    -\frac{1}{2}\qty(\dv[2]{r}+\frac{1}{r}\dv{r})-\frac{1}{r}]Ne^{-\alpha r}
+    =\qty[-\frac{\alpha^2}{2}+\frac{\alpha/2-1}{r}]Ne^{-\alpha r}\\
+    E &= \int_{0}^{\infty}dr\,2\pi r \psi^*(r)H\psi(r)
+    = 4\alpha^2\int_{0}^{\infty}dr\,\qty[-\frac{\alpha^2}{2}r+(\alpha/2-1)]e^{-2\alpha r}\\
+    &= -4\alpha^2\frac{\alpha^2}{2}\frac{1}{(2\alpha)^2}+4\alpha^2(\alpha/2-1)\frac{1}{2\alpha}
+    = \frac{\alpha^2}{2}-2\alpha\\
+    &=\frac{(\alpha-2)^2}{2}-2 \geq -2
+\end{aligned}\end{equation}
+とわかる。
+なので基底状態のエネルギーは
+\begin{equation}\begin{aligned}[b]
+    E = -2E_0= -\frac{2e^4m}{(4\pi\epsilon_0)^2\hbar^2}
+\end{aligned}\end{equation}
+とわかる。
+
+また、\(\alpha\)は距離の逆数の次元の量なので\(\alpha=2/a_B\)である。
+これより波動関数は
+\begin{equation}\begin{aligned}[b]
+    \psi(r)=\sqrt{\frac{8}{\pi a_B^2}}e^{-r/2a_B}
+    =\sqrt{\frac{8e^4m^2}{\pi(4\pi\epsilon_0)^2\hbar^2}}\exp[-\frac{2e^2m}{4\pi\epsilon_0\hbar^2}r]
+\end{aligned}\end{equation}
+
+\section{}
+波動関数の広がりは2次元だと\(1/\alpha=a_B/2\)なのに対し、
+3次元だと\(1/\alpha=a_B\)となっていて、
+2次元の方ときのほうが電子は正電荷により近づいているのがわかる。
+電子が電荷に近づいたことによってクーロンポテンシャルの利得が大きくなるため、
+変分によって得られたエネルギーは2次元ときの方が3次元のときのエネルギーよりも低くなると理解できる。
+
+\section*{感想}
+問題文に『2次元または、3次元空間中、』にとあるが、この書き方はよくないと思われる。
+というのも、2次元空間中といったときに、物質場と電場が両方ともは2次元中にあると読めてしまうためである。
+そうすると、クーロンポテンシャルの形がおかしくなる。
+2次元のポアソン方程式を解いてもよいし、ガウスの法則で電気力線の本数を数えてもよい。
+楽なので後者で計算を進める。
+半径\(r\)の2次元の円周が囲む電荷の量が\(+e\)であるので電場は
+\begin{equation*}\begin{aligned}[b]
+    2\pi rE = +e/\epsilon_0\quad\rightarrow\quad E = \frac{+e}{2\pi\epsilon_0 r}
+\end{aligned}\end{equation*}
+となる。ここで、次元が変わったことにより、誘電率の次元が変わっていることに注意。
+これ自体はローレンツモデル等を計算すると誘電率は\(\epsilon\propto Ne^2/m \propto L^d\)となるのとコンシステントである。
+この電場による電位\(\phi\)は
+\begin{equation*}\begin{aligned}[b]
+    \phi = \int dr E = \frac{e}{2\pi\epsilon_0}\ln r +\text{const.}
+\end{aligned}\end{equation*}
+これより\(-e\)のポテンシャル\(V=-q\phi\)は
+\begin{equation*}\begin{aligned}[b]
+    V = -\frac{e}{2\pi\epsilon_0}\ln r
+\end{aligned}\end{equation*}
+となり、\(\ln r\)の依存性になり、問題で与えられたハミルトニアンとは異なる。
+この結果自体は2次元のスケール不変性のある場の理論からも支持される。
+
+なので、この問題では物質場は2次元、光子場は3次元的に扱っているとわかる。
+そのような問題分をそのような意図にするには、『3次元空間に固定された電荷と電子の状態を求めよ』を[1]にして、
+『電子が空間を自由に動くことができず、2次元平面上のみを動くことができるときの状態を求めよ』を[2]にすればよかったと思われる。
+
+この勘違いの理由としては、物性では2次元系と言ったときに物質は2次元だが、
+光子は3次元的に扱うのが基本だからである。
+ゲージ理論的にも3+1次元中にU(1)ゲージ場はあるともいえる。
+
+相互作用場が物質よりも高次元の場であってもよいという例にも見える。
+そうすると重力理論とかであるグラビトンは高次元を伝播するというのもそんなに変なアイデアではないとわかるし、
+次元によってポテンシャルの冪が変わることから万有引力の冪を実験的に求めようとするというのも納得である。
+
+
+
+\end{document}
