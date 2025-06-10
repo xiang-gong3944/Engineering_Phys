@@ -106,6 +106,76 @@
     \caption*{図: 結晶場分裂による軌道準位の変化}
 \end{figure}
 
+\section{}
+電気双極子相互作用のハミルトニアンを以下のように1階の球テンソルに分けて考える
+\begin{equation}\begin{aligned}[b]
+    H_p = exE_x+eyE_y+ezE_z
+    &= e\qty(-\frac{x+iy}{\sqrt{2}})\underset{E_+^*}{\underline{\qty(-\frac{E_x+iE_y}{\sqrt{2}})^*}}
+    +ezE_z^*
+    +e\qty(\frac{x-iy}{\sqrt{2}})\underset{E_-^*}{\underline{\qty(\frac{E_x-iE_y}{\sqrt{2}})^*}}\\
+    &=\sqrt{\frac{3}{4\pi}}er\qty(Y_{1,1}E_+^* +Y_{1,0}E_z +Y_{1-1}E_-^*)
+\end{aligned}\end{equation}
+そうするとこの相互作用による遷移積分は\(rY_{1m}\)の部分だけを調べて、それの重ね合わせてやればよいのがわかる。
+3d電子自身も球面調和関数\(Y_{2m}\)の重ね合わせであるので次の遷移要素を\(\bra{2,m_f}Y_{1m}\ket{2,m_i} \)を調べればよい。
+角度方向の積分だけ注目すると Gaunt 積分と呼ばれる積分になる。
+\begin{equation}\begin{aligned}[b]
+    \int d\Omega\, Y_{2m_f}^*Y_{1m}Y_{2m_i}
+    = \sqrt{\frac{5\times 3 \times 5}{4\pi}}\begin{pmatrix}
+        2 & 1 & 2\\
+        0 & 0 & 0
+    \end{pmatrix}\begin{pmatrix}
+        2 & 1 & 2\\
+        m_f  & m & m_i
+    \end{pmatrix}
+\end{aligned}\end{equation}
+1つ目の3j記号の列の反対称性によりこの積分は0になるので、
+3d電子内での双極子相互作用による遷移はどの準位間での生じない。
+こんな大道具使わずともd電子が偶関数、双極子が奇関数であり、全体のパリティが奇になるので、
+全領域で積分すると0となるで十分。
+
+\subsubsection*{3j記号について}
+3j記号は角運動量の合成にあらわれるClebsh-Gordan係数を拡張したようなものになっている。
+\begin{equation}\begin{aligned}[b]
+    \bra{l_1m_1;l_2m_2}\ket{L,M}=(-1)^{l_1-l_2+M}\sqrt{2L+1}\begin{pmatrix}
+        l_1 &l_2&L\\
+        m_1 &m_2&-M
+    \end{pmatrix}
+\end{aligned}\end{equation}
+角運動量の合成の合成であるので3j記号内の数字の組で、
+角運動量の合成則を守らないようなときには値が0になる。
+具体的には、
+\begin{equation}\begin{aligned}[b]
+    m_1+m_2-M=0,\quad l_1+l_2+L \in \mathbb{Z},\quad \abs{l_1-l_2}\leq L \leq l_1+l_2
+\end{aligned}\end{equation}
+である。
+
+3jは列の奇置換に関して位相因子が表れる。
+これは角運動量の空間反転の対称性のようなものである。
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        j_1 & j_2 & j_3\\
+        m_1 & m_2 & m_3
+    \end{pmatrix}
+    =(-1)^{j_1+j_2+j_3}\begin{pmatrix}
+        j_2 & j_1 & j_3\\
+        m_2 & m_1 & m_3
+    \end{pmatrix}=(-1)^{j_1+j_2+j_3}\begin{pmatrix}
+        j_1 & j_3 & j_2\\
+        m_1 & m_3 & m_2
+    \end{pmatrix}
+\end{aligned}\end{equation}
+また磁気量子数の反転に関しても位相因子が表れる。
+これは角運動量の時間反転の対称性のようなものである。
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        j_1 & j_2 & j_3\\
+        m_1 & m_2 & m_3
+    \end{pmatrix}
+    =(-1)^{j_1+j_2+j_3}\begin{pmatrix}
+        j_1 & j_2 & j_3\\
+        -m_1 & -m_2 & -m_3
+    \end{pmatrix}
+\end{aligned}\end{equation}
 
 
 \section*{感想}
