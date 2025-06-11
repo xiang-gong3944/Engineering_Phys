@@ -177,10 +177,89 @@
     \end{pmatrix}
 \end{aligned}\end{equation}
 
+\section{}
+磁気双極子相互作用は
+\begin{equation}\begin{aligned}[b]
+    H_M &= \mu_BH_xl_x + \mu_BH_yl_z+\mu_BH_zl_z\\
+    &=\mu_B\underset{H_+^*}{\underline{\qty(-\frac{H_x+iH_y}{\sqrt{2}})^*}}\qty(-\frac{l_x+il_y}{\sqrt{2}})
+    +\mu_BH_z^* l_z
+    +\mu_B\underset{H_-^*}{\underline{\qty(\frac{H_x-iH_y}{\sqrt{2}})^*}}\qty(\frac{l_x-il_y}{\sqrt{2}})
+\end{aligned}\end{equation}
+と書ける。
+
+ファラデーの式をフーリエ変換したものより、
+\begin{equation}\begin{aligned}[b]
+    -\pdv{B}{t}&=\curl E\\
+    i\omega \mu H &= k\times E\\
+    H &\propto k\times E
+\end{aligned}\end{equation}
+\(x\)方向に進む光電場が\(y\)方向の直線偏光を持っているとすると、
+磁場は\(z\)方向に振動する。
+なので、このときの磁気双極子相互作用は
+\begin{equation}\begin{aligned}[b]
+    H_M = \mu_BH_z^* l_z
+\end{aligned}\end{equation}
+である。
+これより
+\begin{equation}\begin{aligned}[b]
+    l_z\ket{d_{3z^2-r^2}} &\propto l_z Y_{20} = 0\\
+    l_z\ket{d_{x^2-y^2}} &\propto l_z (Y_{22}+Y_{2-2}) \propto Y_{22}-Y_{2-2} \propto \ket{d_{xy}}\\
+    l_z\ket{d_{yz}} &\propto l_z (Y_{21}+Y_{2-1}) \propto Y_{21}-Y_{2-1}\propto \ket{d_{zx}}\\
+    l_z\ket{d_{zx}} &\propto l_z (Y_{21}-Y_{2-1}) \propto Y_{21}+Y_{2-1} \propto \ket{d_{yz}}\\
+    l_z\ket{d_{xy}} &\propto l_z l_z (Y_{22}+Y_{2-2}) \propto Y_{22}+Y_{2-2} \propto \ket{d_{x^2-y^2}}
+\end{aligned}\end{equation}
+とわかる。つまり、\(y\)方向の偏光直線偏光によって、
+\begin{equation}\begin{aligned}[b]
+    \ket{d_{xy}}\leftrightarrow \ket{d_{x^2-y^2}},\qquad \ket{d_{yz}}\leftrightarrow \ket{d_{zx}}
+\end{aligned}\end{equation}
+間の遷移が可能であるとわかる。
+
+\(z\)方向の直線偏光の光電場の磁場は\(y\)方向に振動する。
+なので磁気双極子相互作用は
+\begin{equation}\begin{aligned}[b]
+    H_M = -i\mu_BH_yl_+ + i\mu_BH_yl_-
+\end{aligned}\end{equation}
+と書ける。
+これより、
+\begin{equation}\begin{aligned}[b]
+    (-l_+ +l_-)\ket{d_{3z^2-r^2}} &\propto (-l_+ +l_-) Y_{20} = -Y_{21}+Y_{2-1} \propto \ket{d_{zx}}\\
+    (-l_+ +l_-)\ket{d_{x^2-y^2}} &\propto (-l_+ +l_-) (Y_{22}+Y_{2-2}) \propto Y_{21}-Y_{2-1} \propto \ket{d_{yz}}\\
+    (-l_+ +l_-)\ket{d_{yz}} &\propto (-l_+ +l_-) (Y_{21}+Y_{2-1}) \propto -Y_{22}+Y_{2-2} \propto \ket{d_{x^2-y^2}}\\
+    (-l_+ +l_-)\ket{d_{zx}} &\propto (-l_+ +l_-) (Y_{21}-Y_{2-1}) \propto -Y_{22}-Y_{2-2}+2Y_{20} \propto \ket{d_{xy}}+\ket{d_{3z^2-r^2}}\\
+    (-l_+ +l_-)\ket{d_{xy}} &\propto (-l_+ +l_-) (Y_{22}+Y_{2-2}) \propto Y_{21}-Y_{2-1} \propto \ket{d_{zx}}
+\end{aligned}\end{equation}
+とわかる。つまり、\(y\)方向の偏光直線偏光によって、
+\begin{equation}\begin{aligned}[b]
+    \ket{d_{3z^2-r^2}},\,\ket{d_{xy}}\leftrightarrow \ket{d_{zx}},\quad \ket{d_{x^2-y^2}}\leftrightarrow\ket{d_{yz}}
+\end{aligned}\end{equation}
+間の遷移が可能であるとわかる。
+
+いま、光の吸収が両者であったことから電子は\(\ket{d_{xy}}\)まで詰まっているとわかるため、
+吸収される入射光のエネルギーが大きい(A)は\(y\)偏光の光電場、
+吸収される入射光のエネルギーが小きい(B)は\(z\)偏光の光電場とわかる。
 
 \section*{感想}
 私の専門なのでニコニコしながら解いてた。
-そのまま卒論に使いたいので、必要以上に記述している。
+そのまま卒論の素材に使いたいので、必要以上に記述している。
+J.J. Sakurai の3章にある回転の表現や球テンソル演算子についてはて追ったことある人もいるだろうけど、
+具体例がないのでなかなか馴染めてない人が多そう。
+
+ここら辺の光学遷移則は黙って計算するか、結果だけ認めて使うのでも十分ではあるが、
+球テンソル演算子表記にすると光の角運動量が1であるというような表現の由来がわかるのも良い。
+ベクトルは1階のテンソルであり、
+Wigner-Eckart の定理により回転に対して共変な1階の球テンソルは
+\(L=1\)の角運動量に比例定数をつけた恰好になるというのが、
+抽象的な表現論での言い方である。
+それはこの問題で追ってみたように、
+1階の球テンソルは光を独立な円偏光と\(z\)偏光の重ね合わせとみなして、
+それに対応する演算子は電気双極子だったら\(Y_{1m}\), 磁気双極子だったら\(l_z,l_\pm\)が出てくるので
+それらは角運動量とよく結びついているとわかる。
+
+最後の[4]はこれで合ってるのだろうけど、
+\(z\)軸のひずみが小さいとしているので、
+(B)の遷移は大分小さくて見えないんじゃないかなと思う。
+もしかして\(0<1-\frac{c}{a}\ll 1\)という式は正方晶での結晶場分裂がよく見える程度にはゆがんでいるが、
+もともとの結晶の形を大きく変化はしていないというのを表しているのだろうか?
 
 
 

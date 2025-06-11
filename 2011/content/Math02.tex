@@ -1,0 +1,99 @@
+\documentclass[../ap_2011.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{1}
+\chapter{線形代数: 対称行列と2次形式}
+\section{}
+アインシュタインの縮約を使い、ベクトル表示と成分表示を行き来することにする。
+\(x^\mathsf{T}Ax/2-x^\mathsf{T}b\)の停留値となる\(x\)の条件は
+\begin{equation}\begin{aligned}[b]
+    0&=\nabla\qty( \frac{1}{2}x^\mathsf{T}Ax-x^\mathsf{T}b) = \pdv{x_i}\qty(\frac{1}{2}A_{jk}x_jx_k-x_jb_j)\\
+    &=\frac{1}{2}\delta_{ij}A_{jk}x_k+\frac{1}{2}\delta_{ik}A_{jk}x_j-\delta_{ij}b_j=\frac{A_{ij}+A_{ji}}{2}x_j-b_i
+\end{aligned}\end{equation}
+いま、\(A\)は対称行列で\(A_{ij}=A_{ji}\)より
+\begin{equation}\begin{aligned}[b]
+    0&=A_{ij}x_j-b=Ax-b\\
+    Ax &= b
+\end{aligned}\end{equation}
+これを逆にたどれば、\(Ax=b\)を\(x\)について解いたものは\(x^\mathsf{T}Ax/2-x^\mathsf{T}b\)の停留値となるのもわかるので示せた。
+
+\section{}
+\(B\)の固有値方程式を考える。
+固有値を\(\lambda\)とすると、
+\begin{equation}\begin{aligned}[b]
+    0 &= \abs{B-cI}
+    =\begin{vmatrix}
+        6-\lambda & 2 & 2\\
+        2 & 7-\lambda & 0\\
+        2 & 0 & 5-\lambda
+    \end{vmatrix}
+    =(5-\lambda)\begin{vmatrix}
+        6-\lambda & 2 \\
+        2 & 7-\lambda
+    \end{vmatrix}
+    +2\begin{vmatrix}
+        2 & 2\\
+        7-\lambda & 0
+    \end{vmatrix}\\
+    &=(5-\lambda)(6-\lambda)(7-\lambda)-4(5-\lambda)-4(7-\lambda)
+    =(5-\lambda)(6-\lambda)(7-\lambda)-8(6-\lambda)\\
+    &=(6-\lambda)(\lambda^2-12\lambda+27)=(6-\lambda)(3-\lambda)(9-\lambda)
+\end{aligned}\end{equation}
+これより\(c_1=9,c_2=6,c_3=3\)となる。
+また、\(A\)は対称行列であるため、
+固有値に対応する大きさ1の固有ベクトルを並べることで\(A\)を対角化する\(D\)を作ることができる。
+よって\(D\)は
+\begin{equation}\begin{aligned}[b]
+    D =\begin{pmatrix}
+        2/3&1/3&2/3\\
+        2/3&-2/3&-1/3\\
+        1/3&2/3&-2/3
+    \end{pmatrix}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    B^k\begin{pmatrix}
+        2 \\1\\0
+    \end{pmatrix}
+    =B^k\qty(2\begin{pmatrix}
+        2/3\\2/3\\1/3
+    \end{pmatrix}
+    +\begin{pmatrix}
+        2/3\\-1/3\\-2/3
+    \end{pmatrix})
+    =\qty(2\times9^k\begin{pmatrix}
+        2/3\\2/3\\1/3
+    \end{pmatrix}
+    +3^k\begin{pmatrix}
+        2/3\\-1/3\\-2/3
+    \end{pmatrix})
+\end{aligned}\end{equation}
+これより
+\begin{equation}\begin{aligned}[b]
+    \frac{a_k}{b_k}=\frac{4\times 9^k+2\times 3^k}{4\times 9^k- 3^k}\to 1\quad(k\to\infty)
+\end{aligned}\end{equation}
+となる。
+
+\section{}
+\(y=(y_1\,y_2\,y_3)^\mathsf{T}, z=(z_1\,z_2\,z_3)^\mathsf{T}\)とする。
+このとき、\(D\)は直交行列であるので\(z^\mathsf{T}z=y^\mathsf{T}y\)が成り立つことに注意して
+\(f\)を変形していく。
+\begin{equation}\begin{aligned}[b]
+    f
+    =\frac{1}{4} +\frac{y^\mathsf{T} B y^\mathsf{T}}{4y^\mathsf{T}y}
+    =\frac{1}{4} +\frac{z^\mathsf{T} C z^\mathsf{T}}{4z^\mathsf{T}z}
+    =\frac{1}{4} +\frac{9z_1^2+6z_2^2+3z_3^2}{4z^\mathsf{T}z}
+    = 1 +\frac{3}{4}\frac{3z_1^2+2z_2^2}{z^\mathsf{T}z}
+\end{aligned}\end{equation}
+ここで、\(z_1=r\sin\theta\cos\varphi,z_2=r\sin\theta\sin\varphi,z_3=r\cos\theta\)として極座標で表示すると
+\begin{equation}\begin{aligned}[b]
+    f=1+\frac{3}{4}\sin^2\theta(3\cos^2\varphi+2\sin^2\varphi)
+    =1+\frac{3}{4}\sin^2\theta(\cos^2\varphi+2)\geq 1
+\end{aligned}\end{equation}
+となるので最小値は 1
+
+\end{document}

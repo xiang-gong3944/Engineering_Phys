@@ -1,0 +1,113 @@
+\documentclass[../ap_2011.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{0}
+\chapter{積分・偏微分方程式}
+\section{}
+\subsection{}
+\(x=a\tan\theta\)と置換すると
+\begin{equation}\begin{aligned}[b]
+    I_{n+1}=\int \frac{dx}{(x^2+a^2)^{n+1}}
+    = \int \frac{1}{a^{2n*2}(1+\tan^2\theta)^{n+1}}\frac{ad\theta}{\cos^2\theta}
+    = \frac{1}{a^{2n+1}}\int\cos^{2n}\theta\,d\theta
+\end{aligned}\end{equation}
+ここで、
+\begin{equation}\begin{aligned}[b]
+    \int\cos^{2n}\theta\,d\theta&=\int \cos^{2n-2}\theta(1-\sin\theta^2)d\theta\\
+    &=\int\cos^{2n-2}\theta\,d\theta-\int\qty(-\frac{1}{2n-1}\cos^{2n-1}\theta)'\sin\theta\,d\theta\\
+    &=\int\cos^{2n-2}\theta\,d\theta+\frac{1}{2n-1}\cos^{2n-1}\theta\sin\theta +C -\frac{1}{2n-1}\int\cos^{2n}\theta\,d\theta\\
+    \frac{2n}{2n-1}\int\cos^{2n}\theta\,d\theta &= \int\cos^{2n-2}\theta\,d\theta+\frac{1}{2n-1}\cos^{2n}\theta\tan\theta +C\\
+    \int\cos^{2n}\theta\,d\theta &= \frac{2n-1}{2n}\int\cos^{2n-2}\theta\,d\theta+\frac{\tan\theta}{2n(1+\tan^2\theta)^n} +C
+\end{aligned}\end{equation}
+より、
+\begin{equation}\begin{aligned}[b]
+    I_{n+1}&=\frac{2n-1}{2na^2}I_n+\frac{1}{2na^2}\frac{a\tan\theta}{a^{2n}(1+\tan^2\theta)^n}+C\\
+    &=\frac{1}{2na^2}\qty[(2n-1)I_n+\frac{x}{(x^2+a^2)^n}]+C
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    I_1 &= \int \frac{dx}{x^2+a^2} = \frac{1}{a}\tan^{-1}\frac{x}{a}\\
+    I_2 &= \frac{1}{2a^2}\qty[I_1+\frac{x}{x^2+a^2}] = \frac{1}{2a^3}\tan^{-1}\frac{x}{a}+\frac{x}{2a^2(x^2+a^2)}
+\end{aligned}\end{equation}
+
+\subsection{}
+被積分関数を以下のように部分分数分解をする。
+\begin{equation}\begin{aligned}[b]
+    \frac{4x^2+2x^3+10x^2+3x+9}{(x+1)(x^2+2)^2}
+    =\frac{a}{x+1}+\frac{bx+c}{x^2+2}+\frac{dx+e}{(x^2+2)^2}
+    =\frac{2}{x+1}+\frac{2x}{x^2+2}+\frac{-2x+1}{(x^2+2)^2}
+\end{aligned}\end{equation}
+これより
+\begin{equation}\begin{aligned}[b]
+    \int\frac{4x^2+2x^3+10x^2+3x+9}{(x+1)(x^2+2)^2}dx
+    &=\int\qty(\frac{2}{x+1}+\frac{2x}{x^2+2}+\frac{-2x}{(x^2+2)^2}+\frac{1}{(x^2+2)^2})dx\\
+    &=2\ln\abs{x+1}+\ln\abs{x^2+2}+\ln\abs{(x^2+2)^2}+\frac{1}{4\sqrt{2}}\tan^{-1}\frac{x}{\sqrt{2}}+\frac{x}{4(x^2+2)}\\
+    &=\ln[(x+1)^2(x^2+2)^3]+\frac{1}{4\sqrt{2}}\tan^{-1}\frac{x}{\sqrt{2}}+\frac{x}{4(x^2+2)}
+\end{aligned}\end{equation}
+
+\section{}
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \pdv{t}&=\pdv{\xi}{t}\pdv{\xi}+\pdv{\eta}{t}\pdv{\eta}=c\qty(\pdv{\xi}-\pdv{\eta})\\
+    \pdv{x}&=\pdv{\xi}{x}\pdv{\xi}+\pdv{\eta}{x}\pdv{\eta}=\pdv{\xi}+\pdv{\eta}
+\end{aligned}\end{equation}
+より、
+\begin{equation}\begin{aligned}[b]
+    0&=\qty(\frac{\partial^2}{c^2\partial t^2}-\pdv[2]{x})u\\
+    &=\qty(\pdv[2]{\xi}+\pdv[2]{\eta}-2\frac{\partial^2}{\partial\xi\partial\eta}
+    -\pdv[2]{\xi}-\pdv[2]{\eta}-2\frac{\partial^2}{\partial\xi\partial\eta})u\\
+    &=\pdv[2]{u}{\xi}{\eta}
+\end{aligned}\end{equation}
+となり、問の前半が示せた。
+
+後半については、前半で得られた関係式の両辺を\(\eta\)で積分すると
+\begin{equation}\begin{aligned}[b]
+    0&=\int\pdv[2]{u}{\xi}{\eta}d\eta = \pdv{u}{\zeta}+f(\xi)
+\end{aligned}\end{equation}
+さらに\(\xi\)で微分して
+\begin{equation}\begin{aligned}[b]
+    0&=\int\qty(\pdv{u}{\zeta}+f(\xi))=u+\int f(\xi)d\xi +g(\eta)\\
+    u &=-\int f(\xi)d\xi -g(\eta)
+\end{aligned}\end{equation}
+そして改めて\(\xi\)の関数である\(\int f(\xi)d\xi\)を\(\phi(\xi)\),
+\(\eta\)の関数である\(-g(\eta)\)を\(\varphi(\eta)\)とおきなおすと
+\begin{equation}\begin{aligned}[b]
+    u = \phi(\xi)+\varphi(\eta) = \phi(x+ct)+\varphi(x-ct)
+\end{aligned}\end{equation}
+となり、一般解の形が得られた。
+
+\subsection{}
+\(g(x)\)の原始関数を\(G(x)\)とおくと式(5)は
+\begin{equation}\begin{aligned}[b]
+    u(x,t)=\frac{1}{2}\qty(f(x+ct)+f(x-xt))+\frac{1}{2c}\qty(G(x+ct)-G(x-ct))
+\end{aligned}\end{equation}
+となり、一般解の形を満たすため、偏微分方程式の解の候補であるのがわかる。
+境界条件を満たすかを確かめていく。
+1つ目の境界条件は
+\begin{equation}\begin{aligned}[b]
+    u(x,0)=\frac{1}{2}\qty(f(x+0)+f(x-0))+\frac{1}{2c}\int_{x-0}^{x+0}g(s)ds=f(x)
+\end{aligned}\end{equation}
+より満たしているのがわかる。
+2つ目の境界条件は
+\begin{equation}\begin{aligned}[b]
+    \pdv{t}u(x,t)&=\frac{1}{2c}\qty(f'(x+ct)-f'(x-ct))+\frac{1}{2}\qty(g(x+ct)+g(x-xt))\\
+    \left.\pdv{t}u(x,t)\right|_{t=0}&=g(x)\\
+\end{aligned}\end{equation}
+より満たしているのがわかる。
+以上より式(5)は求める解であるのがわかる。
+
+\subsection{}
+この境界条件は全問で調べた形であるので、
+解はヘヴィサイドの階段関数\(\theta(x)\)を用いて
+\begin{equation}\begin{aligned}[b]
+    u(x,t)=\frac{1}{2c}\int_{x-ct}^{x+ct}c_0\delta(s)ds = \frac{c_0}{2c}\qty[\theta(x+ct)-\theta(x-ct)]
+\end{aligned}\end{equation}
+となる。
+この解は単一矩形波が伝播しているような解である。
+
+
+\end{document}

@@ -19,7 +19,7 @@
 % \usepackage{circuitikz} %電気回路をtex中で書く
 % \usepackage{caption} %番号なしキャプションを書く
 % \usepackage{cancel} %式中に斜線を入れる
-% \usepackage{tensor} %テンソルの添え字を書く
+\usepackage{tensor} %テンソルの添え字を書く
 \usepackage{tikz} %図を書く
 % \usepackage{ascmac} %四角い枠の中に文章を書く
 % \usepackage{float} %figureで[hbp]オプションを使う
@@ -52,14 +52,12 @@
 \maketitle
 
 % コメントアウトにより master に入れるか入れないかを決める。
-\chapter*{物理}
 \subfile{./content/Phys01.tex}
 \subfile{./content/Phys02.tex}
 % \subfile{./content/Phys03.tex}
 \subfile{./content/Phys04.tex}
-\chapter*{数学}
+\subfile{./content/Math01.tex}
+\subfile{./content/Math02.tex}
 
-\bibliographystyle{junsrt}
-\bibliography{reference}
 
 \end{document}
