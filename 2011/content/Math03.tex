@@ -46,4 +46,23 @@
     \int_\Gamma g(z)dz = 2\pi i\Res[g,z=-i]=-\pi\ln 2+i\frac{\pi^2}{2}
 \end{aligned}\end{equation}
 
+\section{}
+半径\(R\)の経路を\(C_1(R),\Gamma_1(R)\)のように書くことにすると、
+\begin{equation}\begin{aligned}[b]
+    \int_{C_2+C_1} \frac{\log(z+i)}{z^2+1} dz +\int_{-\Gamma_1-\Gamma_2} \frac{\log(z+i)}{z^2+1} dz
+    &= \int_{-R}^{R}\frac{\ln(z+i)+\ln(z-i)}{z^2+1}dz +\int_{C_1(R)}\frac{\log(z+i)}{z^2+1} dz -\int_{\Gamma_1(R)}\frac{\log(z-i)}{z^2+1} dz\\
+    \pi\ln2+i\frac{\pi^2}{2}-\qty(-\pi\ln 2+i\frac{\pi^2}{2})
+    &= \int_{-\infty}^{\infty}\frac{\ln(x^2+1)}{x^2+1}dx+\int_{C_1(\infty)}\frac{\log(z+i)}{z^2+1} dz -\int_{\Gamma_1(\infty)}\frac{\log(z-i)}{z^2+1} dz\\
+    2\pi\ln2 &= 2\int_{0}^{\infty}\frac{\ln(x^2+1)}{x^2+1}dx\\
+    \int_{0}^{\infty}\frac{\ln(x^2+1)}{x^2+1}dx &= \pi\ln2
+\end{aligned}\end{equation}
+
+\section{}
+前問で得られた積分の変数を\(x=\tan\theta\)に変えると、
+\begin{equation}\begin{aligned}[b]
+    \pi\ln2 &= \int_{0}^{\pi/2}\frac{\ln(\tan^2\theta+1)}{\tan^2\theta+1}\frac{d\theta}{\cos^2\theta}\\
+    &= -2\int_{0}^{\pi/2}\ln(\cos\theta)d\theta = -2I\\
+    I&= -\frac{\pi}{2}\ln2
+\end{aligned}\end{equation}
+
 \end{document}

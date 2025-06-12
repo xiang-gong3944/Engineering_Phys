@@ -1,0 +1,124 @@
+\documentclass[../ap_2011.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\setcounter{chapter}{2}
+\chapter{電磁気学: ゼーマン分裂の古典論}
+\section{}
+\begin{equation}\begin{aligned}[b]
+    m\ddot{\vb*{r}} = -k\vb*{r}+q\dot{\vb*{r}}\times \vb*{B}\\
+    \begin{cases}
+        m\ddot{x} &= -kx +qB\dot{y}\\
+        m\ddot{y} &= -ky -qB\dot{x}\\
+        m\ddot{z} &= -kz
+    \end{cases}
+\end{aligned}\end{equation}
+これより、\(z\)成分は単振動することがわかるので固有角振動数は
+\begin{equation}\begin{aligned}[b]
+    \omega_0 = \sqrt{\frac{k}{m}}
+\end{aligned}\end{equation}
+
+\section{}
+前問の運動方程式に問で与えられた解の形を代入すると
+\begin{equation}\begin{aligned}[b]
+    &\begin{cases}
+        -m\Omega^2 a\cos\Omega t &= -ka\cos\Omega t + qB\Omega b\cos\Omega t\\
+        -m\Omega^2 b\sin\Omega t &= -kb\sin\Omega t + qB\Omega a\cos\Omega t
+    \end{cases}
+    \begin{pmatrix}
+        \omega_0^2-\Omega^2 & -\frac{qB}{m}\Omega\\
+        -\frac{qB}{m}\Omega & \omega_0^2-\Omega^2
+    \end{pmatrix}\begin{pmatrix}
+        a\\b
+    \end{pmatrix}
+\end{aligned}\end{equation}
+となる。この連立方程式が非自明な解を持つ条件より
+\begin{equation}\begin{aligned}[b]
+    0 &= (\omega_0^2-\Omega^2)^2-\qty(\frac{qB}{m}\Omega)\\
+    &= \qty(\Omega^2-\frac{qB}{m}\Omega -\omega_0^2)\qty(\Omega^2+\frac{qB}{m}\Omega -\omega_0^2)\\
+    \Omega &= \omega_0\sqrt{1+\qty(\frac{qB}{2m\omega_0})^2}\pm\frac{qB}{2m},\quad -\omega_0\sqrt{1+\qty(\frac{qB}{2m\omega_0})^2}\pm\frac{qB}{2m}
+\end{aligned}\end{equation}
+このうち振動数が正のものが求める解なので
+\begin{equation}\begin{aligned}[b]
+    \Omega = \omega_0\sqrt{1+\qty(\frac{qB}{2m\omega_0})^2}\pm\frac{qB}{2m}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \Omega \simeq \omega_0\qty{1+\frac{1}{2}\qty(\frac{qB}{2m})^2}\pm\frac{qB}{2m}
+    =\omega_0 \pm\frac{qB}{2m} +\frac{\omega_0}{2}\qty(\frac{qB}{2m\omega_0})^2
+\end{aligned}\end{equation}
+
+\section{}
+磁場を掛ける前には角振動数\(\omega_0\)で右回りと左回りに荷電粒子が回る状態は縮退していたが、
+磁場を掛けるとローレンツ力によって加速する回り方と減速する回り方になるため、
+右周りと左回りで回転速度が変わるため。
+(束縛された荷電粒子の軌道運動が磁場をかけたことによりゼーマン分裂が生じたから。)
+
+\section{}
+\(z\)方向は減衰するため、定常解には影響しない。
+\(x,y\)方向の運動方程式は
+\begin{equation}\begin{aligned}[b]
+    &\begin{cases}
+        m\ddot{x} &= -kx -m\gamma\dot{x} +qB\dot{y}+qE\cos\omega t\\
+        m\ddot{y} &= -ky -m\gamma\dot{y} -qB\dot{x}
+    \end{cases}\\
+    &\begin{cases}
+        \ddot{x} &= -\omega_0^2x -\gamma\dot{x} +\frac{qB}{m}\dot{y}+\frac{qE}{m}\cos\omega t\\
+        \ddot{y} &= -\omega_0^2 y -\gamma\dot{y} -\frac{qB}{m}\dot{x}
+    \end{cases}\\
+    &\begin{cases}
+        \dv[2]{t}(x+iy) &= -\omega_0^2(x+iy) -\qty(\gamma+i\frac{qB}{m})\dv{t}(x+iy)+\frac{qE}{m}\cos\omega t\\
+        \dv[2]{t}(x-iy) &= -\omega_0^2(x-iy) -\qty(\gamma-i\frac{qB}{m})\dv{t}(x-iy)+\frac{qE}{m}\cos\omega t
+    \end{cases}
+\end{aligned}\end{equation}
+のようにまとめることができる。ここで、\(u_\pm=x\pm iy\)のようにおくと運動方程式は
+\begin{equation}\begin{aligned}[b]
+    \ddot{u}_\pm +\omega_0^2u_\pm +\qty(\gamma\pm i\frac{qB}{m})\dot{u}_\pm =\frac{qE}{m}\cos\omega t
+\end{aligned}\end{equation}
+のようにまとめれる。
+
+これの定常解の形を
+\begin{equation}\begin{aligned}[b]
+    u_{\pm} = A_{\pm}e^{i\omega t}+B_{\pm}e^{-i\omega t}
+\end{aligned}\end{equation}
+のように置く。
+すると調べる量は
+\begin{equation}\begin{aligned}[b]
+    \overline{x(t)^2+y(t)^2}
+    =\overline{u_+(t)u_-(t)}
+    =\overline{A_+B_- +A_-B_+ + A_+A_-e^{2i\omega t} +B_+B_- e^{-2i\omega t}}
+    =A_+B_- +A_-B_+
+\end{aligned}\end{equation}
+とわかる。
+
+運動方程式に代入して、\(e^{i\omega t}\)と\(e^{-i\omega t}\)の係数を見ると
+\begin{equation}\begin{aligned}[b]
+    \qty[\omega_0^2-\omega^2\mp\omega\frac{qB}{m}+i\omega \gamma]A_\pm &= \frac{qE}{2m}\\
+    \qty[\omega_0^2-\omega^2\pm\omega\frac{qB}{m}-i\omega \gamma]B_\pm &= \frac{qE}{2m}
+\end{aligned}\end{equation}
+これより
+\begin{equation}\begin{aligned}[b]
+    A_+B_-
+    &= \qty(\frac{qE}{2m})^2\frac{1}{\omega_0^2-\omega^2-\omega\frac{qB}{m}+i\omega\gamma}\frac{1}{\omega_0^2-\omega^2-\omega\frac{qB}{m}-i\omega\gamma}\\
+    &= \qty(\frac{qE}{2m})^2\frac{1}{\qty(\omega_0^2-\omega^2-\omega\frac{qB}{m})^2+\omega^2\gamma^2}\\
+    A_-B_+
+    &= \qty(\frac{qE}{2m})^2\frac{1}{\omega_0^2-\omega^2+\omega\frac{qB}{m}+i\omega\gamma}\frac{1}{\omega_0^2-\omega^2+\omega\frac{qB}{m}-i\omega\gamma}\\
+    &= \qty(\frac{qE}{2m})^2\frac{1}{\qty(\omega_0^2-\omega^2+\omega\frac{qB}{m})^2+\omega^2\gamma^2}
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    \overline{x(t)^2+y(t)^2}
+    &=\frac{1}{2}\qty(\frac{qE}{2m})^2\qty[\frac{1}{\qty(\omega_0^2-\omega^2-\omega\frac{qB}{m})^2+\omega^2\gamma^2}
+    +\frac{1}{\qty(\omega_0^2-\omega^2+\omega\frac{qB}{m})^2+\omega^2\gamma^2}]
+\end{aligned}\end{equation}
+
+
+
+\section*{感想}
+ゼーマン分裂は量子論でやることが多いけど、古典論でも同じ結果が得られるのは感動しますよね。
+
+
+
+\end{document}

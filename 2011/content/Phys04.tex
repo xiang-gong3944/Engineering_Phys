@@ -8,7 +8,7 @@
 \section{}
 \subsection*{(a)}
 \begin{equation}\begin{aligned}[b]
-    Y_{00} = \sqrt{\frac{5}{4}}(3\cos^2-1)
+    Y_{20} = \sqrt{\frac{5}{4}}(3\cos^2-1)
     =\sqrt{\frac{5}{4}}\frac{3r^2\cos^2-r^2}{r^2}\propto 3z^2-r^2
 \end{aligned}\end{equation}
 より(ii)
@@ -34,7 +34,7 @@
 \end{aligned}\end{equation}
 より(iv)
 
-\subsection*{(b)}
+\subsection*{(e)}
 \begin{equation}\begin{aligned}[b]
     Y_{22}-Y_{2-2} = \frac{\sqrt{15}}{4\sqrt{2\pi}}\sin\theta(e^{2i\varphi}-e^{-2i\varphi})
     =i\frac{\sqrt{15}}{2\sqrt{2\pi}}\frac{r\sin\theta\cos\varphi\times r\sin\theta\cos\varphi}{r^2}\propto xy
@@ -107,16 +107,28 @@
 \end{figure}
 
 \section{}
-電気双極子相互作用のハミルトニアンを以下のように1階の球テンソルに分けて考える
+電気双極子相互作用のハミルトニアンを以下のように1階の球テンソルに分けて考える。
 \begin{equation}\begin{aligned}[b]
-    H_p = exE_x+eyE_y+ezE_z
-    &= e\qty(-\frac{x+iy}{\sqrt{2}})\underset{E_+^*}{\underline{\qty(-\frac{E_x+iE_y}{\sqrt{2}})^*}}
+    H_E = exE_x+eyE_y+ezE_z
+    &= e\qty(-\frac{x+iy}{\sqrt{2}})\underset{E_1^*}{\underline{\qty(-\frac{E_x+iE_y}{\sqrt{2}})^*}}
     +ezE_z^*
-    +e\qty(\frac{x-iy}{\sqrt{2}})\underset{E_-^*}{\underline{\qty(\frac{E_x-iE_y}{\sqrt{2}})^*}}\\
+    +e\qty(\frac{x-iy}{\sqrt{2}})\underset{E_{-1}^*}{\underline{\qty(\frac{E_x-iE_y}{\sqrt{2}})^*}}\\
     &=\sqrt{\frac{3}{4\pi}}er\qty(Y_{1,1}E_+^* +Y_{1,0}E_z +Y_{1-1}E_-^*)
 \end{aligned}\end{equation}
-そうするとこの相互作用による遷移積分は\(rY_{1m}\)の部分だけを調べて、それの重ね合わせてやればよいのがわかる。
-3d電子自身も球面調和関数\(Y_{2m}\)の重ね合わせであるので次の遷移要素を\(\bra{2,m_f}Y_{1m}\ket{2,m_i} \)を調べればよい。
+これは円偏光\(E_{\pm1}\)を入れたときに電気双極子\(P_{\pm 1}\propto rY_{1m}\)が活性になるというように読み替えたものに対応する。
+
+これらはの要素は独立であるので、
+\begin{equation}\begin{aligned}[b]
+    H_{Em} = \sqrt{\frac{3}{4\pi}}r Y_{1m}E_{1m}^*
+\end{aligned}\end{equation}
+のように円偏光を入れたときの遷移を調べ、これの重ね合わせによって他の遷移を表すことができる。
+
+始状態と終状態を\(\ket{2,m_i}=R_{32}(r)Y_{2m_i},\ket{2,m_f}=R_{32}Y_{2m_f}\)とおいて、
+遷移要素\(\bra{2,m_f}H_{Em}\ket{2,m_i}\)を調べる。
+\begin{equation}\begin{aligned}[b]
+    \bra{2,m_f}H_{Em}\ket{2,m_i}
+    &= \int_{0}^{\infty}r^2dr P_{32}^2(r)\sqrt{\frac{3}{4\pi}}er\int d\Omega\, Y_{2m_f}^*Y_{1m}Y_{2m_i}
+\end{aligned}\end{equation}
 角度方向の積分だけ注目すると Gaunt 積分と呼ばれる積分になる。
 \begin{equation}\begin{aligned}[b]
     \int d\Omega\, Y_{2m_f}^*Y_{1m}Y_{2m_i}
@@ -130,8 +142,9 @@
 \end{aligned}\end{equation}
 1つ目の3j記号の列の反対称性によりこの積分は0になるので、
 3d電子内での双極子相互作用による遷移はどの準位間での生じない。
-こんな大道具使わずともd電子が偶関数、双極子が奇関数であり、全体のパリティが奇になるので、
-全領域で積分すると0となるで十分。
+
+実は、こんな大道具使わずともd電子が偶関数、双極子が奇関数であり、全体のパリティが奇になるので、
+全領域で積分すると0となるで十分ではある。
 
 \subsubsection*{3j記号について}
 3j記号は角運動量の合成にあらわれるClebsh-Gordan係数を拡張したようなものになっている。
@@ -181,19 +194,23 @@
 磁気双極子相互作用は
 \begin{equation}\begin{aligned}[b]
     H_M &= \mu_BH_xl_x + \mu_BH_yl_z+\mu_BH_zl_z\\
-    &=\mu_B\underset{H_+^*}{\underline{\qty(-\frac{H_x+iH_y}{\sqrt{2}})^*}}\qty(-\frac{l_x+il_y}{\sqrt{2}})
+    &=\mu_B\underset{H_1^*}{\underline{\qty(-\frac{H_x+iH_y}{\sqrt{2}})^*}}\qty(-\frac{l_x+il_y}{\sqrt{2}})
     +\mu_BH_z^* l_z
-    +\mu_B\underset{H_-^*}{\underline{\qty(\frac{H_x-iH_y}{\sqrt{2}})^*}}\qty(\frac{l_x-il_y}{\sqrt{2}})
+    +\mu_B\underset{H_{-1}^*}{\underline{\qty(\frac{H_x-iH_y}{\sqrt{2}})^*}}\qty(\frac{l_x-il_y}{\sqrt{2}})
 \end{aligned}\end{equation}
 と書ける。
 
+問題文で与えられているのは光電場の偏光のほうこうなので、
+磁場に読み替える必要がある。
 ファラデーの式をフーリエ変換したものより、
 \begin{equation}\begin{aligned}[b]
     -\pdv{B}{t}&=\curl E\\
     i\omega \mu H &= k\times E\\
     H &\propto k\times E
 \end{aligned}\end{equation}
-\(x\)方向に進む光電場が\(y\)方向の直線偏光を持っているとすると、
+磁場と光の偏光の向きの関係がわかる。
+
+この式より、\(x\)方向に進む光電場が\(y\)方向の直線偏光を持っているとすると、
 磁場は\(z\)方向に振動する。
 なので、このときの磁気双極子相互作用は
 \begin{equation}\begin{aligned}[b]
@@ -206,7 +223,7 @@
     l_z\ket{d_{x^2-y^2}} &\propto l_z (Y_{22}+Y_{2-2}) \propto Y_{22}-Y_{2-2} \propto \ket{d_{xy}}\\
     l_z\ket{d_{yz}} &\propto l_z (Y_{21}+Y_{2-1}) \propto Y_{21}-Y_{2-1}\propto \ket{d_{zx}}\\
     l_z\ket{d_{zx}} &\propto l_z (Y_{21}-Y_{2-1}) \propto Y_{21}+Y_{2-1} \propto \ket{d_{yz}}\\
-    l_z\ket{d_{xy}} &\propto l_z l_z (Y_{22}+Y_{2-2}) \propto Y_{22}+Y_{2-2} \propto \ket{d_{x^2-y^2}}
+    l_z\ket{d_{xy}} &\propto l_z (Y_{22}-Y_{2-2}) \propto Y_{22}+Y_{2-2} \propto \ket{d_{x^2-y^2}}
 \end{aligned}\end{equation}
 とわかる。つまり、\(y\)方向の偏光直線偏光によって、
 \begin{equation}\begin{aligned}[b]
@@ -223,14 +240,14 @@
 これより、
 \begin{equation}\begin{aligned}[b]
     (-l_+ +l_-)\ket{d_{3z^2-r^2}} &\propto (-l_+ +l_-) Y_{20} = -Y_{21}+Y_{2-1} \propto \ket{d_{zx}}\\
-    (-l_+ +l_-)\ket{d_{x^2-y^2}} &\propto (-l_+ +l_-) (Y_{22}+Y_{2-2}) \propto Y_{21}-Y_{2-1} \propto \ket{d_{yz}}\\
-    (-l_+ +l_-)\ket{d_{yz}} &\propto (-l_+ +l_-) (Y_{21}+Y_{2-1}) \propto -Y_{22}+Y_{2-2} \propto \ket{d_{x^2-y^2}}\\
-    (-l_+ +l_-)\ket{d_{zx}} &\propto (-l_+ +l_-) (Y_{21}-Y_{2-1}) \propto -Y_{22}-Y_{2-2}+2Y_{20} \propto \ket{d_{xy}}+\ket{d_{3z^2-r^2}}\\
-    (-l_+ +l_-)\ket{d_{xy}} &\propto (-l_+ +l_-) (Y_{22}+Y_{2-2}) \propto Y_{21}-Y_{2-1} \propto \ket{d_{zx}}
+    (-l_+ +l_-)\ket{d_{x^2-y^2}} &\propto (-l_+ +l_-) (Y_{22}+Y_{2-2}) \propto Y_{21}-Y_{2-1} \propto \ket{d_{zx}}\\
+    (-l_+ +l_-)\ket{d_{yz}} &\propto (-l_+ +l_-) (Y_{21}+Y_{2-1}) \propto -Y_{22}+Y_{2-2} \propto \ket{d_{xy}}\\
+    (-l_+ +l_-)\ket{d_{zx}} &\propto (-l_+ +l_-) (Y_{21}-Y_{2-1}) \propto -Y_{22}-Y_{2-2}+2Y_{20} \propto \ket{d_{x^2-y^2}}+\ket{d_{3z^2-r^2}}\\
+    (-l_+ +l_-)\ket{d_{xy}} &\propto (-l_+ +l_-) (Y_{22}-Y_{2-2}) \propto Y_{21}+Y_{2-1} \propto \ket{d_{yz}}
 \end{aligned}\end{equation}
 とわかる。つまり、\(y\)方向の偏光直線偏光によって、
 \begin{equation}\begin{aligned}[b]
-    \ket{d_{3z^2-r^2}},\,\ket{d_{xy}}\leftrightarrow \ket{d_{zx}},\quad \ket{d_{x^2-y^2}}\leftrightarrow\ket{d_{yz}}
+    \ket{d_{3z^2-r^2}},\,\ket{d_{x^2-y^2}}\leftrightarrow \ket{d_{zx}},\quad \ket{d_{xy}}\leftrightarrow\ket{d_{yz}}
 \end{aligned}\end{equation}
 間の遷移が可能であるとわかる。
 

@@ -1,0 +1,99 @@
+\documentclass[../ap_2011.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{4}
+\chapter{ラプラス変換}
+\section{}
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    L[u(t-a)]=\int_{0}^{\infty}u(t-a)e^{-st}dt
+    = \int_{a}^{\infty} e^{-st}dt = \frac{e^{-as}}{s}
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    L[f(t-a)u(t-a)]=\int_{a}^{\infty}f(t-a)e^{-st}dt = e^{-as}\int_{0}^{\infty}f(t)e^{-st} dt = e^{-as}F(s)
+\end{aligned}\end{equation}
+
+\subsection{}
+微分は
+\begin{equation}\begin{aligned}[b]
+    \dv[2]{x(t)}{t} &\to s^2X(s)-sx(0)-\dv{x(0)}{t} = s^2X(s)\\
+    \dv{x(t)}{t} &\to sX(s)-x(0) = sX(s)
+\end{aligned}\end{equation}
+というように変換されるので、
+\begin{equation}\begin{aligned}[b]
+    L\qty[\dv[2]{x(t)}{t}+4\dv{x(t)}{t}+3x(t)]&=L\qty[u(t-2)-u(t-5)]\\
+    s^2X(s)+4sX(s)+3X(s) &= \frac{e^{-2s}-e^{-5s}}{s}\\
+    X(s) &= \frac{e^{-2s}-e^{-5s}}{s(s+1)(s+3)}\\
+\end{aligned}\end{equation}
+これを逆変換する。\(\gamma\)を\(X(s)\)すべての極の実部よりも大きい値として、
+\begin{equation}\begin{aligned}[b]
+    x(t) &= \frac{1}{2\pi i}\int_{\gamma-i\infty}^{\gamma+i\infty}X(s)e^{st}ds\\
+    &= \frac{1}{2\pi i}\int_{\gamma-i\infty}^{\gamma+i\infty}\frac{e^{(t-2)s}}{s(s+1)(s+3)}
+    -\frac{1}{2\pi i}\int_{\gamma-i\infty}^{\gamma+i\infty}\frac{e^{(t-55)s}}{s(s+1)(s+3)}
+\end{aligned}\end{equation}
+\(a=2,5\)のいずれかとして、
+\((t-a)>0\)のとき、\(s=-\infty+i0\)を通る半円の経路での積分の値は無視できて、
+\((t-a)<0\)のとき、\(s=+\infty+i0\)を通る半円の経路での積分の値は無視できる。
+この半円に\((\gamma-\infty,\gamma+\infty)\)を合わせた経路で積分をすると、
+留数定理より、経路の内側の留数だけを取ってくればよい。
+前者のときは\(\gamma\)の取り方よりすべて留数を足し合わせたもの、後者は特異点がないので\(0\)となる(参考:図)。
+よって
+\begin{equation}\begin{aligned}[b]
+    x(t) &== u(t-2)\sum_j\Res[\frac{e^{(t-2)s}}{s(s+1)(s+3)},s_j]-u(t-5)\sum_j\Res[\frac{e^{(t-5)s}}{s(s+1)(s+3)},s_j]\\
+    &=u(t-2)\qty[\frac{1}{3}-\frac{e^{-(t-2)}}{2}+\frac{e^{-3(t-2)}}{6}]-u(t-5)\qty[\frac{1}{3}-\frac{e^{-(t-5)}}{2}+\frac{e^{-3(t-5)}}{6}]
+\end{aligned}\end{equation}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        >=latex,
+        font=\small,
+        decoration={
+            markings,
+            mark=at position 0.5 with {\arrow{>}}
+        }
+    ]
+
+    % Axes
+    \draw[->] (-2.5,0) -- (5,0) node[below left] {$\text{Re}(s)$};
+    \draw[->] (0,-4) -- (0,4) node[below left] {$\text{Im}(s)$};
+    \node[below right] at (0,0) {$0$};
+
+    % Bromwich contour
+    \draw[thick, black, postaction={decorate}] (1,-3) -- (1,3);
+    \draw[thick, blue, postaction={decorate}] (1,3) arc(90:270:3 and 3);
+    \draw[thick, red, postaction={decorate}] (1,3) arc(90:-90:3 and 3);
+
+    % Labels for the contour
+    \node[above] at (1,3) {$\gamma+i\infty$};
+    \node[below] at (1,-3) {$\gamma-i\infty$};
+    \node[above] at (3.5,0) {$+\infty$};
+    \node[above] at (-2.5,0) {$-\infty$};
+
+    % Singularities (example)
+    \fill (0,0) circle (2pt) node[above right] {$s_1$};
+    \fill (-0.5,0) circle (2pt) node[below] {$s_2$};
+    \fill (-1.5,0) circle (2pt) node[below] {$s_3$};
+
+    \end{tikzpicture}
+    \caption*{図: 設問I-3のラプラス逆変換をする際の積分経路の選択}
+\end{figure}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    L[h(t)] = \int_0^\infty (-1)^ng(t-nT)e^{-st}dt
+    = (-1)^n\int_{nT}^{(n+1)T}g(t-nT)e^{-st}dt
+    =(-e^{-sT})^n\int_{0}^{T}g(t)e^{-st}dt
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    A(s) = (-e^{sT})^n
+\end{aligned}\end{equation}
+
+
+\end{document}

@@ -16,18 +16,20 @@
 \usepackage{mathrsfs}
 \usepackage{url}
 \usepackage{titlesec}
+\usepackage[version=4]{mhchem} %化学式の入力
+% \usepackage{tensor} %テンソルの添え字を書く
 % \usepackage{circuitikz} %電気回路をtex中で書く
 % \usepackage{caption} %番号なしキャプションを書く
 % \usepackage{cancel} %式中に斜線を入れる
-\usepackage{tensor} %テンソルの添え字を書く
-\usepackage{tikz} %図を書く
 % \usepackage{ascmac} %四角い枠の中に文章を書く
 % \usepackage{float} %figureで[hbp]オプションを使う
 % \usepackage{hyperref}  \usepackage{pxjahyper} %ハイパーリンクをつかう
 % \usepackage{tablefootnote} %表中に注釈をいれる
 % \usepackage[thicklines]{cancel} %数式中の取り消し線
-\usepackage[version=4]{mhchem} %化学式の入力
 % \usepackage{wrapfig} %文章の回り込み
+
+\usepackage{tikz} %図を書く
+\usetikzlibrary{arrows.meta, decorations.markings}
 
 % \graphicspath{{./image/}}
 
@@ -54,10 +56,12 @@
 % コメントアウトにより master に入れるか入れないかを決める。
 \subfile{./content/Phys01.tex}
 \subfile{./content/Phys02.tex}
-% \subfile{./content/Phys03.tex}
+\subfile{./content/Phys03.tex}
 \subfile{./content/Phys04.tex}
 \subfile{./content/Math01.tex}
 \subfile{./content/Math02.tex}
+\subfile{./content/Math03.tex}
+\subfile{./content/Math05.tex}
 
 
 \end{document}
