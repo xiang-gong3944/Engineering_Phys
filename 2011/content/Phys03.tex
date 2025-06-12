@@ -25,13 +25,13 @@
     &\begin{cases}
         -m\Omega^2 a\cos\Omega t &= -ka\cos\Omega t + qB\Omega b\cos\Omega t\\
         -m\Omega^2 b\sin\Omega t &= -kb\sin\Omega t + qB\Omega a\cos\Omega t
-    \end{cases}
-    \begin{pmatrix}
+    \end{cases}\\
+    &\begin{pmatrix}
         \omega_0^2-\Omega^2 & -\frac{qB}{m}\Omega\\
         -\frac{qB}{m}\Omega & \omega_0^2-\Omega^2
     \end{pmatrix}\begin{pmatrix}
         a\\b
-    \end{pmatrix}
+    \end{pmatrix}=0
 \end{aligned}\end{equation}
 となる。この連立方程式が非自明な解を持つ条件より
 \begin{equation}\begin{aligned}[b]
@@ -95,8 +95,8 @@
 
 運動方程式に代入して、\(e^{i\omega t}\)と\(e^{-i\omega t}\)の係数を見ると
 \begin{equation}\begin{aligned}[b]
-    \qty[\omega_0^2-\omega^2\mp\omega\frac{qB}{m}+i\omega \gamma]A_\pm &= \frac{qE}{2m}\\
-    \qty[\omega_0^2-\omega^2\pm\omega\frac{qB}{m}-i\omega \gamma]B_\pm &= \frac{qE}{2m}
+    \qty(\omega_0^2-\omega^2\mp\omega\frac{qB}{m}+i\omega \gamma)A_\pm &= \frac{qE}{2m}\\
+    \qty(\omega_0^2-\omega^2\pm\omega\frac{qB}{m}-i\omega \gamma)B_\pm &= \frac{qE}{2m}
 \end{aligned}\end{equation}
 これより
 \begin{equation}\begin{aligned}[b]
@@ -114,11 +114,26 @@
     +\frac{1}{\qty(\omega_0^2-\omega^2+\omega\frac{qB}{m})^2+\omega^2\gamma^2}]
 \end{aligned}\end{equation}
 
+\section{}
+\subsection*{\(\gamma\ll qB/m \ll \omega_0\)の場合}
 
+\subsection*{\(qB/m\ll\gamma \ll  \omega_0\)の場合}
+\(\omega_0^2-\omega^2=(\omega_0+\omega)(\omega_0-\omega)\simeq 2\omega_0(\omega_0-\omega)\)や、
+\(\gamma\omega\simeq\gamma\omega_0\)を使って整理する。
+\(qB/m\)の項が無視されるので、
+\begin{equation}\begin{aligned}[b]
+    \overline{x(t)^2+y(t)^2}
+    &=\frac{1}{2}\qty(\frac{qE}{2m})^2\qty[\frac{1}{\qty(\omega_0^2-\omega^2-\omega\frac{qB}{m})^2+\omega^2\gamma^2}
+    +\frac{1}{\qty(\omega_0^2-\omega^2+\omega\frac{qB}{m})^2+\omega^2\gamma^2}]\\
+    &\simeq \qty(\frac{qE}{2m})^2\frac{1}{\qty(\omega_0^2-\omega^2)^2+\omega^2\gamma^2}\\
+    &\simeq \qty(\frac{qE}{2m})^2\frac{1}{\qty(2\omega_0(\omega_0-\omega))^2+4\omega_0^2\gamma^2}
+    = \qty(\frac{qE}{4m\omega_0})^2\frac{1}{\qty(\omega_0-\omega)^2+\gamma^2}
+\end{aligned}\end{equation}
+となる。つまり、\(\gamma\)によるぼやけが強すぎてゼーマン分裂が見えず、単一のローレンツピークとなる。
 
 \section*{感想}
 ゼーマン分裂は量子論でやることが多いけど、古典論でも同じ結果が得られるのは感動しますよね。
-
+ただ、後半の計算量が多いように感じた。何か早くやる方法はないのだろうか?
 
 
 \end{document}
