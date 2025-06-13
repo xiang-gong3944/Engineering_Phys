@@ -123,11 +123,11 @@
 \end{aligned}\end{equation}
 のように円偏光を入れたときの遷移を調べ、これの重ね合わせによって他の遷移を表すことができる。
 
-始状態と終状態を\(\ket{2,m_i}=R_{32}(r)Y_{2m_i},\ket{2,m_f}=R_{32}Y_{2m_f}\)とおいて、
+始状態と終状態を\(\ket{2,m_i}=R_{32}(r)Y_{2m_i}(\Omega),\ket{2,m_f}=R_{32}(r)Y_{2m_f}(\Omega)\)とおいて、
 遷移要素\(\bra{2,m_f}H_{Em}\ket{2,m_i}\)を調べる。
 \begin{equation}\begin{aligned}[b]
     \bra{2,m_f}H_{Em}\ket{2,m_i}
-    &= \int_{0}^{\infty}r^2dr P_{32}^2(r)\sqrt{\frac{3}{4\pi}}er\int d\Omega\, Y_{2m_f}^*Y_{1m}Y_{2m_i}
+    &= \int_{0}^{\infty}r^2dr P_{32}^2(r)\sqrt{\frac{3}{4\pi}}er\int d\Omega\, Y_{2m_f}^*(\Omega)Y_{1m}(\Omega)Y_{2m_i}(\Omega)
 \end{aligned}\end{equation}
 角度方向の積分だけ注目すると Gaunt 積分と呼ばれる積分になる。
 \begin{equation}\begin{aligned}[b]
@@ -143,8 +143,9 @@
 1つ目の3j記号の列の反対称性によりこの積分は0になるので、
 3d電子内での双極子相互作用による遷移はどの準位間での生じない。
 
-実は、こんな大道具使わずともd電子が偶関数、双極子が奇関数であり、全体のパリティが奇になるので、
-全領域で積分すると0となるで十分ではある。
+実は、こんな大道具使わずともd電子が偶関数、双極子が奇関数であるので、
+遷移要素を計算する被積分関数のパリティが奇になるので、
+全領域で積分すると0となるから電気双極子遷移が生じないという説明で十分である。
 
 \subsubsection*{3j記号について}
 3j記号は角運動量の合成にあらわれるClebsh-Gordan係数を拡張したようなものになっている。
@@ -205,7 +206,7 @@
 ファラデーの式をフーリエ変換したものより、
 \begin{equation}\begin{aligned}[b]
     -\pdv{B}{t}&=\curl E\\
-    i\omega \mu H &= k\times E\\
+    i\omega \mu H &= ik\times E\\
     H &\propto k\times E
 \end{aligned}\end{equation}
 磁場と光の偏光の向きの関係がわかる。

@@ -113,23 +113,47 @@
     &=\frac{1}{2}\qty(\frac{qE}{2m})^2\qty[\frac{1}{\qty(\omega_0^2-\omega^2-\omega\frac{qB}{m})^2+\omega^2\gamma^2}
     +\frac{1}{\qty(\omega_0^2-\omega^2+\omega\frac{qB}{m})^2+\omega^2\gamma^2}]
 \end{aligned}\end{equation}
+この量は光を入れたときのゼーマン分裂があるときの吸収スペクトルに対応する。
 
 \section{}
 \subsection*{\(\gamma\ll qB/m \ll \omega_0\)の場合}
+\(\gamma\ll qB/m\)というのは、基本\(\gamma\)を考えなくてもよいが、
+\((\omega_0^2-\omega^2\mp\omega\frac{qB}{m})^2\)が\(0\)になるようなときには考慮しなければならないことを意味する。
 
-\subsection*{\(qB/m\ll\gamma \ll  \omega_0\)の場合}
-\(\omega_0^2-\omega^2=(\omega_0+\omega)(\omega_0-\omega)\simeq 2\omega_0(\omega_0-\omega)\)や、
-\(\gamma\omega\simeq\gamma\omega_0\)を使って整理する。
-\(qB/m\)の項が無視されるので、
+そのような振動数は\(\omega = \Omega= \omega_0 \mp qB/2m\)であると設問[2]で求めた。
+そのとき\(\omega_0\gg qB/2m\)より
+\begin{equation}\begin{aligned}[b]
+    \omega_0^2\mp\omega\frac{qB}{m}-\omega^2
+    \simeq\qty(\omega_0\mp\frac{qB}{2m}+\omega)\qty(\omega_0\mp\frac{qB}{2m}-\omega)
+    \simeq 2\qty(\omega_0\mp\frac{qB}{2m})\qty(\omega_0\mp\frac{qB}{2m}-\omega)
+    \simeq 2\omega_0\qty(\omega_0\mp\frac{qB}{2m}-\omega)
+\end{aligned}\end{equation}
+\begin{equation}\begin{aligned}[b]
+    \omega\gamma \simeq \qty(\omega_0\mp\frac{qB}{2m}) \gamma\simeq \omega_0 \gamma
+\end{aligned}\end{equation}
+よって
 \begin{equation}\begin{aligned}[b]
     \overline{x(t)^2+y(t)^2}
     &=\frac{1}{2}\qty(\frac{qE}{2m})^2\qty[\frac{1}{\qty(\omega_0^2-\omega^2-\omega\frac{qB}{m})^2+\omega^2\gamma^2}
     +\frac{1}{\qty(\omega_0^2-\omega^2+\omega\frac{qB}{m})^2+\omega^2\gamma^2}]\\
-    &\simeq \qty(\frac{qE}{2m})^2\frac{1}{\qty(\omega_0^2-\omega^2)^2+\omega^2\gamma^2}\\
-    &\simeq \qty(\frac{qE}{2m})^2\frac{1}{\qty(2\omega_0(\omega_0-\omega))^2+4\omega_0^2\gamma^2}
-    = \qty(\frac{qE}{4m\omega_0})^2\frac{1}{\qty(\omega_0-\omega)^2+\gamma^2}
+    &\simeq\frac{1}{2}\qty(\frac{qE}{2m})^2\qty[\frac{1}{4\omega_0^2\qty(\omega_0-\frac{qB}{2m}-\omega)^2+\omega_0^2\gamma^2}
+    +\frac{1}{4\omega_0^2\qty(\omega_0+\frac{qB}{2m}-\omega)^2+\omega_0^2\gamma^2}]\\
+    &\simeq\frac{1}{2}\qty(\frac{qE}{4m\omega_0})^2\qty[\frac{1}{\qty(\omega_0-\frac{qB}{2m}-\omega)^2+\gamma^2/4}
+    +\frac{1}{\qty(\omega_0+\frac{qB}{2m}-\omega)^2+\gamma^2/4}]
 \end{aligned}\end{equation}
-となる。つまり、\(\gamma\)によるぼやけが強すぎてゼーマン分裂が見えず、単一のローレンツピークとなる。
+
+\subsection*{\(qB/m\ll\gamma \ll  \omega_0\)の場合}
+1つ前の場合では\(\gamma\ll qB/2m\)という条件を使ってなかった。
+今の場合ではこれを考慮すればよく、それには\(qB/m\to0\)とすればよいので、
+\begin{equation}\begin{aligned}[b]
+    \overline{x(t)^2+y(t)^2}
+    &\simeq\frac{1}{2}\qty(\frac{qE}{4m\omega_0})^2\qty[\frac{1}{\qty(\omega_0-\frac{qB}{2m}-\omega)^2+\gamma^2/4}
+    +\frac{1}{\qty(\omega_0+\frac{qB}{2m}-\omega)^2+\gamma^2/4}]\\
+    &= \qty(\frac{qE}{4m\omega_0})^2\frac{1}{\qty(\omega_0-\omega)^2+\gamma^2/4}
+\end{aligned}\end{equation}
+となる。
+つまり、\(\gamma\)によるぼやけが強すぎてゼーマン分裂が見えず、単一のローレンツピークとなったと解釈できる。
+(\url{https://www.desmos.com/calculator/qboaxcxtuc})
 
 \section*{感想}
 ゼーマン分裂は量子論でやることが多いけど、古典論でも同じ結果が得られるのは感動しますよね。
