@@ -1,0 +1,108 @@
+\documentclass[../ap_2012.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{0}
+\chapter{量子力学:角運動量・p電子系}
+\section{}
+\begin{equation}\begin{aligned}[b]
+    J_x &= \begin{pmatrix}
+        \mel{1,+1}{J_x}{1,+1} & \mel{1,+1}{J_x}{1,0} & \mel{1,+1}{J_x}{1,-1}\\
+        \mel{1,0}{J_x}{1,+1} & \mel{1,0}{J_x}{1,0} & \mel{1,0}{J_x}{1,-1}\\
+        \mel{1,-1}{J_x}{1,+1} & \mel{1,-1}{J_x}{1,0} & \mel{1,-1}{J_x}{1,-1}
+    \end{pmatrix}\\
+    &= \frac{1}{2}\begin{pmatrix}
+        \mel{1,+1}{(J_++J_-)}{1,+1} & \mel{1,+1}{(J_++J_-)}{1,0} & \mel{1,+1}{(J_++J_-)}{1,-1}\\
+        \mel{1,0}{(J_++J_-)}{1,+1} & \mel{1,0}{(J_++J_-)}{1,0} & \mel{1,0}{(J_++J_-)}{1,-1}\\
+        \mel{1,-1}{(J_++J_-)}{1,+1} & \mel{1,-1}{(J_++J_-)}{1,0} & \mel{1,+-}{(J_++J_-)}{1,-1}
+    \end{pmatrix}\\
+    &= \frac{\hbar}{\sqrt{2}}\begin{pmatrix}
+        0 & 1 & 0\\
+        1 & 0 & 1\\
+        0 & 1 & 0
+    \end{pmatrix}
+\end{aligned}\end{equation}
+\begin{equation}\begin{aligned}[b]
+    J_y &= \begin{pmatrix}
+        \mel{1,+1}{J_y}{1,+1} & \mel{1,+1}{J_y}{1,0} & \mel{1,+1}{J_y}{1,-1}\\
+        \mel{1,0}{J_y}{1,+1} & \mel{1,0}{J_y}{1,0} & \mel{1,0}{J_y}{1,-1}\\
+        \mel{1,-1}{J_y}{1,+1} & \mel{1,-1}{J_y}{1,0} & \mel{1,-1}{J_y}{1,-1}
+    \end{pmatrix}\\
+    &= \frac{1}{2i}\begin{pmatrix}
+        \mel{1,+1}{(J_+-J_-)}{1,+1} & \mel{1,+1}{(J_+-J_-)}{1,0} & \mel{1,+1}{(J_+-J_-)}{1,-1}\\
+        \mel{1,0}{(J_+-J_-)}{1,+1} & \mel{1,0}{(J_+-J_-)}{1,0} & \mel{1,0}{(J_+-J_-)}{1,-1}\\
+        \mel{1,-1}{(J_+-J_-)}{1,+1} & \mel{1,-1}{(J_+-J_-)}{1,0} & \mel{1,+-}{(J_+-J_-)}{1,-1}
+    \end{pmatrix}\\
+    &= \frac{\hbar}{\sqrt{2}}\begin{pmatrix}
+        0 & -i & 0\\
+        i & 0 & -i\\
+        0 & i & 0
+    \end{pmatrix}
+\end{aligned}\end{equation}
+\begin{equation}\begin{aligned}[b]
+    J_z &= \hbar\begin{pmatrix}
+        1 & 0 & 0\\
+        0 & 0 & 0\\
+        0 & 0 & -1
+    \end{pmatrix}
+\end{aligned}\end{equation}
+
+\section{}
+ハミルトニアンは
+\begin{equation}\begin{aligned}[b]
+    H_M = -\gamma B J_z
+\end{aligned}\end{equation}
+であり、\(z\)軸を対角化の基底に取っているので固有値は
+\begin{equation}\begin{aligned}[b]
+    E= -\gamma \hbar B,\quad 0,\quad\gamma\hbar B
+\end{aligned}\end{equation}
+となる。
+
+\section{}
+相互作用表示したときの状態ベクトルの時間発展の式より
+\begin{equation}\begin{aligned}[b]
+    i\hbar\pdv{t}\sum_m c_m(t) \ket{1,m}&=-2\gamma B_{RF}J_x\sum_m c_m(t) \ket{1,m}\\
+    i\hbar\pdv{t}\begin{pmatrix}
+        {c_1(t)}\\
+        {c_0(t)}\\
+        {c_{-1}(t)}
+    \end{pmatrix}
+    &=-2\gamma \hbar B_{RF}\frac{1}{\sqrt{2}}\begin{pmatrix}
+        0 & 1 & 0\\
+        1 & 0 & 1\\
+        0 & 1 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+        {c_1(t)}\\
+        {c_0(t)}\\
+        {c_{-1}(t)}
+    \end{pmatrix}
+\end{aligned}\end{equation}
+\(J_x\)は
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        1 & 0 & 0\\
+        0 & 0 & 0\\
+        0 & 0 & -1
+    \end{pmatrix}
+    =\begin{pmatrix}
+        1 & 1/\sqrt{2} & 1\\
+        1/\sqrt{2} & 0 & -1/\sqrt{2}\\
+        1 & -1/\sqrt{2} & 1\\
+    \end{pmatrix}
+    J_x\begin{pmatrix}
+        1 & 1/\sqrt{2} & 1\\
+        1/\sqrt{2} & 0 & -1/\sqrt{2}\\
+        1 & -1/\sqrt{2} & 1
+    \end{pmatrix}
+\end{aligned}\end{equation}
+によって対角化できるので、
+
+\section*{感想}
+
+
+
+
+\end{document}

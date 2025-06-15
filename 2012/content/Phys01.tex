@@ -1,0 +1,86 @@
+\documentclass[../ap_2012.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{0}
+\chapter{古典力学:拘束力・回転運動}
+\section{}
+質点の運動を拘束する張力\(T\)は運動の方向に垂直なので
+\subsection*{(i)}
+\(dW=T\dot vdt=0\)より仕事をしないから、運動エネルギーは保存する。
+\subsection*{(ii)}
+\(dN=T\times vdt\neq 0\)よりモーメントが生じるから、角運動量は保存しない。
+
+\section{}
+点Qの座標は\((a\cos\varphi,a\sin\varphi)\)で、
+糸の長さは\(l_0-a\varphi\)より点Qからみた質点の位置は
+\(-(l_0-a\varphi)\sin\varphi,(l_0-a\varphi)\cos\varphi\)なので、
+質点の座標は
+\begin{equation}\begin{aligned}[b]
+    r(t) = \Bigl(a\cos\varphi-(l_0-a\varphi)\sin\varphi,a\sin\varphi+(l_0-a\varphi)\cos\varphi\Bigr)
+\end{aligned}\end{equation}
+となる。
+
+これより速度ベクトルは
+\begin{equation}\begin{aligned}[b]
+    \dot{r}(t) =-(l_0-a\varphi)\dot{\varphi}\Bigl(\cos\varphi,\sin\varphi\Bigr)
+\end{aligned}\end{equation}
+
+角運動量は
+\begin{equation}\begin{aligned}[b]
+    L&=-m(l_0-a\varphi)\dot{\varphi}\qty[
+        \qty{a\cos\varphi-(l_0-a\varphi)\sin\varphi}\sin\varphi
+        -\qty{a\sin\varphi+(l_0-a\varphi)\cos\varphi}\cos\varphi]\\
+    &=m(l_0-a\varphi)^2\dot{\varphi}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \abs{\dot{r}}=\abs{(l_0-a\varphi)\dot{\phi}} = \abs{\dot{r}(0)}=v_0
+\end{aligned}\end{equation}
+より
+\begin{equation}\begin{aligned}[b]
+    (l_0-a\varphi)\dot{\varphi} = v_0
+\end{aligned}\end{equation}
+両辺を時間で積分して
+\begin{equation}\begin{aligned}[b]
+    l_0-\frac{a}{2}\varphi^2 = v_0t
+\end{aligned}\end{equation}
+\(\varphi=l/a\)となるときが求める時間\(\tau\)なので
+\begin{equation}\begin{aligned}[b]
+    \frac{l_0^2}{a}-\frac{l_0^2}{2a}&=v_0\tau\\
+    \tau &= \frac{2a v_0}{l_0^2}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    T = \frac{mv_0^2}{l_0-a\varphi}\Bigl(\sin\varphi, -\cos\varphi\Bigr)
+\end{aligned}\end{equation}
+これは、微小時間間隔でみると、半径\(l_0-a\varphi\)の等速円運動となる。
+
+\section{}
+張力のモーメントは
+\begin{equation}\begin{aligned}[b]
+    N &= \frac{mv_0^2}{l_0-a\varphi}\qty[
+        -\qty{a\cos\varphi-(l_0-a\varphi)\sin\varphi}\cos\varphi
+        -\qty{a\sin\varphi+(l_0-a\varphi)\cos\varphi}\sin\varphi]\\
+    &=-\frac{mv_0^2}{l_0-a\varphi}a = -mv_0 a\dot{\varphi}
+\end{aligned}\end{equation}
+角運動量の時間微分は
+\begin{equation}\begin{aligned}[b]
+    \dv{L}{t} &= \dv{t}\qty(m(l_0-a\varphi)^2\dot{\varphi})\\
+    &=mv_0\dv{t}\qty(l_0-a\varphi) = -mv_0 a\dot{\varphi}
+\end{aligned}\end{equation}
+となり確かに
+\begin{equation}\begin{aligned}[b]
+    \dv{t}L(t)=N(t)
+\end{aligned}\end{equation}
+が成り立っているのがわかる。
+
+\section*{感想}
+設問[4]は先に結果がわかったので、それを満たすように張力をいきなり出してごまかしたけど、
+正攻法はどうすべきだったのだろうか?
+
+\end{document}

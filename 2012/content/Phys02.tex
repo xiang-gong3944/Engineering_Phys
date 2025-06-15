@@ -1,0 +1,77 @@
+\documentclass[../ap_2012.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{1}
+\chapter{電磁気学:ジュール熱}
+\section{}
+\subsection{}
+散乱の影響を平均化した運動方程式は加速度の項が0となるので
+\begin{equation}\begin{aligned}[b]
+    0 &= -\frac{m}{2\tau}v_a+qE\\
+    v_a &= \frac{2q\tau}{m}E
+\end{aligned}\end{equation}
+
+\subsection{}
+速度\(v_a\)密度\(n\)の電荷\(q\)の作る電流密度\(j\)は
+\begin{equation}\begin{aligned}[b]
+    j = nqv_a = \frac{2nq^2\tau}{m}E
+\end{aligned}\end{equation}
+これより電気伝導率は
+\begin{equation}\begin{aligned}[b]
+    \sigma = \frac{2nq^2\tau}{m}
+\end{aligned}\end{equation}
+となる。
+また、電流密度を電流、電場の強さを電圧に直すと
+\begin{equation}\begin{aligned}[b]
+    I &= j \times \pi a^2 = \sigma \pi a^2 E =\frac{\sigma \pi a^2}{L} V
+\end{aligned}\end{equation}
+より、電流が電圧に比例することがわかる。
+
+\subsection{}
+単位時間単位体積当たりのジュール熱は
+\begin{equation}\begin{aligned}[b]
+    J=\frac{VI}{\pi a^2L} = \frac{I^2}{\sigma \pi^2a^4}
+\end{aligned}\end{equation}
+
+散乱によって電子が失う運動エネルギーは時間\(2\tau\)の間に速度\(v_a\)で\(qE\)の力場中を動いたときに得られるエネルギーのことである。
+なのでそれの単位時間のエネルギー\(J'\)は
+\begin{equation}\begin{aligned}[b]
+    J' = \frac{2\tau n v_a qE }{2\tau}= jE = \frac{VI}{\pi a^2 L}
+\end{aligned}\end{equation}
+より、ジュール熱は散乱による運動エネルギーの損失とわかる。
+
+\section{}
+\subsection{}
+図の上方向を\(z\)軸として円筒座標を考える。
+電流の大きさはオームの法則より
+\begin{equation}\begin{aligned}[b]
+    \vb*{E} =\frac{I}{\sigma \pi a^2}\vb*{e}_z
+\end{aligned}\end{equation}
+磁場の大きさはアンペールの法則より
+\begin{equation}\begin{aligned}[b]
+    \vb*{H} = \frac{I}{2\pi r}\vb*{e}_\varphi
+\end{aligned}\end{equation}
+なのでこれよりベクトルポテンシャルは
+\begin{equation}\begin{aligned}[b]
+    \vb*{S} = \vb*{E}\times \vb*{H} = -\frac{I^2}{2\sigma\pi^2 a^2 r}\vb*{e}_r
+\end{aligned}\end{equation}
+とわかる。
+\subsection{}
+ポインティングベクトルを円柱領域Cの側面で和をとった時に得られるエネルギー\(J''\)は
+\begin{equation}\begin{aligned}[b]
+    \vb*{J}'' = \vb*{S}\times 2\pi r L = -\frac{I^2L}{\sigma\pi a^2}\vb*{e}_r = -IV \vb*{e}_r
+\end{aligned}\end{equation}
+となり、ジュール熱と同じ量が得られる。
+
+つまり、導体の中心に向かう成分の電流がジュール熱を担うと解釈できる。
+
+
+\section*{感想}
+前半はよくあるジュール熱の話だったけど、後半は考えたことなかった状況設定で面白かった。
+
+
+
+\end{document}

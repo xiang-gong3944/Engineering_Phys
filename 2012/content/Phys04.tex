@@ -1,0 +1,73 @@
+\documentclass[../ap_2012.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{1}
+\chapter{統計力学:1次元実在気体}
+\section{}
+\begin{equation}\begin{aligned}[b]
+    Z_A &= \frac{1}{N!}\qty(\frac{1}{2\pi\hbar}\int_{0}^{L}dx\int_{-\infty}^{\infty}dp\,\exp(-\frac{\beta}{2m}p^2))^N\\
+    &=\frac{1}{N!}\qty(\frac{L}{2\pi\hbar}\sqrt{\frac{2\pi m}{\beta}})^N = \frac{1}{N!}\qty(\frac{L}{\lambda})^N
+\end{aligned}\end{equation}
+
+\section{}
+自由エネルギーは
+\begin{equation}\begin{aligned}[b]
+    F(T,L) &= -k_BT\ln Z_A = -Nk_BT\ln\frac{L}{\lambda}+Nk_BT\ln N -Nk_BT\\
+    &= -Nk_BT\ln(\frac{L}{N\lambda}e)
+\end{aligned}\end{equation}
+
+\section{}
+化学ポテンシャルは
+\begin{equation}\begin{aligned}[b]
+    \mu(T,L) &= \pdv{F}{N}=-k_BT\ln(\frac{L}{N\lambda}e)+k_BT=-k_BT\ln\qty(\frac{L}{N\lambda})
+\end{aligned}\end{equation}
+
+\section{}
+[3]の結果より\(\tilde{n}_k\)は
+\begin{equation}\begin{aligned}[b]
+    \tilde{n}_k =e^{(\mu-E_k)/k_BT} = \frac{N\lambda}{L}e^{-E_k/k_BT}
+\end{aligned}\end{equation}
+と書ける。
+どんな\(k\)でも\(\tilde{n}_k\ll1\)が成り立つので
+\begin{equation}\begin{aligned}[b]
+    \frac{N\lambda}{L}&\ll 1 \\
+    N\lambda &\ll L
+\end{aligned}\end{equation}
+という条件が出てくる。
+\(\lambda\)は熱的ド=ブロイ波長で粒子1つあたりの広がりを表している。
+なので\(N\lambda\)は粒子すべてをまとめたの広がりをあらわしていて、
+これが\(L\)より十分小さいというのは、粒子が希薄であることを表している。
+
+\section{}
+粒子の体積分だけ粒子の動ける部分が減った毛糸みなせる。
+つまり、長さ\(L-Nd\)の長さに閉じ込められた体積がない粒子の系を考えればよい。
+これは[1]の結果を流用でき、分配関数は
+\begin{equation}\begin{aligned}[b]
+    Z_B= \frac{1}{N!}\qty(\frac{L-Nd}{\lambda})
+\end{aligned}\end{equation}
+とわかる。
+これより系の張力\(\sigma\)は
+\begin{equation}\begin{aligned}[b]
+    \sigma = -\pdv{F}{L}
+    = \pdv{L}\qty(Nk_BT\ln(\frac{L-Nd}{N\lambda}e))
+    =\frac{Nk_BT}{L-Nd}
+\end{aligned}\end{equation}
+となるので状態方程式は
+\begin{equation}\begin{aligned}[b]
+    \sigma(L-Nd)=Nk_BT
+\end{aligned}\end{equation}
+となる。
+
+気体Aとの違いは、気体Bの方が張力は大きくなっている。
+
+
+\section*{感想}
+この年度から分量が増えたからなんか簡単になったように感じた。
+設問[5]はまともに斥力ポテンシャルを扱う方法を忘れたので定性的にやったけど、どうやるのだっけ。
+
+
+
+\end{document}
