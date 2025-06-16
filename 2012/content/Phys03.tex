@@ -63,46 +63,180 @@
 \section{}
 相互作用表示したときの状態ベクトルの時間発展の式より
 \begin{equation}\begin{aligned}[b]
-    i\hbar\pdv{t}\sum_m c_m(t) \ket{1,m}&=-2\gamma B_{RF}J_x\sum_m c_m(t) \ket{1,m}\\
-    i\hbar\pdv{t}\begin{pmatrix}
-        {c_1(t)}\\
-        {c_0(t)}\\
-        {c_{-1}(t)}
-    \end{pmatrix}
-    &=-2\gamma \hbar B_{RF}\frac{1}{\sqrt{2}}\begin{pmatrix}
-        0 & 1 & 0\\
-        1 & 0 & 1\\
-        0 & 1 & 0
-    \end{pmatrix}
+    i\hbar\pdv{t}\sum_m c_m(t) \ket{1,m}&=-\gamma B_{RF}J_x\sum_m c_m(t) \ket{1,m}\\
     \begin{pmatrix}
         {c_1(t)}\\
         {c_0(t)}\\
         {c_{-1}(t)}
     \end{pmatrix}
+    &=\exp(\frac{i\gamma B_{RF}J_x}{\hbar}t)
+    \begin{pmatrix}
+        {c_1(0)}\\
+        {c_0(0)}\\
+        {c_{-1}(0)}
+    \end{pmatrix}
 \end{aligned}\end{equation}
-\(J_x\)は
+
+\(J_x\)の固有値と固有ベクトルは
+\begin{equation}\begin{aligned}[b]
+    \lambda_1 &= \hbar,& v_1 &= (1/2,1/\sqrt{2},1/2)^\mathsf{T}\\
+    \lambda_0 &= 0,& v_0 &= (1/\sqrt{2},0,-1/\sqrt{2})^\mathsf{T}\\
+    \lambda_{-1} &= -\hbar,& v_{-1} &= (1/2,-1/\sqrt{2},1/2)^\mathsf{T}
+\end{aligned}\end{equation}
+である。
+初期状態は\(H_M\)の最低エネルギー固有状態の\(m=1\)の状態であり、
+これを\(J_x\)の固有ベクトルで展開すると。
 \begin{equation}\begin{aligned}[b]
     \begin{pmatrix}
-        1 & 0 & 0\\
-        0 & 0 & 0\\
-        0 & 0 & -1
+        {c_1(0)}\\
+        {c_0(0)}\\
+        {c_{-1}(0)}
     \end{pmatrix}
-    =\begin{pmatrix}
-        1 & 1/\sqrt{2} & 1\\
-        1/\sqrt{2} & 0 & -1/\sqrt{2}\\
-        1 & -1/\sqrt{2} & 1\\
+    &=\begin{pmatrix}
+        1\\
+        0\\
+        0
     \end{pmatrix}
-    J_x\begin{pmatrix}
-        1 & 1/\sqrt{2} & 1\\
-        1/\sqrt{2} & 0 & -1/\sqrt{2}\\
-        1 & -1/\sqrt{2} & 1
+    =\frac{1}{2}\begin{pmatrix}
+        1/2\\
+        1/\sqrt{2}\\
+        1/2
+    \end{pmatrix}
+    +\frac{1}{\sqrt{2}}\begin{pmatrix}
+        1/\sqrt{2}\\
+        0\\
+        -1/\sqrt{2}
+    \end{pmatrix}
+    +\frac{1}{2}\begin{pmatrix}
+        1/2\\
+        -1/\sqrt{2}\\
+        1/2
+    \end{pmatrix}
+    =\frac{v_1}{2}+\frac{v_0}{\sqrt{2}}+\frac{v_{-1}}{2}
+\end{aligned}\end{equation}
+のようになる。
+これを使うと、
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        {c_1(t)}\\
+        {c_0(t)}\\
+        {c_{-1}(t)}
+    \end{pmatrix}
+    &=\exp(\frac{i\gamma B_{RF}J_x}{\hbar}t)
+    \begin{pmatrix}
+        1\\
+        0\\
+        0
+    \end{pmatrix}\\
+    &=\frac{1}{2}\exp(\frac{i\gamma B_{RF}J_x}{\hbar}t)v_1
+    +\frac{1}{\sqrt{2}}\exp(\frac{i\gamma B_{RF}J_x}{\hbar}t)v_0
+    +\frac{1}{2}\exp(\frac{i\gamma B_{RF}J_x}{\hbar}t)v_{-1}\\
+    &=\frac{1}{2}\exp(i\gamma B_{RF}t)v_1
+    +\frac{1}{\sqrt{2}}v_0
+    +\frac{1}{2}\exp(-i\gamma B_{RF}t)v_{-1}\\
+    &=\frac{1}{2}\begin{pmatrix}
+        \cos(\gamma B_{RF}t)+1\\
+        \sqrt{2}i\sin(\gamma B_{RF}t)\\
+        \cos(\gamma B_{RF}t)-1
     \end{pmatrix}
 \end{aligned}\end{equation}
-によって対角化できるので、
+とわかる。\footnote{状態ベクトルの時間発展の様子\url{https://www.desmos.com/3d/9zktnwvpkl}}
+
+よって\(J_z\)の時間発展は
+\begin{equation}\begin{aligned}[b]
+    \ev{J_z} &= \sum_m \mel{1,m}{J_z}{1,m}\\
+    &=\sum_m \mel{1,m}{\exp(i\omega t J_z/\hbar)J_z\exp(-i\omega t J_z/\hbar)}{1,m}\\
+    &= \mel{\Psi(t)}{J_z}{\Psi(t)}\\
+    &=\hbar\qty(\frac{\cos(\gamma B_{RF}t)+1}{2})^2-\hbar\qty(\frac{\cos(\gamma B_{RF}t)-1}{2})^2\\
+    &=\hbar\cos(\gamma B_{RF}t)
+\end{aligned}\end{equation}
+となる。
+
+\section{}
+与えられた相互作用は
+\begin{equation}\begin{aligned}[b]
+    \frac{H_Q}{A} &= 2J_x^2 - J_y^2 -J_z^2
+    = 3J_x^2-J^2
+    = \frac{3}{4}(J_++J_-)(J_++J_-)-J^2\\
+    &= \frac{3}{4}\qty(J_+^2+J_-^2+ J_+J_-+J_-J_+)-J^2
+    = \frac{3}{4}\qty(J_+^2+J_-^2)+\frac{3}{2}(J^2-J_z^2)-J^2\\
+    &=\frac{3}{4}J_+^2+\frac{3}{4}J_-^2+\frac{1}{2}J^2-\frac{3}{2}J_z^2
+\end{aligned}\end{equation}
+と書き直せる。
+なので1次摂動のエネルギーは
+\begin{equation}\begin{aligned}[b]
+    \mel{1,+1}{H_Q}{1,+1}&=\frac{A}{2}\mel{1,+1}{J^2}{1,+1}-\frac{3A}{2}\mel{1,+1}{J_z^2}{1,+1}=-\frac{A\hbar^2}{2}\\
+    \mel{1,0}{H_Q}{1,0}&=\frac{A}{2}\mel{1,0}{J^2}{1,0}=A\hbar^2\\
+    \mel{1,-1}{H_Q}{1,+1}&=\frac{A}{2}\mel{1,-1}{J^2}{1,-1}-\frac{3A}{2}\mel{1,-1}{J_z^2}{1,-1}=-\frac{A\hbar^2}{2}\\
+\end{aligned}\end{equation}
+となる。
 
 \section*{感想}
+\(J=1/2\)だったらよくやるけど、\(J=1\)となった途端あまりやらないので練習になった。
+設問[4]は磁気4重極子の結晶場中にあったとき、p電子のゼーマン分裂はどのようにずれるかという状況で、
+具体的にはどの物質中の話なのか気になった。GeminiのDeep Researchの結果はこんな感じ(\url{https://g.co/gemini/share/889e6b61e686})
 
+\section*{おまけ}
+[3]で\(\ev{J_x}\)と\(\ev{J_y}\)の値がどうなるのか、気になったので計算してみる。
+まず\(\ev{J_x}\)について
+\begin{equation*}\begin{aligned}[b]
+    \ev{J_x} &= \sum_m \mel{1,m}{J_x}{1,m}\\
+    &=\sum_m \mel{1,m}{\exp(i\omega t J_z/\hbar)\exp(-i\omega t J_z/\hbar)J_x\exp(i\omega t J_z/\hbar)\exp(-i\omega t J_z/\hbar)}{1,m}\\
+    &= \mel{\Psi(t)}{\exp(-i\omega t J_z/\hbar)J_x\exp(i\omega t J_z/\hbar)}{\Psi(t)}
+\end{aligned}\end{equation*}
+ここで
+\begin{equation*}\begin{aligned}[b]
+    \exp(-i\omega t J_z/\hbar)J_x\exp(i\omega t J_z/\hbar)
+    = \cos(\omega t)J_x+ \sin(\omega t)J_y
+\end{aligned}\end{equation*}
+となることが、BCH公式よりわかる。
 
+また、
+\begin{equation*}\begin{aligned}[b]
+    \mel{\Psi(t)}{J_x}{\Psi(t)} &= 0, & \mel{\Psi(t)}{J_y}{\Psi(t)} &= \hbar\sin(\gamma B_{RF}t)
+\end{aligned}\end{equation*}
+であるので、
+\begin{equation*}\begin{aligned}[b]
+    \ev{J_x} = \hbar\sin(\omega t)\sin(\gamma B_{RF}t)
+\end{aligned}\end{equation*}
+というのが\(\ev{J_x}\)の時間発展である。
+
+同様に\(\ev{J_y}\)も考える。
+\begin{equation*}\begin{aligned}[b]
+    \ev{J_y} &= \sum_m \mel{1,m}{J_y}{1,m}\\
+    &=\sum_m \mel{1,m}{\exp(i\omega t J_z/\hbar)\exp(-i\omega t J_z/\hbar)J_y\exp(i\omega t J_z/\hbar)\exp(-i\omega t J_z/\hbar)}{1,m}\\
+    &= \mel{\Psi(t)}{\exp(-i\omega t J_z/\hbar)J_y\exp(i\omega t J_z/\hbar)}{\Psi(t)}
+\end{aligned}\end{equation*}
+ここで
+\begin{equation*}\begin{aligned}[b]
+    \exp(-i\omega t J_z/\hbar)J_y\exp(i\omega t J_z/\hbar)
+    = \cos(\omega t)J_y- \sin(\omega t)J_x
+\end{aligned}\end{equation*}
+となることが、BCH公式よりわかる。
+
+よって
+\begin{equation*}\begin{aligned}[b]
+    \ev{J_y} = \hbar\cos(\omega t)\sin(\gamma B_{RF}t)
+\end{aligned}\end{equation*}
+というのが\(\ev{J_x}\)の時間発展である。
+
+また、いまはゼーマン分裂準位間と同じ周波数の光を当てているので\(\omega \simeq \gamma B \gg \gamma B_{RF}\)である。
+これに注意すると、角運動量の期待値
+\begin{equation*}\begin{aligned}[b]
+    \ev{J} = \hbar\begin{pmatrix}
+        \sin(\omega t)\sin(\gamma B_{RF}t)\\
+        \cos(\omega t)\sin(\gamma B_{RF}t)\\
+        \cos(\gamma B_{RF}t)
+    \end{pmatrix}
+\end{aligned}\end{equation*}
+の式のうち、
+\(\ev{J_x},\ev{J_y}\)は早く回転しすぎてよく見えないというのがわかる。
+しかもいままで考えていなかった緩和を考えても、
+動きが早いことからダンピングが早く効きやすいので横緩和も早いとわかる。
+(\url{https://www.desmos.com/3d/nklf5a6gm1})
+
+なので実用上は\(\ev{J_z}\)だけを調べればよいというので、
+この問題では\(\ev{J_z}\)だけ調べたとも言える。
 
 
 \end{document}

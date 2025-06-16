@@ -9,9 +9,11 @@
 \section{}
 質点の運動を拘束する張力\(T\)は運動の方向に垂直なので
 \subsection*{(i)}
+各微小時刻にする仕事を考えると、
 \(dW=T\dot vdt=0\)より仕事をしないから、運動エネルギーは保存する。
 \subsection*{(ii)}
-\(dN=T\times vdt\neq 0\)よりモーメントが生じるから、角運動量は保存しない。
+各微小時刻のモーメントを考えると
+\(dN=vdt\times vdt\neq 0\)よりモーメントが生じるから、角運動量は保存しない。
 
 \section{}
 点Qの座標は\((a\cos\varphi,a\sin\varphi)\)で、
@@ -19,13 +21,18 @@
 \(-(l_0-a\varphi)\sin\varphi,(l_0-a\varphi)\cos\varphi\)なので、
 質点の座標は
 \begin{equation}\begin{aligned}[b]
-    r(t) = \Bigl(a\cos\varphi-(l_0-a\varphi)\sin\varphi,a\sin\varphi+(l_0-a\varphi)\cos\varphi\Bigr)
+    r(t) = \begin{pmatrix}
+        a\cos\varphi-(l_0-a\varphi)\sin\varphi\\
+        a\sin\varphi+(l_0-a\varphi)\cos\varphi
+    \end{pmatrix}
 \end{aligned}\end{equation}
 となる。
 
 これより速度ベクトルは
 \begin{equation}\begin{aligned}[b]
-    \dot{r}(t) =-(l_0-a\varphi)\dot{\varphi}\Bigl(\cos\varphi,\sin\varphi\Bigr)
+    \dot{r}(t) =-(l_0-a\varphi)\dot{\varphi}\begin{pmatrix}
+        \cos\varphi\\\sin\varphi
+    \end{pmatrix}
 \end{aligned}\end{equation}
 
 角運動量は
@@ -46,7 +53,8 @@
 \end{aligned}\end{equation}
 両辺を時間で積分して
 \begin{equation}\begin{aligned}[b]
-    l_0-\frac{a}{2}\varphi^2 = v_0t
+    l_0\varphi-\frac{a}{2}\varphi^2 &= v_0t\\
+    \varphi(t)&=\frac{l_0-\sqrt{l_0^2-2v_0t}}{a}
 \end{aligned}\end{equation}
 \(\varphi=l/a\)となるときが求める時間\(\tau\)なので
 \begin{equation}\begin{aligned}[b]
@@ -55,8 +63,17 @@
 \end{aligned}\end{equation}
 
 \section{}
+運動方程式より
 \begin{equation}\begin{aligned}[b]
-    T = \frac{mv_0^2}{l_0-a\varphi}\Bigl(\sin\varphi, -\cos\varphi\Bigr)
+    T = m\ddot{r}=-mv_0\dv{t}\begin{pmatrix}
+        \cos\varphi\\\sin\varphi
+    \end{pmatrix}
+    =mv_0\dot{\varphi}\begin{pmatrix}
+        \sin\varphi\\ -\cos\varphi
+    \end{pmatrix}
+    = \frac{mv_0^2}{l_0-a\varphi}\begin{pmatrix}
+        \sin\varphi\\ -\cos\varphi
+    \end{pmatrix}
 \end{aligned}\end{equation}
 これは、微小時間間隔でみると、半径\(l_0-a\varphi\)の等速円運動となる。
 
@@ -80,7 +97,9 @@
 が成り立っているのがわかる。
 
 \section*{感想}
-設問[4]は先に結果がわかったので、それを満たすように張力をいきなり出してごまかしたけど、
-正攻法はどうすべきだったのだろうか?
+設問[4]で拘束力を求めるには運動方程式を解いてそこから逆算して力を求めるという形にしないといけないというのが、
+出てこなかった。
+EL方程式で拘束条件があるときには未定乗数法を使って計算するが、
+その未定乗数は拘束力に対応していて、未定乗数を求めるには決定した変数をもとに計算しないといけないのと同じ。
 
 \end{document}

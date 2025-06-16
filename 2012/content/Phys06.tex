@@ -5,7 +5,109 @@
 \begin{document}
 
 \setcounter{chapter}{3}
-\chapter{物性物理:}
+\chapter{物性物理:強束縛模型}
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \psi_k(x+Ma)&=\sum_{j=1}^{M}e^{ik(ja)}\phi_A(x+Ma-ja)
+    =e^{ik Ma}\sum_{j=1}^{M}e^{ik((j-M)a)}\phi_A(x-(j-M)a)\\
+    &=e^{ikMa}\sum_{j=1}^{M}e^{ik(ja)}\phi_A(x-ja)
+    = e^{ikMa}\psi_k(x)
+\end{aligned}\end{equation}
+周期境界条件をみたすので、
+\begin{equation}\begin{aligned}[b]
+    e^{ikMa} &= 1\\
+    kMa &= 2\pi n\qquad(n\in\mathbb{Z})\\
+    k = &= \frac{2\pi n}{Ma}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \int dx\, \phi_A^*(x) E(k) \psi_k(x)
+        &=\int dx\, \phi_A^*(x)\qty(-\frac{\hbar^2}{2m}\dv[2]{x}+U(x))\psi_k(x)\\
+    E(k)\sum_{j=1}^{M}e^{ik(ja)}\int dx\,\phi_A^*(x)\phi_A(x-ja)
+        &=\sum_{j,j'=1}^M e^{ik(ja)}\int dx\,\phi_A^*(x)\qty(-\frac{\hbar^2}{2m}\dv[2]{x}+u(x-j'a))\phi_A(x-ja)\\
+    E(k)\sum_{j=1}^{M}e^{ik(ja)}\delta_{0j}
+        &=\sum_{j,j'=1}^M e^{ik(ja)}\qty[
+            \delta_{0j}\qty{\delta_{j'0}E_A+(\delta_{j'-1}+\delta_{j'1})\beta}
+            +\delta_{0j'}(\delta_{j,1}+\delta_{j,-1})\gamma]\\
+    E(k) &= E_A+2\beta+\qty(e^{ika}+e^{-ika})\gamma\\
+    &= E_A + 2\beta +2\gamma\cos(ka)
+\end{aligned}\end{equation}
+
+\section{}
+\(\beta\)は注目している原子の隣接する原子のポテンシャルによる寄与であるので、
+これは結晶場によるエネルギー、
+\(\gamma\)は隣接する原子に電子が移動する過程のエネルギーを表しているので、
+電子の遍歴のしやすさを表している。
+
+\(\beta\)については\(u(x\pm a)\)はイオンと電子の引力相互作用によるものなので\(u(x\pm a)\)の符号は負であることから、
+その積分である\(\beta\)もマイナス符号になるとわかる。
+
+\(\gamma\)については原子軌道の波動関数の符号に依存する。
+例えば、s電子を考えるときには隣の原子軌道と位相が同じであるので\(\gamma\)は負になる。
+\(p_x\)電子を考えると\(\phi(x)\)の位相は正だが、\(\phi(x+a)\)の位相は負になるので\(\gamma\)は正となる。
+
+これらより\(\beta\)は常に結晶を安定にするようなエネルギー利得をあたえるが、
+\(\gamma\)は原子軌道によっては結晶へとならないようにするエネルギー損失を与えることもある。
+
+ただ、\(\phi\)自体はほとんど原子に束縛されているような軌道であるため\(\beta\)や\(\gamma\)の大きさは\(E_A\)よりも小さい。
+
+\section{}
+単純のため\(\gamma<0\)であるとする。
+
+キャリアが十分少ないときは、
+ブリュアンゾーンの原点付近の下に凸な部分の状態にフェルミ面が来るので、
+そこでの有効質量は
+\begin{equation}\begin{aligned}[b]
+    \frac{1}{m^*}&=\frac{1}{\hbar^2}\left.\dv[2]{E(k)}{k}\right|_{k=0} = -\frac{2a^2\gamma}{\hbar^2}\\
+    m ^*&= -\frac{\hbar^2 }{2a^2\gamma} > 0
+\end{aligned}\end{equation}
+
+キャリアが十分多いときには、
+ブリュアンゾーン境界付近の上に凸な部分の状態にフェルミ面が来るので、
+そこでの有効質量は
+\begin{equation}\begin{aligned}[b]
+    \frac{1}{m^*}&=\frac{1}{\hbar^2}\left.\dv[2]{E(k)}{k}\right|_{k=\pm \pi/a} = \frac{2a^2\gamma}{\hbar^2}\\
+    m ^*&= \frac{\hbar^2 }{2a^2\gamma} < 0
+\end{aligned}\end{equation}
+となる。
+
+\section{}
+この系のハミルトニアンの固有値方程式は
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        E_A+2\beta +2\gamma\cos(ka) & \delta\\
+        \delta & E_B+2\beta +2\gamma\cos(ka)
+    \end{pmatrix}\begin{pmatrix}
+        c_k\\
+        d_k
+    \end{pmatrix}
+    =E(k)\begin{pmatrix}
+        c_k\\
+        d_k
+    \end{pmatrix}
+\end{aligned}\end{equation}
+なのでエネルギー固有値は
+\begin{equation}\begin{aligned}[b]
+    E(k) = \frac{E_A+E_B}{2}+2\beta+2\gamma\cos(ka)\pm\sqrt{\qty(\frac{E_A-E_B}{2})^2+\delta^2}
+\end{aligned}\end{equation}
+
+\section{}
+\(\delta=0\)のときのエネルギー分散は
+\begin{equation}\begin{aligned}[b]
+    E(k) &= \frac{E_A+E_B}{2}+2\beta+2\gamma\cos(ka)\pm\abs{\frac{E_A-E_B}{2}}\\
+    &= E_A +2\beta+2\gamma\cos(ka),\,E_B+2\beta+2\gamma\cos(ka)
+\end{aligned}\end{equation}
+\subsection*{\(\abs{E_A-E_B+2\beta}\ll\abs{\gamma}\)の場合}
+これは軌道準位差や結晶場に比べてホッピングの方が支配的という状況を表しているので
+\begin{equation}\begin{aligned}[b]
+    E(k)=\frac{E_A+E_B}{2}+2\gamma\cos(ka)
+\end{aligned}\end{equation}
+\subsection*{\(\abs{E_A-E_B+2\beta}\gg\abs{\gamma}\)の場合}
+これは軌道準位差や結晶場に比べてホッピングは小さいという状況を表しているので
+\begin{equation}\begin{aligned}[b]
+    E(k)= E_A +2\beta+2\gamma\cos(ka),\,E_B+2\beta+2\gamma\cos(ka)
+\end{aligned}\end{equation}
 
 \section*{感想}
 

@@ -42,11 +42,11 @@
 これが\(L\)より十分小さいというのは、粒子が希薄であることを表している。
 
 \section{}
-粒子の体積分だけ粒子の動ける部分が減った毛糸みなせる。
+粒子の体積分だけ粒子の動ける部分が減った系とみなせる。
 つまり、長さ\(L-Nd\)の長さに閉じ込められた体積がない粒子の系を考えればよい。
 これは[1]の結果を流用でき、分配関数は
 \begin{equation}\begin{aligned}[b]
-    Z_B= \frac{1}{N!}\qty(\frac{L-Nd}{\lambda})
+    Z_B= \frac{1}{N!}\qty(\frac{L-Nd}{\lambda})^N
 \end{aligned}\end{equation}
 とわかる。
 これより系の張力\(\sigma\)は
@@ -66,7 +66,32 @@
 
 \section*{感想}
 この年度から分量が増えたからなんか簡単になったように感じた。
-設問[5]はまともに斥力ポテンシャルを扱う方法を忘れたので定性的にやったけど、どうやるのだっけ。
+最後の問題見ると、不完全気体の古典統計力学を計算してビリアル展開を導出するという話を復習したくなる。
+
+設問[5]の
+分配関数の位置の積分に関してはもうちょっと数式を使って説明すると
+こんな感じに書ける。
+\begin{equation*}\begin{aligned}[b]
+    Z_B
+    &=\frac{1}{\lambda^N}\int_0^{L-Nd}dx_1\int_{x_1+d}^{L-(N-1)d}dx_2\cdots\int_{x_{N-2}+d}^{L-2d}dx_{N-1}\int_{x_{N-1}+d}^{L-d}dx_N\\
+    &=\frac{1}{\lambda^N}\int_0^{L-Nd}dx_1\int_{x_1+d}^{L-(N-1)d}dx_2\cdots\int_{x_{N-2}+d}^{L-2d}dx_{N-1}\qty(L-2d-x_{N-1})\\
+    &=\frac{1}{\lambda^N}\int_0^{L-Nd}dx_1\int_{x_1+d}^{L-(N-1)d}dx_2\cdots \frac{1}{2!}\qty(L-3d-x_{N-2})\\
+    &=\frac{1}{\lambda^N}\int_0^{L-Nd}dx_1 \frac{1}{(N-1)!}\qty(L-(N-1)d-x_1)^{N-1}\\
+    &= \frac{1}{N!}\qty(\frac{L-Nd}{\lambda})^N
+\end{aligned}\end{equation*}
+イメージとしては粒子の位置ではなく、粒子の仕切りがどこを動くかというのを考えているものになる。
+なので積分の座標は粒子の中心位置を考えるのではなく、粒子の左端の位置を考えていて、
+左端から仕切りの位置を順次確定させていくというような積分の範囲をとっている。
+
+自分の解答は式で表すとこんな感じのイメージではある。
+\begin{equation*}\begin{aligned}[b]
+    Z_B &= \frac{1}{\lambda^N}\int_0^{L-Nd}dx_1\int_{x_1+d}^{L-(N-1)d}dx_2\cdots\int_{x_{N-2}+d}^{L-2d}dx_{N-1}\int_{x_{N-1}+d}^{L-d}dx_N\\
+    &=\frac{1}{\lambda^N}\int_0^{L-Nd}dx_1\int_{x_1}^{L-Nd}dx_2\cdots\int_{x_{N-2}}^{L-Nd}dx_{N-1}\int_{x_{N-1}}^{L-Nd}dx_N\\
+    &=\frac{1}{\lambda^N N!}\,\mathrm{T}\qty[\int_0^{L-Nd}dx_1\int_{0}^{L-Nd}dx_2\cdots\int_{0}^{L-Nd}dx_{N-1}\int_{0}^{L-Nd}dx_N]\\
+    &= \frac{1}{N!}\qty(\frac{L-Nd}{\lambda})^N
+\end{aligned}\end{equation*}
+途中の\(\mathrm{T}\)は順序積で摂動論とかグリーン関数とかで出てくるあれである。
+いま積分する関数がないので、順序積は結局効かずそのまま\((L-Nd)^N\)が出てきている。
 
 
 

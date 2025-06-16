@@ -8,20 +8,23 @@
 \chapter{電磁気学:ジュール熱}
 \section{}
 \subsection{}
-散乱の影響を平均化した運動方程式は加速度の項が0となるので
+外力\(qE\)がかかっているときの粒子の速度は
 \begin{equation}\begin{aligned}[b]
-    0 &= -\frac{m}{2\tau}v_a+qE\\
-    v_a &= \frac{2q\tau}{m}E
+    v = \frac{qE}{m}t
+\end{aligned}\end{equation}
+なので速度の平均は
+\begin{equation}\begin{aligned}[b]
+    v_a = \frac{1}{2\tau}\int_{0}^{2\tau}dt\, \frac{qE}{m}t = \frac{qE\tau}{m}
 \end{aligned}\end{equation}
 
 \subsection{}
 速度\(v_a\)密度\(n\)の電荷\(q\)の作る電流密度\(j\)は
 \begin{equation}\begin{aligned}[b]
-    j = nqv_a = \frac{2nq^2\tau}{m}E
+    j = nqv_a = \frac{nq^2\tau}{m}E
 \end{aligned}\end{equation}
 これより電気伝導率は
 \begin{equation}\begin{aligned}[b]
-    \sigma = \frac{2nq^2\tau}{m}
+    \sigma = \frac{nq^2\tau}{m}
 \end{aligned}\end{equation}
 となる。
 また、電流密度を電流、電場の強さを電圧に直すと
@@ -36,12 +39,15 @@
     J=\frac{VI}{\pi a^2L} = \frac{I^2}{\sigma \pi^2a^4}
 \end{aligned}\end{equation}
 
-散乱によって電子が失う運動エネルギーは時間\(2\tau\)の間に速度\(v_a\)で\(qE\)の力場中を動いたときに得られるエネルギーのことである。
-なのでそれの単位時間のエネルギー\(J'\)は
+散乱によって密度\(n\)の電子が失う運動エネルギーは
 \begin{equation}\begin{aligned}[b]
-    J' = \frac{2\tau n v_a qE }{2\tau}= jE = \frac{VI}{\pi a^2 L}
+    \frac{1}{2}mv(2\tau)^2=\frac{2q^2E^2\tau^2}{m}
 \end{aligned}\end{equation}
-より、ジュール熱は散乱による運動エネルギーの損失とわかる。
+なので密度\(n\)ある電子が単位時間に散乱されて失われる運動エネルギーは
+\begin{equation}\begin{aligned}[b]
+    \frac{nmv(2\tau)^2}{2\tau}=\frac{nq^2E^2\tau}{m}=\frac{j^2}{\sigma}= \frac{I^2}{\sigma\pi^2 a^4}
+\end{aligned}\end{equation}
+となりジュール熱と一致する。
 
 \section{}
 \subsection{}
@@ -53,24 +59,80 @@
 磁場の大きさはアンペールの法則より
 \begin{equation}\begin{aligned}[b]
     \vb*{H} = \frac{I}{2\pi r}\vb*{e}_\varphi
+    = \frac{Ir^2/a^2}{2\pi r}\vb*{e}_\varphi
+    = \frac{Ir}{2\pi a^2}\vb*{e}_\varphi
 \end{aligned}\end{equation}
 なのでこれよりベクトルポテンシャルは
 \begin{equation}\begin{aligned}[b]
-    \vb*{S} = \vb*{E}\times \vb*{H} = -\frac{I^2}{2\sigma\pi^2 a^2 r}\vb*{e}_r
+    \vb*{S} = \vb*{E}\times \vb*{H} = -\frac{I^2r}{2\sigma\pi^2 a^4}\vb*{e}_r
 \end{aligned}\end{equation}
 とわかる。
 \subsection{}
-ポインティングベクトルを円柱領域Cの側面で和をとった時に得られるエネルギー\(J''\)は
+ポインティングベクトルを円柱領域Cの側面で和をとった時に得られるエネルギーは
 \begin{equation}\begin{aligned}[b]
-    \vb*{J}'' = \vb*{S}\times 2\pi r L = -\frac{I^2L}{\sigma\pi a^2}\vb*{e}_r = -IV \vb*{e}_r
+    \int_{\partial C} d\vb*{S}\cdot(\vb*{E}\times \vb*{H})
+    = \vb*{S}\times 2\pi r L
+    = -\frac{I^2L}{\sigma\pi a^2}\frac{r^2}{a^2}
+    = -IV \frac{r^2}{a^2}
 \end{aligned}\end{equation}
-となり、ジュール熱と同じ量が得られる。
+となる。
+一方この領域内のジュール熱は
+\begin{equation}\begin{aligned}[b]
+    \int_C d^3 r \,\vb*{j}\cdot \vb*{E}
+    = J \times \pi r^2 L
+    = \frac{VI}{\pi a^2L} \times \pi r^2 L
+    = IV \frac{r^2}{a^2}
+\end{aligned}\end{equation}
+となる。
 
-つまり、導体の中心に向かう成分の電流がジュール熱を担うと解釈できる。
+ポインティングの定理より
+\begin{equation}\begin{aligned}[b]
+    \pdv{t}\int_C d^3r \qty(\frac{\vb*{E}\cdot \vb*{D}}{2}+\frac{\vb*{B}\cdot \vb*{H}}{2})
+    &=  - \int_{\partial C} d\vb*{S}\cdot(\vb*{E}\times \vb*{H}) -\int_C d^3 r \,\vb*{j}\cdot \vb*{E}\\
+    &= IV \frac{r^2}{a^2}-IV \frac{r^2}{a^2} =0
+\end{aligned}\end{equation}
+となる。
+これらの結果は外部電圧によって生じた電流の作る電磁場は導体軸中心方向に向かっていくが、
+ジュール熱としてエネルギーを失うので、
+領域C内部での電流の作る電場磁場のエネルギーは保存されているということを表している。
 
+\section{}
+オームの法則より
+\begin{equation}\begin{aligned}[b]
+    I = \int dS\, j(r) = \int dS\, \sigma(r)E_0
+\end{aligned}\end{equation}
+なので電流密度は
+\begin{equation}\begin{aligned}[b]
+    E_0 &= \frac{I}{\int_0^r dr 2\pi r\sigma(r)}\\
+    j(r) &= \frac{\sigma(r) I}{2\pi \int_0^r dr\, r\sigma(r)}
+\end{aligned}\end{equation}
+のように書ける。
+
+ポインティングベクトルを求めるため磁場を求める。
+磁場は
+\begin{equation}\begin{aligned}[b]
+    \vb*{H} = \frac{\vb*{e}_\varphi}{2\pi r}\int_{0}^{r}2\pi rdr\,j(r)
+    =\frac{\vb*{e}_\varphi}{r}\int_{0}^{r} dr\, r\sigma(r)E_0
+\end{aligned}\end{equation}
+となるので、
+ポインティングベクトルは
+\begin{equation}\begin{aligned}[b]
+    \vb*{E}\times \vb*{H}
+    &= \qty(E_0\vb*{e}_r)\times\qty(\frac{\vb*{e}_\varphi}{r}\int_{0}^{r} dr\, r\sigma(r)E_0)
+    =-\vb*{e}_r \frac{E_0^2}{r}\int_0^r dr\, r\sigma(r)\\
+    \int_{\partial C} d\vb*{S} \cdot (\vb*{E}\times \vb*{H})
+    &= -2\pi LE_0^2\int_0^r dr\, r\sigma(r)
+\end{aligned}\end{equation}
+
+ジュール熱に関しては
+\begin{equation}\begin{aligned}[b]
+    \int_C d^3r\, j(r)E_0 = L \int dS\, \sigma(r)E_0^2 = 2\pi L E_0^2 \int_0^r dr\,r\sigma(r)
+\end{aligned}\end{equation}
+となり、[2.2]と同様な結果となる。
 
 \section*{感想}
 前半はよくあるジュール熱の話だったけど、後半は考えたことなかった状況設定で面白かった。
+緩和時間\(\tau\)というのものの理解が雑で、初めに解いたときには電気伝導度に余計な定数倍がついてしまった。
 
 
 
