@@ -87,29 +87,20 @@
         d_k
     \end{pmatrix}
 \end{aligned}\end{equation}
-なのでエネルギー固有値は
+
+
+\section{}
+前問の固有値方程式を解くと
 \begin{equation}\begin{aligned}[b]
     E(k) = \frac{E_A+E_B}{2}+2\beta+2\gamma\cos(ka)\pm\sqrt{\qty(\frac{E_A-E_B}{2})^2+\delta^2}
 \end{aligned}\end{equation}
 
-\section{}
-\(\delta=0\)のときのエネルギー分散は
-\begin{equation}\begin{aligned}[b]
-    E(k) &= \frac{E_A+E_B}{2}+2\beta+2\gamma\cos(ka)\pm\abs{\frac{E_A-E_B}{2}}\\
-    &= E_A +2\beta+2\gamma\cos(ka),\,E_B+2\beta+2\gamma\cos(ka)
-\end{aligned}\end{equation}
-\subsection*{\(\abs{E_A-E_B+2\beta}\ll\abs{\gamma}\)の場合}
-これは軌道準位差や結晶場に比べてホッピングの方が支配的という状況を表しているので
-\begin{equation}\begin{aligned}[b]
-    E(k)=\frac{E_A+E_B}{2}+2\gamma\cos(ka)
-\end{aligned}\end{equation}
-\subsection*{\(\abs{E_A-E_B+2\beta}\gg\abs{\gamma}\)の場合}
-これは軌道準位差や結晶場に比べてホッピングは小さいという状況を表しているので
-\begin{equation}\begin{aligned}[b]
-    E(k)= E_A +2\beta+2\gamma\cos(ka),\,E_B+2\beta+2\gamma\cos(ka)
-\end{aligned}\end{equation}
-
 \section*{感想}
+設問[6]のやりたいことがよくわからなかった。
+\(2\times2 \)の固有値問題で、ハミルトニアンの非対角項に波数が入らないのでバンドの形は変わらず、
+近似のせずともそのまま計算できるよなぁ。
+しかも\(\delta\)が小さいときしか考えてないのでAB原子セットで考えるダイマー近似も必要ない。
+謎。
 
 
 

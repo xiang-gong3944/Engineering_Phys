@@ -1,0 +1,175 @@
+\documentclass[../ap_2012.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{1}
+\chapter{線形代数:}
+\section{}
+固有値方程式より、
+\begin{equation}\begin{aligned}[b]
+    0 &= \abs{A-\lambda I}\\
+    &= \begin{vmatrix}
+        -\lambda & -1 & -1\\
+        -1 & -\lambda & -1\\
+        -1 & -1 & \alpha-\lambda
+    \end{vmatrix}
+    &=\lambda^2(\alpha-\lambda)-2+2\lambda-(\alpha-\lambda)\\
+    &=(\lambda^2-1)(\alpha-\lambda)+2(\lambda-1)\\
+    &=(\lambda-1)(-\lambda^2+(\alpha-1)\lambda+\alpha+2)\\
+    \lambda &= 1,\,\frac{\alpha-1\pm\sqrt{(\alpha+1)^2+8}}{2}
+\end{aligned}\end{equation}
+いま、\(\alpha=5/2\)より、
+\begin{equation}\begin{aligned}[b]
+    \lambda &= 1, \frac{3}{4}\pm\frac{9}{4}\\
+    &=1,\,3,\,-\frac{3}{2}
+\end{aligned}\end{equation}
+
+\(\lambda=1\)に対応する固有ベクトルは
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        -1 & -1 & -1\\
+        -1 & -1 & -1\\
+        -1 & -1 & 3/2
+    \end{pmatrix}\begin{pmatrix}
+        a\\b\\c
+    \end{pmatrix}
+    =0
+\end{aligned}\end{equation}
+より、\(v_1=(1,-1,0)^\mathsf{T}/\sqrt{2}\)
+
+\(\lambda=3\)に対応する固有ベクトルは
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        -3 & -1 & -1\\
+        -1 & -3 & -1\\
+        -1 & -1 & -1/2
+    \end{pmatrix}\begin{pmatrix}
+        a\\b\\c
+    \end{pmatrix}
+    =0
+\end{aligned}\end{equation}
+より、\(v_2=(1,1,-2)^\mathsf{T}/\sqrt{6}\)
+
+\(\lambda=-3/2\)に対応する固有ベクトルは
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        3/2 & -1 & -1\\
+        -1 & 3/2 & -1\\
+        -1 & -1 & 4
+    \end{pmatrix}\begin{pmatrix}
+        a\\b\\c
+    \end{pmatrix}
+    =0
+\end{aligned}\end{equation}
+より、\(v_3=(2,2,1)^\mathsf{T}/3\)
+
+\section{}
+\subsection{}
+前問より
+\begin{equation}\begin{aligned}[b]
+    \lambda &= 1,\,\frac{\alpha-1\pm\sqrt{(\alpha+1)^2+8}}{2}
+\end{aligned}\end{equation}
+であり、
+\begin{equation}\begin{aligned}[b]
+    (\alpha+1)^2+8 > 0
+\end{aligned}\end{equation}
+より固有値は全て実数。
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \lambda &= 1,\,\frac{\alpha-1\pm\sqrt{(\alpha+1)^2+8}}{2}\\
+    &\to 1,\,\frac{\alpha-1}{2}\pm\frac{\alpha+1}{2}\qquad(\alpha\to\infty)\\
+    &= 1,\,-1\,\alpha
+\end{aligned}\end{equation}
+より
+\begin{equation}\begin{aligned}[b]
+    \lim_{\alpha\to\infty}\frac{\max(\lambda)}{\alpha} = 1
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \lim_{\alpha\to\infty}\frac{\min(\lambda)}{\alpha} = -1
+\end{aligned}\end{equation}
+
+\section{}
+\(\alpha=0\)のときの固有値は
+\(\lambda=1,-2\)で、\(\lambda=1\)は縮退している。
+\(\lambda=1\)に対応する固有ベクトルは
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        -1 & -1 & -1\\
+        -1 & -1 & -1\\
+        -1 & -1 & -1
+    \end{pmatrix}\begin{pmatrix}
+        a\\b\\c
+    \end{pmatrix}
+    =0
+\end{aligned}\end{equation}
+より、\(v_1=(1,-1,0)^\mathsf{T}/\sqrt{2},v_2=(0,1,-1)^\mathsf{T}/\sqrt{2}\)
+
+\(\lambda=-2\)に対応する固有ベクトルは
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        2 & -1 & -1\\
+        -1 & 2 & -1\\
+        -1 & -1 & 2
+    \end{pmatrix}\begin{pmatrix}
+        a\\b\\c
+    \end{pmatrix}
+    =0
+\end{aligned}\end{equation}
+より、\(v_3=(1,1,1)^\mathsf{T}/\sqrt{3}\)
+となる。
+いま、\(A\)は対称行列なので、直交行列\(P=(v_1,v_2,v_3)\)を使って
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        1 & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & -2
+    \end{pmatrix}
+    =P^\mathsf{T}AP
+\end{aligned}\end{equation}
+のように対角化できる。
+
+よって
+\begin{equation}\begin{aligned}[b]
+    A^n &= P\qty(P^\mathsf{T}AP)^n P^\mathsf{T}
+    =\begin{pmatrix}
+        v_1 & v_2 & v_3
+    \end{pmatrix}\begin{pmatrix}
+        1 & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & (-2)^n
+    \end{pmatrix}\begin{pmatrix}
+        v_1^\mathsf{T}\\
+        v_2^\mathsf{T}\\
+        v_3^\mathsf{T}\\
+    \end{pmatrix}\\
+    &=\begin{pmatrix}
+        v_1 & v_2 & (-2)^nv_3
+    \end{pmatrix}\begin{pmatrix}
+        v_1^\mathsf{T}\\
+        v_2^\mathsf{T}\\
+        v_3^\mathsf{T}\\
+    \end{pmatrix}
+    = v_1v_1^\mathsf{T} + v_2v_2^\mathsf{T} + (-2)^nv_3v_3^\mathsf{T}\\
+    &= I + ((-2)^n-1)v_3v_3^\mathsf{T}
+    = \begin{pmatrix}
+        1 & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 0
+    \end{pmatrix}
+    +\frac{(-2)^n-1}{3}\begin{pmatrix}
+        1 & 1 & 1\\
+        1 & 1 & 1\\
+        1 & 1 & 1
+    \end{pmatrix}\\
+    &=\frac{1}{3}\begin{pmatrix}
+        (-2)^n+2 & (-2)^n-1 & (-2)^n-1\\
+        (-2)^n-1 & (-2)^n+2 & (-2)^n-1\\
+        (-2)^n-1 & (-2)^n-1 & (-2)^n+2
+    \end{pmatrix}
+\end{aligned}\end{equation}
+
+\end{document}
