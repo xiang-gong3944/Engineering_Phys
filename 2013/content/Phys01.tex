@@ -1,0 +1,118 @@
+\documentclass[../ap_2013.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{0}
+\chapter{古典力学:剛体}
+\section{}
+\(\vb*{F}\)は円柱Bと円柱Cとの接点で、左下の傾斜\(\ang{30}\)方向を向いている。
+\(\vb*{F}'\)は床と円柱Bの接点で左向きを向いている。
+
+円柱Bが回らないことから、モーメントの和は0で
+\begin{equation}\begin{aligned}[b]
+    -a\times F+a\times F' &=0\\
+    \abs{\vb*{F}} &= \abs{\vb*{F}'}
+\end{aligned}\end{equation}
+とわかる。
+
+\section{}
+円柱Bが床から受ける垂直抗力を\(N\), 円柱Cから受けるのを\(N'\)とする。
+円柱Cは円柱Aと円柱Bとの\(N'\)によって自身の重力を支えているので、
+\begin{equation}\begin{aligned}[b]
+    \frac{\sqrt{3}}{2}N' &= \frac{1}{2}mg\\
+    N' &= \frac{mg}{\sqrt{3}}
+\end{aligned}\end{equation}
+となる。
+また、垂直抗力と摩擦の間には\(F=\mu N\)の関係がある。
+
+円柱Bが動かないので力の釣り合いを考える。
+円柱Bにかかる力は床からの垂直抗力と円柱Cからの垂直抗力と重力がある。
+なので鉛直方向を考えることで、\(N'\)は
+\begin{equation}\begin{aligned}[b]
+    N &= \frac{\sqrt{3}}{2}N'+\frac{1}{2}F' +mg\\
+    &= \frac{\sqrt{3}}{2}\frac{mg}{\sqrt{3}}+\frac{1}{2}\frac{\mu'mg}{\sqrt{3}} +mg\\
+    &= \qty(\frac{3}{2}+\frac{\mu'}{2\sqrt{3}})mg.
+\end{aligned}\end{equation}
+
+水平方向には、左向きの力が多きければ、左右対称であるため、
+円柱Aからの垂直抗力で静止できることから、\(\mu'\)の条件は
+\begin{equation}\begin{aligned}[b]
+    \frac{1}{2}N' \leq& \frac{\sqrt{3}}{2}F'+F\\
+    \frac{1}{2\sqrt{3}}mg  \leq & \frac{\mu'}{2}mg +\qty(\frac{3}{2}+\frac{\mu'}{2\sqrt{3}})\mu mg
+\end{aligned}\end{equation}
+となる。
+
+\section{}
+円筒Aの密度は
+\begin{equation}\begin{aligned}[b]
+    \rho = \frac{m}{\pi a^2l}
+\end{aligned}\end{equation}
+である。
+回転中心を軸とする円筒座標を考えて慣性モーメントを積分で表して計算すると
+\begin{equation}\begin{aligned}[b]
+    I &= \int_0^l dz\int_0^{2\pi} d\theta \int_0^a rdr \rho r^2\\
+    &= \frac{2m}{a}\int_0^a r^4\,dr = \frac{1}{2}ma^2
+\end{aligned}\end{equation}
+
+\section{}
+Tでは並進運動をせず、回転運動のみをしている。
+ST間の距離を\(x\), Tでの回転速度を\(\omega\), Tに到達するまでの時刻を\(t\)とする。
+\(\dot{p}=F\)の両辺を時間で積分をすることにより
+\begin{equation}\begin{aligned}[b]
+    -mv_0 = -\mu mg t
+\end{aligned}\end{equation}
+\(\dot{L}=N\)の両辺を時間で積分をすることにより
+\begin{equation}\begin{aligned}[b]
+    \frac{1}{2}ma^2\omega-\frac{1}{2}ma^2\omega_0 = -\mu mg a t
+\end{aligned}\end{equation}
+これらから\(t\)を消すことで
+\begin{equation}\begin{aligned}[b]
+    \frac{1}{2}ma^2\omega_0-\frac{1}{2}ma^2\omega  &= mav_0\\
+    \omega &= \omega_0 -\frac{2v_0}{a}
+\end{aligned}\end{equation}
+
+また、エネルギー保存則より
+\begin{equation}\begin{aligned}[b]
+    \frac{1}{2}mv_0^2 + \frac{1}{4}ma^2\omega_0^2 &= \mu mgx+\frac{1}{4}ma^2\omega^2\\
+    x &= \frac{a\omega_0v_0-v_0^2}{\mu g}
+\end{aligned}\end{equation}
+
+\section{}
+滑らずに転がり始めるのは並進速度\(v\)と円柱表面の回転速度\(a\omega\)が一致したときである。
+全問と同様に運動量変化と角運動量変化をもとに考える。
+運動量変化は
+\begin{equation}\begin{aligned}[b]
+    mv-mv_0 = -\mu mg t
+\end{aligned}\end{equation}
+角運動量変化は
+\begin{equation}\begin{aligned}[b]
+    \frac{1}{2}ma^2\omega-\frac{1}{2}ma^2\omega_0 = -\mu mg at
+\end{aligned}\end{equation}
+これから時間を消去して、\(a\omega = v\)を代入すると
+\begin{equation}\begin{aligned}[b]
+    v = -a\omega_0 +2v_0
+\end{aligned}\end{equation}
+
+\section{}
+設問[4]で考えたのとおなじようにエネルギー保存則を考える。
+摩擦力はずっと左向きに働いていて、円柱Aの動いた道のり\(y\)をかけた分のエネルギーを消費する。
+なので\(y\)は
+\begin{equation}\begin{aligned}[b]
+    \frac{1}{2}mv_0^2+\frac{1}{4}ma^2\omega_0^2 &= \mu mgy +\frac{1}{2}mv^2+\frac{1}{4}ma^2\omega^2\\
+    \mu mgy &= \frac{1}{2}mv_0^2+\frac{1}{4}ma^2\omega_0^2-\frac{3}{4}m\qty(-a\omega_0+2v_0)^2\\
+    y &= \frac{3a\omega_0v_0-\frac{11}{4}v_0^2-\frac{1}{2}a^2\omega_0^2}{\mu g}
+\end{aligned}\end{equation}
+道のり\(y\)がST間の距離\(x\)の2倍より小さいというのが求める条件であるので
+\begin{equation}\begin{aligned}[b]
+    \frac{3a\omega_0v_0-\frac{11}{4}v_0^2-\frac{1}{2}a^2\omega_0^2}{\mu g} \geq& 2\frac{a\omega_0v_0-v_0^2}{\mu g}\\
+    (1-\sqrt{5/2})v_0 \leq a\omega_0 \leq& (1+\sqrt{5/2})v_0
+\end{aligned}\end{equation}
+
+
+\section*{感想}
+古典力学のベクトルパズル苦手だなぁ。いっぱい解くしかない。
+
+
+\end{document}

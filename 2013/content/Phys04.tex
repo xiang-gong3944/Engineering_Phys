@@ -1,0 +1,77 @@
+\documentclass[../ap_2013.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{1}
+\chapter{統計力学:BEC/超流動}
+\(\beta=1/k_BT\)とする。
+\section{}
+\begin{equation}\begin{aligned}[b]
+    f_\text{BE}(E)=\frac{1}{e^{\beta(E-\mu)}-1}
+\end{aligned}\end{equation}
+粒子の分布関数であるので\(f_\text{BE}\)をどんな\(E\geq0\)に対しても満たすには
+\begin{equation}\begin{aligned}[b]
+    e^{\beta(E-\mu)}-1 \geq& 0\\
+    E\geq &\mu
+\end{aligned}\end{equation}
+より、\(\mu \leq 0\)であればよい。
+
+\section{}
+関数の形は\(e^x\)的な単調増加の関数で、\(\mu=0\)では\(1/e^{\beta E}-1\)となっている。
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    D(E) &= \sum_p \delta\qty(E-\frac{p^2}{2m})\\
+    &=\frac{V}{(2\pi\hbar)^3}\int_0^\infty 4\pi p^2dp\,delta\qty(E-\frac{p^2}{2m})\\
+    &=\frac{4\pi V}{(2\pi\hbar)^3} \int_{0}^{\infty} dp\,\sqrt{\frac{m}{2E}}p^2\delta\qty(p-\sqrt{2mE})\\
+    &=\frac{V}{2\pi^2\hbar^3}\sqrt{\frac{m}{2E}} 2mE\\
+    &=\frac{V}{4\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\sqrt{E}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    N_t &= \int_0^\infty D(E)f_\text{BE}(E)dE\\
+    &= \frac{V}{4\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\int_0^\infty \frac{\sqrt{E}}{e^{\beta(E-\mu)}-1}dE\\
+    &\leq \frac{V}{4\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\int_0^\infty \frac{\sqrt{E}}{e^{\beta E}-1}dE\\
+    &=\Gamma(3/2)\zeta(3/2)\frac{V}{4\pi^2}\qty(\frac{2m}{\hbar^2}k_BT)^{3/2}\\
+    &=\frac{3V}{32\pi}\qty(\frac{2m}{\hbar^2}k_BT)^{3/2}\equiv N_t^\text{max}
+\end{aligned}\end{equation}
+よって、\(T\to0\)で\(N_t^\text{max}\to 0\)となる。
+
+\section{}
+\(T_c\)において、\(\mu=0\)で\(N=N_i^\text{max}\)なので、
+\begin{equation}\begin{aligned}[b]
+    N &=\frac{3V}{32\pi}\qty(\frac{2m}{\hbar^2}k_BT_c)^{3/2}\\
+    \frac{2m}{\hbar^2}k_BT_c &= \qty(\frac{32\pi N}{3V})^{2/3}\\
+    T_c &= \frac{\hbar^2}{2mk_B}\qty(\frac{32\pi N}{3V})^{2/3}
+\end{aligned}\end{equation}
+
+\section{}
+ボーズ分布にしたがう\(N_t\)個の粒子だけでは全体の粒子数分を用意できず、
+\(N-N_t\)個の粒子が基底状態である\(E=0\)の状態にある。
+
+\section{}
+基底状態のエネルギーは\(E=0\)であるので、全エネルギーを求めるときには影響しないので、\(N_t\)個のボーズ分布に従う粒子の分だけ考えればよい。
+\begin{equation}\begin{aligned}[b]
+    U &= \int_0^\infty ED(E)f_\text{BE}dE\\
+    &=\frac{V}{4\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\int_0^\infty \frac{E^{3/2}}{e^{\beta E}-1}dE\\
+    &=\Gamma(5/2)\zeta(5/2)\frac{V}{4\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}(k_BT)^{5/2}\\
+    C_V=\dv{U}{t}&=
+    \Gamma(5/2)\zeta(5/2)\frac{V}{4\pi^2}\qty(\frac{2m}{\hbar^2}T)^{3/2}(k_B)^{5/2}
+\end{aligned}\end{equation}
+
+\section{}
+設問[5]で得られたものを頑張って計算すると\(T_c=5.3\,\si{K}\)になる。
+
+\section{}
+ボーズ粒子同士の相互作用がない理想ボーズ気体を考えていたので、
+この相関効果を無視していた。
+
+
+\section*{感想}
+BECの基本的な問題だけど、最後の数値計算は悪意で入れたとしか思えない。ただただ時間使うだけで本当にしょうもない。
+
+
+\end{document}

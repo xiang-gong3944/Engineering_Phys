@@ -1,0 +1,68 @@
+\documentclass[../ap_2013.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{1}
+\chapter{電磁気学:熱電放出}
+\section{}
+エネルギー保存則より
+\begin{equation}\begin{aligned}[b]
+    0 &= \frac{1}{2}mv^2 -e\phi(x)\\
+    v&= \sqrt{\frac{2e\phi}{m}}
+\end{aligned}\end{equation}
+\section{}
+電荷保存則より
+\begin{equation}\begin{aligned}[b]
+    \pdv{i}{x}=\pdv{\rho}{t} = -e\pdv{n}{t} = 0
+\end{aligned}\end{equation}
+より、\(i_0\)は\(x\)によらない定数となる。
+
+\section{}
+電流の式は
+\begin{equation}\begin{aligned}[b]
+    -i_0 &= -env\\
+    n &= \frac{i_0}{e}\sqrt{\frac{m}{2e\phi}}
+\end{aligned}\end{equation}
+とできるので、ポアソン方程式は
+\begin{equation}\begin{aligned}[b]
+    \dv[2]{\phi(x)}{x}=\frac{i_0}{\varepsilon_0}\sqrt{\frac{m}{2e}}\phi(x)^{-1/2}
+\end{aligned}\end{equation}
+なので
+\begin{equation}\begin{aligned}[b]
+    A &= \frac{i_0}{\varepsilon_0}\sqrt{\frac{m}{2e}}, & \alpha &= -\frac{1}{2}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \dv[2]{\phi}{x} &=A\phi^{-1/2}\\
+    \dv{\phi'}{x} &=A\phi^{-1/2}\\
+    \dv{\phi}{x}\dv{\phi'}{\phi} &=A\phi^{-1/2}\\
+    \phi'\dv{\phi'}{\phi}&=A\phi^{-1/2}
+\end{aligned}\end{equation}
+両辺を\(\phi\)で積分して
+\begin{equation}\begin{aligned}[b]
+    \int \phi'\dv{\phi'}{\phi}d\phi &= \int A\phi^{-1/2}d\phi\\
+    \frac{1}{2}\phi'(x)^2-\frac{1}{2}\phi'(0)^2&=2A\qty(\phi(x)^{1/2}-\phi(0)^{1/2})\\
+    \phi'(x)^2 &= 4A\phi^{1/2}\\
+    \phi^{-1/4}\phi'(x) &= 2\sqrt{A}
+\end{aligned}\end{equation}
+両辺を\(x\)で積分して
+\begin{equation}\begin{aligned}[b]
+    \int \phi^{-1/4}\dv{\phi}{x}dx &= 2\sqrt{A}\int dx\\
+    \frac{4}{3}\qty(\phi(x)^{3/4}-\phi(0)^{3/4}) &= 2\sqrt{A}x\\
+    \phi(x) &= \qty(\frac{3\sqrt{A}}{2}x)^{4/3}
+    =\qty(\frac{3}{2}\sqrt{\frac{i_0}{\varepsilon}\sqrt{\frac{m}{2e}}})^{4/3}x^{4/3}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    V &= \phi(x) = =\qty(\frac{3}{2}\sqrt{\frac{i_0}{\varepsilon}\sqrt{\frac{m}{2e}}})^{4/3}L^{4/3} \propto i^{2/3}L^{4/3}
+\end{aligned}\end{equation}
+
+\section*{感想}
+微分方程式解くのが大変だった。
+
+
+\end{document}

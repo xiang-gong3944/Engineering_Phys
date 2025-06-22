@@ -1,0 +1,131 @@
+\documentclass[../ap_2013.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{0}
+\chapter{量子力学:調和振動子・摂動論}
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \hat{\mu}=q\hat{X}=q\sqrt{\frac{\hbar}{2m\omega_0}}(\hat{a}+\hat{a}^\dagger)
+\end{aligned}\end{equation}
+より、双極子遷移をすると
+\begin{equation}\begin{aligned}[b]
+    \hat{\mu}\ket{n}
+    &=q\sqrt{\frac{\hbar}{2m\omega_0}}(\hat{a}+\hat{a}^\dagger)\ket{n}\\
+    &=q\sqrt{\frac{\hbar}{2m\omega_0}}(\sqrt{n}\ket{n-1}+\sqrt{n+1}\ket{n+1})
+\end{aligned}\end{equation}
+となるので、許される終わり状態は
+\(l=n-1,n+1\)の状態
+
+\section{}
+1次摂動によるエネルギーの変化は
+\begin{equation}\begin{aligned}[b]
+    E_n^{(1)}&=\mel{n}{\hat{H}_{AH}}{n}
+    =\frac{\lambda\hbar^2}{4m^2\omega_0^2}\mel{n}{(\hat{a}+\hat{a}^\dagger)^4}{n}\\
+    &= \frac{\lambda\hbar^2}{4m^2\omega_0^2}\bra{n}\qty(
+        \hat{a}^\dagger\hat{a}^\dagger\hat{a}\hat{a}
+        +\hat{a}^\dagger\hat{a}\hat{a}^\dagger\hat{a}
+        +\hat{a}^\dagger\hat{a}\hat{a}\hat{a}^\dagger
+        +\hat{a}\hat{a}^\dagger\hat{a}^\dagger\hat{a}
+        +\hat{a}\hat{a}^\dagger\hat{a}\hat{a}^\dagger
+        +\hat{a}\hat{a}\hat{a}^\dagger\hat{a}^\dagger
+    )\ket{n}\\
+    &= \frac{\lambda\hbar^2}{4m^2\omega_0^2}\qty(
+        (n-1)n
+        +n^2
+        +n(n+1)
+        +n(n+1)
+        +(n+1)^2
+        +(n+1)(n+2)
+    )\\
+    &= \frac{3\lambda\hbar^2}{4m^2\omega_0^2}(2n^2+2n+1)
+\end{aligned}\end{equation}
+
+\section{}
+摂動によって状態はこのように変化する。
+\begin{equation}\begin{aligned}[b]
+    \ket{8}'= \ket{8}-\sum_{m\neq n}\frac{\mel{m}{\hat{H}_{AH}}{8}}{E_m-E_8}
+    =: \ket{8}+ \sum_{m=4}^{12}c_m^{(1)}\ket{m}
+\end{aligned}\end{equation}
+ここで、\(c_m^{(1)}\)は\(\lambda\)の1次の定数として、\(\lambda\)次数以外の量には注目しないことにする文字とする。
+
+これが双極子遷移すると、
+\begin{equation}\begin{aligned}[b]
+    \hat{\mu}\ket{8}'
+    &=q\sqrt{\frac{\hbar}{2m\omega_0}}(\hat{a}+\hat{a}^\dagger)\qty[
+        \ket{8}- \sum_{m=4}^{12}c_m^{(1)}\ket{m}]\\
+    &= q\sqrt{\frac{\hbar}{2m\omega_0}}\qty(\sqrt{8}\ket{7}+3\ket{9})+\sum_{m=3}^{13}c_m^{(1)}\ket{m}
+\end{aligned}\end{equation}
+となる。
+この式にあらわれているケットベクトルが終状態に来ることができるので、
+\begin{equation}\begin{aligned}[b]
+    l = 3 \sim 13
+\end{aligned}\end{equation}
+の状態を取ることができる。
+
+\section{}
+ハイゼンベルグ方程式より位置演算子の時間発展は
+\begin{equation}\begin{aligned}[b]
+    i\hbar\pdv{t}\hat{X}(t)
+        &= \qty[\hat{X}(t),\hat{H}_0]\\
+        &= \qty[\hat{X}(t),\frac{\hat{P}(t)^2}{2m}+\frac{1}{2}m\omega_0^2\hat{X}(t)^2]\\
+        &= \frac{1}{2m}\qty(\qty[\hat{X}(t),\hat{P}(t)]\hat{P}(t)+\hat{P}(t)\qty[\hat{X}(t),\hat{P}(t)])\\
+    \pdv{t}\hat{X}(t)
+        &= \frac{1}{m}\hat{P}(t)
+\end{aligned}\end{equation}
+となる。同様に運動量演算子の時間発展は
+\begin{equation}\begin{aligned}[b]
+    i\hbar\pdv{t}\hat{P}(t)
+        &= \qty[\hat{P}(t),\hat{H}_0]\\
+        &= \qty[\hat{P}(t),\frac{\hat{P}(t)^2}{2m}+\frac{1}{2}m\omega_0^2\hat{X}(t)^2]\\
+        &= \frac{1}{2}m\omega_0^2\qty(\qty[\hat{P}(t),\hat{X}(t)]\hat{X}(t)+\hat{X}(t)\qty[\hat{P}(t),\hat{X}(t)])\\
+    \pdv{t}\hat{P}(t)
+        &= -m\omega_0^2\hat{X}(t)
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    &\begin{cases}
+        \pdv{t}\qty(\hat{X}(t)+\frac{i}{m\omega_0}\hat{P}(t)) =& -i\omega_0\qty(\hat{X}(t)+\frac{i}{m\omega_0}\hat{P}(t))\\
+        \pdv{t}\qty(\hat{X}(t)-\frac{i}{m\omega_0}\hat{P}(t)) =& +i\omega_0\qty(\hat{X}(t)-\frac{i}{m\omega_0}\hat{P}(t))
+    \end{cases}\\
+    &\begin{cases}
+        \hat{X}(t)+\frac{i}{m\omega_0}\hat{P}(t) &= e^{-i\omega t}\qty(\hat{X}(0)+\frac{i}{m\omega_0}\hat{P}(0))\\
+        \hat{X}(t)-\frac{i}{m\omega_0}\hat{P}(t) &= e^{+i\omega t}\qty(\hat{X}(0)-\frac{i}{m\omega_0}\hat{P}(0))\\
+    \end{cases}\\
+    & \hat{X}(t) = \cos(\omega t)\hat{X}+\frac{\sin(\omega t)}{m\omega_0}\hat{P}(0)
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \mel{n}{\hat{X}(t)}{n}
+        &=\bra{n}\qty(\cos(\omega t)\hat{X}+\frac{\sin(\omega t)}{m\omega_0}\hat{P})\ket{n}\\
+        &=\sqrt{\frac{\hbar}{2m\omega_0}}\bra{n}(e^{i\omega t}\hat{a}^\dagger+e^{-i\omega t}\hat{a})\ket{n}
+        &=0
+\end{aligned}\end{equation}
+より、位置の期待値は0である。
+
+また、位置の期待値が残る状態として
+\begin{equation}\begin{aligned}[b]
+    \ket{\alpha} = e^{-\abs{\alpha}^2/2}\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{n!}}\ket{n}
+\end{aligned}\end{equation}
+がある。
+実際、
+\begin{equation}\begin{aligned}[b]
+    \mel{\alpha}{\hat{X}(t)}{\alpha}
+        &= e^{-\abs{\alpha}^2}\sqrt{\frac{\hbar}{2m\omega_0}}\sum_{n,n'}\frac{\alpha^{*n}\alpha^n}{\sqrt{n'!n!}}\mel{n}{(e^{i\omega t}\hat{a}^\dagger+e^{-i\omega t}\hat{a})}{n'}\\
+        &= e^{-\abs{\alpha}^2}\sqrt{\frac{\hbar}{2m\omega_0}}\sum_{n,n'}\frac{\alpha^{*n}\alpha^n}{\sqrt{n'!n!}}(e^{i\omega t}\sqrt{n'+1}\delta_{n,n'+1}+e^{-i\omega t}\sqrt{n'}\delta_{n,n'-1})\\
+        &= e^{-\abs{\alpha}^2}\sqrt{\frac{\hbar}{2m\omega_0}}\sum_n \frac{\abs{\alpha}^{2n}}{n!}\qty(e^{i\omega t}+e^{-i\omega t})\\
+        &=\sqrt{\frac{2\hbar}{m\omega_0}}\cos(\omega t)
+\end{aligned}\end{equation}
+となり、確かに振動する状態になっている。
+
+\section*{感想}
+摂動がある状態で別の摂動を考えろとか、初めてで怖かった。
+
+設問4は正準量子化というぐらいなので、正準方程式が出てきてそれを解いてるのと同じよね。
+
+設問5の最後はコヒーレント状態知ってるか?というやつで、物工受ける人は知ってる前提なのね。
+
+\end{document}
