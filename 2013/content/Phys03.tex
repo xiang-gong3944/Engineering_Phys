@@ -46,8 +46,8 @@
 \section{}
 摂動によって状態はこのように変化する。
 \begin{equation}\begin{aligned}[b]
-    \ket{8}'= \ket{8}-\sum_{m\neq n}\frac{\mel{m}{\hat{H}_{AH}}{8}}{E_m-E_8}
-    =: \ket{8}+ \sum_{m=4}^{12}c_m^{(1)}\ket{m}
+    \ket{8}'= \ket{8}-\sum_{m\neq n}\frac{\mel{m}{\hat{H}_{AH}}{8}}{E_m-E_8}\ket{m}
+    =: \ket{8}+ \sum_{m=2}^{6}c_{2m}^{(1)}\ket{2m}
 \end{aligned}\end{equation}
 ここで、\(c_m^{(1)}\)は\(\lambda\)の1次の定数として、\(\lambda\)次数以外の量には注目しないことにする文字とする。
 
@@ -55,13 +55,13 @@
 \begin{equation}\begin{aligned}[b]
     \hat{\mu}\ket{8}'
     &=q\sqrt{\frac{\hbar}{2m\omega_0}}(\hat{a}+\hat{a}^\dagger)\qty[
-        \ket{8}- \sum_{m=4}^{12}c_m^{(1)}\ket{m}]\\
-    &= q\sqrt{\frac{\hbar}{2m\omega_0}}\qty(\sqrt{8}\ket{7}+3\ket{9})+\sum_{m=3}^{13}c_m^{(1)}\ket{m}
+        \ket{8}- \sum_{m=2}^{6}c_{2m}^{(1)}\ket{2m}]\\
+    &= q\sqrt{\frac{\hbar}{2m\omega_0}}\qty(\sqrt{8}\ket{7}+3\ket{9})+\sum_{m=2}^{7}c_{2m-1}^{(1)}\ket{2m-1}
 \end{aligned}\end{equation}
 となる。
 この式にあらわれているケットベクトルが終状態に来ることができるので、
 \begin{equation}\begin{aligned}[b]
-    l = 3 \sim 13
+    l = 3,5,7,9,11,13
 \end{aligned}\end{equation}
 の状態を取ることができる。
 
@@ -94,7 +94,7 @@
         \hat{X}(t)+\frac{i}{m\omega_0}\hat{P}(t) &= e^{-i\omega t}\qty(\hat{X}(0)+\frac{i}{m\omega_0}\hat{P}(0))\\
         \hat{X}(t)-\frac{i}{m\omega_0}\hat{P}(t) &= e^{+i\omega t}\qty(\hat{X}(0)-\frac{i}{m\omega_0}\hat{P}(0))\\
     \end{cases}\\
-    & \hat{X}(t) = \cos(\omega t)\hat{X}+\frac{\sin(\omega t)}{m\omega_0}\hat{P}(0)
+    & \hat{X}(t) = \cos(\omega t)\hat{X}(0)+\frac{\sin(\omega t)}{m\omega_0}\hat{P}(0)
 \end{aligned}\end{equation}
 
 \section{}

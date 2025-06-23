@@ -5,7 +5,7 @@
 \begin{document}
 
 \setcounter{chapter}{1}
-\chapter{電磁気学:熱電放出}
+\chapter{電磁気学:熱電放出(Child-Langmuir 則)}
 \section{}
 エネルギー保存則より
 \begin{equation}\begin{aligned}[b]
@@ -35,11 +35,10 @@
 \end{aligned}\end{equation}
 
 \section{}
+\subsection*{解法1:まじめに微分方程式を積分していく}
 \begin{equation}\begin{aligned}[b]
     \dv[2]{\phi}{x} &=A\phi^{-1/2}\\
-    \dv{\phi'}{x} &=A\phi^{-1/2}\\
-    \dv{\phi}{x}\dv{\phi'}{\phi} &=A\phi^{-1/2}\\
-    \phi'\dv{\phi'}{\phi}&=A\phi^{-1/2}
+    \dv{\phi}{x}\dv{\phi'}{\phi} &=A\phi^{-1/2}
 \end{aligned}\end{equation}
 両辺を\(\phi\)で積分して
 \begin{equation}\begin{aligned}[b]
@@ -56,13 +55,57 @@
     =\qty(\frac{3}{2}\sqrt{\frac{i_0}{\varepsilon}\sqrt{\frac{m}{2e}}})^{4/3}x^{4/3}
 \end{aligned}\end{equation}
 
+\subsection*{解法2:スケール不変性を使う}
+この微分方程式
+\begin{equation*}\begin{aligned}[b]
+    \laplacian{\phi} = A\phi^{\alpha}
+\end{aligned}\end{equation*}
+は\(\alpha\neq 1\)のとき、
+系の特徴的な長さは存在しないのが次元解析でわかる。
+実際\(\alpha=1\)のときには、両辺の\(\phi\)を落として次元を求めると\(A\)が長さの次元を持つことから、
+これによって系のスケールが決まる。実際解くと湯川ポテンシャルとなるので、スケール不変というのでも確かめられる。
+
+\(\alpha\neq 1\)の場合は両辺から\(\phi\)を落とすことができず、
+\(A\)が長さの基準とは言えなくなる。
+では\(\alpha \neq 1\)の場合、\(\phi\)がスケーリング変換に対してどのように変化するかを見ていく。
+\(x\to k x\)としたとき、\(\phi\to k^t\phi\)になるとして微分方程式に代入すると、
+\begin{equation}\begin{aligned}[b]
+    k^{t-2}\dv[2]{\phi}{x} &= k^{\alpha t}A\phi\\
+    \dv[2]{\phi}{x} &= k^{(\alpha-1) t+2}A\phi\\
+\end{aligned}\end{equation}
+\(A\)は定数でスケール変換によって変わらない?ので元の方程式と同じになるには
+\begin{equation}\begin{aligned}[b]
+    t = \frac{2}{1-\alpha}
+\end{aligned}\end{equation}
+であればよい。つまり、\(\phi \propto x^{2/(1-\alpha)}\)になるということである。
+今の問題では\(\alpha=-1/2\)なので、\(B\)を比例定数として
+\begin{equation}\begin{aligned}[b]
+    \phi = Bx^{4/3}
+\end{aligned}\end{equation}
+とおける。これをもとの微分方程式に入れて\(B\)を求める。
+\begin{equation}\begin{aligned}[b]
+    \dv{\phi}{x} &= \frac{4}{3}Bx^{1/3}\\
+    \dv[2]{\phi}{x} &= \frac{4}{9}Bx^{-2/3}
+\end{aligned}\end{equation}
+これが\(A(Bx^{4/3})^{-1/2}\)と同じなので
+\begin{equation}\begin{aligned}[b]
+    B &= \qty(\frac{9A}{4})^{2/3}=\qty(\frac{3\sqrt{A}}{2})^{4/3}
+\end{aligned}\end{equation}
+とわかり、
+\begin{equation}\begin{aligned}[b]
+    \phi(x) = \qty(\frac{3\sqrt{A}}{2})^{4/3}x^{4/3} =\qty(\frac{3}{2}\sqrt{\frac{i_0}{\varepsilon}\sqrt{\frac{m}{2e}}})^{4/3}x^{4/3}
+\end{aligned}\end{equation}
+
 \section{}
 \begin{equation}\begin{aligned}[b]
-    V &= \phi(x) = =\qty(\frac{3}{2}\sqrt{\frac{i_0}{\varepsilon}\sqrt{\frac{m}{2e}}})^{4/3}L^{4/3} \propto i^{2/3}L^{4/3}
+    V &= \phi(x) =\qty(\frac{3}{2}\sqrt{\frac{i_0}{\varepsilon}\sqrt{\frac{m}{2e}}})^{4/3}L^{4/3} \propto i^{2/3}
 \end{aligned}\end{equation}
 
 \section*{感想}
 微分方程式解くのが大変だった。
+ポアソン方程式のソースが\(A\phi^\alpha\)のような冪になってるときにはスケール不変性があるというのを使ったが、
+\(A\)もスケール変換に対して値を変えるから説明が消化不良感。
+スケール不変性なのか、解の形を決め打ちして解いたものなのかわからない。
 
 
 \end{document}

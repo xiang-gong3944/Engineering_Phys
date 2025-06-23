@@ -18,31 +18,32 @@
 とわかる。
 
 \section{}
-円柱Bが床から受ける垂直抗力を\(N\), 円柱Cから受けるのを\(N'\)とする。
-円柱Cは円柱Aと円柱Bとの\(N'\)によって自身の重力を支えているので、
-\begin{equation}\begin{aligned}[b]
-    \frac{\sqrt{3}}{2}N' &= \frac{1}{2}mg\\
-    N' &= \frac{mg}{\sqrt{3}}
-\end{aligned}\end{equation}
-となる。
-また、垂直抗力と摩擦の間には\(F=\mu N\)の関係がある。
+円柱Cと円柱A,Bの間の垂直抗力を\(N\),
+円柱A,Bと床の間との垂直抗力を\(N'\)とする。
 
-円柱Bが動かないので力の釣り合いを考える。
-円柱Bにかかる力は床からの垂直抗力と円柱Cからの垂直抗力と重力がある。
-なので鉛直方向を考えることで、\(N'\)は
+系全体の鉛直方向の力の釣り合いより、
 \begin{equation}\begin{aligned}[b]
-    N &= \frac{\sqrt{3}}{2}N'+\frac{1}{2}F' +mg\\
-    &= \frac{\sqrt{3}}{2}\frac{mg}{\sqrt{3}}+\frac{1}{2}\frac{\mu'mg}{\sqrt{3}} +mg\\
-    &= \qty(\frac{3}{2}+\frac{\mu'}{2\sqrt{3}})mg.
+    2N' &= 3mg &  \rightarrow N' &= \frac{3}{2}mg
 \end{aligned}\end{equation}
-
-水平方向には、左向きの力が多きければ、左右対称であるため、
-円柱Aからの垂直抗力で静止できることから、\(\mu'\)の条件は
+円柱Cの鉛直方向の力の釣り合いより、
 \begin{equation}\begin{aligned}[b]
-    \frac{1}{2}N' \leq& \frac{\sqrt{3}}{2}F'+F\\
-    \frac{1}{2\sqrt{3}}mg  \leq & \frac{\mu'}{2}mg +\qty(\frac{3}{2}+\frac{\mu'}{2\sqrt{3}})\mu mg
+    mg = 2\qty(\frac{\sqrt{3}}{2}N+\frac{1}{2}F)=\sqrt{3}N+F
 \end{aligned}\end{equation}
-となる。
+円柱Bの水平方向の力の釣り合いより、
+\begin{equation}\begin{aligned}[b]
+    \frac{1}{N} = F' +\frac{\sqrt{3}}{2}F
+\end{aligned}\end{equation}
+これと、設問[1]で得られた\(F=F'\)を用いて、
+未知数\(F,F',N\)を求めると、
+\begin{equation}\begin{aligned}[b]
+    F = F' &= \frac{2-\sqrt{3}}{2}mg\\
+    N &= \frac{1}{2}mg
+\end{aligned}\end{equation}
+滑らず静止する条件は\(F<\mu N, F'<\mu' N'\)で表されるので、
+\begin{equation}\begin{aligned}[b]
+    F &< \mu N & \rightarrow \mu &> 2-\sqrt{3}\\
+    F' &< \mu' N' &\rightarrow \mu' &> \frac{2-\sqrt{3}}{3}
+\end{aligned}\end{equation}
 
 \section{}
 円筒Aの密度は
@@ -58,61 +59,93 @@
 
 \section{}
 Tでは並進運動をせず、回転運動のみをしている。
+図2の\(v_0\)の方向の並進を正、\(\omega_0\)の方向の回転を正として、
 ST間の距離を\(x\), Tでの回転速度を\(\omega\), Tに到達するまでの時刻を\(t\)とする。
-\(\dot{p}=F\)の両辺を時間で積分をすることにより
-\begin{equation}\begin{aligned}[b]
-    -mv_0 = -\mu mg t
-\end{aligned}\end{equation}
-\(\dot{L}=N\)の両辺を時間で積分をすることにより
-\begin{equation}\begin{aligned}[b]
-    \frac{1}{2}ma^2\omega-\frac{1}{2}ma^2\omega_0 = -\mu mg a t
-\end{aligned}\end{equation}
-これらから\(t\)を消すことで
-\begin{equation}\begin{aligned}[b]
-    \frac{1}{2}ma^2\omega_0-\frac{1}{2}ma^2\omega  &= mav_0\\
-    \omega &= \omega_0 -\frac{2v_0}{a}
-\end{aligned}\end{equation}
 
-また、エネルギー保存則より
+並進運動について、摩擦力はずっと左向きにかかっていて、
+運動方程式を位置で積分していくと
 \begin{equation}\begin{aligned}[b]
-    \frac{1}{2}mv_0^2 + \frac{1}{4}ma^2\omega_0^2 &= \mu mgx+\frac{1}{4}ma^2\omega^2\\
-    x &= \frac{a\omega_0v_0-v_0^2}{\mu g}
+    \dv{t}mv(t) &= -\mu mg\\
+    \int \dv{x}{t}\dv{v}{x}dx &= -\mu g\int dx\\
+    \frac{1}{2}v(t)^2-\frac{1}{2}v_0^2 &= -\mu gx
+\end{aligned}\end{equation}
+地点Tでは\(v(t)=0\)なので、
+\begin{equation}\begin{aligned}[b]
+    x &= \frac{v_0^2}{2\mu g}
+\end{aligned}\end{equation}
+またこの時刻は、運動方程式を時間で積分すると
+\begin{equation}\begin{aligned}[b]
+    v(t) -v_0 &= -\mu gt\\
+    t &= \frac{v_0}{\mu g}
+\end{aligned}\end{equation}
+である。
+
+次に回転運動の運動方程式を時間積分すると、
+\begin{equation}\begin{aligned}[b]
+    \dv{t}I\omega(t) &= -a\mu mg\\
+    I\omega(t)-I\omega_0 &= -a\mu mgt\\
+    \omega(t) &= \omega_0 -\frac{a \mu mg}{\frac{1}{2}ma^2}\frac{v_0}{\mu g} = \omega_0 -\frac{2v_0}{a}
 \end{aligned}\end{equation}
 
 \section{}
 滑らずに転がり始めるのは並進速度\(v\)と円柱表面の回転速度\(a\omega\)が一致したときである。
-全問と同様に運動量変化と角運動量変化をもとに考える。
-運動量変化は
+並進速度と回転速度の正の向きの取り方に気を付けると、この条件は
 \begin{equation}\begin{aligned}[b]
-    mv-mv_0 = -\mu mg t
+    v=-a\omega
 \end{aligned}\end{equation}
-角運動量変化は
+と書ける。
+
+これを満たす時について、運動方程式の時間時間積分したものを整理すると
 \begin{equation}\begin{aligned}[b]
-    \frac{1}{2}ma^2\omega-\frac{1}{2}ma^2\omega_0 = -\mu mg at
+    &\begin{cases}
+        mv(t) -mv_0 &= -\mu mgt\\
+        I\omega(t) -I\omega_0 &= -a\mu mgt
+    \end{cases}\\
+    &\begin{cases}
+        v(t) -v_0 &= -\mu gt\\
+        \frac{1}{2}a\omega(t) -\frac{1}{2}a\omega_0 &= -\mu gt
+    \end{cases}\\
+    v(t)-v_0 &= -\frac{1}{2}v(t)-\frac{1}{2}a\omega_0\\
+    v(t) &= \frac{2v_0-a\omega_0}{3}
 \end{aligned}\end{equation}
-これから時間を消去して、\(a\omega = v\)を代入すると
-\begin{equation}\begin{aligned}[b]
-    v = -a\omega_0 +2v_0
-\end{aligned}\end{equation}
+となる。これが求める速度である。
+
 
 \section{}
-設問[4]で考えたのとおなじようにエネルギー保存則を考える。
-摩擦力はずっと左向きに働いていて、円柱Aの動いた道のり\(y\)をかけた分のエネルギーを消費する。
-なので\(y\)は
+設問[5]で得られた速度が負になっているので、
 \begin{equation}\begin{aligned}[b]
-    \frac{1}{2}mv_0^2+\frac{1}{4}ma^2\omega_0^2 &= \mu mgy +\frac{1}{2}mv^2+\frac{1}{4}ma^2\omega^2\\
-    \mu mgy &= \frac{1}{2}mv_0^2+\frac{1}{4}ma^2\omega_0^2-\frac{3}{4}m\qty(-a\omega_0+2v_0)^2\\
-    y &= \frac{3a\omega_0v_0-\frac{11}{4}v_0^2-\frac{1}{2}a^2\omega_0^2}{\mu g}
+    2v_0-a\omega_0 &< 0 &\rightarrow
+    \frac{2v_0}{a} &<\omega_0
 \end{aligned}\end{equation}
-道のり\(y\)がST間の距離\(x\)の2倍より小さいというのが求める条件であるので
+
+(4.1)式を初速度を円柱が位置Tにあるときの\(v=0\), 終速度を設問[5]にすると、
+位置Tから滑らず転がり始める地点までの距離\(x'\)が右辺に出る。
+なので、
 \begin{equation}\begin{aligned}[b]
-    \frac{3a\omega_0v_0-\frac{11}{4}v_0^2-\frac{1}{2}a^2\omega_0^2}{\mu g} \geq& 2\frac{a\omega_0v_0-v_0^2}{\mu g}\\
-    (1-\sqrt{5/2})v_0 \leq a\omega_0 \leq& (1+\sqrt{5/2})v_0
+    \qty(\frac{2v_0-a\omega_0}{3})^2&=2\mu gx'\\
+    x' &= \frac{1}{2\mu g}\qty(\frac{2v_0-a\omega_0}{3})^2
 \end{aligned}\end{equation}
+これが\(x>x'\)となる条件を調べているので、
+\begin{equation}\begin{aligned}[b]
+    \frac{v_0^2}{2\mu g} &> \frac{1}{2\mu g}\qty(\frac{2v_0-a\omega_0}{3})^2\\
+    v_0 &> \frac{2v_0-a\omega_0}{3} > -v_0\\
+    -v_0 &< a\omega_0 < 5v_0
+\end{aligned}\end{equation}
+
+よってこれらを満たすには
+\begin{equation}\begin{aligned}[b]
+    \frac{2v_0}{a} < \omega_0 < \frac{5v_0}{a}
+\end{aligned}\end{equation}
+であればよい。
 
 
 \section*{感想}
 古典力学のベクトルパズル苦手だなぁ。いっぱい解くしかない。
 
+エネルギー保存則を使って解けないかと試したけど、
+剛体が滑って回転しているときには筋が悪いとわかった。
+摩擦熱\(\mu mg x\)の\(x\)というのは剛体表面と床がどれだけ擦れたかを表す量なので、
+滑っているときには剛体の重心の移動距離から求められず、
+全部の運動が求まってから最後にエネルギー保存則が成り立ってるねという形でチェックするしかなさそう。
 
 \end{document}

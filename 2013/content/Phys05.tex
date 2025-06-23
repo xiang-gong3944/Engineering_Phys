@@ -1,0 +1,158 @@
+\documentclass[../ap_2013.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{2}
+\chapter{光学:フィルム}
+\section{}
+スネルの法則より全反射するには
+\begin{equation}\begin{aligned}[b]
+    n_2\sin\theta &> n_1\\
+    k_0n_2\sin\theta = \beta &> k_0n_1
+\end{aligned}\end{equation}
+であればよい。
+また、光が\(+z\)方向に進んでいるため、
+\begin{equation}\begin{aligned}[b]
+    k_0n_2\sin\theta =\beta < k_0n_2
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    k_0n_1< \beta < k_0n_2
+\end{aligned}\end{equation}
+
+\section{}
+アンペールの式より
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        \partial_y H_z(x)e^{i(\omega t-\beta z)} -\partial_z H_y(x)e^{i(\omega t-\beta z)}\\
+        \partial_z H_x(x)e^{i(\omega t-\beta z)} -\partial_x H_z(x)e^{i(\omega t-\beta z)}\\
+        \partial_x H_y(x)e^{i(\omega t-\beta z)} -\partial_y H_x(x)e^{i(\omega t-\beta z)}
+    \end{pmatrix}
+    &=\epsilon_j\begin{pmatrix}
+        0\\
+        \partial_t E_y(x)e^{i(\omega t-\beta z)}\\
+        0
+    \end{pmatrix}\\
+    \begin{pmatrix}
+        i\beta H_y(x)\\
+        -i\beta H_x(x) -\qty(\partial_x H_z(x))\\
+        \qty(\partial_x H_y(x))
+    \end{pmatrix}e^{i(\omega t-\beta z)}
+    &=\begin{pmatrix}
+        0\\
+        i\omega \epsilon_j E_y(x)\\
+        0
+    \end{pmatrix}e^{i(\omega t-\beta z)}
+\end{aligned}\end{equation}
+となるので
+\begin{equation}\begin{aligned}[b]
+    \begin{cases}
+        H_y(x) &= 0\\
+    -i\beta H_x(x) -\partial_x H_z(x) &= i\omega \epsilon_j E_y(x)
+    \end{cases}
+\end{aligned}\end{equation}
+どうようにファラデーの式でもやると
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        -\partial_z E_y(x)e^{i(\omega t-\beta z)}\\
+        0\\
+        \partial_x E_y(x)e^{i(\omega t-\beta z)}
+    \end{pmatrix}
+    &=-\mu_0\begin{pmatrix}
+        \partial_t H_x(x)e^{i(\omega t-\beta z)}\\
+        0\\
+        \partial_t H_z(x)e^{i(\omega t-\beta z)}
+    \end{pmatrix}\\
+    \begin{pmatrix}
+        i\beta E_y(x)\\
+        0\\
+        \partial_x E_y(x)
+    \end{pmatrix}e^{i(\omega t-\beta z)}
+    &=\begin{pmatrix}
+        -i\omega\mu_0 H_x(x)\\
+        0\\
+        -i\omega\mu_0 H_z(x)
+    \end{pmatrix}e^{i(\omega t-\beta z)}
+\end{aligned}\end{equation}
+となるので、
+\begin{equation}\begin{aligned}[b]
+    \begin{cases}
+        \beta E_y(x) &= -\omega \mu_0H_x(x)\\
+        \partial_x E_y(x) &= -i\omega \mu_0H_z(x)
+    \end{cases}
+\end{aligned}\end{equation}
+
+\section{}
+\(H_z(x)=0\)であるとすると、
+前問で得られた方程式は
+\begin{equation}\begin{aligned}[b]
+    &\begin{cases}
+        -i\beta H_x(x) &= i\omega\epsilon_jE_y(x)\\
+        \beta E_y(x) &= -\omega\mu_0H_x(x)
+    \end{cases} &\rightarrow
+    &\begin{cases}
+        \omega \epsilon_j E_y(x) + \beta H_x(x) &=0\\
+        \beta E_y(x) + \omega \mu_0 H_x(x) &= 0
+    \end{cases}
+\end{aligned}\end{equation}
+いま、領域内で電磁場が存在することから\(E_y\neq0\)であるため、
+この\(E_y(x),H_x(x)\)の連立方程式が非自明な解を持たなければならない。
+なのでその条件は
+\begin{equation}\begin{aligned}[b]
+    0&=\omega^2 \epsilon_2 \mu_0 -\beta^2 \\
+    &= \frac{\omega^2 n_2^2}{c^2}-\beta^2\\
+    &= (k_0n_2)^2-\beta^2
+\end{aligned}\end{equation}
+しかし、\(\beta\neq k_0n_2\)であるためこの条件を満たさず矛盾する。
+よって\(H_z(x)\neq 0\)とわかる。
+
+\section{}
+ファラデーの式から変形していく。
+\begin{equation}\begin{aligned}[b]
+    \beta E_y(x) &= -\omega\mu_0\qty[\frac{1}{-i\beta}\qty(\partial_xH_z(x)+i\omega\epsilon_jE_y(x))]\\
+    \beta^2 E_y(x) &= -i\omega\mu_0\partial_x\qty[\frac{1}{-i\omega\mu_0}\partial_xE_y(x)]
+    +\omega^2\mu_0\epsilon_j E_y(x)\\
+    0 &= \dv[2]{E_y(x)}{x}+\qty(k_0^2n_j^2-\beta^2)E_y(x)
+\end{aligned}\end{equation}
+
+\section{}
+領域I,III では\(k_0n_1^2-\beta^2 <0\)で、
+領域IIでは\(k_0n_2^2-\beta^2 >0\)であり、
+\(E_y(x)\)が偶関数で無限遠で電場はなくなるので、
+\begin{equation}\begin{aligned}[b]
+    E_y(x) =
+    \begin{cases}
+        A_0\exp\qty(-\sqrt{\beta^2-k_0^2n_1^2}\abs{x})& (\abs{x}>d)\\
+        A_1\cos(\sqrt{k_0^2n_2^2-\beta^2}x) & (\abs{x}<d)
+    \end{cases}
+\end{aligned}\end{equation}
+接続条件より
+\begin{equation}\begin{aligned}[b]
+    \begin{cases}
+        A_0\exp\qty(-\sqrt{\beta^2-k_0^2n_1^2}d) &= A_1\cos(\sqrt{k_0^2n_2^2-\beta^2}d)\\
+        -\sqrt{\beta^2-k_0^2n_1^2}A_0\exp\qty(-\sqrt{\beta^2-k_0^2n_1^2}d) &= \sqrt{k_0^2n_2^2-\beta^2}A_1\sin(\sqrt{k_0^2n_2^2-\beta^2}d)
+    \end{cases}
+\end{aligned}\end{equation}
+これの比を取って
+\begin{equation}\begin{aligned}[b]
+    \sqrt{k_0^2n_2^2-\beta^2}\tan(\sqrt{k_0^2n_2^2-\beta^2}d) &=\sqrt{\beta^2-k_0^2n_1^2}\\
+    \tan(\sqrt{k_0^2n_2^2-\beta^2}d) &= \sqrt{\frac{\beta^2-k_0^2n_1^2}{k_0^2n_2^2-\beta^2}}
+\end{aligned}\end{equation}
+なので
+\begin{equation}\begin{aligned}[b]
+    A(\beta) &= \sqrt{k_0^2n_2^2-\beta^2}d\\
+    B(\beta) &= \sqrt{\frac{\beta^2-k_0^2n_1^2}{k_0^2n_2^2-\beta^2}}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    F(\beta) = \sqrt{k_0^2n_2^2-\beta^2}d -\arctan(\sqrt{\frac{\beta^2-k_0^2n_1^2}{k_0^2n_2^2-\beta^2}}) = m\pi
+\end{aligned}\end{equation}
+
+\section*{感想}
+
+
+
+\end{document}
