@@ -150,9 +150,24 @@
 \begin{equation}\begin{aligned}[b]
     F(\beta) = \sqrt{k_0^2n_2^2-\beta^2}d -\arctan(\sqrt{\frac{\beta^2-k_0^2n_1^2}{k_0^2n_2^2-\beta^2}}) = m\pi
 \end{aligned}\end{equation}
+である。
+\(A(\beta)\)は単調減少する関数で、\(-\arctan(B(\beta))\)も単調減少する関数である。
+なので\(F(\beta)\)も単調減少する関数である。
+そして、\(F(k_0n_1)=\sqrt{n_2^2-n_1^2}kd, F(k_0n_2)=-\pi/2\)であり、
+\(F(\beta)\)は連続関数なので、中間値の定理より\(F(\beta)=0\)となる\(\beta\)があるとわかる。
+なので固有値方程式を満たす\(\beta\)が少なくとも1つ存在するのとわかる。
+
+方程式を満たす\(\beta\)が1つだけあるときはというのは\(F(k_0n_1)<\pi\)のことでありり、
+これを書き下すと
+\begin{equation}\begin{aligned}[b]
+    \sqrt{n_2^2-n_1^2}kd<\pi
+\end{aligned}\end{equation}
+である。
+
+このときの\(E_y(x)\)の形は上向きの山が1つ、下向きの山は0か2つある。
 
 \section*{感想}
-
+なぜか背理法だったり中間値の定理だったり、数学っぽい言い回しが必要になる不思議な問題だった。
 
 
 \end{document}
