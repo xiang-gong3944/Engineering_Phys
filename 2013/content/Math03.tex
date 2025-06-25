@@ -1,0 +1,62 @@
+\documentclass[../ap_2013.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{2}
+\chapter{複素解析}
+\section{}
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    f(z) &= \frac{1}{z-1}\qty(\frac{1}{2}\frac{1}{z}-\frac{1}{2}\frac{1}{z+2})\\
+     &= \frac{1}{z-1}\qty(\frac{1}{2}\frac{1}{1+(z-1)}-\frac{1}{6}\frac{1}{1+(z-1)/3})\\
+     &= \frac{1}{z-1}\qty[\frac{1}{2}\sum_{n=0}^{\infty}(-1)^n(z-1)^n-\frac{1}{6}\sum_{n=0}^{\infty}\qty(-\frac{1}{3})^n(z-1)^n]\\
+     &= \sum_{n=-1}^{\infty}\frac{(-1)^{n+1}}{2}\qty(1-\frac{1}{3^n})(z-1)^n
+\end{aligned}\end{equation}
+
+\subsection{}
+留数定理より
+\begin{equation}\begin{aligned}[b]
+    \int_C f(z)dz &= 2\pi i \Res[f,z=1] = \frac{2\pi i}{3}
+\end{aligned}\end{equation}
+
+\section{}
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    z^4+1&=0\\
+    z &= e^{i\pi/4},\,e^{i3\pi/4},\,e^{i5\pi/4},\,e^{i7\pi/4}
+\end{aligned}\end{equation}
+なので、上半平面にある極は
+\begin{equation}\begin{aligned}[b]
+    z =e^{i\pi/4},\,e^{i3\pi/4}
+\end{aligned}\end{equation}
+
+\subsection{}
+積分経路\(C\)を\((-R,R)\)の実軸上\(C_1(R)\)と半径\(R\)の上半円の弧\(C_2(R)\)を合わせたもの、\(R\to \infty\)としたものを考える。
+\begin{equation}\begin{aligned}[b]
+    \int_C g(z) dz &= \lim_{R\to\infty}\int_{C_1(R)}g(z)dz + \int_{C_2(R)}g(z)dz
+\end{aligned}\end{equation}
+これの左辺は留数定理より
+\begin{equation}\begin{aligned}[b]
+    \int_C g(z)dz &= 2\pi i\Res[g,z=e^{i\pi/4}]+2\pi i\Res[g,z=e^{i3\pi/4}]\\
+    &=\frac{\pi}{2}e^{i\pi/4}+\frac{\pi}{2}e^{-i\pi/4}
+    =\frac{\pi}{\sqrt{2}}
+\end{aligned}\end{equation}
+右辺の円弧の経路は\(z=Re^{i\theta}\)として、
+\begin{equation}\begin{aligned}[b]
+    \int_{C_2(R)}g(z)dz
+    &= \int_{0}^{\pi}g(Re^{\theta})iRe^{i\theta}\\
+    &= \int_{0}^{\pi}\frac{R^2e^{2i\theta}}{R^4e^{4i\theta}+1}iRe^{i\theta}d\theta\\
+    &\leq \int_{0}^{\pi} \frac{d\theta}{R} \to 0 \qquad (R\to\infty)
+\end{aligned}\end{equation}
+となる。
+よって
+\begin{equation}\begin{aligned}[b]
+    \int_C g(z) dz &= \lim_{R\to\infty}\int_{C_1(R)}g(z)dz \\
+    \int_{-\infty}^{\infty} \frac{x^2}{x^4+1}dx&= \frac{\pi}{\sqrt{2}}
+\end{aligned}\end{equation}
+
+
+
+\end{document}

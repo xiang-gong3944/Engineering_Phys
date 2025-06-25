@@ -1,0 +1,141 @@
+\documentclass[../ap_2013.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{4}
+\chapter{離散フーリエ変換}
+\section{}
+\begin{equation}\begin{aligned}[b]
+    F_d(\omega)
+    &= \int_{-\infty}^{\infty}\sum_{k=-\infty}^{\infty}f(kT_0)\delta(t-kT_0)e^{-i\omega t}dt\\
+    &= \sum_{k=-\infty}^{\infty}f(kT_0)e^{-i\omega kT_0}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    F_d\qty(\omega+\omega')
+    &= \sum_{k=-\infty}^{\infty}f(kT_0)e^{-i(\omega+\omega')kT_0}\\
+    &= \sum_{k=-\infty}^{\infty}f(kT_0)e^{-i\omega kT_0}e^{-i\omega' kT_0}
+\end{aligned}\end{equation}
+これが\(F_d(\omega)\)と等しくなるのは、任意の\(k\)に対して
+\begin{equation}\begin{aligned}[b]
+    e^{-i\omega' kT_0} = 1
+\end{aligned}\end{equation}
+が成り立つことである。
+これをみたす\(\omega'\)は整数\(m\)を使って
+\begin{equation}\begin{aligned}[b]
+    \omega' = \frac{2\pi m}{kT_0}
+\end{aligned}\end{equation}
+と表され有限であるので、\(F_d(\omega)\)は周期関数である。
+
+問題の後半『任意の関数\(f(t)\)に対して共通な周期を求めよ。』
+の指している共通な周期というのを、\(F_d(\omega)\)の最小の周期を指しているものと解釈する。
+(他の解釈として、できるものは任意の関数\(f(t)\)の周期を求めよ、任意の関数\(f(t)\)をフーリエ変換した\(F(\omega)\)の周期を求めよがある。)
+
+前半での説明は\(f(t)\)の詳細にはよらないものであったので、
+この性質は任意の\(f\)を与えたときの\(F_d(\omega)\)に対して成り立つ。
+なので\(F_d(\omega)\)の最小の周期は
+\begin{equation}\begin{aligned}[b]
+    \frac{2\pi}{kT_0}
+\end{aligned}\end{equation}
+
+\section{}
+\(d_n\)は
+\begin{equation}\begin{aligned}[b]
+    d_n &= \frac{1}{KT_0}\int_{0-\varepsilon}^{KT_0-\varepsilon}\sum_{k=-\infty}^{\infty}
+        f(kT_0)\delta(t-kT_0)e^{-in\omega_0t}dt\\
+        &= \frac{1}{KT_0}\sum_{k=0}^{K-1}f(kT_0)e^{-in\omega_0kT_0}\\
+        &=\frac{1}{KT_0}\sum_{k=0}^{K-1}f(kT_0)e^{-2\pi i\frac{nk}{K}}
+\end{aligned}\end{equation}
+
+周期性について前問と同じ解釈をする。
+\begin{equation}\begin{aligned}[b]
+    d_{n+n'} &=\frac{1}{KT_0}\sum_{k=0}^{K-1}f(kT_0)e^{-2\pi i\frac{(n+n')k}{K}}\\
+    &=\frac{1}{KT_0}\sum_{k=0}^{K-1}f(kT_0)e^{-2\pi i\frac{nk}{K}}e^{-2\pi i\frac{n'k}{K}}
+\end{aligned}\end{equation}
+これが\(d_n\)と等しくなるのは、任意の\(k\)に対して
+\begin{equation}\begin{aligned}[b]
+    e^{-2\pi i\frac{n'k}{K}} = 1
+\end{aligned}\end{equation}
+が成り立てばよい。
+これを満たす\(n'\)は整数\(m\)を使って
+\begin{equation}\begin{aligned}[b]
+    n' =mK
+\end{aligned}\end{equation}
+で表されるので、\(d_n\)は周期的な数列である。
+これ自体は\(f(t)\)の詳細によらない性質なので、
+任意の\(f(t)\)のフーリエ係数の最小の周期は
+\begin{equation}\begin{aligned}[b]
+    L = K
+\end{aligned}\end{equation}
+である。
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    d_n &= \frac{1}{6T_0}\sum e^{-2\pi i\frac{nk}{6}}\\
+    \begin{pmatrix}
+        d_0\\
+        d_1\\
+        d_2\\
+        d_3\\
+        d_4\\
+        d_5
+    \end{pmatrix}
+    &=\frac{1}{6T_0}\begin{pmatrix}
+        e^{-2\pi i\frac{0\times 0}{6}} & e^{-2\pi i\frac{0\times 1}{6}} & e^{-2\pi i\frac{0\times 2}{6}}  &
+            e^{-2\pi i\frac{0\times 3}{6}} & e^{-2\pi i\frac{0\times 4}{6}} & e^{-2\pi i\frac{0\times 5}{6}}\\
+        e^{-2\pi i\frac{1\times 0}{6}} & e^{-2\pi i\frac{1\times 1}{6}} & e^{-2\pi i\frac{1\times 2}{6}}  &
+            e^{-2\pi i\frac{1\times 3}{6}} & e^{-2\pi i\frac{1\times 4}{6}} & e^{-2\pi i\frac{1\times 5}{6}}\\
+        e^{-2\pi i\frac{2\times 0}{6}} & e^{-2\pi i\frac{2\times 1}{6}} & e^{-2\pi i\frac{2\times 2}{6}}  &
+            e^{-2\pi i\frac{2\times 3}{6}} & e^{-2\pi i\frac{2\times 4}{6}} & e^{-2\pi i\frac{2\times 5}{6}}\\
+        e^{-2\pi i\frac{3\times 0}{6}} & e^{-2\pi i\frac{3\times 1}{6}} & e^{-2\pi i\frac{3\times 2}{6}}  &
+            e^{-2\pi i\frac{3\times 3}{6}} & e^{-2\pi i\frac{3\times 4}{6}} & e^{-2\pi i\frac{3\times 5}{6}}\\
+        e^{-2\pi i\frac{4\times 0}{6}} & e^{-2\pi i\frac{4\times 1}{6}} & e^{-2\pi i\frac{4\times 2}{6}}  &
+            e^{-2\pi i\frac{4\times 3}{6}} & e^{-2\pi i\frac{4\times 4}{6}} & e^{-2\pi i\frac{4\times 5}{6}}\\
+        e^{-2\pi i\frac{5\times 0}{6}} & e^{-2\pi i\frac{5\times 1}{6}} & e^{-2\pi i\frac{5\times 2}{6}}  &
+            e^{-2\pi i\frac{5\times 3}{6}} & e^{-2\pi i\frac{5\times 4}{6}} & e^{-2\pi i\frac{5\times 5}{6}}
+    \end{pmatrix}\begin{pmatrix}
+        f(0)\\
+        f(T_0)\\
+        f(2T_0)\\
+        f(3T_0)\\
+        f(4T_0)\\
+        f(5T_0)
+    \end{pmatrix}\\
+    &=\frac{1}{6T_0}\begin{pmatrix}
+        1 & 1 & 1 & 1 & 1 & 1\\
+        1 & a & a^2  & -1 & -a & -a^2\\
+        1 & a^2 & -a  & 1 & a^2 & -a\\
+        1 & -1 & 1 & -1 & 1 & -1\\
+        1 & -a & a^2 & 1 & -a & a^2\\
+        1 & -a^2 & -a & -1 & a^2 & a
+    \end{pmatrix}\begin{pmatrix}
+        f(0)\\
+        f(T_0)\\
+        f(2T_0)\\
+        f(3T_0)\\
+        f(4T_0)\\
+        f(5T_0)
+    \end{pmatrix}\\
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    W = \frac{1}{6T_0}\begin{pmatrix}
+        1 & 1 & 1 & 1 & 1 & 1\\
+        1 & a & a^2  & -1 & -a & -a^2\\
+        1 & a^2 & -a  & 1 & a^2 & -a\\
+        1 & -1 & 1 & -1 & 1 & -1\\
+        1 & -a & a^2 & 1 & -a & a^2\\
+        1 & -a^2 & -a & -1 & a^2 & a
+    \end{pmatrix}
+\end{aligned}\end{equation}
+
+\section*{おまけ}
+あんまりにも設問II, IIIの問題文が悪文で、
+意味が取れにくすぎたので Gemini 君なら文脈で尤もらしい解釈をするはずだと思って、読ませて解かせてみた。
+(\url{https://g.co/gemini/share/4b9b2bb335f8})
+
+
+\end{document}

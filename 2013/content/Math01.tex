@@ -1,0 +1,66 @@
+\documentclass[../ap_2013.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{0}
+\chapter{微分方程式・定積分}
+\section{}
+\subsection{}
+定数係数の2解線形微分方程式なので、
+まず斉次解を求める。
+この場合の解の形を
+\begin{equation}\begin{aligned}[b]
+    y = Ae^{\lambda x}
+\end{aligned}\end{equation}
+とおいて、
+微分方程式に代入すると
+\begin{equation}\begin{aligned}[b]
+    \qty(\lambda^2+4\lambda+4)Ae^{\lambda x} = 0
+\end{aligned}\end{equation}
+これより
+\begin{equation}\begin{aligned}[b]
+    \lambda = -2
+\end{aligned}\end{equation}
+の重解が得られる。
+なので、斉次解は
+\begin{equation}\begin{aligned}[b]
+    y = Ae^{-2x} +Bxe^{-2x}
+\end{aligned}\end{equation}
+とわかる。
+次に、非斉次解の形として
+\begin{equation}\begin{aligned}[b]
+    y = Ce^{2x}
+\end{aligned}\end{equation}
+を代入してやると
+\begin{equation}\begin{aligned}[b]
+    \qty(4C+8C+4C)e^{2x}&=4e^{2x}\\
+    16 C &= 4\\
+    C &= \frac{1}{4}
+\end{aligned}\end{equation}
+とわかる。
+以上よりこの微分方程式の一般解は
+
+\begin{equation}\begin{aligned}[b]
+    y=Ae^{-2x}+Bxe^{-2x}+\frac{1}{4}e^{2x}
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    x^3\dv[3]{y}{x}-3x^2\dv[2]{y}{x}+6x\dv{y}{x}-6y &= 2x^4e^x\\
+    x^4\qty[\frac{1}{x}y'''+3\qty(\frac{1}{x})'y''+3\qty(\frac{1}{x})''y'+\qty(\frac{1}{x})'''y] &= 2x^4e^x\\
+    \dv[3]{x}\qty(\frac{y}{x}) &= 2e^x\\
+    \frac{y}{x} &= e^x +Ax^2+Bx+C\\
+    y &= xe^x+Ax^3+Bx^2+Cx
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \int_0^{\pi/2}\cos(2\theta)\ln(\cos\theta)d\theta
+    &=\qty[\frac{1}{2}\sin(2\theta)\ln(\cos\theta)]_{0}^{\pi/2}-\frac{1}{2}\int_{0}^{\pi/2} \sin(2\theta)\frac{-\sin\theta}{\cos\theta}d\theta\\
+    &= \int_{0}^{\pi/2} \sin^2\theta\,d\theta\\
+    &= \frac{\pi}{2}
+\end{aligned}\end{equation}
+
+\end{document}

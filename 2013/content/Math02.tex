@@ -1,0 +1,91 @@
+\documentclass[../ap_2013.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{1}
+\chapter{対称行列}
+\section{}
+\(\lambda\)を固有値としたとき、固有値方程式より
+\begin{equation}\begin{aligned}[b]
+    0 &= \abs{A-\lambda I}\\
+    &= \lambda^3 -\tr A \lambda^2 + \det A\tr A^{-1} \lambda - \det A\\
+    &= \lambda^3 -7 \lambda^2 + 14 \lambda - 8\\
+    &= (\lambda-1)(\lambda-2)(\lambda-4)\\
+    \lambda &= 1,2,4
+\end{aligned}\end{equation}
+とわかる。
+
+\(\lambda_1=1\)に対応する固有ベクトル\(v_1\)は
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        1 & -1 & 0\\
+        -1 & 2 & -1\\
+        0 & -1 & 1
+    \end{pmatrix}v_1&=0\\
+    \rightarrow\, v_1 &=\frac{1}{\sqrt{3}} \begin{pmatrix}
+        1\\1\\1
+    \end{pmatrix}
+\end{aligned}\end{equation}
+
+\(\lambda_2=2\)に対応する固有ベクトル\(v_2\)は
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        0 & -1 & 0\\
+        -1 & 1 & -1\\
+        0 & -1 & 0
+    \end{pmatrix}v_2&=0\\
+    \rightarrow\, v_2 &=\frac{1}{\sqrt{2}} \begin{pmatrix}
+        1\\0\\-1
+    \end{pmatrix}
+\end{aligned}\end{equation}
+
+\(\lambda_1=3\)に対応する固有ベクトル\(v_3\)は
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        -2 & -1 & 0\\
+        -1 & -1 & -1\\
+        0 & -1 & -2
+    \end{pmatrix}v_1&=0\\
+    \rightarrow\, v_3 &=\frac{1}{\sqrt{6}} \begin{pmatrix}
+        1\\-2\\1
+    \end{pmatrix}
+\end{aligned}\end{equation}
+
+\section{}
+実対称行列の性質より、\(A\)は直交行列
+\begin{equation}\begin{aligned}[b]
+    P = \begin{pmatrix}
+        v_1 & v_2 & v_3
+    \end{pmatrix}
+\end{aligned}\end{equation}
+を用いて
+\begin{equation}\begin{aligned}[b]
+    D = P^\mathsf{T}AP = \text{diag}(1, 2, 4)
+\end{aligned}\end{equation}
+のように対角化できる。
+よって
+\begin{equation}\begin{aligned}[b]
+    A^n &= \qty(PDP^\mathsf{T})^n\\
+    &= PD^nP^\mathsf{T}\\
+    &=v_1v_1^\mathsf{T}+2^nv_2v_2^\mathsf{T}+4^nv_3v_3^\mathsf{T}\\
+    &=\frac{1}{6}\begin{pmatrix}
+        2+3\cdot 2^n+2^{2n} & 2-2^{2n+1} & 2-3\cdot 2^n+2^{2n}\\
+        2-2^{2n+1} & 2+2^{2n+2} & 2-2^{2n}+1\\
+        2-3\cdot 2^n+2^{2n} & 2-2^{2n}+1 & 2+3\cdot 2^n+2^{2n}
+    \end{pmatrix}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    (\lambda I-A)x &= b\\
+    P^\mathsf{T}(\lambda I-A)P P ^\mathsf{T}x &= P^\mathsf{T} b\\
+    x &= P(\lambda I-D)^{-1}P^\mathsf{T}b\\
+    x^\mathsf{T}x &= b^\mathsf{T} P(\lambda I-D)^{-1}(\lambda I-D)^{-1}P^\mathsf{T}b\\
+    &= \frac{\abs{v_1^\mathsf{T}b}^2}{(\lambda-1)^2} + \frac{\abs{v_2^\mathsf{T}b}^2}{(\lambda-2)^2} +\frac{\abs{v_3^\mathsf{T}b}^2}{(\lambda-4)^2}\\
+    &= \frac{3}{(\lambda-1)^2} + \frac{2}{(\lambda-2)^2} +\frac{6}{(\lambda-4)^2}
+\end{aligned}\end{equation}
+
+
+\end{document}
