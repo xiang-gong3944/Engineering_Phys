@@ -1,0 +1,110 @@
+\documentclass[../ap_2014.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{1}
+\chapter{電磁気学:}
+\section{}
+\subsection{}
+Biot-Savart の法則より電流素片の作る磁束密度は
+\begin{equation}\begin{aligned}[b]
+    dB = \frac{\mu_0}{4\pi}\frac{Id\vb{r}'\times(\vb*{r}-\vb*{r}')}{\abs{\vb*{r}-\vb*{r}'}^3}
+\end{aligned}\end{equation}
+と表される。
+これを図1の円形電流に適用して和を取ると
+\begin{equation}\begin{aligned}[b]
+    B(z) &= \int_{0}^{2\pi}\frac{\mu_0}{4\pi}\frac{I(ad\theta \vb*{e}_\varphi)\times(z\vb*{e}_z-a\vb*{e}_r)}{(z^2+a^2)^{3/2}}\\
+    &= \frac{\mu_0 a^2 I}{2(z^2+a^2)^{3/2}}\vb*{e}_z
+\end{aligned}\end{equation}
+
+\subsection{}
+原点付近を通り、ソレノイドコイルを流れる電流を横切るような長方形の経路のもと、
+アンペールの式を考えると
+\begin{equation}\begin{aligned}[b]
+    B=\frac{\mu_0N}{l}I
+\end{aligned}\end{equation}
+
+\subsection{}
+ソレノイドコイルの感じる磁束は
+\begin{equation}\begin{aligned}[b]
+    \Phi = N\pi a^2\frac{\mu_0N}{l}I = \frac{\mu_0\pi a^2N^2}{l}I
+\end{aligned}\end{equation}
+これより自己インダクタンスは
+\begin{equation}\begin{aligned}[b]
+    L = \frac{\Phi}{I}=\frac{\mu_0\pi a^2N^2}{l}
+\end{aligned}\end{equation}
+
+\section{}
+電場は
+\begin{equation}\begin{aligned}[b]
+    E = \frac{v(t)}{d}\vb*{e}_z = \frac{v_0}{d}\sin\omega t \vb*{e}_z
+\end{aligned}\end{equation}
+磁場を求めるため、コンデンサに流れる電流を求める。
+このコンデンサの静電容量\(C\)は
+\begin{equation}\begin{aligned}[b]
+    C = \frac{\varepsilon_0 \pi b^2}{d}
+\end{aligned}\end{equation}
+これより蓄えられる電荷\(Q\)は
+\begin{equation}\begin{aligned}[b]
+    Q = Cv(t) = \frac{\varepsilon_0 \pi b^2}{d}v_0\sin\omega t
+\end{aligned}\end{equation}
+これの時間変化\(I=\dot{Q}\)が電流であるので、電流密度は
+\begin{equation}\begin{aligned}[b]
+    j = \frac{\dot{Q}}{\pi b^2} = \frac{\varepsilon_0 v_0\omega}{d}\cos\omega t
+\end{aligned}\end{equation}
+アンペールの式より磁場\(H\)は
+\begin{equation}\begin{aligned}[b]
+    2\pi r H &=\pi r^2 j\\
+    H &= \frac{\varepsilon v_0 \omega}{d}r\cos\omega t
+\end{aligned}\end{equation}
+で方向は\(\varphi\)方向である。
+
+\section{}
+\subsection{}
+コンデンサに蓄えられている電荷を\(Q\),
+流れる電流を\(I=\dot{Q}\)とする。
+このとき回路方程式は
+\begin{equation}\begin{aligned}[b]
+    \frac{Q}{C}+L\dot{I}&=0\\
+    \ddot{Q}+\frac{Q}{LC} &=0
+\end{aligned}\end{equation}
+いま、初期状態は\(Q(0)=CV,\dot{Q}(0)=0\)よりこの微分方程式の解には
+\begin{equation}\begin{aligned}[b]
+    Q = CV\cos(\frac{t}{\sqrt{LC}})
+\end{aligned}\end{equation}
+のように発振する。
+
+\subsection{}
+コンデンサに蓄えられているエネルギー\(E_C(t)\)は
+\begin{equation}\begin{aligned}[b]
+    E_C(t) = \frac{Q(t)^2}{2C}=\frac{1}{2}CV^2\cos^2\qty(\frac{t}{\sqrt{LC}})
+\end{aligned}\end{equation}
+ソレノイドコイルに蓄えられているエネルギー\(E_L(t)\)は
+\begin{equation}\begin{aligned}[b]
+    E_L(t) = \frac{1}{2}LI^2=\frac{1}{2}CV^2\sin^2\qty(\frac{t}{\sqrt{LC}})
+\end{aligned}\end{equation}
+より、合計のエネルギーは
+\begin{equation}\begin{aligned}[b]
+    E(t)=E_C(t)+E_L(t) = \frac{1}{2}CV^2=\text{const.}
+\end{aligned}\end{equation}
+のように保存する。
+
+\subsection{}
+コンデンサの極板間の距離を2倍にすると静電容量が\(C'=C/2\)のように半分になる。
+それでも初期状態\(Q(0)=CV,\dot{Q}(0)=0\)は変わらないので回路方程式の解は
+\begin{equation}\begin{aligned}[b]
+    Q'(t) = CV\cos\frac{t}{\sqrt{LC'}}
+\end{aligned}\end{equation}
+のようになり、発振振動数が\(\sqrt{2}\)倍大きくなる。
+また、系のエネルギーは
+\begin{equation}\begin{aligned}[b]
+    E = \frac{Q'(t)^2}{2C'}+\frac{1}{2}LI'(t)^2 = \frac{1}{2C'}C^2V^2=CV^2
+\end{aligned}\end{equation}
+より2倍大きくなる。
+
+\section*{感想}
+高校物理に毛が生えた程度の問題で安心して解けた。
+
+\end{document}

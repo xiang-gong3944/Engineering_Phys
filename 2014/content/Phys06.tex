@@ -1,0 +1,82 @@
+\documentclass[../ap_2014.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{2}
+\chapter{物性:フォノン}
+\section{}
+系の次元を\(d\), フォノン分散を\(\omega_k\)とする。
+状態密度は
+\begin{equation}\begin{aligned}[b]
+    D(\omega)
+    &=\sum_k\delta(\omega-\omega_k)\\
+    &\propto \int \dd[d]{k} \delta(\omega -vk)\\
+    &\propto \int \dd{k} k^{d-1}\delta\qty(k-\frac{\omega}{v})\\
+    &\propto \omega^{d-1}
+\end{aligned}\end{equation}
+これより
+(a)3次元立方格子系では\(p=2\)で、
+(b)2次元立方格子系では\(p=1\)である。
+
+\section{}
+フォノンはボーズ分布に従うので、
+低温での内部エネルギーと比熱は
+\begin{equation}\begin{aligned}[b]
+    E &= \int_{0}^{\infty}\frac{\hbar\omega}{e^{\hbar\omega/k_BT}-1}D(\omega)\dd{\omega}\\
+    &\propto (k_BT)^{d+1}\int_{0}^{\infty}\\
+    C &= \dv{E}{t} = T^d
+\end{aligned}\end{equation}
+とわかる。
+これより
+(a)3次元立方格子系では\(q=3\)で、
+(b)2次元立方格子系では\(q=2\)である。
+
+\section{}
+古典的なバネの描像を使うと、バネ定数を\(k\)とすると固有振動数は\(\omega\propto\sqrt{k}\)となる。
+層間間の結合は弱いため、\(\omega\)は小さくなるので、
+(i)が層間、(ii)が層内であると分かる。
+
+\section{}
+\(\omega_0\ll \omega_a\)のときでは、
+\(k'\)方向が正方形で\(k\)方向が長方形の直方体の表面である。
+
+\(\omega_a\ll \omega_0 \ll \omega_b\)のときでは、
+\(k'\)方向が正方形で\(k\)方向が長方形の直方体の表面のうち、正方形の面を取り除いたものである。
+
+\section{}
+\(\omega_0\ll \omega_a\)のときでは、
+全ての方向のモードが励起するので、
+状態密度は3次元のときの\(D(\omega)=\omega^2\)となる。
+なので、\(r=2\)である。
+
+\(\omega_a\ll \omega_0 \ll \omega_b\)のときでは、
+層間のモードはなく、層内の正方形のモードだけが励起するので、
+状態密度は2次元のときの\(D(\omega)\omega\)となる。
+なので、\(r=1\)である。
+
+\section{}
+\(\omega_0\ll k_BT\)のときでは、
+全ての方向のモードが励起するので、
+状態密度は3次元のときの比熱\(C\propto T^3\)となる。
+なので、\(s=3\)である。
+
+\(\omega_a\ll k_BT \ll \omega_b\)のときでは、
+層内の方向のモードのみが励起するので、
+状態密度は2次元のときの比熱\(C\propto T^2\)となる。
+なので、\(s=2\)である。
+
+\(\omega_b \ll k_BT\)のときでは、
+フォノン励起は見えなくなる。
+このときには等エネルギー分配則が成り立つので、
+内部エネルギーは\(T\)に比例する。
+なので比熱は定数となり、\(s=0\)である。
+
+
+\section*{感想}
+冪しか気にしてないあたり、理論の人の作った問題のような気がする。
+フォノンと次元の関係を整理できてよかった。
+
+
+\end{document}

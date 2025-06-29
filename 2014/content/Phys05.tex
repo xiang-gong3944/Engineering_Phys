@@ -1,0 +1,93 @@
+\documentclass[../ap_2014.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{2}
+\chapter{光学:荷電粒子の運動}
+\section{}
+\(v\)が光速より十分遅いので、
+ガウスの法則がそのまま使える。
+\begin{equation}\begin{aligned}[b]
+    4\pi r^2D(r,t) &= 4\pi a^2\sigma\\
+    D(r,t) &= \frac{a^2\sigma}{r^2}
+\end{aligned}\end{equation}
+
+\section{}
+マクスウェルアンペールの式より
+\begin{equation}\begin{aligned}[b]
+    \curl{H}=\pdv{D}{t}
+\end{aligned}\end{equation}
+
+\section{}
+グリーンの定理より
+\begin{equation}\begin{aligned}[b]
+    \oint_C H \dd{r} =\int_C \curl \times H \dd{S} = \int_C \pdv{D}{t}\dd{S} = \pdv{t}\int_C D\dd{S}
+\end{aligned}\end{equation}
+
+\section{}
+点Oから見た円C内部の立体角\(\Omega\)は
+\begin{equation}\begin{aligned}[b]
+    \Omega = 2\pi(1-\cos\theta)
+\end{aligned}\end{equation}
+これより円C内の電束は
+\begin{equation}\begin{aligned}[b]
+    \Phi &= Dr^2\Omega\\
+    &=2\pi a^2\sigma(1-\cos\theta)\\
+    &=2\pi a^2\sigma\sin\theta \dd{\theta}
+\end{aligned}\end{equation}
+いま、
+\begin{equation}\begin{aligned}[b]
+    r\cos\theta-r\cos(\theta+\dd{\theta}) &= v\dd{t}\\
+    \sin\theta \dd{\theta} &= \frac{vdt}{r}
+\end{aligned}\end{equation}
+より
+\begin{equation}\begin{aligned}[b]
+    \dd{\Phi}=\frac{2\pi a^2\sigma v}{r}\dd{t}
+\end{aligned}\end{equation}
+
+\section{}
+設問[3]より、
+\begin{equation}\begin{aligned}[b]
+    \oint_C H\dd{r}&=\dv{\Phi}{t}\\
+    2\pi rH &= \frac{2\pi a^2\sigma v}{r}\\
+    H &= \frac{a^2\sigma v}{r^2}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    u(r,t)=\frac{\mu_0}{2}H^2
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \int u(r,t)\dd{V}
+    = \int_{a}^{\infty}\frac{\mu_0 a^4\sigma^2 v^2}{r^4}4\pi r^2\dd{r}
+    = 4\pi\mu_0 a^3 \sigma^2 v^2
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    E_{tot}=\frac{1}{2}m_0v^2+4\pi\mu_0 a^3 \sigma^2 v^2=\frac{1}{2}\qty(m_0+8\pi\mu_0 a^3 \sigma^2 )v^2
+\end{aligned}\end{equation}
+より、質量が重くなったように見えるとわかる。
+
+物理的には、荷電粒子が動くときには、
+周囲の磁場分布を変える必要があるため、
+単に動く以上のエネルギーを必要とからと理解できる。
+\(v\)と共に動く系だと、この磁場のエネルギーはないことから、
+ローレンツ変換による質量増加とも読める。
+
+
+\section*{感想}
+問題が細かく区切られててやりやすかったけど、
+最後の物理的な意味はよく分からなかった。
+
+この問題の系として考えられるのは、
+ミリカンの実験による質量電荷比の補正というはありそう。
+
+ほかには電子顕微鏡とかでこれを考えないといけなかったりするんですかね?
+
+
+\end{document}

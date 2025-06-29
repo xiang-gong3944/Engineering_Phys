@@ -1,0 +1,83 @@
+\documentclass[../ap_2014.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{0}
+\chapter{古典力学:相対運動・LRLベクトル}
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \frac{1}{2}(m_1+m_2)&\dot{\vb*{R}}^2+\frac{1}{2}\frac{m_1m_2}{m_1+m_2}\dot{\vb*{r}}^2-U(\vb*{r})\\
+    &\frac{1}{2}(m_1+m_2)\qty(\frac{m_1\dot{\vb*{r}}_1+m_2\dot{\vb*{r}}_2}{m_1+m_2})^2+\frac{m_1m_2}{2(m_1+m_2)}(\dot{\vb*{r}}_2-\dot{\vb*{r}}_1)^2-U(\vb*{r}_2-\vb*{r}_1)\\
+    &=\frac{m_1^2\dot{\vb*{r}}_1^2+m_2^2\dot{\vb*{r}}_2^2+2m_1m_2\dot{\vb*{r}}_1\dot{\vb*{r}}_2}{2(m_1+m_2)}
+    \frac{m_1m_2\dot{\vb*{r}}_1^2+m_1m_2\dot{\vb*{r}}_2^2-2m_1m_2\dot{\vb*{r}}_1\dot{\vb*{r}}_2}{2(m_1+m_2)}-U(\vb*{r}_2-\vb*{r}_1)\\
+    &= \frac{1}{2}m_1 \dot{\vb*{r}}_1^2+\frac{1}{2}m_2 \dot{\vb*{r}}_2^2-U(\vb*{r}_2-\vb*{r}_1)
+    = \mathcal{L}
+\end{aligned}\end{equation}
+より、
+\begin{equation}\begin{aligned}[b]
+    M&=m_1+m_2, & \mu &= \frac{m_1m_2}{m_1+m_2}
+\end{aligned}\end{equation}
+
+\section{}
+極座標での速度の大きさは
+\begin{equation}\begin{aligned}[b]
+    \dot{\vb*{r}}&=\qty(\dv{x}{t}\,\dv{y}{t\,0})=(\dot{r}\cos\phi-r\dot{\phi}\sin\phi\, \dot{r}\sin\phi +r\dot{\phi}\cos\phi\, 0)\\
+    \dot{\vb*{r}}^2 &=(\dot{r}\cos\phi-r\dot{\phi}\sin\phi)^2+(\dot{r}\sin\phi +r\dot{\phi}\cos\phi)^2 = \dot{r}^2+r^2\dot{\phi}^2
+\end{aligned}\end{equation}
+これより相対運動のラグランジアンは
+\begin{equation}\begin{aligned}[b]
+    L = \frac{1}{2}\mu(\dot{r}^2+r^2\dot{\phi}^2)-U(r)
+\end{aligned}\end{equation}
+とわかる。
+
+\section{}
+オイラーラグランジュ方程式より
+\begin{equation}\begin{aligned}[b]
+    \pdv{L}{r}-\dv{t}\pdv{L}{\dot{r}}&=0\\
+    \mu r\dot{\phi}^2-\dv{U}{r}-\dv{t}(\mu \dot{r}) &=0\\
+    \mu \ddot{r} &= -\dv{U}{r}+\frac{l^2}{\mu r^3}\\
+    &= -\dv{r}\qty(U(r)+\frac{1}{2}\frac{l^2}{\mu r^2})
+\end{aligned}\end{equation}
+動径方向の運動は、
+中心力ポテンシャル\(U(r)\)と回転運動があることによる角運動量のポテンシャル\(l^2/2\mu r^2\)を感じながら運動するとわかる。
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \mu \dot{r}\dv{\dot{r}}{t} = -\dv{r}\qty(U(r)+\frac{1}{2}\frac{l^2}{\mu r^2})\dv{r}{t}
+\end{aligned}\end{equation}
+両辺を\(t\)で積分して
+\begin{equation}\begin{aligned}[b]
+    \int \mu \dot{r}\dv{\dot{r}}{t}dt &= -\int \dv{r}\qty(U(r)+\frac{1}{2}\frac{l^2}{\mu r^2})\dv{r}{t}dt\\
+    \frac{1}{2}\mu\dot{r}^2 &= -\qty(U(r)+\frac{1}{2}\frac{l^2}{\mu r^2})+\text{const.}\\
+    \frac{1}{2}\dot{r}^2+U(r)+\frac{1}{2}\frac{l^2}{\mu r^2} &= \text{const.}\\
+    E &= \text{const.}
+\end{aligned}\end{equation}
+よりエネルギーが保存するのとわかる。
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \vb*{l}\cdot \vb*{A} &= \vb*{l}\cdot\qty(\mu\dot{\vb*{r}}\times\vb*{l}-\mu k\frac{\vb*{r}}{r})\\
+    &=\mu\dot{\vb*{r}}\cdot(\vb*{l}\times\vb*{l})-(\vb*{r}\times\mu\dot{\vb*{r}})\cdot\mu k\frac{\vb{r}}{r}\\
+    &= -\frac{\mu^2 k}{r}\dot{\vb*{r}}\cdot(\vb*{r}\times\vb*{r}) = 0
+\end{aligned}\end{equation}
+よりLRLベクトルと角運動量ベクトルは直交する。
+
+また、
+\begin{equation}\begin{aligned}[b]
+    Ar\cos\alpha &= \vb*{A}\cdot\vb*{r}\\
+    &= \qty(\mu\dot{\vb*{r}}\times\vb*{l}-\mu k\frac{\vb*{r}}{r})\cdot\vb*{r}\\
+    &=(\vb*{r}\times\mu\dot{\vb*{r}})\cdot\vb*{l}-\mu kr\\
+    &= l^2 -\mu kr\\
+    \frac{1}{r} &= \frac{\mu k}{l^2}\qty(1-\frac{A\cos\theta}{\mu k})
+\end{aligned}\end{equation}
+
+\section*{感想}
+隠れた対称性は良いわね。
+
+LRLベクトルが保存することを示すときに、
+\(\vb*{r}\cdot\dot{\vb{r}}=0\)だと思って余計な項が残ってしまってどうしたものかとなってしまったが、
+これは一般的な関係じゃないのね。
+
+\end{document}
