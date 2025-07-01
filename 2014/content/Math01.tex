@@ -1,0 +1,25 @@
+\documentclass[../ap_2014.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{1}
+\chapter{微分方程式}
+\section{}
+\subsection{}
+定数係数線形微分方程式なので解を\(y=Ae^{\lambda t}\)とおいて、\(\lambda\)を求める。
+\begin{equation}\begin{aligned}[b]
+    \qty(\dv[3]{t}-3\dv[2]{t}+2\dv{t})Ae^{\lambda t} &= 0\\
+    \qty(\lambda^3-3\lambda^2+2\lambda)Ae^{\lambda t} &= 0\\
+    \lambda(\lambda-1)(\lambda-2) &= 0\\
+    \lambda &= 0, 1, 2
+\end{aligned}\end{equation}
+よって求める一般解はこれらのときの重ね合わせである
+\begin{equation}\begin{aligned}[b]
+    y = C_1 + C_2e^{t}+C_3e^{2t}
+\end{aligned}\end{equation}
+である。
+
+
+\end{document}

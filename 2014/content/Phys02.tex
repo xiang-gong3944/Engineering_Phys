@@ -20,13 +20,16 @@ Biot-Savart の法則より電流素片の作る磁束密度は
 \end{aligned}\end{equation}
 
 \subsection{}
-原点付近を通り、ソレノイドコイルを流れる電流を横切るような長方形の経路のもと、
-アンペールの式を考えると
+前問の結果を\(I\to NI/l\)として、\(-l\leq z\leq l\)で積分すればよい。
 \begin{equation}\begin{aligned}[b]
-    B=\frac{\mu_0N}{l}I
+    B_z &= \int_{-l}^l\frac{\mu_0 a^2 NI}{2l(z^2+a^2)^{3/2}}\dd{z}\\
+    &=\frac{\mu_0 NI}{l}\int_{0}^{\tan^{-1}(l/a)} \cos\theta \,\dd\theta\\
+    \vb*{B}&=\frac{\mu_0 NI}{l}\frac{l}{\sqrt{l^2+a^2}}\vb*{e}_z
 \end{aligned}\end{equation}
 
 \subsection{}
+\(l\gg a\)のとき、\(l/\sqrt{l^2+a^2}\simeq 1\)である。
+
 ソレノイドコイルの感じる磁束は
 \begin{equation}\begin{aligned}[b]
     \Phi = N\pi a^2\frac{\mu_0N}{l}I = \frac{\mu_0\pi a^2N^2}{l}I

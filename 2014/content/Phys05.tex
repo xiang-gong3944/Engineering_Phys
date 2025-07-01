@@ -33,26 +33,36 @@
 \end{aligned}\end{equation}
 これより円C内の電束は
 \begin{equation}\begin{aligned}[b]
-    \Phi &= Dr^2\Omega\\
-    &=2\pi a^2\sigma(1-\cos\theta)\\
-    &=2\pi a^2\sigma\sin\theta \dd{\theta}
+    \Phi &= r^2\vb*{D}\cdot\vb*{\Omega}\\
+    &\simeq 2\pi 1a^2\sigma(1-\cos\theta)\\
+    d\Phi&=2\pi a^2\sigma\sin\theta \dd{\theta}
 \end{aligned}\end{equation}
+となる。
+ここでの近似は\(r\gg 1\)もしくは\(\theta \ll 1\)というのを仮定していて、
+電束が円盤を垂直に貫いているとしいる。
+実際、仮定が成り立たないときを考えると変になるのがわかる。
+これは問題文に無い仮定ではあるが、これを想定しているとみられるので、
+問題の不備と思われる。
 いま、
 \begin{equation}\begin{aligned}[b]
-    r\cos\theta-r\cos(\theta+\dd{\theta}) &= v\dd{t}\\
-    \sin\theta \dd{\theta} &= \frac{vdt}{r}
+    d = r\sin\theta &= \qty(r\cos\theta - v\dd{t})\tan(\theta+\dd{\theta})\\
+    &= r\sin\theta + \frac{r\dd{\theta}}{\cos\theta} -\tan\theta v\dd{t}
+\end{aligned}\end{equation}
+なので、
+\begin{equation}\begin{aligned}[b]
+    \dd{\theta} &= \frac{v\sin\theta \dd{t}}{r}
 \end{aligned}\end{equation}
 より
 \begin{equation}\begin{aligned}[b]
-    \dd{\Phi}=\frac{2\pi a^2\sigma v}{r}\dd{t}
+    \dd{\Phi}=\frac{2\pi a^2\sigma v\sin^2\theta}{r}\dd{t}
 \end{aligned}\end{equation}
 
 \section{}
 設問[3]より、
 \begin{equation}\begin{aligned}[b]
     \oint_C H\dd{r}&=\dv{\Phi}{t}\\
-    2\pi rH &= \frac{2\pi a^2\sigma v}{r}\\
-    H &= \frac{a^2\sigma v}{r^2}
+    2\pi r\sin\theta H &= \frac{2\pi a^2\sigma v\sin^2\theta}{r}\\
+    H &= \frac{a^2\sigma v\sin\theta}{r^2}
 \end{aligned}\end{equation}
 
 \section{}
@@ -63,13 +73,14 @@
 \section{}
 \begin{equation}\begin{aligned}[b]
     \int u(r,t)\dd{V}
-    = \int_{a}^{\infty}\frac{\mu_0 a^4\sigma^2 v^2}{r^4}4\pi r^2\dd{r}
-    = 4\pi\mu_0 a^3 \sigma^2 v^2
+    = 2\pi\int_{a}^{\infty}\frac{\mu_0 a^4\sigma^2 v^2}{r^2}\dd{r}\int_{0}^{\pi}\sin^3\theta \dd{\theta}
+    = \frac{4\pi}{3}a^3 \mu_0 \sigma^2 v^2
 \end{aligned}\end{equation}
 
 \section{}
 \begin{equation}\begin{aligned}[b]
-    E_{tot}=\frac{1}{2}m_0v^2+4\pi\mu_0 a^3 \sigma^2 v^2=\frac{1}{2}\qty(m_0+8\pi\mu_0 a^3 \sigma^2 )v^2
+    E_{tot}=\frac{1}{2}m_0v^2+\frac{4\pi}{3}a^3 \mu_0\sigma^2 v^2
+    =\frac{1}{2}\qty(m_0+\frac{8\pi}{3}a^3 \mu_0 \sigma^2 )v^2
 \end{aligned}\end{equation}
 より、質量が重くなったように見えるとわかる。
 
