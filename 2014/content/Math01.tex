@@ -85,6 +85,7 @@
 \end{aligned}\end{equation}
 である。
 
+\subsection*{解法1}
 \(\lambda_0=0\)の固有ベクトル\(v_0\)は
 \begin{equation}\begin{aligned}[b]
     \begin{pmatrix}
@@ -125,12 +126,12 @@
         z
     \end{pmatrix}=0
 \end{aligned}\end{equation}
-より\(v_- = (0\,3\,-1)^\mathsf{T}\)である。
+より\(v_- = (-3\,3\,-1)^\mathsf{T}\)である。
 
 これより\(A\)を対角化する行列は
 \begin{equation}\begin{aligned}[b]
     P = \begin{pmatrix}
-        1 & 1 & 0\\
+        1 & 1 & -3\\
         0 & 1 & 3\\
         0 & -1 & -1
     \end{pmatrix}
@@ -145,7 +146,7 @@
 \begin{equation}\begin{aligned}[b]
     e^{tA} &= e^{tP\text{diag}(0,1,-1)P^{-1}}=P\text{diag}(1,e^{t},e^{-t})P^{-1}\\
     &=\begin{pmatrix}
-        1 & 1 & 0\\
+        1 & 1 & -3\\
         0 & 1 & 3\\
         0 & -1 & -1
     \end{pmatrix}
@@ -155,26 +156,56 @@
         0 & 0 & e^{-t}
     \end{pmatrix}
     \begin{pmatrix}
-        1 & 1/2 & 3/2 \\
+        1 & 2 & 3 \\
         0 & -1/2 & -3/2\\
         0 &1/2 & 1/2
     \end{pmatrix}\\
     &=\begin{pmatrix}
-        1 & 1 & 0\\
+        1 & 1 & -3\\
         0 & 1 & 3\\
         0 & -1 & -1
     \end{pmatrix}
     \begin{pmatrix}
-        1 & 1/2 & 3/2\\
+        1 & 2 & 3\\
         0 & -e^{t}/2 & -3e^{t}/2\\
         0 & e^{-t}/2 &e^{-t}/2
     \end{pmatrix}\\
     &= \begin{pmatrix}
-        1 & (1-e^{t})/2 & 3(1-e^{t})/2\\
+        1 & (4-e^{t}-3e^{-t})/2 & 3(1-e^{t}-e^{-t})/2\\
         0 & -e^{t}/2+3e^{-t}/2 & -3e^{t}/2+3e^{-t}/2\\
         0 & e^{t}/2-e^{-t}/2 & 3e^{t}/2-e^{-t}/2
     \end{pmatrix}
 \end{aligned}\end{equation}
+
+\subsection*{解法2}
+\(n\times n\)の行列の固有多項式は\(\lambda\)の\(n\)次の多項式となる。
+ケーリーハミルトンの定理より、固有多項式の固有値を元の行列に置き換えても成り立つので、
+\(A^k\)の無限和というのは\(A^{n-1}\)次までの行列の和で書くことができる。
+今の場合は\(3\times3\)の行列なので
+\begin{equation}\begin{aligned}[b]
+    e^{tA} = a_0(t)I + a_1(t)A + a_2(t)A^2
+\end{aligned}\end{equation}
+のように書ける。
+これまたケーリーハミルトンの定理より\(A\)を固有値\(\lambda\)に置き換えることで、
+\(a(t)\)を求められる。
+
+\(\lambda=0\)を代入すると
+\begin{equation}\begin{aligned}[b]
+    1 = a_0(t)
+\end{aligned}\end{equation}
+\(\lambda=1\)を代入すると
+\begin{equation}\begin{aligned}[b]
+    e^t = 1 + a_1(t) +a_2(t)
+\end{aligned}\end{equation}
+\(\lambda=-1\)を代入すると
+\begin{equation}\begin{aligned}[b]
+    e^{-t} = 1 -a_1(t)+a_2(t)
+\end{aligned}\end{equation}
+これより
+\begin{equation}\begin{aligned}[b]
+    a_1(t) &= \frac{e^{t}-e^{-t}}{2}, & a_2(t) &= 1+\frac{e^{t}+e^{-t}}{2}
+\end{aligned}\end{equation}
+とわかる。
 
 \subsection{}
 問題1の線形微分方程式の斉次解は\(C_0\)を任意のベクトルとして
@@ -253,7 +284,7 @@
 以上より
 \begin{equation}\begin{aligned}[b]
     x(t) &= \begin{pmatrix}
-        1 & (1-e^{t})/2 & 3(1-e^{t})/2\\
+        1 & (4-e^{t}-3e^{-t})/2 & 3(1-e^{t}-e^{-t})/2\\
         0 & -e^{t}/2+3e^{-t}/2 & -3e^{t}/2+3e^{-t}/2\\
         0 & e^{t}/2-e^{-t}/2 & 3e^{t}/2-e^{-t}/2
     \end{pmatrix}\begin{pmatrix}
