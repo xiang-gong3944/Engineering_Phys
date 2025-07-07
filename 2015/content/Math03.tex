@@ -1,0 +1,67 @@
+\documentclass[../ap_2014.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{1}
+\chapter{線型代数:グラム行列・正規方程式}
+\(A\)の成分を\(a_{mn}\)のように表し、
+行列の積の成分表示にはアインシュタインの縮約を使う。
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \qty(A^\mathsf{T}A)_{pq}^\mathsf{T}
+    &= \qty(a_{rp}a_{rq})^\mathsf{T} = a_{rq}a_{rp}=a_{rp}a_{rq}=(A^\mathsf{T}A)_{pq}
+\end{aligned}\end{equation}
+より\(A^\mathsf{T}A\)は対称行列。
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    x^\mathsf{T}A^\mathsf{T}Ax = (Ax)^\mathsf{T} Ax = \abs{Ax}^2 \geqq 0
+\end{aligned}\end{equation}
+より\(A^\mathsf{T}A\)は半正定値行列とわかる。
+
+次に、等号が成り立つときはどのようなものかを考える。
+それは
+\begin{equation}\begin{aligned}[b]
+    Ax = 0
+\end{aligned}\end{equation}
+である。
+これが任意の\(x\)で成り立つためには\(A\)が1次独立ではない、
+つまり\(A\)の階数が\(n\)未満であればよいが、
+\(A\)の階数は\(n\)であるので、等号が成り立つことは無い。
+
+よって
+\begin{equation}\begin{aligned}[b]
+    x^\mathsf{T}A^\mathsf{T}Ax > 0
+\end{aligned}\end{equation}
+となり、正定値行列とわかる。
+
+\section{}
+正定値行列\(M\)が非正の固有値\(-\lambda\)を持つとする。
+これに対応する固有ベクトルを\(x\)とすると
+\begin{equation}\begin{aligned}[b]
+    x^\mathsf{T} Mx = x^\mathsf{T} (-\lambda)x = -\lambda\abs{x}^2 \leq0
+\end{aligned}\end{equation}
+より、正定値行列の定義に反する結果が出て矛盾する。
+よって正定値行列の全ての固有値は正である。
+
+正定値行列\(M\)を対角化する直交行列を\(P\)とおく。
+このとき正定値行列の行列式について、
+\begin{equation}\begin{aligned}[b]
+    \det(M) = \det(P^\mathsf{T})\det(M)\det(P) = \det(P^\mathsf{T}MP) = \prod_i \lambda_i > 0
+\end{aligned}\end{equation}
+より\(0\)ではないことがわかる。
+これは\(M\)が逆行列を持つことを意味する。
+
+\section{}
+(1)式は下に有界な凸関数でなので停留点が最小値となる。
+なので、
+\begin{equation}\begin{aligned}[b]
+    0 &= \pdv{x}\abs{Ax'-b}^2 = 2A^\mathsf{T}(Ax-b)\\
+    Ax' &= b\\
+    A^\mathsf{T}Ax' &= A^\mathsf{T}b\\
+    x' &= \qty(A^\mathsf{T}A)^{-1}A^\mathsf{T}b
+\end{aligned}\end{equation}
+
+\end{document}
