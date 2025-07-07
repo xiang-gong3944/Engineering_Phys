@@ -5,11 +5,107 @@
 \begin{document}
 
 \setcounter{chapter}{3}
-\chapter{統計力学:ミクロカノニカル分布からカノニカル分布へ}
+\chapter{電磁気学:レーザートラップ}
+\section{}
+\subsection{}
+ラプラス方程式より
+\begin{equation}\begin{aligned}[b]
+    0 &= \laplacian \phi(\vb*{r})= 2a+2b+2c \\
+    &= a+b+c
+\end{aligned}\end{equation}
 
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    m\dv[2]{\vb*{r}(t)}{t} = q\qty(-\grad\phi(\vb*{r})+\dv{\vb*{r}(t)}{t}\times \vb*{B})
+\end{aligned}\end{equation}
 
+\subsection{}
+前問で得られた運動方程式の\(z\)成分に各条件を代入すると
+\begin{equation}\begin{aligned}[b]
+    m\dv[2]{z(t)}{t}=-2cq z
+\end{aligned}\end{equation}
+この微分方程式の解は固有角振動数\(\omega=\sqrt{2cq/m}\)の単振動である。
+
+\subsection{}
+[1.2]の運動方程式の\(x,y\)成分は
+\begin{equation}\begin{aligned}[b]
+    &\begin{cases}
+        m\dv[2]{x(t)}{t} &= cqx +qB\dv{y(t)}{t}\\
+        m\dv[2]{y(t)}{t} &= cqx -qB\dv{x(t)}{t}
+    \end{cases}\\
+    &m\dv[2]{t}(x(t)+iy(t)) = cq(x(t)+iy(t)) -iqB\dv{t}(x(t)+iy(t))\\
+    &m\dv[2]{u(t)}{t} +iqB\dv{u(t)}{t} -cq u(t)=0
+\end{aligned}\end{equation}
+
+\subsection{}
+[1.4]で得られた線形2解方程式の解は\(e^{\lambda t}\)の線形結合によって表すことができる。
+なので\(u(t)=e^{\lambda t}\)を代入して\(\lambda\)についての方程式にすると
+\begin{equation}\begin{aligned}[b]
+    m\lambda^2 +iqB\lambda -cq\lambda &= 0
+    \lambda &= \frac{-iqB\pm\sqrt{4cqm-q^2B^2}}{2m}
+\end{aligned}\end{equation}
+今はどちらの\(\lambda\)でも\(u(t)\)が有界な領域に閉じ込められる条件を調べている。
+\begin{equation}\begin{aligned}[b]
+    4cqm-q^2B^2 < 0
+\end{aligned}\end{equation}
+であれば\(\lambda\)は純虚数で荷電粒子が周期運動する解となる。
+
+\section{}
+\subsection{}
+与えられたスカラーポテンシャルを(1.2)式に代入して、\(x\)成分を見ると
+\begin{equation}\begin{aligned}[b]
+    m\dv[2]{x(t)}{t} &= -2\alpha x(t)\cos(\omega t)\\
+    \frac{4m}{\omega^2}\dv[2]{x(\tau)}{\tau} &= -2\alpha x(\tau) \cos2\tau\\
+    \dv[2]{x(\tau)}{\tau} + 2\times \frac{\alpha\omega^2}{4m}x(\tau)\cos2\tau &= 0
+\end{aligned}\end{equation}
+よって\(\lambda = \alpha\omega^2/4m\).
+
+\subsection{}
+前問で得られた運動方程式に(4)式を代入して
+\begin{equation}\begin{aligned}[b]
+    \sum_{n=-\infty}^{\infty}C_n(2n+\Omega)^2\cos\qty[(2n+\Omega)\tau]+2\lambda\sum_{n=-\infty}^{\infty}C_n(2n+\Omega)^2\cos\qty[(2n+\Omega)\tau]\cos2\tau &= 0\\
+    \sum_{n=-\infty}^{\infty}\Bigl((2n+\Omega)^2C_n+\lambda(C_{n-1}+C_{n+1})\Bigr)\cos\qty[(2n+\Omega)\tau] &=0\\
+    (2n+\Omega)^2C_n+\lambda(C_{n-1}+C_{n+1}) &= 0
+\end{aligned}\end{equation}
+
+\subsection{}
+(2.2)式に\(n=-1\)を代入して
+\begin{equation}\begin{aligned}[b]
+    (-2+\Omega)^2C_{-1}+\lambda C_0 &=0\\
+    \frac{C_{-1}}{C_0} &= -\frac{\lambda}{(-2+\Omega)^2}
+        \simeq -\frac{\lambda}{4}(1+\Omega)
+        \simeq -\frac{\lambda}{4}
+\end{aligned}\end{equation}
+同様に(2.2)式に\(n=1\)を代入して
+\begin{equation}\begin{aligned}[b]
+    (2+\Omega)^2C_{1}+\lambda C_0 &=0\\
+    \frac{C_{1}}{C_0} &= -\frac{\lambda}{(2+\Omega)^2}
+        \simeq -\frac{\lambda}{4}(1-\Omega)
+        \simeq -\frac{\lambda}{4}
+\end{aligned}\end{equation}
+そして(2.2)式に\(n=0\)を代入してこれらの結果と合わせると
+\begin{equation}\begin{aligned}[b]
+    \Omega^2+\lambda\qty(-\frac{\lambda}{4}(1+\Omega)-\frac{\lambda}{4}(1-\Omega)) = 0\\
+    \Omega&=\frac{\lambda}{\sqrt{2}}
+\end{aligned}\end{equation}
+より\(\delta=1/\sqrt{2}\)
+
+\subsection{}
+前問より\(x(\tau)\)のフーリエ成分が求まったので、解は
+\begin{equation}\begin{aligned}[b]
+    x(\tau) &= C_0\cos\qty[\frac{\lambda\tau}{4}]-\frac{\lambda}{4}\qty(\cos\qty[\qty(\frac{\lambda}{4}+2)\tau]+\cos\qty[\qty(\frac{\lambda}{4}-2)\tau])\\
+    &= C_0\cos\qty[\frac{\lambda\tau}{4}]-\frac{\lambda}{2}\cos\qty[\frac{\lambda\tau}{4}]\cos\qty[2\tau]
+        = C_0\cos\qty[\frac{\lambda\tau}{4}]\qty(1-\frac{\lambda}{2}\cos\qty[2\tau])\\
+    &\simeq C_0\qty(1-\frac{\lambda}{2}\cos\qty[2\tau])
+\end{aligned}\end{equation}
 
 \section*{感想}
+レーザートラップってこんな感じなのね。
+(1.6)式の不等号を逆にすると、
+原点に向かって集まってくる解と、遠くへ行く解になるので、
+これをスイッチングすることで荷電粒子を移動させたりするのかしら。
+
+後半の微分方程式はマシューの微分方程式とか呼ばれるやつの一種で解は特殊関数として名前が付けられてるらしい。
 
 
 

@@ -5,10 +5,135 @@
 \begin{document}
 
 \setcounter{chapter}{2}
-\chapter{量子力学: スピン軌道結合}
+\chapter{統計力学: 回転する系での古典自由粒子気体}
 \section{}
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    1 &= \int \dd[3]{\vb*{p}}\int \dd[3]{\vb*{r}} \frac{1}{h^3L\tilde{Z}_1}\exp(-\frac{\vb*{p}^2}{2mkT})\\
+    \tilde{Z}_1(T,R) &= \frac{(2\pi mkT)^{3/2}}{h}\pi R^2 = \gamma R^2 (kT)^{3/2}
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    F &= -kT\log \qty[\frac{(L\tilde{Z}_1)^N}{N!}] = -NkT\qty(\log\qty[\frac{L}{N}\tilde{Z}_1 ]+1)\\
+    \tilde{F} & = -\nu kT\qty(\log\qty[\frac{\tilde{Z}_1}{\nu}]+1)
+\end{aligned}\end{equation}
+
+\subsection{}
+ヘルムホルツの自由エネルギーについて、
+\begin{equation}\begin{aligned}[b]
+    \dd{F} &= -P\dd{V} -S\dd{T} = -2\pi RLP\dd{R} -S\dd{T} \\
+    \dd{\tilde{F}} &=-2\pi RP\dd{R} -\frac{S}{N}\dd{T} \\
+\end{aligned}\end{equation}
+より、
+\begin{equation}\begin{aligned}[b]
+    P &= -\frac{1}{2\pi R}\qty(\pdv{\tilde{F}}{R})_{T}
+        = \frac{\nu kT}{2\pi R}\qty(\pdv{R}\log \tilde{Z}_1(T,R))_{T}
+        = \frac{\nu kT}{2\pi R\tilde{Z}_1(T,R)}\qty(\pdv{\tilde{Z}_1(T,R)}{R})_{T}
+\end{aligned}\end{equation}
+
+\section{}
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    H_1(\vb*{r},\vb*{p})-\omega M_1(\vb*{r},\vb*{p})
+    &= \frac{p_x^2}{2m}+\frac{p_y^2}{2m}+\frac{p_z^2}{2m}-\omega(xp_y-yp_x)\\
+    &= \frac{(p_x+m\omega y)^2}{2m}+\frac{(p_y-m\omega x)^2}{2m}+\frac{p_z^2}{2m}-\frac{m\omega^2(x^2+y^2)}{2}\\
+\end{aligned}\end{equation}
+これが最小になるのは\(p_x=-m\omega y,p_y=m\omega x, x^2+y^2=R^2\)のときであるので、
+\begin{equation}\begin{aligned}[b]
+    \min [H_1(\vb*{r},\vb*{p})-\omega M_1(\vb*{r},\vb*{p})] = -\frac{m\omega^2R^2}{2}
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \ev{p_x} &= \frac{\int\dd[3]{\vb*{p}}\int\dd[3]{\vb*{r}}p_x\rho(\vb*{r},\vb*{p})}{\int\dd[3]{\vb*{p}}\int\dd[3]{\vb*{r}}\rho(\vb*{r},\vb*{p})}\\
+    &=\frac{\int\dd{p_x}p_xe^{-\frac{(p_x+m\omega y)^2}{2mkT}}}{\int\dd[3]{p_x}e^{-\frac{(p_x+m\omega y)^2}{2mkT}}}\\
+    &=\frac{\int\dd{p_x}(p_x+m\omega y)e^{-\frac{(p_x+m\omega y)^2}{2mkT}}}{\int\dd[3]{p_x}e^{-\frac{(p_x+m\omega y)^2}{2mkT}}}
+    -m\omega y\frac{\int\dd{p_x}e^{-\frac{(p_x+m\omega y)^2}{2mkT}}}{\int\dd[3]{p_x}e^{-\frac{(p_x+m\omega y)^2}{2mkT}}}\\
+    &= -m\omega y
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    \ev{v_x} = \frac{\ev{p_x}}{m} = -\omega y
+\end{aligned}\end{equation}
+である。\(\ev{v_y}\)についても同様の計算をすることで、
+\begin{equation}\begin{aligned}[b]
+    \ev{v_y} = \omega x
+\end{aligned}\end{equation}
+とわかる。
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    1 &= \int\dd[3]{\vb*{p}}\int\dd[3]{\vb*{r}} \frac{1}{h^3 L\tilde{Z}_1}\exp(-\frac{(p_x+m\omega y)^2}{2mkT}-\frac{(p_y-m\omega x)^2}{2mkT}-\frac{p_z^2}{2mkT}+\frac{m\omega^2(x^2+y^2)}{2kT})\\
+    \tilde{Z}_1(T,R,\omega) &= \frac{(2\pi mkT)^{3/2}}{h^3}\times 2\pi \int_{0}^{R}\dd{r}r\exp(\frac{m\omega^2 r^2}{2kT})\\
+    &= \frac{2\gamma (kT)^{5/2}}{m\omega^2}\qty[\exp(\frac{m\omega^2R^2}{2kT})-1]
+\end{aligned}\end{equation}
+
+\subsection{}
+側圧とその低温極限は
+\begin{equation}\begin{aligned}[b]
+    P &= \frac{\nu kT}{2\pi R}\qty(\pdv{R}\log\tilde{Z}_1(T,R))_T
+        = \frac{\nu kT}{2\pi R}\qty[\pdv{R}\log(\exp(\frac{m\omega^2R^2}{2kT})-1)]_T
+        = \frac{\nu m\omega^2}{2\pi}\frac{1}{1-\exp(-\frac{m\omega^2R^2}{2kT})}\\
+    &\to \frac{\nu m\omega^2}{2\pi}
+\end{aligned}\end{equation}
+
+\subsection{}
+この系の熱力学関数はヘルムホルツの自由エネルギー\(F(R,T,M_1)\)ではなく、
+\(M_1\)をルジャンドル変換して得られるギブスの自由エネルギーの一種である
+\begin{equation}\begin{aligned}[b]
+    G(R,T,\omega) = \qty[F(R,T,M_1)-\omega M_1](R,T,\omega)
+\end{aligned}\end{equation}
+で考えていて、それに対応する分布を調べている。
+なので
+\begin{equation}\begin{aligned}[b]
+    G(R,T,\omega) &= -kT\log\qty[\frac{(L\tilde{Z})^N}{N!}] = -NkT\qty(\log\qty[\frac{L}{N}\tilde{Z}_1]+1)\\
+    \tilde{G}(R,T,\omega) &= -\nu kT \qty(\log\qty[\frac{\tilde{Z}_1}{\nu}]+1)\\
+\end{aligned}\end{equation}
+になっている。
+
+熱力学関数と自然な引数とそれに共役な変数の関係を全微分の式で表すと
+\begin{equation}\begin{aligned}[b]
+    dG = dF-d(\omega M_1)= -2\pi RL \dd{R} -S\dd{T}-M_1\dd{\omega} = -2\pi RL \dd{R} -S\dd{T}-I\omega\dd{\omega}
+\end{aligned}\end{equation}
+となっている。
+
+これより慣性モーメントは
+\begin{equation}\begin{aligned}[b]
+    I &= -\frac{1}{\omega}\qty(\pdv{G}{\omega})_{R,T}
+        = \frac{NkT}{\omega}\qty(\pdv{\omega}\log\tilde{Z}_1)_{R,T}
+        = \frac{NkT}{\omega}\qty(\pdv{\omega}\log\qty[\exp(\frac{m\omega^2R^2}{2kT})-1])_{R,T}\\
+    &= \frac{NmR^2}{1-e^{-\frac{\varepsilon}{kT}}} = \frac{2\varepsilon}{\omega ^2}\frac{1}{1-e^{-\frac{\varepsilon}{kT}}}
+\end{aligned}\end{equation}
+
+\subsection{}
+角速度一定のときの熱容量は\(\beta=1/kT\)をつかって
+\begin{equation}\begin{aligned}[b]
+    C_\omega &= -T\qty(\pdv[2]{G}{T})_{R,\omega}
+        = k\beta^2\qty(\pdv[2]{\beta}\log\qty[\frac{(L\tilde{Z}_1)^N}{N!}])_{R,\omega}
+        = Nk\beta^2\qty(\pdv[2]{\beta}\log \tilde{Z}_1)_{R,\omega}\\
+    &= Nk\beta^2\qty(\pdv[2]{\beta}\log\qty[\beta^{-5/2}(e^{\beta\varepsilon}-1)])
+        =Nk\beta^2\qty(\frac{5}{2\beta^2}+\frac{\varepsilon^2}{(1-e^{-\beta \varepsilon})^2})\\
+    &= \frac{5}{2}Nk + Nk\qty(\frac{\frac{\varepsilon}{2kT}}{\sinh(\frac{\varepsilon}{2kT})})^2
+\end{aligned}\end{equation}
+これより、\(T\to\infty\)の高温極限では
+\begin{equation}\begin{aligned}[b]
+    C_\omega = \frac{7}{2}Nk
+\end{aligned}\end{equation}
+\(T\to 0\)の低温極限では
+\begin{equation}\begin{aligned}[b]
+    C_\omega = \frac{5}{2}Nk +Nk\qty(\frac{\varepsilon}{kT})^2e^{-\frac{\varepsilon}{kT}}
+\end{aligned}\end{equation}
+
+となる。
 
 \section*{感想}
+回転する円筒の系とかいうよそではあまり見ない面白い問題だった。
+
+最後の系の結果を等エネルギー分配則に基づいて考えてみる。
+高温では通常の気体分子の運動で3自由度、回転のポテンシャルによる自由度が2自由度、ルジャンドル変換の寄与で2自由度になるので、
+\(C=7/2\)になる。
+低温では、回転によるポテンシャルが効かず、凍結するので2自由度落ちて\(5/2\)になると解釈できる。
 
 
 \end{document}

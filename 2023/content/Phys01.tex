@@ -184,37 +184,46 @@
 これより
 \begin{equation}\begin{aligned}[b]
     \begin{cases}
-        Ma &= -b\\
-        Mb &= a
+        C_4a &= -b\\
+        C_4b &= a
     \end{cases}
     \rightarrow
     \begin{cases}
-        (a+ib)(M-i)&=0\\
-        (a-ib)(M+i)&=0
+        (a+ib)(C_4-i)&=0\\
+        (a-ib)(C_4+i)&=0
     \end{cases}
 \end{aligned}\end{equation}
 よって求める状態は2つあり、
-1つは\(C_4=+i\)かつ\(b=ia\)の状態で、波動関数の規格化条件も考慮すると波動関数は
+1つは\(C_4=+i\)かつ\(a=ib\)の状態で、波動関数の規格化条件も考慮すると波動関数は
 \begin{equation}\begin{aligned}[b]
-    \Psi_{+i} = \frac{1}{\sqrt{2}}\qty(\Psi_{12}+i\Psi_{21})
+    \Psi_{+i} = \frac{1}{\sqrt{2}}\qty(\Psi_{12}-i\Psi_{21})
 \end{aligned}\end{equation}
 である。
-もう1つは\(C_4=-i\)かつ\(b=-i\)の状態で、波動関数の規格化条件も考慮すると波動関数は
+もう1つは\(C_4=-i\)かつ\(a=-ib\)の状態で、波動関数の規格化条件も考慮すると波動関数は
 \begin{equation}\begin{aligned}[b]
-    \Psi_{-i} = \frac{1}{\sqrt{2}}\qty(\Psi_{12}-i\Psi_{21})
+    \Psi_{-i} = \frac{1}{\sqrt{2}}\qty(\Psi_{12}+i\Psi_{21})
 \end{aligned}\end{equation}
 である。
 
 \subsection{}
-\(\Psi_{\pm i}\)は\(\pi/2\)回転で位相が\(\pm i= e^{\pm i\pi/2}\)つく状態であるので、
-これは磁気量子数が\(\pm 1\)の状態と同じ対称性である。
-なので\(\Psi_{+i}\)の状態の角運動量の期待値は
+\(\Psi_\pm\)の状態の角運動量の期待値を\(\ev{L}_\pm\)のように書く。
+角運動量は実数であることに注意すると、
+計算途中で項がいくつか落ちること、途中\(C_4\)の操作に対応する変数変換をすると項が同じ形になることなどを利用しながら計算する。
+また、\(a\)を長さの単位として計算をする。
 \begin{equation}\begin{aligned}[b]
-    \ev{L} = +\hbar
-\end{aligned}\end{equation}
-\(\Psi_{-i}\)の状態の角運動量の期待値は
-\begin{equation}\begin{aligned}[b]
-    \ev{L} = -\hbar
+    \ev{L}_\pm &= \mel{\Psi_\pm}{L}{\Psi_\pm}
+        =-i\hbar \int_{-1}^{1} \dd{x}\int_{-1}^{1} \dd{y}\Psi_\pm^*(x,y)\qty(x\pdv{y}-y\pdv{x})\Psi_\pm(x,y)\\
+    &=-i\hbar \int_{-1}^{1} \dd{x}\int_{-1}^{1} \dd{y}\Psi_\pm^*(x,y)x\pdv{y}\Psi_\pm(x,y)
+    -i\hbar \int_{-1}^{1} \dd{x}\int_{-1}^{1} \dd{y}\Psi_\pm^*(-y,x)x\pdv{y}\Psi_\pm(-y,x)\\
+    &=-2i\hbar\int_{-1}^{1} \dd{x}\int_{-1}^{1} \dd{y}\Psi_\pm^*(x,y)x\pdv{y}\Psi_\pm(x,y)
+        =-2i\hbar\qty(\frac{\bra{\Psi_{12}}\pm i\bra{\Psi_{21}}}{\sqrt{2}})
+            x\pdv{y}\qty(\frac{\ket{\Psi_{12}}\mp i\ket{\Psi_{21}}}{\sqrt{2}})\\
+    &=-i\hbar\qty[\pm i\mel{\Psi_{21}}{x\pdv{y}}{\Psi_{12}}\mp i\mel{\Psi_{12}}{x\pdv{y}}{\Psi_{21}}]
+        =\pm 2\hbar\mel{\Psi_{21}}{x\pdv{y}}{\Psi_{12}}\\
+    &= \pm 2\hbar  \int_{-1}^{1} \dd{x}\int_{-1}^{1} \dd{y} \sin(\pi x)\cos(\frac{\pi}{2}y)x\pdv{y}\cos(\frac{\pi}{2}x)\sin(\pi y)\\
+    &= \pm 2\pi\hbar\int_{-1}^{1} \dd{x}x\cos(\frac{\pi}{2} x)\sin(\pi x)\int_{-1}^{1} \dd{y} \cos(\frac{\pi}{2}y)\cos(\pi y)\\
+    &= \pm \hbar \times 2\pi \times \frac{32}{9\pi^2}\times \frac{4}{3\pi}
+        = \pm \frac{256}{27\pi^2}\hbar
 \end{aligned}\end{equation}
 
 \section*{感想}
@@ -229,11 +238,28 @@
 \(a\Psi_{12}(x,y)+b\Psi_{21}(x,y)\)は\(E_{u}\)
 であり、これを確かめていたのが、[2.1], [2.4]とかである。
 実際波動関数を原点付近で展開すると
-それぞれ\(3z^2-r^2,xy,(xz,yz)\)に比例するのがわかり、結晶場分裂で見覚えのある組になっている。
+それぞれ\(1,xy,(x,y)\)に比例するのがわかり、結晶場分裂で見覚えのある組になっている。
+そうすると、\(E_u\)に属するものを\(x\pm iy\)のように線形結合すると角運動量を持つだろうなというのは予想ができる。
+
+多極子の言葉で言うと\(\Psi_{11}\)は電気単極子、
+\(\Psi_{22}\)は電気4重極子、
+\(\Psi_{12},\Psi_{21}\)は電気双極子に相当する状態である。
 
 設問[2.1]-[2.3]で調べてた演算子\(\hat{M}\)は点群の言葉では\(\sigma_d\)のこと。
 [2.3]は時間反転の対称性からきてるもので、
 3d遷移元素の軌道角運動量の消失と同じ理屈である。
 
+設問[2.6]で、
+\(\Psi_{\pm i}\)は\(\pi/2\)回転で位相が\(\pm i= e^{\pm i\pi/2}\)つく状態であるので、
+これは磁気量子数が\(\pm 1\)の状態と同じ対称性である。
+なので\(\Psi_{+i}\)の状態の角運動量の期待値は\( \ev{L} = +\hbar\)
+\(\Psi_{-i}\)の状態の角運動量の期待値は\(\ev{L} = -\hbar\)
+というように1回目はやったが、もちろん球面調和関数ではないのでこんな簡単にはいかない。
+ただ、正解は\(\pm0.96\hbar\)程度であるので、あながち間違いではないというのは面白い結果であった。
+
+この答案では対称性を利用して、
+実際に行う積分は最後の1つだけになるようにしたが、
+初めから\(\ev{L}_\pm=\pm2\hbar\mel{\Psi_{21}}{x\partial_y}{\Psi_{12}}\)だと言えるような、
+なにかうまい方法とかないのだろうか。
 
 \end{document}
