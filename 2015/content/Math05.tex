@@ -5,7 +5,73 @@
 \begin{document}
 
 \setcounter{chapter}{4}
-\chapter{積分変換:}
+\chapter{フーリエ変換}
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \overline{F(\omega)}
+        =\int_{-\infty}^{\infty}\dd{t}\overline{f(t)\exp(i\omega t)}
+        = \int_{-\infty}^{\infty}\dd{t} f(t)\exp(-i\omega t)
+        = F(-\omega)
+\end{aligned}\end{equation}
 
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \int_{-\infty}^{\infty}\dd{t}(f*g)(t)\exp(i\omega t)
+    = \int_{-\infty}^{\infty}\dd{s}f(s)\exp(i\omega s)\int_{-\infty}^{\infty}\dd{s} g(t-s) \exp(i\omega(t-s))
+    = F(\omega) G(\omega)
+\end{aligned}\end{equation}
+
+\section{}
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \overline{R(\omega)} = R(-\omega)
+    = \int_{-\infty}^{\infty}\dd{t}\frac{h(t)+h(-t)}{2}\exp(-i\omega t)
+    = \int_{-\infty}^{\infty}\dd{t}\frac{h(-t)+h(t)}{2}\exp(i\omega t)
+    = R(\omega)
+\end{aligned}\end{equation}
+より\(R(\omega)\)は実数
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \overline{X(\omega)} = R(-\omega)
+    = \int_{-\infty}^{\infty}\dd{t}\frac{h(t)-h(-t)}{2}\exp(-i\omega t)
+    = \int_{-\infty}^{\infty}\dd{t}\frac{h(-t)-h(t)}{2}\exp(i\omega t)
+    = -X(\omega)
+\end{aligned}\end{equation}
+より\(X(\omega)\)は準虚数
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \int_{-\infty}^{\infty}\dd{t}h(t)\exp(i\omega t) = \int_{0}^{\infty}\dd{t}\exp((-1+i\omega)t)
+    = \frac{1}{1-i\omega}
+    = \frac{1}{1+\omega^2}+i\frac{\omega}{1+\omega^2}
+\end{aligned}\end{equation}
+一方
+\begin{equation}\begin{aligned}[b]
+    \int_{-\infty}^{\infty}\dd{t}h(t)\exp(i\omega t) = \int_{-\infty}^{\infty}\dd{t}\Bigl[r(t)+x(t)\Bigr]\exp(i\omega t)
+    = R(\omega)+X(\omega)
+\end{aligned}\end{equation}
+より、
+\begin{equation}\begin{aligned}[b]
+    R(\omega) &= \frac{1}{1+\omega^2} & X(\omega) &= i\frac{\omega}{1+\omega^2}
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    R(\omega)=\int_{-\infty}^{\infty}\dd{t} r(t)\exp(i\omega t)
+    = \frac{e^{2i\omega}-e^{-2i\omega}}{4i}=\frac{1}{2}\sin(2\omega)
+\end{aligned}\end{equation}
+そして、
+\begin{equation}\begin{aligned}[b]
+    x(t) = \begin{cases}
+        1/4 & (0 \leq  t \leq 2)\\
+        -1/4 & (-2 \leq  t \leq 0)\\
+        0 & (\text{otherwise})
+    \end{cases}
+\end{aligned}\end{equation}
+より
+\begin{equation}\begin{aligned}[b]
+    X(\omega) = \int_{-\infty}^{\infty}\dd{t}x(t)\exp(i\omega t) = \frac{e^{2i\omega}+e^{-2i\omega}}{i\omega} = -i\cos(2\omega)
+\end{aligned}\end{equation}
 
 \end{document}
