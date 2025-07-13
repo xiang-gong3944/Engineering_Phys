@@ -1,0 +1,108 @@
+\documentclass[../ap_2023.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{1}
+\chapter{力学: カピッツァの振り子・摂動論}
+\section{}
+\begin{equation}\begin{aligned}[b]
+    (x,y) = (L\sin\theta,L\cos\theta+a\cos\Omega t)
+\end{aligned}\end{equation}
+\section{}
+張力の成分を\(x,y\)成分に分解して運動方程式を考えると
+\begin{equation}\begin{aligned}[b]
+    m\ddot{x}=-T\sin\theta\\
+    m\ddot{y}=mg-T\cos\theta
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    (\dot{x},\dot{y})&=\qty(L\dot{\theta}\cos\theta,-L\dot{\theta}\sin\theta -a\Omega\sin\Omega t)\\
+    (\ddot{x},\ddot{y})&=\qty(L\ddot{\theta}\cos\theta-L\dot{\theta}^2\sin\theta,
+        -L\ddot{\theta}\sin\theta-L\dot{\theta}^2\cos\theta -a\Omega^2\cos\Omega t)\\
+\end{aligned}\end{equation}
+
+\section{}
+[2]の\(\ddot{x},\ddot{y}\)に[3]の結果を入れて、
+\begin{equation*}\begin{aligned}[b]
+    \begin{cases}
+        m(L\ddot{\theta}\cos\theta-L\dot{\theta}^2\sin\theta) &= -T\sin\theta\\
+        m(-L\ddot{\theta}\sin\theta-L\dot{\theta}^2\cos\theta -a\Omega^2\cos\Omega t) &= mg -T\cos\theta
+    \end{cases}
+\end{aligned}\end{equation*}
+\begin{equation}\begin{aligned}[b]
+    L\ddot{\theta}\cos^2\theta-L\dot{\theta}^2\sin\theta\cos\theta
+        &=-L\ddot{\theta}\sin^2\theta-L\dot{\theta}^2\cos\theta\sin\theta -a\Omega^2\cos\Omega t\sin\theta -g\sin\theta\\
+    L\ddot{\theta} &= -(g+a\Omega^2\cos\Omega t)\sin\theta
+\end{aligned}\end{equation}
+
+\section{}
+\(\theta\sim 0\)としたとき、
+\begin{equation}\begin{aligned}[b]
+    L\ddot{\theta}_0 &= -g\theta_0
+\end{aligned}\end{equation}
+のように固有振動数\(\omega_0=\sqrt{g/L}\)で単振動する方程式になる。
+これに初期条件を考慮すると
+\begin{equation}\begin{aligned}[b]
+    \theta_0 = A\cos(\sqrt{\frac{g}{L}}t)
+\end{aligned}\end{equation}
+とわかる。
+
+\section{}
+運動方程式に\(\theta(t)=\theta_0(t)+a\theta_1(t)\)を代入して、
+\begin{equation}\begin{aligned}[b]
+    L(\ddot{\theta}_0+a\ddot{\theta}_1) &= -(g+a\Omega^2\cos\Omega t)(\theta_0+a\theta_1)\\
+    0 &= (L\ddot{\theta}_0-g\theta_0)+a(\Omega^2\cos\Omega t \theta_0 + L\ddot{\theta}_1+g\theta_1)+\mathcal{O}(a^2)
+\end{aligned}\end{equation}
+これより、1次摂動が満たすべき方程式は
+\begin{equation}\begin{aligned}[b]
+    L\ddot{\theta}_1 &= -g\theta_1 -A\Omega^2\cos\Omega t\cos\omega_0t\\
+    &= -g\theta_1 -\frac{A\Omega^2}{2}\qty(\cos\qty[(\Omega+\omega_0)t]+\cos\qty[(\Omega-\omega_0)t])
+\end{aligned}\end{equation}
+
+\section{}
+[5]で得られた方程式に(1)式の特解を代入して
+\begin{equation}\begin{aligned}[b]
+    0&= \Biggl[\qty{L(\Omega+\omega_0)^2-g}u_1-\frac{1}{2}A\Omega^2\Biggr]\cos\qty[(\Omega+\omega_0)t]
+    +\Biggl[\qty{L(\Omega-\omega_0)^2-g}u_1-\frac{1}{2}A\Omega^2\Biggr]\cos\qty[(\Omega-\omega_0)t]
+\end{aligned}\end{equation}
+これが成り立つには
+\begin{equation}\begin{aligned}[b]
+    \begin{cases}
+        \qty{L(\Omega+\omega_0)^2-g}u_1-\frac{1}{2}A\Omega^2&=0\\
+        \qty{L(\Omega-\omega_0)^2-g}u_2-\frac{1}{2}A\Omega^2&=0
+    \end{cases}\quad\rightarrow\quad
+    &\begin{cases}
+        L(\Omega+\omega_0)^2-g&\neq0\\
+        L(\Omega-\omega_0)^2-g&\neq0
+    \end{cases}\quad\rightarrow\quad
+    \begin{cases}
+        \Omega + 2\sqrt{g/L}\neq 0\\
+        \Omega - 2\sqrt{g/L}\neq 0
+    \end{cases}\\
+    \Omega &\neq 2\sqrt{\frac{g}{L}}
+\end{aligned}\end{equation}
+つまり、外場の振動数が固有振動数の2倍でなければよい。
+
+このときの\(u_1,u_2\)は(7.2)式のはじめの条件より、
+\begin{equation}\begin{aligned}[b]
+    (u_1,u_2)&=\frac{1}{2}A\Omega^2\qty(\frac{1}{L(\Omega+\omega_0)^2-g},\,\frac{1}{L(\Omega-\omega_0)^2-g})\\
+    &=\frac{A\Omega}{2L}\qty(\frac{1}{\Omega+2\omega_0},\,\frac{1}{\Omega-2\omega_0})\\
+\end{aligned}\end{equation}
+
+\section*{感想}
+周期駆動する外場を加えると通常できない状態が準安定状態として実現できて楽しいねというのを記述する理論がフロケ理論。
+フロケ理論の古典的な系での例でよくやるカピッツァの振り子の系だが、
+倒立振り子の安定性にたどり着くことのできなかった問題。
+実例はこんなやつ(\url{https://www.youtube.com/watch?v=GgYABmG_bto}).
+
+この当時の物工カリキュラムでは解析力学をやってなかったので、
+ハミルトニアンとポアソン括弧を使った解析をできず、
+摂動論をつかって\(\theta\sim0\)付近を解析してみようにとどまったものと思われる。
+
+誘導に乗っていくだけではあるので、簡単ではある。
+
+
+\end{document}
