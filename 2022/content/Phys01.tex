@@ -1,265 +1,179 @@
-\documentclass[../ap_2023.tex]{subfiles}
+\documentclass[../ap_2022.tex]{subfiles}
 
 \graphicspath{{./image/}}
 
 \begin{document}
 
 \setcounter{chapter}{0}
-\chapter{量子力学:井戸型ポテンシャル・対称性と点群}
+\chapter{量子力学:NMR}
 \section{}
 \subsection{}
-\(\abs{x}\leq a\)でのシュレーディンガー方程式は
+ハミルトニアンは
 \begin{equation}\begin{aligned}[b]
-    -\frac{\hbar^2}{2m}\dv[2]{x}\psi(x)=E\psi(x)
+    \hat{H} = -\mu\begin{pmatrix}
+        B_0 & B_1(\cos\omega t-i\sin\omega t)\\
+        B_1(\cos\omega t+i\sin\omega t) & -B_0
+    \end{pmatrix}
+    =\frac{\hbar}{2}\begin{pmatrix}
+        \omega_0 & \omega_1 e^{-i\omega t}\\
+        \omega_1 e^{i\omega t} & -\omega_0
+    \end{pmatrix}
 \end{aligned}\end{equation}
-である。
-これの解は
+これより求める微分方程式は
 \begin{equation}\begin{aligned}[b]
-    \psi(x) &= A\cos(kx)+B\sin(kx), &  k= \frac{\sqrt{2mE}}{\hbar}
-\end{aligned}\end{equation}
-である。
-\(\abs{x}\geq a\)には粒子が存在しないことから
-\(\psi(a)=\psi(-a)=0\)というのが境界条件になる。
-これより
-\begin{equation}\begin{aligned}[b]
-    &\begin{cases}
-        A\cos(ka)+B\sin(ka)&=0\\
-        A\cos(ka)-B\sin(ka)&=0
-    \end{cases}\\
-    &\begin{pmatrix}
-        \cos(ka) & \sin(ka)\\
-        \cos(ka) & -\sin(ka)
+    i\hbar\dv{t}\begin{pmatrix}
+        \alpha(t)\\
+        \beta(t)
+    \end{pmatrix}
+    &=\frac{\hbar}{2}\begin{pmatrix}
+        \omega_0 & \omega_1 e^{-i\omega t}\\
+        \omega_1 e^{i\omega t} & -\omega_0
     \end{pmatrix}\begin{pmatrix}
-        A\\B
-    \end{pmatrix}=0
-\end{aligned}\end{equation}
-この連立方程式が非自明な解を持つので、
-この行列の行列式は\(0\)である。
-\begin{equation}\begin{aligned}[b]
-    0 &= -2\cos(ka)\sin(ka) = -\sin(2ka)\\
-    k &= \frac{n\pi}{2a} & (n\in\mathbb{Z}) \\
-    E &= \frac{n^2\pi^2\hbar^2}{8ma^2}
-\end{aligned}\end{equation}
-
-波動関数の振幅を求める。
-非自明な解を持つ条件より
-\begin{equation}\begin{aligned}[b]
-    A\cos(\frac{n\pi}{2})+B\sin(\frac{n\pi}{2})=0
-\end{aligned}\end{equation}
-なので、
-\(n\)が奇数の場合は\(A\neq0,B=0\),
-\(n\)が偶数の場合は\(A=0,B\neq0\),
-とわかる。
-
-波動関数の規格化条件より、
-\(n\)が奇数のときには
-\begin{equation}\begin{aligned}[b]
-    1 &= \int_{-a}^a \abs{\psi_n(x)}^2\dd{x} =2\abs{A}^2\int_{0}^{a}\frac{1+\cos2\theta}{2}\dd{\theta} = a\abs{A}^2\\
-    A &= \frac{1}{\sqrt{a}}
-\end{aligned}\end{equation}
-とわかる。\(n\)が偶数のときも同様にやって、
-\begin{equation}\begin{aligned}[b]
-    B &= \frac{1}{\sqrt{a}}
-\end{aligned}\end{equation}
-以上より
-\begin{equation}\begin{aligned}[b]
-    \psi_n(x) &= \begin{cases}
-        \frac{1}{\sqrt{a}}\cos(\frac{n\pi}{2a}x) & \text{n is odd}\\
-        \frac{1}{\sqrt{a}}\sin(\frac{n\pi}{2a}x) & \text{n is even}
-    \end{cases}
-    ,& E_n &= \frac{n^2\pi^2\hbar^2}{8ma^2}
+        \alpha(t)\\
+        \beta(t)
+    \end{pmatrix}\\
+    i\dv{t}\begin{pmatrix}
+        \alpha(t)\\
+        \beta(t)
+    \end{pmatrix}
+    &=\frac{1}{2}\begin{pmatrix}
+        \omega_0 & \omega_1 e^{-i\omega t}\\
+        \omega_1 e^{i\omega t} & -\omega_0
+    \end{pmatrix}\begin{pmatrix}
+        \alpha(t)\\
+        \beta(t)
+    \end{pmatrix}
 \end{aligned}\end{equation}
 
 \subsection{}
-\(n\)が奇数のとき、
+\(\alpha(t)=a(t)e^{-i\omega_0t/2},\beta(t)=b(t)e^{i\omega_0t/2}\)を代入して
 \begin{equation}\begin{aligned}[b]
-    \hat{P}\psi_n(x) &= \frac{1}{\sqrt{a}}\cos(\frac{n\pi}{2a}(-x))
-    =\frac{1}{\sqrt{a}}\cos(\frac{n\pi}{2a}x)
-    = +1\times\psi_n(x)
+    i\dv{t}\begin{pmatrix}
+        a(t)e^{-i\omega_0t/2}\\
+        b(t)e^{i\omega_0t/2}
+    \end{pmatrix}
+    &=\frac{1}{2}\begin{pmatrix}
+        \omega_0 & \omega_1 e^{-i\omega t}\\
+        \omega_1 e^{i\omega t} & -\omega_0
+    \end{pmatrix}\begin{pmatrix}
+        a(t)e^{-i\omega_0t/2}\\
+        b(t)e^{i\omega_0t/2}
+    \end{pmatrix}\\
+    i\dv{t}\begin{pmatrix}
+        a(t)\\
+        b(t)
+    \end{pmatrix}
+    &=\frac{\omega_1}{2}\begin{pmatrix}
+        0 & e^{i(\omega_0-\omega) t}\\
+         e^{-i(\omega_0-\omega) t} & 0
+    \end{pmatrix}\begin{pmatrix}
+        a(t)\\
+        b(t)
+    \end{pmatrix}
 \end{aligned}\end{equation}
-\(n\)が偶数のとき、
+よって
 \begin{equation}\begin{aligned}[b]
-    \hat{P}\psi_n(x) &= \frac{1}{\sqrt{a}}\sin(\frac{n\pi}{2a}(-x))
-    =-\frac{1}{\sqrt{a}}\sin(\frac{n\pi}{2a}x)
-    = -1\times\psi_n(x)
+    A(t) = e^{i(\omega_0-\omega) t}
 \end{aligned}\end{equation}
-より、\(\psi_n(x)\)は\(\hat{P}\)の固有状態で、
-\(P=(-1)^{n+1}\)
-である。
+これは\(\omega/2\sim\omega_0/2\)で回転する座標系に乗ることで、
+\(B_0\)の寄与を打ち消していることに相当する。
+
+またこの式より系の時間スケールは\(t\sim(\omega_0-\omega)^{-1}\gg \omega_0^{-1}\)となっているのがわかる。
 
 \section{}
 \subsection{}
+前問で与えれた連立微分方程式を解く。
+近似の状況をはっきりさせるため\(s = (\omega_0-\omega)t\)というように無次元化した時間を用意する。
+すると前問で得られてた微分方程式は
 \begin{equation}\begin{aligned}[b]
-    \hat{M}\Psi_{11}(x,y)
-    =\Psi_{11}(y,x)
-    =\psi_1(y)\psi_1(x)
-    =\psi_1(x)\psi_1(y)
-    =\Psi_{11}(x,y)
+    \dv{s}\begin{pmatrix}
+        a(s)\\
+        b(s)
+    \end{pmatrix}
+    =-i\frac{\omega_1}{\omega_0-\omega}\begin{pmatrix}
+        0 & e^{is}\\
+        e^{-is} & 0
+    \end{pmatrix}\begin{pmatrix}
+        a(s)\\
+        b(s)
+    \end{pmatrix}
 \end{aligned}\end{equation}
+となる。
+いま、\(\omega_1\)というのは微小な回転磁場としているので\(\lambda=\omega_1/(\omega_0-\omega)\)を摂動パラメータとみなす。
+基本的にはダウンスピンの状態でほとんど変わらないと考えているので第0摂動として\(a^{(0)}(s)=0,\,b^{(0)}(s)=1\)というのを考える。
+
+1次摂動を求めるため、\(a(s)=a^{(1)},\, b(s)=1+b^{(1)}\)を代入して
 \begin{equation}\begin{aligned}[b]
-    \hat{M}\Psi_{22}(x,y)
-    =\Psi_{22}(y,x)
-    =\psi_2(y)\psi_2(x)
-    =\psi_2(x)\psi_2(y)
-    =\Psi_{22}(x,y)
+    \dv{s}\begin{pmatrix}
+        a^{(1)}(s)\\
+        b^{(1)}(s)
+    \end{pmatrix}
+    &=-i\lambda\begin{pmatrix}
+        0 & e^{is}\\
+        e^{-is} & 0
+    \end{pmatrix}\begin{pmatrix}
+        a^{(1)}(s)\\
+        1+b^{(1)}(s)
+    \end{pmatrix}\\
+    \dv{s}a^{(1)}(s) &=-i\lambda e^{is},\quad
+    \dv{s}b^{(1)}(s) = \mathcal{O}(\lambda^2)=0
 \end{aligned}\end{equation}
-より、\(\Psi_{11}(x,y),\Psi_{22}(x,y)\)は\(\hat{M}\)の固有状態で、
-固有値は\(1\)
+よって
+\begin{equation}\begin{aligned}[b]
+    a^{(1)}(s) &= -\lambda(e^{is}-1)=-ie^{is/2}\lambda \sin\frac{s}{2}\\
+    a^{(1)}(s) &= \lambda \sin\frac{s}{2}\\
+    \abs{a(\tau)}^2 &= \qty(\frac{\omega_1}{\omega_0-\omega})^2\sin^2\qty(\frac{\omega_0-\omega}{2}\tau)
+\end{aligned}\end{equation}
+となる。
+
+実際に答案を書くときには摂動論の下りは書かずに\(b(t)=1\)を前問で得られた微分方程式に代入してで十分である。
 
 \subsection{}
-第一励起状態を
+\(P_1(\omega)=0\)となる\(\omega\)は
 \begin{equation}\begin{aligned}[b]
-    \Psi'(x,y)=a\Psi_{12}(x,y)+b\Psi_{21}(x,y)
+    \omega=\omega_0\pm\frac{2\pi}{\tau}
 \end{aligned}\end{equation}
-と表す。
-これが\(\hat{M}\)の固有状態であるので、
-\begin{equation}\begin{aligned}[b]
-    \hat{M}\Psi'(x,y)&=\Psi(y,x)
-        = a\Psi_{12}(y,x)+b\Psi_{21}(y,x)
-        =b\Psi_{12}(x,y)+a\Psi_{21}(x,y)\\
-    &\equiv M(a\Psi_{12}(x,y)+b\Psi_{21}(x,y))
-\end{aligned}\end{equation}
-これより
-\begin{equation}\begin{aligned}[b]
-    \begin{cases}
-        Ma &= b\\
-        Mb &= a
-    \end{cases}
-    \rightarrow
-    \begin{cases}
-        (a+b)(M-1)&=0\\
-        (a-b)(M+1)&=0
-    \end{cases}
-\end{aligned}\end{equation}
-よって求める状態は2つあり、
-1つは\(M=1\)かつ\(a=b\)の状態で、波動関数の規格化条件も考慮すると波動関数は
-\begin{equation}\begin{aligned}[b]
-    \Psi_+ = \frac{1}{\sqrt{2}}\qty(\Psi_{12}+\Psi_{21})
-\end{aligned}\end{equation}
-である。
-もう1つは\(M=-1\)かつ\(a=b\)の状態で、波動関数の規格化条件も考慮すると波動関数は
-\begin{equation}\begin{aligned}[b]
-    \Psi_- = \frac{1}{\sqrt{2}}\qty(\Psi_{12}-\Psi_{21})
-\end{aligned}\end{equation}
-である。
 
+図略。
+
+\section{}
 \subsection{}
-波動関数が実関数で、角運動量の期待値も実関数であるので
+\(\tau<t<T\)の間では\(a(t)\)は時間発展していないことから\(a(T)=a(\tau)\)
+\(T<t<T+\tau\)の間では[2-1]と同様の時間発展をするので、
 \begin{equation}\begin{aligned}[b]
-    \ev{\hat{L}}=\mel{\Psi_\pm}{\hat{L}}{\Psi_\pm}&=-i\hbar\mel{\Psi_\pm}{x\partial_y-y\partial_x}{\Psi_\pm}\\
-    =\mel{\Psi_\pm}{\hat{L}}{\Psi_\pm}^*&=i\hbar\mel{\Psi_\pm}{x\partial_y-y\partial_x}{\Psi_\pm}=0\\
+    a(T+\tau)-a(T)&=-ie^{i(\omega_0-\omega)\tau/2}\frac{\omega_1}{\omega_0-\omega}\sin(\frac{\omega_0-\omega}{2}\tau)\times e^{i(\omega_0-\omega)T}\\
+    a(T+\tau) &= (1+e^{i(\omega_0-\omega)T})\times\qty[-ie^{i(\omega_0-\omega)\tau/2}\frac{\omega_1}{\omega_0-\omega}\sin(\frac{\omega_0-\omega}{2}\tau)]\\
+    P_2 &= \qty(\frac{2\omega_1}{\omega_0-\omega}\cos(\frac{\omega_0-\omega}{2}T)\sin\frac{\omega_0-\omega}{2}\tau)^2
 \end{aligned}\end{equation}
 
 \subsection{}
 \begin{equation}\begin{aligned}[b]
-    \hat{C}_4\Psi_{11}(x,y)
-    =\Psi_{11}(-y,x)
-    =\psi_1(-y)\psi_1(x)
-    =\psi_1(x)\psi_1(y)
-    =\Psi_{11}(x,y)
+    \Omega_1 &=\omega_0-\frac{2\pi}{T},& \Omega_2 &= \omega_0+\frac{2\pi}{T}
 \end{aligned}\end{equation}
-\begin{equation}\begin{aligned}[b]
-    \hat{C}_4\Psi_{22}(x,y)
-    =\Psi_{22}(-y,x)
-    =\psi_2(-y)\psi_2(x)
-    =-\psi_2(x)\psi_2(y)
-    =-\Psi_{22}(x,y)
-\end{aligned}\end{equation}
-より、\(\Psi_{11}(x,y),\Psi_{22}(x,y)\)は\(\hat{M}\)の固有状態で、
-固有値は前者が\(+1\)、後者が\(-1\).
 
 \subsection{}
-第一励起状態を
-\begin{equation}\begin{aligned}[b]
-    \Psi'(x,y)=a\Psi_{12}(x,y)+b\Psi_{21}(x,y)
-\end{aligned}\end{equation}
-と表す。
-これが\(\hat{C}_4\)の固有状態であるので、
-\begin{equation}\begin{aligned}[b]
-    \hat{C_4}\Psi'(x,y)&=\Psi(-y,x)
-        = a\Psi_{12}(-y,x)+b\Psi_{21}(-y,x)
-        = -b\Psi_{12}(x,y)+a\Psi_{21}(x,y)\\
-    &\equiv C_4(a\Psi_{12}(x,y)+b\Psi_{21}(x,y))
-\end{aligned}\end{equation}
-これより
-\begin{equation}\begin{aligned}[b]
-    \begin{cases}
-        C_4a &= -b\\
-        C_4b &= a
-    \end{cases}
-    \rightarrow
-    \begin{cases}
-        (a+ib)(C_4-i)&=0\\
-        (a-ib)(C_4+i)&=0
-    \end{cases}
-\end{aligned}\end{equation}
-よって求める状態は2つあり、
-1つは\(C_4=+i\)かつ\(a=ib\)の状態で、波動関数の規格化条件も考慮すると波動関数は
-\begin{equation}\begin{aligned}[b]
-    \Psi_{+i} = \frac{1}{\sqrt{2}}\qty(\Psi_{12}-i\Psi_{21})
-\end{aligned}\end{equation}
-である。
-もう1つは\(C_4=-i\)かつ\(a=-ib\)の状態で、波動関数の規格化条件も考慮すると波動関数は
-\begin{equation}\begin{aligned}[b]
-    \Psi_{-i} = \frac{1}{\sqrt{2}}\qty(\Psi_{12}+i\Psi_{21})
-\end{aligned}\end{equation}
-である。
+スピンの\(z\)成分が緩和しない程度に\(T\)を大きく取ればよい。
+
+\section{}
+\subsection{}
+\(l\)が\(T\)で、\(D\)が\(\tau\)に対応する気がする。
 
 \subsection{}
-\(\Psi_\pm\)の状態の角運動量の期待値を\(\ev{L}_\pm\)のように書く。
-角運動量は実数であることに注意すると、
-計算途中で項がいくつか落ちること、途中\(C_4\)の操作に対応する変数変換をすると項が同じ形になることなどを利用しながら計算する。
-また、\(a\)を長さの単位として計算をする。
-\begin{equation}\begin{aligned}[b]
-    \ev{L}_\pm &= \mel{\Psi_\pm}{L}{\Psi_\pm}
-        =-i\hbar \int_{-1}^{1} \dd{x}\int_{-1}^{1} \dd{y}\Psi_\pm^*(x,y)\qty(x\pdv{y}-y\pdv{x})\Psi_\pm(x,y)\\
-    &=-i\hbar \int_{-1}^{1} \dd{x}\int_{-1}^{1} \dd{y}\Psi_\pm^*(x,y)x\pdv{y}\Psi_\pm(x,y)
-    -i\hbar \int_{-1}^{1} \dd{x}\int_{-1}^{1} \dd{y}\Psi_\pm^*(-y,x)x\pdv{y}\Psi_\pm(-y,x)\\
-    &=-2i\hbar\int_{-1}^{1} \dd{x}\int_{-1}^{1} \dd{y}\Psi_\pm^*(x,y)x\pdv{y}\Psi_\pm(x,y)
-        =-2i\hbar\qty(\frac{\bra{\Psi_{12}}\pm i\bra{\Psi_{21}}}{\sqrt{2}})
-            x\pdv{y}\qty(\frac{\ket{\Psi_{12}}\mp i\ket{\Psi_{21}}}{\sqrt{2}})\\
-    &=-i\hbar\qty[\pm i\mel{\Psi_{21}}{x\pdv{y}}{\Psi_{12}}\mp i\mel{\Psi_{12}}{x\pdv{y}}{\Psi_{21}}]
-        =\pm 2\hbar\mel{\Psi_{21}}{x\pdv{y}}{\Psi_{12}}\\
-    &= \pm 2\hbar  \int_{-1}^{1} \dd{x}\int_{-1}^{1} \dd{y} \sin(\pi x)\cos(\frac{\pi}{2}y)x\pdv{y}\cos(\frac{\pi}{2}x)\sin(\pi y)\\
-    &= \pm 2\pi\hbar\int_{-1}^{1} \dd{x}x\cos(\frac{\pi}{2} x)\sin(\pi x)\int_{-1}^{1} \dd{y} \cos(\frac{\pi}{2}y)\cos(\pi y)\\
-    &= \pm \hbar \times 2\pi \times \frac{32}{9\pi^2}\times \frac{4}{3\pi}
-        = \pm \frac{256}{27\pi^2}\hbar
-\end{aligned}\end{equation}
+射影測定によりスピンの向きが\(+z\)か\(-z\)の状態になる。
+この状態で回転磁場を加えると\(0<t<\tau\)と同じように発展するが、
+\(t=0\)にはなかった\(+z\)成分の影響によりピークは弱まる。
 
 \section*{感想}
-正方形の井戸型ポテンシャルなので、\(D_{4h}\)の点群の表現を考えて、
-\(z\)方向に磁場を加えたときの準位の変化を見ようという問題。
-というのもゼーマン項は\(H = -\mu  B\)で、\(\mu\)は角運動量\(L_z\)に比例して、
-摂動によるエネルギー準位の変化\(\ev{-\mu B}\propto\ev{L_z}\)も\(\ev{L_z}\)を調べてやると分かるから。
+ブロッホ球でこの系の状況を整理する
+設問[1]で回転磁場を掛けないときには、
+状態は\(-z\)方向を向いてる。
+回転座標系に乗ったときというのは、
+ブロッホ球を\(z\)軸方向に回転させる\(\simeq\)状態ベクトルを\(z\)軸で回転させるという操作をやっていることになる。
 
-具体的にそれぞれがどの表現に属するかを見ると、
-\(\Psi_{11}(x,y)\)は\(A_{1g}\)、
-\(\Psi_{22}(x,y)\)は\(B_{1u}\)、
-\(a\Psi_{12}(x,y)+b\Psi_{21}(x,y)\)は\(E_{u}\)
-であり、これを確かめていたのが、[2.1], [2.4]とかである。
-実際波動関数を原点付近で展開すると
-それぞれ\(1,xy,(x,y)\)に比例するのがわかり、結晶場分裂で見覚えのある組になっている。
-そうすると、\(E_u\)に属するものを\(x\pm iy\)のように線形結合すると角運動量を持つだろうなというのは予想ができる。
+設問[2]でやった回転磁場を加えるという操作が、単に\(x\)軸での回転に対応する。
+なので南極にあった状態がちょっとだけ緯度を下げたところの状態に変わっているというのをやっていた。
 
-多極子の言葉で言うと\(\Psi_{11}\)は電気単極子、
-\(\Psi_{22}\)は電気4重極子、
-\(\Psi_{12},\Psi_{21}\)は電気双極子に相当する状態である。
 
-設問[2.1]-[2.3]で調べてた演算子\(\hat{M}\)は点群の言葉では\(\sigma_d\)のこと。
-[2.3]は時間反転の対称性からきてるもので、
-3d遷移元素の軌道角運動量の消失と同じ理屈である。
 
-設問[2.6]で、
-\(\Psi_{\pm i}\)は\(\pi/2\)回転で位相が\(\pm i= e^{\pm i\pi/2}\)つく状態であるので、
-これは磁気量子数が\(\pm 1\)の状態と同じ対称性である。
-なので\(\Psi_{+i}\)の状態の角運動量の期待値は\( \ev{L} = +\hbar\)
-\(\Psi_{-i}\)の状態の角運動量の期待値は\(\ev{L} = -\hbar\)
-というように1回目はやったが、もちろん球面調和関数ではないのでこんな簡単にはいかない。
-ただ、正解は\(\pm0.96\hbar\)程度であるので、あながち間違いではないというのは面白い結果であった。
-
-この答案では対称性を利用して、
-実際に行う積分は最後の1つだけになるようにしたが、
-初めから\(\ev{L}_\pm=\pm2\hbar\mel{\Psi_{21}}{x\partial_y}{\Psi_{12}}\)だと言えるような、
-なにかうまい方法とかないのだろうか。
 
 \end{document}

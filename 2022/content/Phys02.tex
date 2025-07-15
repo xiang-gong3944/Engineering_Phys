@@ -1,108 +1,78 @@
-\documentclass[../ap_2023.tex]{subfiles}
+\documentclass[../ap_2022.tex]{subfiles}
 
 \graphicspath{{./image/}}
 
 \begin{document}
 
 \setcounter{chapter}{1}
-\chapter{力学: カピッツァの振り子・摂動論}
+\chapter{力学: フォノン}
 \section{}
+\subsection{}
+格子のポテンシャルを位置で微分すると質点にかかる力がわかるので、
 \begin{equation}\begin{aligned}[b]
-    (x,y) = (L\sin\theta,L\cos\theta+a\cos\Omega t)
+    m\ddot{x}_n &= -\pdv{x_n}\qty(\frac{k}{2}(x_{n-1}-x_n)^2+\frac{k}{2}(x_{n}-x_{n+1})^2)
+    =kx_{n-1}-2kx_n+kx_{n+1}
 \end{aligned}\end{equation}
-\section{}
-張力の成分を\(x,y\)成分に分解して運動方程式を考えると
+
+\subsection{}
+前問で得られた運動方程式に代入して
 \begin{equation}\begin{aligned}[b]
-    m\ddot{x}=-T\sin\theta\\
-    m\ddot{y}=mg-T\cos\theta
+    m\ddot{c}_q(t) = -\qty(-e^{-iq}+2-e^{iq})c_q(t) = -4k\sin^2\frac{q}{2}c_q(t)
+\end{aligned}\end{equation}
+
+\subsection{}
+\(c_{q}(t)=Ae^{i\omega_q t}+Be^{-i\omega_q t}\)をつかって時間微分を処理すると
+\begin{equation}\begin{aligned}[b]
+    -m\omega_q^2c_q(t) &=-2k(1+\cos q)c_q(t)\\
+    \omega_q &= 2\sqrt{\frac{k}{m}}\sin^2\frac{q}{2}
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    m\ddot{c}_0(t) &= 0\\
+    c_0(t) &= At+B
 \end{aligned}\end{equation}
 
 \section{}
+\subsection{}
+\(n\neq 0\)のとき
 \begin{equation}\begin{aligned}[b]
-    (\dot{x},\dot{y})&=\qty(L\dot{\theta}\cos\theta,-L\dot{\theta}\sin\theta -a\Omega\sin\Omega t)\\
-    (\ddot{x},\ddot{y})&=\qty(L\ddot{\theta}\cos\theta-L\dot{\theta}^2\sin\theta,
-        -L\ddot{\theta}\sin\theta-L\dot{\theta}^2\cos\theta -a\Omega^2\cos\Omega t)\\
+    m\ddot{x}_n=kx_{n-1}-2kx_n+kx_{n+1}
 \end{aligned}\end{equation}
 
-\section{}
-[2]の\(\ddot{x},\ddot{y}\)に[3]の結果を入れて、
-\begin{equation*}\begin{aligned}[b]
-    \begin{cases}
-        m(L\ddot{\theta}\cos\theta-L\dot{\theta}^2\sin\theta) &= -T\sin\theta\\
-        m(-L\ddot{\theta}\sin\theta-L\dot{\theta}^2\cos\theta -a\Omega^2\cos\Omega t) &= mg -T\cos\theta
-    \end{cases}
-\end{aligned}\end{equation*}
+\(n=0\)のとき
 \begin{equation}\begin{aligned}[b]
-    L\ddot{\theta}\cos^2\theta-L\dot{\theta}^2\sin\theta\cos\theta
-        &=-L\ddot{\theta}\sin^2\theta-L\dot{\theta}^2\cos\theta\sin\theta -a\Omega^2\cos\Omega t\sin\theta -g\sin\theta\\
-    L\ddot{\theta} &= -(g+a\Omega^2\cos\Omega t)\sin\theta
+    M\ddot{x}_n=kx_{n-1}-2kx_n+kx_{n+1}
 \end{aligned}\end{equation}
 
-\section{}
-\(\theta\sim 0\)としたとき、
+\subsection{}
+\(n\geq +1\)のときを考えると運動方程式は
 \begin{equation}\begin{aligned}[b]
-    L\ddot{\theta}_0 &= -g\theta_0
+    -m\omega_q^2T_qe^{iqn-i\omega_qt} &= -4k\sin^2\frac{q}{2}T_qe^{iqn-i\omega_qt}\\
+    \omega_q &= 2\sqrt{\frac{k}{m}}\sin\frac{q}{2}
 \end{aligned}\end{equation}
-のように固有振動数\(\omega_0=\sqrt{g/L}\)で単振動する方程式になる。
-これに初期条件を考慮すると
-\begin{equation}\begin{aligned}[b]
-    \theta_0 = A\cos(\sqrt{\frac{g}{L}}t)
-\end{aligned}\end{equation}
-とわかる。
+となる。
 
-\section{}
-運動方程式に\(\theta(t)=\theta_0(t)+a\theta_1(t)\)を代入して、
+\subsection{}
+\(n=-1\)のとき、
 \begin{equation}\begin{aligned}[b]
-    L(\ddot{\theta}_0+a\ddot{\theta}_1) &= -(g+a\Omega^2\cos\Omega t)(\theta_0+a\theta_1)\\
-    0 &= (L\ddot{\theta}_0-g\theta_0)+a(\Omega^2\cos\Omega t \theta_0 + L\ddot{\theta}_1+g\theta_1)+\mathcal{O}(a^2)
-\end{aligned}\end{equation}
-これより、1次摂動が満たすべき方程式は
-\begin{equation}\begin{aligned}[b]
-    L\ddot{\theta}_1 &= -g\theta_1 -A\Omega^2\cos\Omega t\cos\omega_0t\\
-    &= -g\theta_1 -\frac{A\Omega^2}{2}\qty(\cos\qty[(\Omega+\omega_0)t]+\cos\qty[(\Omega-\omega_0)t])
+    -m\omega_q^2e^{-iq}-m\omega_q^2e^{iq}R_q &= -k(2-e^{-iq})e^{-iq}-k(2-e^{iq})e^{iq}R_q +kT_q\\
+    (-m\omega_q^2+k(2-e^{-iq}))e^{-iq} &= -(-m\omega_q^2+k(2-e^{iq}))e^{iq}R_q+kT_q\\
+    ke^{iq}e^{-iq} &= -ke^{-iq}e^{iq}R_q+kT_q\\
+    1 &= -R_q+T_q
 \end{aligned}\end{equation}
 
-\section{}
-[5]で得られた方程式に(1)式の特解を代入して
+\(n=0\)のとき、
 \begin{equation}\begin{aligned}[b]
-    0&= \Biggl[\qty{L(\Omega+\omega_0)^2-g}u_1-\frac{1}{2}A\Omega^2\Biggr]\cos\qty[(\Omega+\omega_0)t]
-    +\Biggl[\qty{L(\Omega-\omega_0)^2-g}u_1-\frac{1}{2}A\Omega^2\Biggr]\cos\qty[(\Omega-\omega_0)t]
-\end{aligned}\end{equation}
-これが成り立つには
-\begin{equation}\begin{aligned}[b]
-    \begin{cases}
-        \qty{L(\Omega+\omega_0)^2-g}u_1-\frac{1}{2}A\Omega^2&=0\\
-        \qty{L(\Omega-\omega_0)^2-g}u_2-\frac{1}{2}A\Omega^2&=0
-    \end{cases}\quad\rightarrow\quad
-    &\begin{cases}
-        L(\Omega+\omega_0)^2-g&\neq0\\
-        L(\Omega-\omega_0)^2-g&\neq0
-    \end{cases}\quad\rightarrow\quad
-    \begin{cases}
-        \Omega + 2\sqrt{g/L}\neq 0\\
-        \Omega - 2\sqrt{g/L}\neq 0
-    \end{cases}\\
-    \Omega &\neq 2\sqrt{\frac{g}{L}}
-\end{aligned}\end{equation}
-つまり、外場の振動数が固有振動数の2倍でなければよい。
-
-このときの\(u_1,u_2\)は(7.2)式のはじめの条件より、
-\begin{equation}\begin{aligned}[b]
-    (u_1,u_2)&=\frac{1}{2}A\Omega^2\qty(\frac{1}{L(\Omega+\omega_0)^2-g},\,\frac{1}{L(\Omega-\omega_0)^2-g})\\
-    &=\frac{A\Omega}{2L}\qty(\frac{1}{\Omega+2\omega_0},\,\frac{1}{\Omega-2\omega_0})\\
+    -M\omega_q^2T_q &= ke^{-iq}+ke^{iq}R_q-k(2-e^{iq})T_q\\
+    -ke^{-iq} &= ke^{iq}R_q-(-m\omega_q^2+k(2-e^{iq})+(M+m)\omega_q^2)T_q\\
+    -ke^{-iq} &= ke^{iq}R_q-(ke^{-iq}+(M+m)\omega_q^2)T_q\\
+    ke^{iq}-ke^{-iq} &= (ke^{iq}-ke^{-iq}-(M+m)\omega_q^2)T_q\\
+    T_q &= \frac{\sin q}{\sin q-\frac{M+m}{2ik}\omega^2_q}
+    =\frac{\sin q}{\sin q+2i(1+\frac{M}{m})\sin^2\frac{q}{2}}
 \end{aligned}\end{equation}
 
 \section*{感想}
-周期駆動する外場を加えると通常できない状態が準安定状態として実現できて楽しいねというのを記述する理論がフロケ理論。
-フロケ理論の古典的な系での例でよくやるカピッツァの振り子の系だが、
-倒立振り子の安定性にたどり着くことのできなかった問題。
-実例はこんなやつ(\url{https://www.youtube.com/watch?v=GgYABmG_bto}).
-
-この当時の物工カリキュラムでは解析力学をやってなかったので、
-ハミルトニアンとポアソン括弧を使った解析をできず、
-摂動論をつかって\(\theta\sim0\)付近を解析してみようにとどまったものと思われる。
-
-誘導に乗っていくだけではあるので、簡単ではある。
 
 
 \end{document}
