@@ -17,7 +17,7 @@
 \subsection{}
 前問で得られた運動方程式に代入して
 \begin{equation}\begin{aligned}[b]
-    m\ddot{c}_q(t) = -\qty(-e^{-iq}+2-e^{iq})c_q(t) = -4k\sin^2\frac{q}{2}c_q(t)
+    m\ddot{c}_q(t) = -\qty(-e^{-iq}+2-e^{iq})c_q(t) = -4k\sin\frac{q}{2}c_q(t)
 \end{aligned}\end{equation}
 
 \subsection{}
@@ -54,6 +54,7 @@
 となる。
 
 \subsection{}
+\subsection{}
 \(n=-1\)のとき、
 \begin{equation}\begin{aligned}[b]
     -m\omega_q^2e^{-iq}-m\omega_q^2e^{iq}R_q &= -k(2-e^{-iq})e^{-iq}-k(2-e^{iq})e^{iq}R_q +kT_q\\
@@ -65,14 +66,162 @@
 \(n=0\)のとき、
 \begin{equation}\begin{aligned}[b]
     -M\omega_q^2T_q &= ke^{-iq}+ke^{iq}R_q-k(2-e^{iq})T_q\\
-    -ke^{-iq} &= ke^{iq}R_q-(-m\omega_q^2+k(2-e^{iq})+(M+m)\omega_q^2)T_q\\
-    -ke^{-iq} &= ke^{iq}R_q-(ke^{-iq}+(M+m)\omega_q^2)T_q\\
-    ke^{iq}-ke^{-iq} &= (ke^{iq}-ke^{-iq}-(M+m)\omega_q^2)T_q\\
-    T_q &= \frac{\sin q}{\sin q-\frac{M+m}{2ik}\omega^2_q}
-    =\frac{\sin q}{\sin q+2i(1+\frac{M}{m})\sin^2\frac{q}{2}}
+    -ke^{-iq} &= ke^{iq}R_q-(-m\omega_q^2+k(2-e^{iq})-(M-m)\omega_q^2)T_q\\
+    -ke^{-iq} &= ke^{iq}R_q-(ke^{-iq}-(M-m)\omega_q^2)T_q\\
+    ke^{iq}-ke^{-iq} &= (ke^{iq}-ke^{-iq}+(M-m)\omega_q^2)T_q\\
+    T_q &= \frac{\sin q}{\sin q+\frac{M-m}{2ik}\omega^2_q}
+    = \frac{\sin q}{\sin q +2i(1-\frac{M}{m})\sin^2\frac{q}{2}}
+    = \frac{\sin q}{\sin q +i(1-\frac{M}{m})(1-\cos q)}
 \end{aligned}\end{equation}
 
+\subsection{}
+\(M=m\)を代入すると
+\begin{equation}\begin{aligned}[b]
+    T_q=\frac{\sin q}{\sin q}=1
+\end{aligned}\end{equation}
+となる。これより\(R_q=0\)で、質量の違いによる散乱は無いというのがわかる。
+
+\(M\to\infty\)とすると、
+\begin{equation}\begin{aligned}[b]
+    T_q \sim \frac{\sin q}{M}\to 0
+\end{aligned}\end{equation}
+となり、透過しないというのがわかる。
+
+\section{}
+\subsection{}
+(3)式は、左から出ていく波は左から来た反射波と右から来た透過波の重ね合わせであるというのに対応している。
+(3)式に周期境界条件の式を代入して
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        C_q\\
+        B_q
+    \end{pmatrix}
+    &=\begin{pmatrix}
+        T_q & R_q\\
+        R_q & T_q
+    \end{pmatrix}\begin{pmatrix}
+        e^{iqL}C_q\\
+        e^{iqL}B_q
+    \end{pmatrix}
+    =\begin{pmatrix}
+        e^{iqL}T_q & e^{iqL}R_q\\
+        e^{iqL}R_q & e^{iqL}T_q
+    \end{pmatrix}\begin{pmatrix}
+        C_q\\
+        B_q
+    \end{pmatrix}\\
+    0&=\begin{pmatrix}
+        e^{iqL}T_q-1 & e^{iqL}(T_q-1)\\
+        e^{iqL}(T_q-1) & e^{iqL}T_q-1
+    \end{pmatrix}\begin{pmatrix}
+        C_q\\
+        B_q
+    \end{pmatrix}
+\end{aligned}\end{equation}
+これが非自明な解をもつので、
+\begin{equation}\begin{aligned}[b]
+    0 &= (e^{iqL}T_q-1)^2-e^{2iqL}(T_q-1)^2\\
+    T_q-e^{-iqL} &= \pm (T_q-1)\\
+    e^{-iqL} &= 1\quad\text{or}\quad
+        2T_q = 1+e^{-iqL}
+\end{aligned}\end{equation}
+が求める方程式。
+
+\subsection{}
+\(M=m\)のとき、\(T_q=1\)より
+\begin{equation}\begin{aligned}[b]
+    e^{-iqL} &= 1 &\rightarrow q &= \frac{2\pi}{L}n & (n\in\mathbb{Z})
+\end{aligned}\end{equation}
+
+また、分散関係は図1の状況と同じなので
+\begin{equation}\begin{aligned}[b]
+    \omega_q = 2\sqrt{\frac{k}{m}}\sin(\frac{\pi}{L}n)
+\end{aligned}\end{equation}
+
+\subsection{}
+\(M=2m\)のとき、
+\begin{equation}\begin{aligned}[b]
+    T_q &= \frac{\sin q}{\sin q-i(1-\cos q)}
+    = \frac{\sin^2 q+i\sin q(1-\cos q)}{\sin^2q+\cos^2q+1-2\cos q}\\
+    &= \frac{(1-\cos q)(1+\cos q)+i\sin q(1-\cos q)}{2(1-\cos q)}
+    =\frac{1+\cos q+i\sin q}{2}
+    =\frac{1+e^{iq}}{2}
+\end{aligned}\end{equation}
+より、
+\begin{equation}\begin{aligned}[b]
+    e^{-iqL} &= 1\quad\text{or}\quad
+        1+e^{iq} = 1+e^{-iqL}
+\end{aligned}\end{equation}
+
+前者の条件は[3-2]と同様に考えることができて、
+\(q\)の範囲に気を付けると
+\begin{equation}\begin{aligned}[b]
+    q &= \frac{2\pi}{L}n & \qty(0< n < \frac{L}{2})
+\end{aligned}\end{equation}
+となる。
+
+後者の条件は整理すると
+\begin{equation}\begin{aligned}[b]
+    e^{-iq(L+1)} &= 1&\rightarrow q &= \frac{2\pi}{L+1}n & \qty(0<n<\frac{L+1}{2})
+\end{aligned}\end{equation}
+となる。
+
+これより分散関係は
+\begin{equation}\begin{aligned}[b]
+    \omega_q = 2\sqrt{\frac{k}{m}}\sin(\frac{\pi n}{L}),\,2\sqrt{\frac{k}{m}}\sin(\frac{\pi n}{L+1})
+\end{aligned}\end{equation}
+
+また両者のモードの数を足すと
+\begin{equation}\begin{aligned}[b]
+    \qty(\frac{L}{2}-1)+\qty(\frac{L}{2})=L-1
+\end{aligned}\end{equation}
+となる。
+
+質点が\(L\)個あるのでモードの合計は\(L\)個になるはずだが、
+残り1つは\(q=0\)の並進モードである。
+設問[1-4]で見たように\(q=0\)のモードは平面波の解の形になっていないので、
+ここまでの議論では出てこない。
+
+
+\subsection{}
+\(M=\infty\)のとき、\(T_q = 0\)となるので、
+\begin{equation}\begin{aligned}[b]
+    e^{-iqL} &= 1\quad\text{or}\quad
+        e^{-iqL}=-1
+\end{aligned}\end{equation}
+となる。
+これより
+\begin{equation}\begin{aligned}[b]
+    q &= \frac{\pi}{L}n, & (0<n<L)
+\end{aligned}\end{equation}
+
+なので分散関係は
+\begin{equation}\begin{aligned}[b]
+    \omega_q = 2\sqrt{\frac{k}{m}}\sin(\frac{\pi n}{L}),\,2\sqrt{\frac{k}{m}}\sin(\frac{\pi n}{L+1})
+\end{aligned}\end{equation}
+となる。
+
+モード数は\(L-1\)個ある。
+この系は固定端条件で\(L-1\)個の質点が動くという状態と理解できるので、
+他のモードは無い。
+
 \section*{感想}
+なんか妙に計算が重いように感じる問題だった。
+[2-4]のややこしさの理由は何だろうといったときに
+\begin{equation*}\begin{aligned}[b]
+    -m\omega_q^2+k(2-e^{\pm iq}) = ke^{\mp iq}
+\end{aligned}\end{equation*}
+という形がよく出てきて、
+この変形はあんまりやった記憶がないというのがありそう。
+
+この問題の系としては不純物があるときのフォノン分散を見るというような問題になってる。
+周期\(L\)のなかに不純物が1個というのだと熱力学極限\(L\to \infty\)では影響が見えなくなるというのが
+この問題の結果で、あまり面白くない。
+熱力学的極限でも不純物の影響が消えないようにするといったときに、
+この問題のアプローチだとよくなくて、
+光学分枝を考えるときの系じゃないといけなさそう。
+
+なのでこの系は問題のためだけの系といえて、背景知識を持ってたら有利になるという類の問題ではないのとわかる。
 
 
 \end{document}
