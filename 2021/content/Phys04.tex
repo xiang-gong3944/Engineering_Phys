@@ -1,0 +1,98 @@
+\documentclass[../ap_2021.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{3}
+\chapter{電磁気学:双極子放射}
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \varphi(\vb*{r})&=\frac{q}{4\pi\varepsilon_0\abs{\vb*{r}-\frac{\vb*{l}}{2}}}-\frac{q}{4\pi\varepsilon_0\abs{\vb*{r}+\frac{\vb*{l}}{2}}}\\
+    &\simeq \frac{q}{4\pi\varepsilon_0r(1-\frac{l}{r}\cos\theta)^{1/2}}-\frac{q}{4\pi\varepsilon_0r(1+\frac{l}{r}\cos\theta)^{1/2}}\\
+    &\simeq \frac{q}{4\pi\varepsilon_0r}\qty(1+\frac{l}{2r}\cos\theta)-\frac{q}{4\pi\varepsilon_0r}\qty(1-\frac{l}{2r}\cos\theta)\\
+    &= \frac{\alpha_0E_0\cos\theta}{4\pi\varepsilon_0r^2}
+\end{aligned}\end{equation}
+より\(C=0,D=1\)
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \varphi(\vb*{r},t)
+    &=\frac{q(t-\frac{r_+}{c})}{4\pi\varepsilon_0r_+}-\frac{q(t-\frac{r_-}{c})}{4\pi\varepsilon_0r_-}\\
+    &\simeq \frac{q(t-\frac{r_+}{c})}{4\pi\varepsilon_0r}\qty(1+\frac{l}{2r}\cos\theta)-\frac{q(t-\frac{r_+}{c})}{4\pi\varepsilon_0r}\qty(1-\frac{l}{2r}\cos\theta)\\
+    &\simeq \frac{1}{4\pi\varepsilon_0 r}\qty[q\qty(r-\frac{r}{c}+\frac{l\cos\theta}{2cr})-q\qty(r-\frac{r}{c}-\frac{l\cos\theta}{2cr})]
+        +\frac{\cos\theta}{4\pi\varepsilon_0r^2}\qty(\frac{p(t-\frac{r_+}{c})+p(t-\frac{r_-}{c})}{2})\\
+    &\simeq\frac{1}{4\pi\varepsilon_0r}\frac{\dot{q}(t-\frac{r}{c})l\cos\theta}{c}+\frac{\cos\theta}{4\pi\varepsilon_0r^2}p\qty(t-\frac{r}{c})\\
+    &=\frac{\alpha_0E_0\cos\theta}{4\pi\varepsilon_0}\qty{-\frac{\omega_0}{c}\sin(\omega_0\qty(t-\frac{r}{c}))\cdot\frac{1}{r}
+    +\cos(\omega_0\qty(t-\frac{r}{c}))\cdot\frac{1}{r^2}}
+\end{aligned}\end{equation}
+より
+\begin{equation}\begin{aligned}[b]
+    F &= -\frac{\omega_0}{c}\sin(\omega_0\qty(t-\frac{r}{c})), & G = \cos(\omega_0\qty(t-\frac{r}{c}))
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \vb*{A}(\vb*{r},t) = -\frac{\alpha_0E_0}{4\pi\varepsilon_0 cr} \frac{\omega_0}{c}\sin(\omega_0\qty(t-\frac{r}{c}))\qty{\cos\theta\vb*{e}_r-\sin\theta\vb*{e}_\theta}
+\end{aligned}\end{equation}
+
+\section{}
+勾配を取る操作は\(r\)方向以外必ず\(r^{-2}\)になり、
+\(r\)方向も\(\sin(\omega_0(t-\frac{r}{c}))\)以外を微分しても\(r^{-2}\)になる。なので
+\begin{equation}\begin{aligned}[b]
+    \grad{\varphi}(\vb*{r},t)=\frac{\alpha_0E_0\cos\theta}{4\pi\varepsilon_0r}\qty(\frac{\omega_0}{c})^2\cos(\omega_0\qty(t-\frac{r}{c}))\vb*{e}_r
+\end{aligned}\end{equation}
+
+\section{}
+\(\vb*{A}(\vb*{r},t)\)の時間微分は
+\begin{equation}\begin{aligned}[b]
+    \pdv{\vb*{A}(\vb*{r},t)}{t}=-\frac{\alpha_0E_0}{4\pi\varepsilon_0 r} \qty(\frac{\omega_0}{c})^2\cos(\omega_0\qty(t-\frac{r}{c}))\qty{\cos\theta\vb*{e}_r-\sin\theta\vb*{e}_\theta}
+\end{aligned}\end{equation}
+
+これより電場は
+\begin{equation}\begin{aligned}[b]
+    \vb*{E}(\vb*{r},t)
+    &=-\frac{\alpha_0E_0\cos\theta}{4\pi\varepsilon_0r}\qty(\frac{\omega_0}{c})^2\cos(\omega_0\qty(t-\frac{r}{c}))\vb*{e}_r
+        +\frac{\alpha_0E_0}{4\pi\varepsilon_0 r} \qty(\frac{\omega_0}{c})^2\cos(\omega_0\qty(t-\frac{r}{c}))\qty{\cos\theta\vb*{e}_r-\sin\theta\vb*{e}_\theta}\\
+    &= -\frac{\alpha_0E_0\sin\theta\omega_0^2}{4\pi\varepsilon_0c^2}\frac{\cos(\omega_0\qty(t-\frac{r}{c}))}{r}\vb*{e}_\theta
+\end{aligned}\end{equation}
+
+磁場について、勾配の計算と同じような点に気を付けると
+\begin{equation}\begin{aligned}[b]
+    \vb*{B}(\vb*{r},t)&=\curl \vb*{A}(\vb*{r},t) = \frac{1}{r}\pdv{r}(rA_\theta)\vb*{e}_\phi\\
+    &= -\frac{\mu_0\alpha_0E_0\sin\theta \omega_0^2}{4\pi c}\frac{\cos(\omega_0\qty(t-\frac{r}{c}))}{r}\vb*{e}_\phi
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \vb*{S}(\vb*{r},t)=\frac{1}{\mu_0}\vb*{E}(\vb*{r},t)\times \vb*{B}(\vb*{r},t)
+    = \frac{\alpha_0^2E_0^2\sin^2\theta \omega^4}{16\pi^2\varepsilon_0c^3}\frac{\cos^2\qty(\omega_0\qty(t-\frac{r}{c}))}{r^2}\vb*{e}_r
+\end{aligned}\end{equation}
+図は略
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \vb*{E}(\vb*{r},t)&=-\frac{\alpha(t-\frac{r}{c})E_0\sin\theta\omega_0^2}{4\pi\varepsilon_0c^2}\frac{\cos(\omega_0\qty(t-\frac{r}{c}))}{r}\vb*{e}_\theta\\
+    &=-\frac{\alpha_0E_0\sin\theta\omega_0^2}{4\pi\varepsilon_0c^2}\frac{\cos(\omega_0\qty(t-\frac{r}{c}))}{r}\vb*{e}_\theta
+        -\frac{\alpha_1E_0\sin\theta\omega_0^2}{4\pi\varepsilon_0c^2}\frac{\cos(\omega_v\qty(t-\frac{r}{c}))\cos(\omega_0\qty(t-\frac{r}{c}))}{r}\vb*{e}_\theta\\
+    &=-\frac{\alpha_0E_0\sin\theta\omega_0^2}{4\pi\varepsilon_0c^2}\frac{\cos(\omega_0\qty(t-\frac{r}{c}))}{r}\vb*{e}_\theta\\
+        &\qquad-\frac{\alpha_1E_0\sin\theta\omega_0^2}{8\pi\varepsilon_0c^2}\frac{\cos((\omega_0-\omega_v)\qty(t-\frac{r}{c}))}{r}\vb*{e}_\theta
+        -\frac{\alpha_1E_0\sin\theta\omega_0^2}{8\pi\varepsilon_0c^2}\frac{\cos((\omega_0+\omega_v)\qty(t-\frac{r}{c}))}{r}\vb*{e}_\theta\\
+\end{aligned}\end{equation}
+
+
+\section*{感想}
+やってるときには苦しかったけど、
+答案を見ると実は分量少なくて驚いた。
+双極子放射は慣れると結構早く計算できるものなのかもしれないね。
+
+最後の問題はラマン散乱を見てるなぁと分かったので、
+周波数は\(\omega_0\pm\omega_1\)になると予想がついた。
+
+\(\vb*{A}\)の時間微分のところに出てきそうな気はしたが、
+もし、これも考慮して微分すると\(\omega_v\ll\omega_0\)の係数が外に出てきてしまうので、
+結局考えなくても問題ないと分かる。
+それで計算を進めると確かにラマンっぽい電場になって安心。
+
+
+\end{document}

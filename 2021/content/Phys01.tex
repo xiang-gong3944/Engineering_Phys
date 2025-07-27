@@ -1,0 +1,145 @@
+\documentclass[../ap_2021.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{0}
+\chapter{量子力学:量子コンピュータ}
+\section{}
+(1)式のシュレーディンガー方程式に(4)式を代入して
+\begin{equation}\begin{aligned}[b]
+    i\hbar\dv{t}\hat{U}(t-t_0)\ket{\psi_0}&=\hat{H}\hat{U}(t-t_0)\ket{\psi_0}\\
+    \hat{U}(t-t_0) &= \exp(-\frac{i(t-t_0)}{\hbar}\hat{H})
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \hat{U}(t-t_0)^\dagger \hat{U}(t-t_0)
+    =\exp(-\frac{i(t-t_0)}{\hbar}\hat{H})^\dagger\exp(-\frac{i(t-t_0)}{\hbar}\hat{H})
+    =\exp(\frac{i(t-t_0)}{\hbar}\hat{H})\exp(-\frac{i(t-t_0)}{\hbar}\hat{H})
+    =\hat{I}_2
+\end{aligned}\end{equation}
+よりユニタリ演算子である。
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \braket{\psi(t)}=\mel{\psi(t_0)}{\hat{U}(t-t_0)^\dagger \hat{U}(t-t_0)}{\psi(t_0)}=\braket{\psi(t_0)}
+\end{aligned}\end{equation}
+より内積の値は時間によらないのがわかる。
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \hat{U}(\tau)=\exp(-\frac{i\tau}{\hbar}a\hat{\sigma}_z)
+    =\cos(\frac{\tau a}{\hbar})\hat{I}_2-i\sin(\frac{\tau a}{\hbar})\hat{\sigma_z}
+    =\begin{pmatrix}
+        e^{-i\tau a/\hbar} & 0\\
+        0 & e^{i\tau a/\hbar}
+    \end{pmatrix}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \hat{U}_\phi = e^{i\phi/2}\begin{pmatrix}
+        e^{-i\phi/2} & 0\\
+        0 & e^{i\phi/2}
+    \end{pmatrix}
+    =\exp(\frac{i\phi}{2}\hat{I}_2)\exp(-\frac{i\phi}{2}\hat{\sigma}_z)
+    =\exp(-\frac{i\phi}{2}(-\hat{I}_2+\hat{\sigma}_z))
+    =\exp(-\frac{i\tau}{\hbar}\frac{\hbar\phi}{2\tau}(-\hat{I}_2+\hat{\sigma}_z))
+\end{aligned}\end{equation}
+これより、
+\begin{equation}\begin{aligned}[b]
+    \hat{H}=-\frac{\hbar\phi}{2\tau}\hat{I}_2+\frac{\hbar\phi}{2\tau}\hat{\sigma}_z
+    =-\frac{\hbar\phi}{\tau}\begin{pmatrix}
+        0 & 0\\
+        0 & 1
+    \end{pmatrix}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \exp(-i\theta\hat{\sigma}_x)&=\cos(\theta)\hat{I}_2-i\sin(\theta)\hat{\sigma}_x\\
+    \exp(\frac{i\pi}{2})\exp(-\frac{i\pi}{2}\hat{\sigma}_x)&=\hat{\sigma}_x\\
+    \hat{U}_\text{NOT} &= \exp(-\frac{i\tau}{\hbar}\frac{\pi\hbar}{2\tau}(-\hat{I}_2+\hat{\sigma}_x))
+\end{aligned}\end{equation}
+よってハミルトニアンは
+\begin{equation}\begin{aligned}[b]
+    \hat{H}=\frac{\pi\hbar}{2\tau}(-\hat{I}_2+\hat{\sigma}_x)
+    =-\frac{\pi\hbar}{2\tau}\begin{pmatrix}
+        1 & -1\\
+        -1 & 1
+    \end{pmatrix}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    \hat{U}(\tau)&=\exp(-\frac{i\tau}{\hbar}a\qty[(\sin\theta\cos\phi)\hat{\sigma}_x+(\sin\theta\sin\phi)\hat{\sigma}_y+(\cos\theta)\sigma_z]-\frac{i\tau}{\hbar}b\hat{I}_2)\\
+    &=\exp(-\frac{i\tau}{\hbar}b)\qty(\hat{I}_2\cos(\frac{\tau a}{\hbar})-i\sin(\frac{\tau a}{\hbar})\qty[(\sin\theta\cos\phi)\hat{\sigma}_x+(\sin\theta\sin\phi)\hat{\sigma}_y+(\cos\theta)\sigma_z])\\
+    &=\exp(-\frac{i\tau}{\hbar}b)\begin{pmatrix}
+        \cos(\frac{\tau a}{\hbar})+i\sin(\frac{\tau a}{\hbar})\cos\theta
+        & -ie^{-i\phi}\sin(\frac{\tau a}{\hbar})\sin\theta\\
+        -ie^{i\phi}\sin(\frac{\tau a}{\hbar})\sin\theta
+        &\cos(\frac{\tau a}{\hbar})-i\sin(\frac{\tau a}{\hbar})\cos\theta
+    \end{pmatrix}
+\end{aligned}\end{equation}
+
+\section{}
+前問で求めた行列がアダマールゲートと同じになるので、
+連立方程式を立てると
+\begin{equation}\begin{aligned}[b]
+    \begin{cases}
+        \exp(-i\frac{\tau b}{\hbar})\qty[\cos(\frac{\tau a}{\hbar})+i\sin(\frac{\tau a}{\hbar})\cos\theta] &= \frac{1}{\sqrt{2}}\\
+        -i\exp(-i(\frac{\tau b}{\hbar}+\phi))\sin(\frac{\tau a}{\hbar})\sin\theta\ &= \frac{1}{\sqrt{2}}\\
+        -i\exp(-i(\frac{\tau b}{\hbar}-\phi))\sin(\frac{\tau a}{\hbar})\sin\theta\ &= \frac{1}{\sqrt{2}}\\
+        \exp(-i\frac{\tau b}{\hbar})\qty[\cos(\frac{\tau a}{\hbar})-i\sin(\frac{\tau a}{\hbar})\cos\theta] &= -\frac{1}{\sqrt{2}}
+    \end{cases}
+\end{aligned}\end{equation}
+これの1番目と4番目の式より
+\begin{equation}\begin{aligned}[b]
+    \cos(\frac{\tau a}{\hbar})=0\qquad \rightarrow \quad a = \frac{\pi\hbar}{2\tau}
+\end{aligned}\end{equation}
+2番目と3番目の式より
+\begin{equation}\begin{aligned}[b]
+    \phi = 0
+\end{aligned}\end{equation}
+これらと1番目と2番目の式より
+\begin{equation}\begin{aligned}[b]
+    \begin{cases}
+        +i\exp(-\frac{i\tau b}{\hbar})\cos\theta &= \frac{1}{\sqrt{2}}\\
+        -i\exp(-\frac{i\tau b}{\hbar})\sin\theta &= \frac{1}{\sqrt{2}}\\
+    \end{cases}
+    \qquad\rightarrow\qquad
+    \begin{cases}
+        b &= \frac{\pi\hbar}{2\tau}\\
+        \theta &= -\frac{\pi}{4}
+    \end{cases}
+\end{aligned}\end{equation}
+よって、
+\begin{equation}\begin{aligned}[b]
+    \hat{H}=\frac{\pi\hbar}{2\tau}\qty(\hat{I}_2+\frac{\hat{\sigma}_z-\hat{\sigma}_z}{\sqrt{2}})
+    =\frac{\pi\hbar}{2\sqrt{2}}\begin{pmatrix}
+        \sqrt{2}+1 & -1\\
+        -1 & \sqrt{2}-1
+    \end{pmatrix}
+\end{aligned}\end{equation}
+
+\section{}
+行列表示は面倒なので略
+\begin{equation}\begin{aligned}[b]
+    \hat{H}=-\frac{\hbar\phi}{\tau}\ketbra{11}
+\end{aligned}\end{equation}
+
+\section{}
+行列表示は面倒なので略
+\begin{equation}\begin{aligned}[b]
+    \hat{H}=-\frac{\pi\hbar}{2\tau}\ketbra{1}\otimes(-\hat{I}_2+\hat{\sigma}_x)
+\end{aligned}\end{equation}
+
+\section*{感想}
+ゲートの計算はやったことあるけど、ゲートを作るハミルトニアンとか考えたことなかった。
+理論で扱う分にはグローバル位相は気にしないけど、実験の人的には気にする必要があるので、
+恒等演算子\(\hat{I}_2\)もハミルトニアンに入れないといけないということに気づかず、
+[5]の解答は(5)式でいいじゃんとか思ってた。
+
+\end{document}

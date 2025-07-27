@@ -163,11 +163,29 @@ Cauchy-Riemann の関係式より
 まとめると
 \begin{equation}\begin{aligned}[b]
     H(0,y) &= 0\\
-    H\qty(\frac{\pi}{2},y) &= 0\\
-    \pdv{H}{y}(x,0) &=0
+    H\qty(\frac{\pi}{2},y) &= 1\\
+    \pdv{H}{y}\,(x,0) &=0
 \end{aligned}\end{equation}
 
 \subsection{}
+境界条件を眺めると\(H\)は\(y\)によらないことがわかる。
+なので、ラプラス方程式とその解は
+\begin{equation}\begin{aligned}[b]
+    \dv{H}{x}&=0\\
+    H&= Ax +B
+\end{aligned}\end{equation}
+となる。
+
+また、境界条件より
+\begin{equation}\begin{aligned}[b]
+    H = \frac{2}{\pi}x
+\end{aligned}\end{equation}
+
+\subsection{}
+\(u=\sin(x)\)より、
+\begin{equation}\begin{aligned}[b]
+    h(u,0)=\frac{2}{\pi}\arcsin(u)
+\end{aligned}\end{equation}
 
 
 \end{document}

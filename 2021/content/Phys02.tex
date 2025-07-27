@@ -1,0 +1,150 @@
+\documentclass[../ap_2021.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{1}
+\chapter{力学: 弾性波}
+アインシュタインの縮約を行う。
+\section{}
+質量の次元を\(M\), 長さを\(L\), 時間を\(T\)とすると
+\begin{equation}\begin{aligned}[b]
+    \text{(左辺)}&=ML^{-3}\times L^3\times LT^{-2}=MLT^{-2}\\
+    \text{(右辺)}&=MLT^{-2}\times L^3=MLT^{-2}\\
+\end{aligned}\end{equation}
+より一致。
+
+\section{}
+上面と下面で応力がほぼ同じ方向を向いていると考えられるから。
+
+\section{}
+位置\(x\)にかかる\(j\)方向の力は
+\begin{equation}\begin{aligned}[b]
+    F_j\Delta x_1\Delta x_2\Delta x_3
+    &=\qty(p_j^{(1)}(x_1+\Delta x_1/2)-p_j^{(1)}(x_1-\Delta x_1/2))\Delta x_2 \Delta x_3\\
+    &+\qty(p_j^{(2)}(x_2+\Delta x_2/2)-p_j^{(2)}(x_2-\Delta x_2/2))\Delta x_3 \Delta x_1\\
+    &+\qty(p_j^{(3)}(x_3+\Delta x_3/2)-p_j^{(3)}(x_3-\Delta x_3/2))\Delta x_1 \Delta x_2\\
+    &= \pdv{p_j^{(k)}}{x_k}\Delta x_1\Delta x_2\Delta x_3\\
+    F_j &= \pdv{p_j^{(k)}}{x_k}
+\end{aligned}\end{equation}
+
+\section{}
+(1)式に[3]の結果と(2), (3)式を代入して
+\begin{equation}\begin{aligned}[b]
+    \rho\pdv[2]{u_j}{t} &= \pdv{p_j^{(k)}}{x_k}=\frac{1}{2}c_{jkmn}\pdv{x_k}\qty(\pdv{u_m}{x_n}+\pdv{u_n}{x_m})\\
+    &= \frac{1}{2}\lambda\delta_{ij}\delta_{mn}\pdv{x_k}\qty(\pdv{u_m}{x_n}+\pdv{u_n}{x_m})
+    +\frac{1}{2}\mu(\delta_{jm}\delta_{kn}+\delta_{jn}\delta_{km})\pdv{x_k}\qty(\pdv{u_m}{x_n}+\pdv{u_n}{x_m})\\
+    &= \mu\pdv[2]{u_j}{x_n}+(\mu+\lambda)\pdv[2]{u_j}{x_j}{x_n}\\
+    \rho\pdv[2]{\vb*{u}}{t} &= \mu\laplacian{\vb*{u}}+(\mu+\lambda)\grad(\div{\vb*{u}})
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    \Lambda = \mu + \lambda
+\end{aligned}\end{equation}
+
+\section{}
+弾性波を縦波と横波にわけ、
+\begin{equation}\begin{aligned}[b]
+    \vb*{u}(x,t)=\vb*{u}_pe^{i(kx-\omega_pt)}+\vb*{u}_se^{i(kx-\omega_s t)}
+\end{aligned}\end{equation}
+のように書く。
+それぞれは独立であるので、各項ごと波動方程式に代入して分散関係と位相速度を求める。
+
+
+まず縦波は
+\begin{equation}\begin{aligned}[b]
+    \rho\omega_p^2=(\lambda+2\mu)k^2\quad\rightarrow\quad
+    \omega_p = \sqrt{\frac{\lambda+2\mu}{\rho}}k\quad\rightarrow\quad
+    v_p = \sqrt{\frac{\lambda+2\mu}{\rho}}
+\end{aligned}\end{equation}
+
+横波は
+\begin{equation}\begin{aligned}[b]
+    \rho\omega_s^2 =\mu k^2 \quad\rightarrow\quad
+    \omega_s = \sqrt{\frac{\mu}{\rho}}k \quad\rightarrow\quad
+    v_s = \sqrt{\frac{\mu}{\rho}}
+\end{aligned}\end{equation}
+
+\section{}
+波数ベクトルと振幅ベクトルの大きさと向きは
+\begin{equation}\begin{aligned}[b]
+    \vb*{k}_t&=k_t(\sin\alpha_t,\cos\alpha_t,0),& \vb*{k}_t'&=k_t'(\sin\alpha_t',-\cos\alpha_t',0)\\
+    \vb*{u}_{t0} &= u_{t0}(-\cos\alpha_t,\sin\alpha_t,0),& \vb*{u}_{t0}' &= u_{t0}'(\cos\alpha_t,\sin\alpha_t,0)
+\end{aligned}\end{equation}
+である。境界条件より、
+\begin{equation}\begin{aligned}[b]
+    0 &= p_1^{(2)}
+    = \frac{1}{2}c_{12mn}\pdv{x_k}\qty(\pdv{u_m}{x_n}+\pdv{u_n}{x_m})
+    \propto \pdv{u_1}{x_2}+\pdv{u_2}{x_1}\\
+    &=\pdv{x_2}\qty((\vb*{u}_{t0})_1e^{i(\vb*{k}_t\cdot\vb*{x}-\omega_tt)}+(\vb*{u}_{t0}')_1e^{i(\vb*{k}_t'\cdot\vb*{x}-\omega_t't)})
+    +\pdv{x_1}\qty((\vb*{u}_{t0})_2e^{i(\vb*{k}_t\cdot\vb*{x}-\omega_tt)}+(\vb*{u}_{t0}')_2e^{i(\vb*{k}_t'\cdot\vb*{x}-\omega_t't)})\\
+    &=\qty(ik_{t2}(\vb*{u}_{t0})_1e^{i(\vb*{k}_t\cdot\vb*{x}-\omega_tt)}+ik_{t2}'(\vb*{u}_{t0}')_1e^{i(\vb*{k}_t'\cdot\vb*{x}-\omega_t't)})
+    +\qty(ik_{t1}(\vb*{u}_{t0})_2e^{i(\vb*{k}_t\cdot\vb*{x}-\omega_tt)}+ik_{t1}'(\vb*{u}_{t0}')_2e^{i(\vb*{k}_t'\cdot\vb*{x}-\omega_t't)})\\
+    &= (-\cos^2\alpha_t+\sin^2\alpha_t)k_tu_{t0}e^{i(k_tx_1\sin\alpha-\omega_tt)}
+    +(-\cos^2\alpha'_t+\sin^2\alpha'_t)k_t'u_{t0}'e^{i(k_t'x\sin\alpha_t'-\omega_t't)}\\
+\end{aligned}\end{equation}
+これが境界での位置や時間の依存性がないことから
+\begin{equation}\begin{aligned}[b]
+    \omega_t&=\omega_t'\quad&\rightarrow\qquad k_t&=k_t'\\
+    k_t\sin\alpha &= k_t'\sin\alpha'\quad&\rightarrow\qquad \alpha_t&=\alpha_t'
+\end{aligned}\end{equation}
+後で使うので、この結果を代入すると
+\begin{equation}\begin{aligned}[b]
+    0 &= (u_{t0}+u_{t0}')\cos(2\alpha_t)
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    0 &= p_2^{(2)} =
+    \frac{1}{2}c_{22mn}\pdv{x_k}\qty(\pdv{u_m}{x_n}+\pdv{u_n}{x_m})
+    =\lambda\pdv{u_1}{x_1}+(\lambda+2\mu)\pdv{u_2}{x_2}+\lambda\pdv{u_3}{x_3}
+    \propto \pdv{u_2}{x_2}\\
+    &= ik_t\sin\alpha_t \cos\alpha_t u_{t0}e^{i(k_t\sin\alpha-\omega_tt)}-ik_t\sin \alpha_t\cos\alpha_t u_{t0}'e^{i(k_tx_1\sin\alpha-\omega_tt)}\\
+    &=(u_{t0}-u_{t0}')\sin(2\alpha_t)
+\end{aligned}\end{equation}
+よってこれら2つの連立方程式は
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        \cos(2\alpha_t) & \cos(2\alpha_t)\\
+        \sin(2\alpha_t) & -\sin(2\alpha_t)
+    \end{pmatrix}\begin{pmatrix}
+        u_{t0} \\
+        u_{t0}'
+    \end{pmatrix}
+    =0
+\end{aligned}\end{equation}
+となる。これが非自明な解をもつので、
+\begin{equation}\begin{aligned}[b]
+    -2\cos(2\alpha_t)\sin(2\alpha_t)&=0\\
+    \alpha_t &= 0, \frac{\pi}{4}
+\end{aligned}\end{equation}
+
+\section{}
+\(\vb*{p}^{(2)}=0\)による条件は結局\(x_2=0\)において、入射S波、反射S波、反射P波の位相が揃っているということになるので、
+\begin{equation}\begin{aligned}[b]
+    k_tx_1\sin\alpha_t-\omega_tt=k_t'x_1\sin\alpha_t'-\omega_t't=k_l'x_1\sin\alpha_l'-\omega_l't
+\end{aligned}\end{equation}
+\(x_1\)と\(t\)は独立なので、これらの係数が等しい。
+よって
+\begin{equation}\begin{aligned}[b]
+    k_t\sin\alpha_t = k_l'\sin\alpha_l'
+\end{aligned}\end{equation}
+
+\section*{感想}
+地震学でここの話を少しやったことがある。
+地震の伝播で使うのは弾性体の話と、波動光学でやるような話を使うのだが、
+光学とは違い、振動の波形が見れるのでその波形はどのようなものなのかというのにも丁寧に注意を払っているのがこの分野の面白いところ。
+光学だと誘電率とかの応答を調べれば十分となるが、
+地震学が取れるのは波形だけでそれを再現することにより、
+地中の速度構造や断層の動き方が見れる。
+電場は振幅が見れず強度を見るのが基本となるが、
+電場でも同じようなことをやれたらいいなぁとは思う。
+
+問題については、前半はテンソルの計算をするだけではあるが、
+後半がやりにくかった。
+多分その原因としては、境界条件の\(\vb*{p}^{(2)}=0\)というのがどう効いてくるのかというのにピンと来てなかったというのがありそう。
+境界条件で応力を見ているが、中身としては境界では入射波と反射波の位相が等しいというのを使ってるだけである。
+その境界条件ならではの違いというのは振幅に表れるので、[7]でしか詳細は使わない。
+
+\end{document}
