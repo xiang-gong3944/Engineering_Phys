@@ -1,0 +1,85 @@
+\documentclass[../ap_2017.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{4}
+\chapter{ラプラス変換}
+\section{}
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    L[t^n] = \int_{0}^{\infty} t^n e^{-st} \dd{t}
+    = \frac{1}{s^{n+1}}\int_{0}^{\infty}x^n e^{-x}\dd{x}
+    = \frac{\Gamma(n+1)}{s^{n+1}}
+    = \frac{n!}{s^{n+1}}
+\end{aligned}\end{equation}
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    L\qty[\dv{f(t)}{t}] = \int_{0}^{\infty}\dv{f(t)}{t}e^{-st}\dd{s}
+    = \qty[f(t)e^{-st}]_0^\infty +s\int_{0}^{\infty}f(t)e^{-st}\dd{t}
+    = sF(s)-f(0)
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    L\qty[e^{at}f(t)] = \int_{0}^{\infty}f(t)e^{at}e^{-st}\dd{t}
+    = \int_{0}^{\infty}f(t)e^{-(s-a)t}\dd{t}
+    =F(s-a)
+\end{aligned}\end{equation}
+
+\section{}
+与えられた微分方程式をラプラス変換すると
+\begin{equation}\begin{aligned}[b]
+    0 &= -\dv{s}\qty[s^2F(s)-sf(0)-f'(0)]+sF(s)-f(0)-3\dv{s}\qty[sF(s)-f(0)]+3F(s) \\
+    &= -2sF(s)-s^2\dv{F(s)}{s}+f(0)+sF(s)-f(0)-3F(s)-3s\dv{F(s)}{s}+3F(s)\\
+    &= -s\qty((s+3)\dv{F(s)}{s}+F(s))\\
+    F(s) &= \frac{C}{s+3}
+\end{aligned}\end{equation}
+となる。最後の\(C\)はある定数。
+これをラプラス逆変換して
+\begin{equation}\begin{aligned}[b]
+    f(t) = \frac{1}{2\pi i}\lim_{\varepsilon\to +0}\int_{\varepsilon-i\infty}^{\varepsilon+i\infty}\frac{Ce^{st}}{s+3}\dd{s}
+    = Ce^{-3t}
+\end{aligned}\end{equation}
+初期条件を考えると\(C=1\)とわかるので、
+\begin{equation}\begin{aligned}[b]
+    f(t) = e^{-3t}
+\end{aligned}\end{equation}
+
+\section{}
+\subsection{}
+与えられた連立微分方程式をラプラス変換して
+\begin{equation}\begin{aligned}[b]
+    \begin{cases}
+        sX(s)-x(0) &= -X(s)\\
+        sY(s)-y(0) &= X(s) - 2Y(s)
+    \end{cases}
+    \quad \rightarrow\quad
+    \begin{cases}
+        X(s) &= \frac{a}{s+1}\\
+        Y(s) &= \frac{a}{s+1}+\frac{b-a}{s+2}
+    \end{cases}
+    \quad \rightarrow\quad
+    \begin{cases}
+        x(t) &= ae^{-t}\\
+        y(t) &= ae^{-t}+(b-a)e^{-2t}
+    \end{cases}
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    e^{-t} = \frac{x}{a}
+\end{aligned}\end{equation}
+を使うと
+\begin{equation*}\begin{aligned}[b]
+    y &= x + \frac{b-a}{a^2}x^2
+\end{aligned}\end{equation*}
+の放物線となる。
+
+\subsection{}
+こんな感じ
+(\url{https://www.desmos.com/calculator/gaz6zahb2b})
+
+
+\end{document}
