@@ -1,0 +1,71 @@
+\documentclass[../ap_2020.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\setcounter{chapter}{2}
+\chapter{統計力学: }
+\section{}
+この系のハミルトニアンは
+\begin{equation}\begin{aligned}[b]
+    H= \sum_{i}\frac{\vb*{p}_i^2}{2m}
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    Z^{(g)} = \frac{1}{N!(2\pi\hbar)^{3N}}\int\dd[N]{\vb*{r}}\int\dd[N]{\vb*{p}}e^{-\beta H}
+    = \frac{V^N}{N!(2\pi\hbar)^{3N}}\qty[\int \dd{p} \exp(-\frac{\beta p^2}{2m})]^{3N}
+    = \frac{V^N}{N!}\qty(\frac{m}{2\pi\hbar^2 \beta})^{3N/2}
+\end{aligned}\end{equation}
+
+\section{}
+大分配関数は
+\begin{equation}\begin{aligned}[b]
+    Z_G^{(g)} = \sum_{n=0}^{\infty} \frac{V^N}{N!}\qty(\frac{m}{2\pi\hbar^2 \beta})^{3N/2} e^{\beta\mu N}
+    = \sum_{n=0}^{\infty} \frac{1}{N!}\qty[V\qty(\frac{m}{2\pi\hbar^2 \beta})^{3/2}e^{\beta\mu}]^N
+    = \exp\qty[V\qty(\frac{m}{2\pi\hbar^2 \beta})^{3/2}e^{\beta\mu}]
+\end{aligned}\end{equation}
+
+\section{}
+圧力は
+\begin{equation}\begin{aligned}[b]
+    P(\beta,\mu) = \frac{1}{\beta}\pdv{V}\ln Z_G^{(g)}
+    = \frac{1}{\beta} \pdv{V}\qty[V\qty(\frac{m}{2\pi\hbar^2 \beta})^{3/2}e^{\beta\mu}]
+    = \frac{1}{\beta} \qty(\frac{m}{2\pi\hbar^2 \beta})^{3/2}e^{\beta\mu}
+\end{aligned}\end{equation}
+
+\section{}
+各サイトの状態は粒子が歩かないかだけであるので、
+\begin{equation}\begin{aligned}[b]
+    \xi_G^{(a)} = 1+ e^{\beta(\varepsilon+\mu)}
+\end{aligned}\end{equation}
+
+\section{}
+\begin{equation}\begin{aligned}[b]
+    &\left(\frac{N}{N_a} = \frac{1}{N_a\beta}\pdv{\mu}\ln Z_G^{(a)}\right)\\
+    &\quad n_a = \frac{1}{\beta}\pdv{\mu}\ln\xi_G^{(a)}
+    =\frac{e^{\beta(\varepsilon+\mu)}}{e^{\beta(\varepsilon+\mu)}+1}
+    =\frac{1}{1+e^{-\beta(\varepsilon+\mu)}}
+\end{aligned}\end{equation}
+
+\section{}
+設問[3]より
+\begin{equation}\begin{aligned}[b]
+    e^{-\beta\mu}=\qty(\frac{m}{2\pi\hbar^2})^{3/2}\frac{(k_BT)^{5/2}}{P}=:A\frac{(k_BT)^{5/2}}{P}
+\end{aligned}\end{equation}
+というのがわかるので、これを吸着している原子の密度\(n_a\)は
+\begin{equation}\begin{aligned}[b]
+    n_a = \frac{1}{1+A\frac{(k_BT)^{5/2}}{P}e^{-\varepsilon/k_BT}}
+\end{aligned}\end{equation}
+
+\section{}
+以下のリンクの通り(\url{https://www.desmos.com/calculator/9ladzbwzax})
+
+\section*{感想}
+丁寧に誘導を付けてくれた。
+
+
+設問[5]って\(Z_G^{(a)}\)を使わなくても\(\xi_G^{(a)}\)から直接求められるのになんかついてる。
+
+
+\end{document}
